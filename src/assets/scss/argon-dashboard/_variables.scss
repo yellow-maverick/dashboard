@@ -407,9 +407,9 @@ $border-color:                $gray-300 !default;
 $border-radius-xs:            .125rem !default;
 $border-radius-sm:            .25rem !default;
 $border-radius-md:            .5rem !default;
-$border-radius-lg:            .75rem !default;
-$border-radius-xl:            1rem !default;
-$border-radius-2xl:           1.5rem !default;
+$border-radius-lg:            .5rem !default;
+$border-radius-xl:            .5rem !default;
+$border-radius-2xl:           .75rem !default;
 $border-radius-section:       10rem !default;
 
 $border-widths: (
@@ -1241,7 +1241,7 @@ $card-spacer-y:                     $spacer !default;
 $card-spacer-x:                     $spacer !default;
 $card-title-spacer-y:               math.div($spacer, 2) !default;
 $card-border-width:                 0 !default;
-$card-border-radius:                1rem !default;
+$card-border-radius:                .5rem !default;
 $card-border-color:                 rgba($black, .125) !default;
 $card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
 $card-cap-padding-y:                math.div($card-spacer-y, 2) !default;
