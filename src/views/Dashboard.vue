@@ -129,7 +129,7 @@ export default {
           title: "Today's Money",
           value: "$53,000",
           percentage: "+55%",
-          iconClass: "ni ni-money-coins",
+          iconClass: "fa-solid fa-star",
           detail: "since yesterday",
           iconBackground: "bg-gradient-primary",
         },
