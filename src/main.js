@@ -2,11 +2,22 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import store from "./store/index.js";
 import router from "./router/index.js";
-import "./assets/css/nucleo-icons.css";
-import "./assets/css/nucleo-svg.css";
 import ArgonDashboard from "./argon-dashboard.js";
 
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+/* import specific icons */
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+
+/* add icons to the library */
+library.add(faStar)
+
 const appInstance = createApp(App);
+appInstance.component('font-awesome-icon', FontAwesomeIcon)
 appInstance.use(store);
 appInstance.use(router);
 appInstance.use(ArgonDashboard);
