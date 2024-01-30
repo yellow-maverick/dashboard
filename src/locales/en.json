@@ -1,0 +1,8 @@
+{ 
+  "general": {
+    "title": "Title translated"
+  },
+  "routes": {
+    "dashboard": "Dashboard"
+  }
+}

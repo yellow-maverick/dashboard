@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import store from "./store/index.js";
 import router from "./router/index.js";
+import { i18n } from "./locales";
 import ArgonDashboard from "./argon-dashboard.js";
 
 /* import the fontawesome core */
@@ -19,6 +20,10 @@ library.add(faStar)
 const appInstance = createApp(App);
 appInstance.component('font-awesome-icon', FontAwesomeIcon)
 appInstance.use(store);
+appInstance.use(i18n);
 appInstance.use(router);
 appInstance.use(ArgonDashboard);
-appInstance.mount("#app");
+
+router.isReady().then(() => {
+  appInstance.mount("#app");
+})
