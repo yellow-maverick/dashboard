@@ -16,6 +16,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    port: 3000,
+    strictPort: true,
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST", 'PUT', 'DELETE'],
+      preflightContinue: true
+    }
+  },
   build: {
     outDir: '../docs',
     emptyOutDir: true
