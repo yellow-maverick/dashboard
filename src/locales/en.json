@@ -4,5 +4,10 @@
   },
   "routes": {
     "dashboard": "Dashboard"
+  },
+  "word_cloud": {
+    "positive_words": "Positive Words",
+    "negative_words": "Negative Words",
+    "title": "Word Cloud"
   }
 }
