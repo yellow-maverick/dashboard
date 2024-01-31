@@ -1,6 +1,12 @@
 import { createStore } from "vuex";
 
-export default createStore({
+const modulesGlob = import.meta.globEager('./modules/*.js');
+let modules = {}
+for (const m in modulesGlob) {
+  modules[m.replace(/\.\/modules\/(\w+)\.js$/,"$1")] = modulesGlob[m]
+}
+
+const store = createStore({
   state: {
     hideConfigButton: false,
     isPinned: true,
@@ -16,7 +22,7 @@ export default createStore({
     showNavbar: true,
     showFooter: true,
     showMain: true,
-    layout: "default"
+    layout: "default",
   },
   mutations: {
     toggleConfigurator(state) {
@@ -51,5 +57,6 @@ export default createStore({
       commit("sidebarType", payload);
     }
   },
-  getters: {}
+  modules
 });
+export default store;
