@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 
-const modulesGlob = import.meta.globEager('./modules/*.js');
+const modulesGlob = import.meta.glob('./modules/*.js',{ eager: true });
 let modules = {}
 for (const m in modulesGlob) {
   modules[m.replace(/\.\/modules\/(\w+)\.js$/,"$1")] = modulesGlob[m]
