@@ -69,7 +69,6 @@ export default{
       alove.Get('/v1/queries/').then(r => r.clone().json() ).then(async r => { this.queries = r })
     },
     async run () {
-      //let params  = {query: this.query.sql, format: 'hash', ...JSON.parse(this.params) }
       let params  = Object.assign({query: this.query.sql, format: 'hash'}, JSON.parse(this.params))
 
       this.startedAt  = dayjs()

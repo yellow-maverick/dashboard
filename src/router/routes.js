@@ -1,5 +1,5 @@
 import Dashboard from "../views/Dashboard.vue";
-import Tables from "../views/Tables.vue";
+import Analytics from "../views/Analytics.vue";
 import Billing from "../views/Billing.vue";
 import VirtualReality from "../views/VirtualReality.vue";
 import QueryPage from "../views/QueryPage.vue";
@@ -19,9 +19,9 @@ const routes = [
     component: Dashboard,
   },
   {
-    path: "/tables",
-    name: "Tables",
-    component: Tables,
+    path: "/analytics",
+    name: "analytics",
+    component: Analytics,
   },
   {
     path: "/billing",

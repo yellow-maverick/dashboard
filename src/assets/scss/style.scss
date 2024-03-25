@@ -28,3 +28,18 @@
 
 // Custom Variables
 @import "argon-dashboard/custom/styles";
+@import "datepicker.scss";
+
+
+:root {
+  --primary-color: #266;
+}
+.sidebar-bg {
+  background-color: var(--primary-color);
+}
+svg.kpi-card-icon path {
+  fill: goldenrod;
+}
+.mt--20 {
+  margin-top: -25px;
+}
