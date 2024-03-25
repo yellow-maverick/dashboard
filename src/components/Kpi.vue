@@ -1,70 +1,56 @@
 <script>
-import Card from "@/examples/Cards/Card.vue";
+import Db   from "../js/db.js"
+import Card from "../examples/Cards/Card.vue";
+import Lib  from '../js/lib.js';
 import { alove } from '../js/alova.js';
 
 export default{
-  props: ["start_date", "end_date", 'segment', "company_id", "group_id", 'show_trend'],
+  props: ["start_date", "end_date", 'segment', "company_id", "group_id", 'trend'],
   components: { Card },
   data() {
     return {
       data: {
-        numerical:    { current: 0, change: null },
-        sentiment:    { current: 0, change: null },
-        review_count: { current: 0, change: null },
+        current: { reviews: null }
       },
-
+      valueField: 'reviews'
     }
   },
   methods: {
+    ...Db,
     async load() {
-      let data = {};
+      let data    = {};
+      let periods = {}
+      if (this.trend) periods[this.trend] = 1
 
-      data = await alove("/v1/kpi", { ...this.computedSettings });
-      const valueField = /reviews_count|mentions_count/.test(segment) ? "review_count" : "value";
-      this.data.current = data[segOption]?.current?.[valueField];
-      if (segment == "numerical_rating") this.data.current /= 10;
-      this.data.current = !/reviews_count|mentions_count/.test(segment) ? Utils.round(this.data.current) : this.data.current;
-      this.data.change  = this.change(data[segOption]?.current?.[valueField], data[segOption]?.previous?.[valueField]);
-    },
-    change(current, previous) {
-      if (!current || !previous) return;
-      return Utils.round((current / previous - 1) * 100);
+      this.valueField = /reviews_count|mentions_count/.test(this.segment) ? "reviews" : "overall_rating";
+      this.data       = (await this.runQuery('kpi', { periods: periods }))[0].data
+      if (this.data.current) {
+        this.data.change = Lib.change(this.data.current[this.valueField], this.data.yoy?.[this.valueField]);
+        //if (this.segment == "numerical") this.data.current.overall_rating /= 10;
+        if (!/reviews_count|mentions_count/.test(this.segment))
+          this.data.current[this.valueField] = Lib.round(this.data.current[this.valueField]);
+      }
     },
     changedStatus(change) {
       if (change == null) return "";
-      if (change > 1) return "success";
-      if (change < 1) return "danger";
+      if (change > 1) return "text-success";
+      if (change < 1) return "text-danger";
       return "text-muted";
     },
-    title() {
-      return this.$t(`segments.${this.segment}`);
-    }
+  },
+  mounted () {
+    this.load()
   },
   computed: {
-    contract() {
-      return this.$store.getters["contract/currentContract"];
+    title() {
+      return this.$t(`segments.${this.segment}`);
     },
-    computedSettings() {
-      let company_id = this.company_id, group_ids = this.group_id;
-      return {
-        ratingType:       this.settings.segment,
-        subscription_ids: this.contract?.id,
-        start_date:       this.start_date ? dayjs(this.start_date).format("YYYY-MM-DD") : undefined,
-        end_date:         this.end_date   ? dayjs(this.end_date).format("YYYY-MM-DD")   : undefined,
-        trends:           this.settings.trend_range || "yoy",
-        sources:          this.settings.filters?.source,
-        company_ids:      company_id,
-        group_ids,
-      };
+    trendDetail () {
+      if (this.trend)
+        return this.$t(`periods_labels.${this.trend}`);
+      else
+        return ''
     },
-    statData() {
-      return {
-        title:   this.computedSettings.show_title ? undefined : this.title(),
-        icon:   "ion ion-md-star",
-        current: this.data.current,
-        change:  this.computedSettings.show_trend && this.data.change ? Utils.round(this.data.change) : null
-      };
-    }
   },
 };
 </script>
@@ -72,12 +58,13 @@ export default{
 <template>
   <div>
     <Card
-      :title="stats.money.title"
-      :value="stats.money.value"
-      :percentage="stats.money.percentage"
-      :iconClass="stats.money.iconClass"
-      :iconBackground="stats.money.iconBackground"
-      :detail="stats.money.detail"
+      :title="title"
+      :value="data.current[valueField]"
+      :percentage="data.change"
+      :percentageColor='changedStatus(data.change)'
+      iconClass="fa-solid fa-star"
+      iconBackground="white"
+      :detail="trendDetail"
       directionReverse
       />
   </div>

@@ -15,12 +15,11 @@
           </template>
         </sidenav-item>
       </li>
-      <!--
       <li class="nav-item">
         <sidenav-item
-          url="/tables"
-          :class="getRoute() === 'tables' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'الجداول' : 'Tables'"
+          url="/analytics"
+          :class="getRoute() === 'analytics' ? 'active' : ''"
+          :navText="'Analytics'"
         >
           <template v-slot:icon>
             <i
@@ -29,6 +28,7 @@
           </template>
         </sidenav-item>
       </li>
+      <!--
       <li class="nav-item">
         <sidenav-item
           url="/billing"

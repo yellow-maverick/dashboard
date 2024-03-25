@@ -11,7 +11,7 @@ export default{
   components: { VueWordCloud },
   mounted() {
     alove.Get('/v1/queries/1/run').then(r => r.clone().json() ).then(async r => {
-      this.data = r.data.slice(1)
+      this.data = r.data?.slice(1)
     })
   },
   methods: {

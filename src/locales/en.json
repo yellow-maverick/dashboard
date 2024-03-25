@@ -9,5 +9,32 @@
     "positive_words": "Positive Words",
     "negative_words": "Negative Words",
     "title": "Word Cloud"
+  },
+  "segments": {
+    "reviews_count": "Reviews Count",
+    "numerical": "Numerical Rating",
+    "sentiment": "Sentiment Rating"
+  },
+  "periods_labels": {
+    "yoy": "From last year",
+    "pop": "From last period"
+  },
+  "filter": {
+    "title": "Filter",
+    "submit": "Submit",
+    "clear": "Clear",
+    "daterange": "Date Range",
+    "properties": "Properties",
+    "groups":   "Groups",
+    "date_ranges": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "last_7_days": "Last 7 days",
+      "this_month": "This month",
+      "last_month": "Last month",
+      "last_6_months": "Last 6 months",
+      "ytd": "Year to date",
+      "last_year": "Last year"
+    }
   }
 }
