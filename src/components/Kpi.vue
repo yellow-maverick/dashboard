@@ -5,7 +5,7 @@ import Lib  from '../js/lib.js';
 import { alove } from '../js/alova.js';
 
 export default{
-  props: ["start_date", "end_date", 'segment', "company_id", "group_id", 'trend'],
+  props: ['segment', "filter", "group_id", 'trend'],
   components: { Card },
   data() {
     return {
@@ -23,7 +23,7 @@ export default{
       if (this.trend) periods[this.trend] = 1
 
       this.valueField = /reviews_count|mentions_count/.test(this.segment) ? "reviews" : "overall_rating";
-      this.data       = (await this.runQuery('kpi', { periods: periods }))[0].data
+      this.data       = (await this.runQuery('kpi', { ...this.filter, periods: periods }))[0].data
       if (this.data.current) {
         this.data.change = Lib.change(this.data.current[this.valueField], this.data.yoy?.[this.valueField]);
         //if (this.segment == "numerical") this.data.current.overall_rating /= 10;
@@ -40,6 +40,9 @@ export default{
   },
   mounted () {
     this.load()
+  },
+  watch: {
+    filter () { this.load() }
   },
   computed: {
     title() {

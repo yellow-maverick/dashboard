@@ -1,7 +1,7 @@
 <script>
 import Card from "@/examples/Cards/Card.vue";
 import TagCloud from "@/components/TagCloud.vue";
-import GradientLineChart from "@/examples/Charts/GradientLineChart.vue";
+import GradientLineChart from "@/components/GradientLineChart.vue";
 
 import US from "@/assets/img/icons/flags/US.png";
 import DE from "@/assets/img/icons/flags/DE.png";

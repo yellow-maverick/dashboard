@@ -81,7 +81,7 @@ export default{
       const r         = (await this.runner)
       r.clone().json().then(async r => {
         this.result    = r
-        this.execQuery = r.meta?.query.trim()
+        this.execQuery = r.meta?.query?.trim()
         this.error     = r.error
         this.firstRow  = this.result?.data ? this.result?.data[0] || {} : {}
         this.fields    = Object.keys(this.firstRow).map((k) => {

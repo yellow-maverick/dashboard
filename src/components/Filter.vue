@@ -9,26 +9,28 @@ export default{
   data () {
     return {
       dateShortcuts: Lib.dateShortcuts.call(this),
-      daterange: Lib.defaultDateRange(),
       data: {},
       options: {}
     }
   },
   props:      ['fields', 'emitUpdate'],
   components: {DatePicker, Multiselect},
-  mounted () {
-    if (Object.keys(this.fields).includes('properties')) {
-      alove.Post('/v1/queries/2/run').then(r => r.clone().json() ).then(async r => {
-        this.options['properties'] = this.data = r.data?.slice(1).map(l => { return { id: l[2], name: l[3] } } )
+  async mounted () {
+    if (Object.keys(this.fields).includes('property_id')) {
+      await alove.Post('/v1/queries/2/run').then(r => r.clone().json() ).then(async r => {
+        this.options['property_id'] = r.data?.slice(1).map(l => { return { id: l[2], name: l[3] } } )
       })
     }
+    /*
     this.options['groups'] = [ {
       id: 1, name: 'Mepal Group'
     } ]
+    */
     this.loadParamsFromURL()
     Object.keys(this.fields).forEach(f => {
-      if (this.fields[f].type == 'daterange' && !this.data[f])
+      if (this.fields[f].type == 'daterange' && !this.data[f]) {
         this.data[f] = Lib.defaultDateRange()
+      }
     })
     this.submit()
   },
@@ -36,8 +38,8 @@ export default{
     loadParamsFromURL() {
       const query = this.$route.query;
       Object.keys(this.fields).forEach(f => {
+        if (f == 'daterange') this.data[f] = [dayjs(query.start_date).toDate(), dayjs(query.end_date).toDate()]
         if (!query[f]) return
-        if (f == 'daterange') this.data[f] = [query.start_date, query.end_date]
         else if (this.fields[f].type == 'select') {
           if (Array.isArray(query[f]))
             this.data[f] = query[f].map(k => this.options[f]?.find(o => o.id == k))
