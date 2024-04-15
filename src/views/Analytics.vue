@@ -1,7 +1,7 @@
 <script>
 import Filter from "@/components/Filter.vue";
 import Kpi from "@/components/Kpi.vue";
-import GradientLineChart from "@/components/GradientLineChart.vue";
+import GradientLineChart from "@/components/MixedChart.vue";
 
 export default{
   data: () => {
