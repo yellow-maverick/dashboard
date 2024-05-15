@@ -29,6 +29,7 @@
 // Custom Variables
 @import "argon-dashboard/custom/styles";
 @import "datepicker.scss";
+@import "ratings.scss";
 
 
 :root {
@@ -42,4 +43,30 @@ svg.kpi-card-icon path {
 }
 .mt--20 {
   margin-top: -25px;
+}
+
+.review {
+  .source-logo {
+    width: 45px;
+    height: 45px;
+    font-size: 9px;
+    text-align: center;
+    line-height: 4.4;
+    color: white;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: grey;
+  }
+  .rating {
+    width: 55px;
+    height: 55px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.92;
+    color: #eee;
+    float: right;
+    border-radius: 4px;
+  }
 }

@@ -2,7 +2,6 @@
 import Db   from "../js/db.js"
 import Card from "../examples/Cards/Card.vue";
 import Lib  from '../js/lib.js';
-import { alove } from '../js/alova.js';
 
 export default{
   props: ['segment', "filter", "group_id", 'trend'],
@@ -24,7 +23,7 @@ export default{
 
       this.valueField = /reviews_count|mentions_count/.test(this.segment) ? "reviews" : "overall_rating";
       this.data       = (await this.runQuery('kpi', { ...this.filter, periods: periods }))[0].data
-      if (this.data.current) {
+      if (this.data?.current) {
         this.data.change = Lib.change(this.data.current[this.valueField], this.data.yoy?.[this.valueField]);
         //if (this.segment == "numerical") this.data.current.overall_rating /= 10;
         if (!/reviews_count|mentions_count/.test(this.segment))
@@ -60,7 +59,7 @@ export default{
 
 <template>
   <div>
-    <Card
+    <Card v-if='data'
       :title="title"
       :value="data.current[valueField]"
       :percentage="data.change"

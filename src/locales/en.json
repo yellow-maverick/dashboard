@@ -39,5 +39,9 @@
   },
   "charts": {
     "reviews-ratings": "Reviews / Ratings"
+  },
+  "reviews": {
+    "title": "Reviews",
+    "subtitle": "by {name} on {date}"
   }
 }

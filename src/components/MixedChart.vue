@@ -70,7 +70,8 @@ export default {
     async load () {
       var ctx1  = document.getElementById("chart").getContext("2d");
 
-      this.data     = (await this.runQuery('base_analytics', { ...this.filter, period: 'month', periods: [] }))[0].data.current
+      this.data     = (await this.runQuery('base_analytics', { ...this.filter, period: 'month', periods: [] }))[0]?.data?.current
+      if (!this.data) return
       const series  = this.data.map(d => d.date)
       const reviews = this.data.map(d => d.reviews)
       const ratings = this.data.map(d => d.overall_rating)
