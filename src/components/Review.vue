@@ -1,10 +1,11 @@
 <script>
 import dayjs from "dayjs";
 import Lib   from '../js/lib.js';
+import Sources from '../data/sources.json';
 
 export default{
   data () {
-    return { lib: Lib }
+    return { lib: Lib, sources: Sources }
   },
   props:      ['review'],
   components: {},
@@ -38,8 +39,7 @@ export default{
     <div class="p-3 card-body">
       <div class="border-bottom-1 row justify-content-between d-flex mb-4">
         <div class='col-11 d-flex justify-content-start'>
-          {{ review.source.name }}
-          <div class="source-logo me-2"><img width='100%' :src="lib.sources[review.source.slug]" />{{ review.source.slug }}</div>
+          <div class="source-logo me-2" :title='sources[review.source.slug].name' ><img width='100%' :src="lib.sources[review.source.slug]" /></div>
           <div>
             <div class="title text-bold">
               {{ review.title }} 
