@@ -43,6 +43,9 @@
   "reviews": {
     "title": "Reviews",
     "subtitle": "by {name} on {date}",
-    "someone": "someone"
+    "someone": "someone",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {page}"
   }
 }
