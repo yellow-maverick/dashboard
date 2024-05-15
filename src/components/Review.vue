@@ -44,7 +44,7 @@ export default{
             <div class="title text-bold">
               {{ review.title }} 
             </div>
-            <div class="subtitle">{{ $t('reviews.subtitle', { name: review.reviewer.name, date: reviewDate }) }}</div>
+            <div class="subtitle">{{ $t('reviews.subtitle', { name: review.reviewer.name || $t('reviews.someone'), date: reviewDate }) }}</div>
           </div>
         </div>
         <div class="col-1">

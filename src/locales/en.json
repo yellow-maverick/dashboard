@@ -42,6 +42,7 @@
   },
   "reviews": {
     "title": "Reviews",
-    "subtitle": "by {name} on {date}"
+    "subtitle": "by {name} on {date}",
+    "someone": "someone"
   }
 }
