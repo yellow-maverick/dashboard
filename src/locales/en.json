@@ -46,6 +46,7 @@
     "someone": "someone",
     "previous": "Previous",
     "next": "Next",
-    "page": "Page {page}"
+    "page": "Page {page}",
+    "no_reviews": "No reviews to show"
   }
 }

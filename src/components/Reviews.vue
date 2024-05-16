@@ -42,6 +42,9 @@ export default{
     </div>
     <template v-if='filter' >
       <review v-for='review in reviews' :key='review.id' :review='review' />
+      <div class="mb-4 card z-index-2" v-if='reviews.length == 0'>
+        <div class="p-3 card-body d-flex justify-content-center"><strong>{{ $t('reviews.no_reviews') }}</strong></div>
+      </div>
       <nav aria-label="Review navigation">
         <ul class="pagination justify-content-center">
           <li class="page-item">
