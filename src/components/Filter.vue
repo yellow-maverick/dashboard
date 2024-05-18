@@ -10,7 +10,7 @@ export default{
     return {
       dateShortcuts: Lib.dateShortcuts.call(this),
       data: {},
-      options: {}
+      options: { analytics_type: [{ id: 'brand', name: this.$t('filter.brand') }, { id: 'product', name: this.$t('filter.product')}] }
     }
   },
   props:      ['fields', 'emitUpdate'],
@@ -31,6 +31,9 @@ export default{
       if (this.fields[f].type == 'daterange' && !this.data[f]) {
         this.data[f] = Lib.defaultDateRange()
       }
+    })
+    Object.keys(this.fields).forEach(k => {
+      if (this.fields[k].default) this.data[k] = this.options[k].find(o => o.id == this.fields[k].default )
     })
     this.submit()
   },

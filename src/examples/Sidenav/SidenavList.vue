@@ -10,22 +10,22 @@
           :class="getRoute() === 'dashboard' ? 'active' : ''"
           :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'Dashboard'"
         >
-          <template v-slot:icon>
-            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
-          </template>
         </sidenav-item>
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/analytics"
-          :class="getRoute() === 'analytics' ? 'active' : ''"
-          :navText="'Analytics'"
+          url="/brand_analysis"
+          :class="getRoute() === 'brand_analysis' ? 'active' : ''"
+          :navText="'Brand Analysis'"
         >
-          <template v-slot:icon>
-            <i
-              class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"
-            ></i>
-          </template>
+        </sidenav-item>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/product_analysis"
+          :class="getRoute() === 'product_analysis' ? 'active' : ''"
+          :navText="'Product Analysis'"
+        >
         </sidenav-item>
       </li>
       <!--

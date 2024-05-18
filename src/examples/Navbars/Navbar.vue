@@ -21,7 +21,7 @@
           :class="this.$store.state.isRTL ? 'me-md-auto' : 'ms-md-auto'"
         >
         </div>
-        <ul class="navbar-nav justify-content-end">
+        <ul class="navbar-nav justify-content-end" v-if='false'>
           <li class="nav-item d-flex align-items-center">
             <router-link
               :to="{ name: 'Signin' }"

@@ -26,6 +26,9 @@
     "daterange": "Date Range",
     "property_id": "Properties",
     "group_id":   "Groups",
+    "analytics_type": "Analytics Type",
+    "brand": "Brand",
+    "product": "Product",
     "date_ranges": {
       "today": "Today",
       "yesterday": "Yesterday",
@@ -48,5 +51,18 @@
     "next": "Next",
     "page": "Page {page}",
     "no_reviews": "No reviews to show"
+  },
+  "sentiment_kpi": {
+    "title": "Sentiment KPI"
+  },
+  "source_ratings_kpi": {
+    "title": "Source Ratings"
+  },
+  "topics": {
+    "value": "Value",
+    "design": "Design",
+    "delivery": "Delivery",
+    "support": "Support",
+    "quality": "Quality"
   }
 }

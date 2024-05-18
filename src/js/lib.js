@@ -88,6 +88,16 @@ window.ym.lib = {
         }
       },
     ]
+  },
+  ratingColor (value) {
+    if (!value && value != '0') return 'rating-unknown'
+
+    value = parseFloat(value)
+    if (value <= 4)  return 'rating0-4'
+    if (value >= 97) return 'rating97-100'
+
+    let n = Math.floor((value - 1) / 4) * 4
+    return `rating${n + 1}-${n + 4}`
   }
 }
 

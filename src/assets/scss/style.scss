@@ -56,10 +56,12 @@ svg.kpi-card-icon path {
   }
   .title {
     min-height: 26px;
+    line-height: 1.4;
   }
   .subtitle {
     font-size: 12px;
     color: grey;
+    line-height: 1.4;
   }
   .rating {
     width: 55px;
@@ -71,5 +73,13 @@ svg.kpi-card-icon path {
     color: #eee;
     float: right;
     border-radius: 4px;
+  }
+}
+.kpi_list {
+  div {
+    border-bottom: 1px solid #eee;
+  }
+  div:last-child {
+    border-bottom: 0;
   }
 }

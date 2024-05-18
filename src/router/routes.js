@@ -1,5 +1,6 @@
 import Dashboard from "../views/Dashboard.vue";
-import Analytics from "../views/Analytics.vue";
+import BrandAnalysis from "../views/BrandAnalysis.vue";
+import ProductAnalysis from "../views/ProductAnalysis.vue";
 import Billing from "../views/Billing.vue";
 import VirtualReality from "../views/VirtualReality.vue";
 import QueryPage from "../views/QueryPage.vue";
@@ -19,19 +20,14 @@ const routes = [
     component: Dashboard,
   },
   {
-    path: "/analytics",
-    name: "analytics",
-    component: Analytics,
+    path: "/brand_analysis",
+    name: "Brand Analysis",
+    component: BrandAnalysis,
   },
   {
-    path: "/billing",
-    name: "Billing",
-    component: Billing,
-  },
-  {
-    path: "/virtual-reality",
-    name: "Virtual Reality",
-    component: VirtualReality,
+    path: "/product_analysis",
+    name: "Product Analysis",
+    component: ProductAnalysis,
   },
   {
     path: "/queries",
