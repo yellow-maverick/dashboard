@@ -1,6 +1,7 @@
 <script>
 import Filter from "@/components/Filter.vue";
 import Kpi from "@/components/Kpi.vue";
+import SourceRatingsKpi from "@/components/SourceRatingsKpi.vue";
 import GradientLineChart from "@/components/MixedChart.vue";
 import Reviews from "@/components/Reviews.vue";
 
@@ -17,7 +18,7 @@ export default{
     };
   },
   props:      [],
-  components: { Filter, Kpi, GradientLineChart, Reviews },
+  components: { Filter, Kpi, GradientLineChart, SourceRatingsKpi, Reviews },
   methods: {
     load (filter) {
       this.filter = filter
@@ -45,6 +46,12 @@ export default{
         <div class="card z-index-2">
           <gradient-line-chart title='reviews-ratings' :filter='filter' />
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="offset-2 col-lg-2 col-md-3 col-3">
+        <SourceRatingsKpi :filter="filter" v-if='filter' ></SourceRatingsKpi>
       </div>
     </div>
 

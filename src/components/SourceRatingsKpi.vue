@@ -8,18 +8,22 @@ export default{
   components: { KpiList },
   data() {
     return {
-      lib: Lib,
-      data: [],
+      lib:   Lib,
+      data:  [],
       title: this.$t('source_ratings_kpi.title')
     }
   },
   methods: {
     ...Db,
     async load() {
-      let data  = (await this.runQuery('kpi', { ...this.filter, segment: 'source', periods: {} }))
+      let data  = (await this.runQuery('base_analytics', { ...this.filter,
+        segment: 'source', periods: {}, origin_sources: true, for_products: true,
+      }))
       this.data = []
       data.forEach(d => {
-        this.data.push({ name: d.name, value: d.data.current.overall_rating, max_scale: 5 })
+        this.data.push({
+          name: d.name, value: d.data.current.overall_rating, max_scale: 5
+        })
       })
     },
   },

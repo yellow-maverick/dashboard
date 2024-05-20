@@ -32,6 +32,7 @@ export default{
         subscription_id: [1],
         start_date: dayjs().add('-1', 'month').format('YYYY-MM-DD'), end_date: dayjs().format('YYYY-MM-DD'),
         periods: {yoy: 1, previous: 1},
+        for_products: null, origin_sources: null,
         property_id: [1],// group_id: [1],
 
         with_response_rate: null,
