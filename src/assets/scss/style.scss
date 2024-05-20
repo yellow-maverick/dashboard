@@ -31,6 +31,13 @@
 @import "datepicker.scss";
 @import "ratings.scss";
 
+.navbar-brand {
+  img {
+    display: flex;
+    margin-left:  auto;
+    margin-right: auto;
+  }
+}
 
 :root {
   --primary-color: #266;

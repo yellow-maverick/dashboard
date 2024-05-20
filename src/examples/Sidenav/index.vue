@@ -37,7 +37,6 @@
         />
       </router-link>
     </div>
-    <hr class="mt-0 horizontal dark" />
     <sidenav-list :cardBg="custom_class" />
   </aside>
 </template>
