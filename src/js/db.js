@@ -1,4 +1,5 @@
-import { alove } from '../js/alova.js';
+import { alova } from '../js/alova.js'
+
 const db = {
   async runQuery(id, data) {
     let params = {
@@ -13,7 +14,7 @@ const db = {
       periods: {},
       ...(data || {})
     }
-    let r = await alove.Post(`/v1/queries/${id}/run`, params)
+    let r = await alova.Post(`/v1/queries/${id}/run`, params)
     r     = await r.clone().json()
     return r.data
   }

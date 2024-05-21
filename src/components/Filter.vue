@@ -2,7 +2,7 @@
 import DatePicker  from "vue-datepicker-next";
 import Multiselect from 'vue-multiselect'
 import dayjs       from "dayjs";
-import { alove }   from '../js/alova.js';
+import { alova }   from '../js/alova.js'
 import Lib from '../js/lib.js';
 
 export default{
@@ -17,15 +17,11 @@ export default{
   components: {DatePicker, Multiselect},
   async mounted () {
     if (Object.keys(this.fields).includes('property_id')) {
-      await alove.Post('/v1/queries/2/run').then(r => r.clone().json() ).then(async r => {
+      await alova.Post('/v1/queries/properties/run').then(r => r.clone().json() ).then(async r => {
         this.options['property_id'] = r.data?.slice(1).map(l => { return { id: l[2], name: l[3] } } )
       })
     }
-    /*
-    this.options['groups'] = [ {
-      id: 1, name: 'Mepal Group'
-    } ]
-    */
+
     this.loadParamsFromURL()
     Object.keys(this.fields).forEach(f => {
       if (this.fields[f].type == 'daterange' && !this.data[f]) {

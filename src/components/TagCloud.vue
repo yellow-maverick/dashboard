@@ -1,5 +1,5 @@
 <script>
-import { alove } from '../js/alova.js';
+import { alova } from '../js/alova.js';
 import VueWordCloud from 'vuewordcloud';
 
 export default{
@@ -10,7 +10,7 @@ export default{
   },
   components: { VueWordCloud },
   mounted() {
-    alove.Get('/v1/queries/1/run').then(r => r.clone().json() ).then(async r => {
+    alova.Get('/v1/queries/1/run').then(r => r.clone().json() ).then(async r => {
       this.data = r.data?.slice(1)
     })
   },

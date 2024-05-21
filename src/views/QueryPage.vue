@@ -1,5 +1,5 @@
 <script>
-import { alove } from '../js/alova.js';
+import { alova } from '../js/alova.js';
 import { useRequest } from 'alova';
 import dayjs from 'dayjs'
 import { VAceEditor } from 'vue3-ace-editor'
@@ -32,7 +32,8 @@ export default{
         subscription_id: [1],
         start_date: dayjs().add('-1', 'month').format('YYYY-MM-DD'), end_date: dayjs().format('YYYY-MM-DD'),
         periods: {yoy: 1, previous: 1},
-        for_products: null, origin_sources: null,
+        for_products: null, for_properties: null,
+        origin_sources: null,
         property_id: [1],// group_id: [1],
 
         with_response_rate: null,
@@ -63,7 +64,6 @@ export default{
       }
 
       e.preventDefault();
-      console.log("saving query!");
       this.save()
     },
 
@@ -74,7 +74,7 @@ export default{
     },
 
     loadQueries() {
-      alove.Get('/v1/queries/').then(r => r.clone().json() ).then(async r => { this.queries = r })
+      alova.Get('/v1/queries/').then(r => r.clone().json() ).then(async r => { this.queries = r })
     },
     async run () {
       let params  = Object.assign({query: this.query.sql, format: 'hash'}, JSON.parse(this.params))
@@ -84,7 +84,7 @@ export default{
       this.error      = null
       this.result     = {}
 
-      this.runner     = alove.Post(`/v1/queries/runSql`, params)
+      this.runner     = alova.Post(`/v1/queries/runSql`, params)
       this.duration()
       const r         = (await this.runner)
       r.clone().json().then(async r => {
@@ -99,7 +99,7 @@ export default{
       }).catch((e) => { console.log(e); this.error = e?.response?.data || e; this.clear() })
     },
     async save() {
-      alove.Put(`/v1/queries/${this.query.id}`, {sql: this.query.sql}).then(() => {
+      alova.Put(`/v1/queries/${this.query.id}`, {sql: this.query.sql}).then(() => {
         this.saveStatus = 'Saved...'
         setTimeout(() => this.saveStatus = null, 3*1000)
       })

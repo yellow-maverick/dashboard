@@ -14,7 +14,7 @@ export default{
         'property_id': { type: 'select' },
         'group_id':    { type: 'select' },
       },
-      filter: null
+      filter: null,
     };
   },
   props:      [],
@@ -22,6 +22,7 @@ export default{
   methods: {
     load (filter) {
       this.filter = filter
+      this.filter.for_products = true
     }
   }
 }

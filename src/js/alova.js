@@ -3,7 +3,7 @@ import GlobalFetch from 'alova/GlobalFetch';
 import { VueOptionsHook } from '@alova/vue-options';
 import store from '../store/index'
 
-export const alove = createAlova({
+export const alova = createAlova({
   baseURL: import.meta.env.VITE_API_URL,
   statesHook: VueOptionsHook,
   requestAdapter: GlobalFetch(),

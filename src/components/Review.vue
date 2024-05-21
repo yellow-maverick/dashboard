@@ -1,14 +1,14 @@
 <script>
 import dayjs from "dayjs";
-import Lib   from '../js/lib.js';
-import Sources from '../data/sources.json';
+import sources from '../js/sources.js'
 
 export default{
-  data () {
-    return { lib: Lib, sources: Sources }
+  async data () {
+    return { }
   },
   props:      ['review'],
   components: {},
+
   methods: {
     upper (str) {
       if (!str) return
@@ -16,6 +16,9 @@ export default{
     }
   },
   computed: {
+    sourceImage() {
+      return new URL(`../assets/img/sources/${this.review.source.slug}.png`, import.meta.url).href
+    },
     reviewDate () {
       return dayjs(this.review.review_date).format("MMM DD, YYYY")
     },
@@ -39,7 +42,10 @@ export default{
     <div class="p-3 card-body">
       <div class="border-bottom-1 row justify-content-between d-flex mb-4">
         <div class='col-11 d-flex justify-content-start'>
-          <div class="source-logo me-2" :title='sources[review.source.slug].name' ><img width='100%' :src="lib.sources[review.source.slug]" /></div>
+          <div class="source-logo me-2" :title='review.source.name' >
+            <img width='100%' :src="sourceImage" />
+          </div>
+
           <div>
             <div class="title text-bold">
               {{ review.title }} 

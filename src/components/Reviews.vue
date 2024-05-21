@@ -1,7 +1,7 @@
 <script>
 import Lib  from '../js/lib.js';
 import Review from './Review.vue';
-import { alove } from '../js/alova.js';
+import { alova } from '../js/alova.js';
 
 export default{
   props: ["filter"],
@@ -16,7 +16,7 @@ export default{
   methods: {
     async load() {
       if (!this.filter) return
-      let r        = await alove.Get(`/v1/reviews`, { params: { ...this.filter, limit: this.perPage, page: this.page } })
+      let r        = await alova.Get(`/v1/reviews`, { params: { ...this.filter, limit: this.perPage, page: this.page } })
       this.reviews = await r.clone().json()
     },
     paginate (page) {

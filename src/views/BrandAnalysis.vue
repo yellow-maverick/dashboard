@@ -14,7 +14,7 @@ export default{
         'property_id': { type: 'select' },
         'group_id':    { type: 'select' },
       },
-      filter: null
+      filter: null,
     };
   },
   props:      [],
@@ -22,6 +22,7 @@ export default{
   methods: {
     load (filter) {
       this.filter = filter
+      this.filter.for_properties = true
     }
   }
 }
@@ -51,7 +52,6 @@ export default{
 
     <div class="row">
       <div class="col-lg-12 mb-lg">
-        <!-- reviews -->
         <div class="mt-3">
           <reviews :filter='filter' />
         </div>

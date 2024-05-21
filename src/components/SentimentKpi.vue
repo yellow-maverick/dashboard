@@ -18,7 +18,6 @@ export default{
     async load() {
       let data = (await this.runQuery('kpi', { ...this.filter, with_sentiment_ratings: true, periods: {} }))[0]
       data     = data.data.current.sentiment_ratings
-      console.log(data);
       this.data = []
       Object.keys(data).forEach(d => {
         this.data.push({ name: this.$t(`topics.${d}`), value: data[d].value, max_scale: 10 })

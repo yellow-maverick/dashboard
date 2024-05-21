@@ -1,21 +1,16 @@
 if (!window.ym) window.ym = {};
 
-import dayjs from "dayjs";
-
-const sourcesGlob = import.meta.glob("../assets/img/sources/\*.png", { eager: true });
-let sources = {}
-for (const s in sourcesGlob) {
-  sources[s.replace(/\.\.\/assets\/img\/sources\/(\w+)\.png$/,"$1")] = sourcesGlob[s].default
-}
+import dayjs from 'dayjs';
 
 window.ym.lib = {
-  sources: sources,
+
   round (v, f) {
     if (v == 10 || v == 0) return String(v);
     if (!v && v != 0) return '-';
     f = f == undefined ? 1 : f
     return parseFloat(v).toFixed(f)
   },
+
   change(current, previous) {
     if (!current || !previous) return;
     return ym.lib.round((current / previous - 1) * 100);
