@@ -41,10 +41,10 @@ export default{
     </div>
 
     <div class="row mt-5">
-      <div class="offset-2 col-lg-2 col-md-3 col-3">
+      <div class="offset-2 col-lg-3 col-md-4 col-3">
         <SentimentKpi :filter="filter" v-if='filter' ></SentimentKpi>
       </div>
-      <div class="offset-2 col-lg-2 col-md-3 col-3">
+      <div class="offset-2 col-lg-3 col-md-4 col-3">
         <SourceRatingsKpi :filter="filter" v-if='filter' ></SourceRatingsKpi>
       </div>
     </div>

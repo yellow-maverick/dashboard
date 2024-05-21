@@ -16,9 +16,9 @@ export default{
   methods: {
     ...Db,
     async load() {
-      let data  = (await this.runQuery('base_analytics', { ...this.filter,
+      let data  = await this.runQuery('base_analytics', { ...this.filter,
         segment: 'source', periods: {}, origin_sources: true, for_products: true,
-      }))
+      })
       this.data = []
       data.forEach(d => {
         this.data.push({
