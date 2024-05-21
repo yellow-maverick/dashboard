@@ -66,6 +66,13 @@ export default{
       console.log("saving query!");
       this.save()
     },
+
+    copyText() {
+      const textarea = this.$refs.execQuery
+      textarea.select()
+      document.execCommand('copy')
+    },
+
     loadQueries() {
       alove.Get('/v1/queries/').then(r => r.clone().json() ).then(async r => { this.queries = r })
     },
@@ -165,10 +172,21 @@ export default{
       </div>
     </div>
 
-    <div class=row v-if=execQuery>
+    <div class=row v-if=execQuery style='position: relative' >
       <h4>Executed query in {{durationTime}} seconds</h4>
-      <pre> {{ execQuery }} </pre>
+      <textarea style='height: 500px' readonly ref=execQuery > {{ execQuery }} </textarea>
+      <button @click=copyText class='btn btn-secondary copy-button' >Copy</button>
     </div>
 
   </div>
 </template>
+
+<style>
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  cursor: pointer;
+}
+</style>
