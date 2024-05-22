@@ -53,7 +53,8 @@
     "no_reviews": "No reviews to show"
   },
   "sentiment_kpi": {
-    "title": "Sentiment KPI"
+    "title": "Sentiment KPI",
+    "based_on": "based on {reviews} reviews"
   },
   "source_ratings_kpi": {
     "title": "Source Ratings"
