@@ -29,7 +29,7 @@ export default{
       firstRow:     null,
       params:  JSON.stringify({
         row: 'property', segment: null,
-        subscription_id: [1],
+        subscription_ids: [1],
         start_date: dayjs().add('-1', 'month').format('YYYY-MM-DD'), end_date: dayjs().format('YYYY-MM-DD'),
         periods: {yoy: 1, previous: 1},
         for_products: null, for_properties: null,
