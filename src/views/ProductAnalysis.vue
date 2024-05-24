@@ -1,6 +1,7 @@
 <script>
 import Filter from "@/components/Filter.vue";
 import Kpi from "@/components/Kpi.vue";
+import SentimentKpi from "@/components/SentimentKpi.vue";
 import SourceRatingsKpi from "@/components/SourceRatingsKpi.vue";
 import GradientLineChart from "@/components/MixedChart.vue";
 import Reviews from "@/components/Reviews.vue";
@@ -18,7 +19,7 @@ export default{
     };
   },
   props:      [],
-  components: { Filter, Kpi, GradientLineChart, SourceRatingsKpi, Reviews },
+  components: { Filter, Kpi, GradientLineChart, SentimentKpi, SourceRatingsKpi, Reviews },
   methods: {
     load (filter) {
       this.filter = filter
@@ -51,6 +52,9 @@ export default{
     </div>
 
     <div class="row">
+      <div class="offset-2 col-lg-3 col-md-4 col-3">
+        <SentimentKpi :filter="filter" v-if='filter' ></SentimentKpi>
+      </div>
       <div class="offset-2 col-lg-3 col-md-4 col-3">
         <SourceRatingsKpi :filter="filter" v-if='filter' ></SourceRatingsKpi>
       </div>
