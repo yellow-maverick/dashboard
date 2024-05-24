@@ -2,6 +2,8 @@
 import DatePicker  from "vue-datepicker-next";
 import Multiselect from 'vue-multiselect'
 import dayjs       from "dayjs";
+import _           from 'lodash'
+import Db          from '../js/db.js'
 import { alova }   from '../js/alova.js'
 import Lib from '../js/lib.js';
 
@@ -9,31 +11,57 @@ export default{
   data () {
     return {
       dateShortcuts: Lib.dateShortcuts.call(this),
-      data: {},
-      options: { analytics_type: [{ id: 'brand', name: this.$t('filter.brand') }, { id: 'product', name: this.$t('filter.product')}] }
+      options: {
+        analytics_type: [{ id: 'brand', name: this.$t('filter.brand') }, { id: 'product', name: this.$t('filter.product')}],
+        product_id: [],
+      },
+      products_per_property: {},
+      data: {
+        property_id: null,
+      },
     }
   },
+
   props:      ['fields', 'emitUpdate'],
   components: {DatePicker, Multiselect},
-  async mounted () {
-    if (Object.keys(this.fields).includes('property_id')) {
-      await alova.Post('/v1/queries/properties/run').then(r => r.clone().json() ).then(async r => {
-        this.options['property_id'] = r.data?.slice(1).map(l => { return { id: l[2], name: l[3] } } )
-      })
-    }
 
-    this.loadParamsFromURL()
-    Object.keys(this.fields).forEach(f => {
-      if (this.fields[f].type == 'daterange' && !this.data[f]) {
-        this.data[f] = Lib.defaultDateRange()
-      }
-    })
-    Object.keys(this.fields).forEach(k => {
-      if (this.fields[k].default) this.data[k] = this.options[k].find(o => o.id == this.fields[k].default )
-    })
-    this.submit()
+  async mounted () {
+    this.loadData()
   },
+
   methods: {
+    ...Db,
+
+    async loadData() {
+      let k
+      if ((k = 'property_id') in this.fields) {
+        this.options[k] = (await this.runQuery('properties')).map((p) => {
+          return _.mapKeys(p, (v,k) => k == 'property_id' ? 'id' : k)
+        })
+        if (!this.data[k]) this.data[k] = this.options[k][0] //first property
+      }
+      if ((k = 'product_id') in this.fields) {
+        this.products_per_property = _.groupBy(await this.runQuery('products'), 'property_id')
+        if (this.data.property_id) this.selectProduct()
+      }
+
+      // FIXME: breaking first default
+      //this.loadParamsFromURL()
+
+      Object.keys(this.fields).forEach(k => {
+        if (this.fields[k].default) this.data[k] = this.options[k].find(o => o.id == this.fields[k].default )
+        if (this.fields[k].type == 'daterange' && !this.data[k]) {
+          this.data[k] = Lib.defaultDateRange()
+        }
+      })
+      this.submit()
+    },
+
+    selectProduct() {
+      this.options.product_id = this.products_per_property[parseInt(this.data.property_id.id)]
+      if (!this.data.product_id) this.data.product_id = this.options.product_id[0]
+    },
+
     loadParamsFromURL() {
       const query = this.$route.query;
       Object.keys(this.fields).forEach(f => {
@@ -68,7 +96,8 @@ export default{
       delete data.daterange
       return data
     },
-    changed () {
+    changed (v, k) {
+      this.selectProduct()
       if (!this.emitUpdate) return
       let d = this.prepareData()
       this.$emit('filter:update', d)

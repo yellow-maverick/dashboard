@@ -30,11 +30,13 @@ export default{
       params:  JSON.stringify({
         row: 'property', segment: null,
         subscription_ids: [1],
+        property_id: [1],
+        product_id:  null,
         start_date: dayjs().add('-1', 'month').format('YYYY-MM-DD'), end_date: dayjs().format('YYYY-MM-DD'),
         periods: {yoy: 1, previous: 1},
         for_products: null, for_properties: null,
         origin_sources: null,
-        property_id: [1],// group_id: [1],
+        // group_id: [1],
 
         with_response_rate: null,
         limit: 50, sort: null, order: null,
@@ -155,7 +157,7 @@ export default{
 
       <div class="col-5 h-100">
         <h4 class="mt-2"> Parameters </h4>
-        <VAceEditor v-model:value=params lang=json theme="chrome" style="height: 200px;" class='border' :options=paramsEditor.options ></VAceEditor>
+        <VAceEditor v-model:value=params lang=json theme="chrome" style="height: 300px;" class='border' :options=paramsEditor.options ></VAceEditor>
 
         <datatable class="thead-light" v-if='result.data' :items='result.data' :headers=fields :rows-per-page=result?.data?.length :fixed-header=true :table-height=760>
         <!-- this is to render big objects properly -->

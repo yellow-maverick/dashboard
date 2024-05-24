@@ -13,6 +13,7 @@ export default{
         //'analytics_type': { type: 'select', default: 'brand' },
         'daterange':   { type: 'daterange' },
         'property_id': { type: 'select' },
+        'product_id':  { type: 'select' },
         'group_id':    { type: 'select' },
       },
       filter: null,

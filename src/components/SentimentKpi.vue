@@ -20,7 +20,6 @@ export default{
       data     = data.data.current.sentiment_ratings
       this.data = []
       Object.keys(data).forEach(d => {
-      console.log(data[d])
         this.data.push({
           name:      this.$t(`topics.${d}`),
           value:     data[d].value,
