@@ -56,8 +56,10 @@ export default{
         </div>
       </div>
       <div v-for='comment in review.comments' :key='comment' class='mt-2'>
-        <strong> {{ upper(comment.type) }}</strong>
-        <div> {{ comment.comment }}</div>
+        <template v-if=comment.comment >
+          <strong> {{ upper(comment.type) }}</strong>
+          <div> {{ comment.comment }}</div>
+        </template>
       </div>
     </div>
   </div>
