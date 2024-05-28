@@ -4,7 +4,7 @@ import sources from '../js/sources.js'
 import Lib from '../js/lib.js'
 
 export default{
-  async data () {
+  data () {
     return { }
   },
   props:      ['review'],
