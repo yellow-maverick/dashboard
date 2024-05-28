@@ -22,7 +22,7 @@ export default{
       this.data = []
       data.forEach(d => {
         this.data.push({
-          name: d.name, value: d.data.current.overall_rating, max_scale: 5
+          name: d.name, value: d.data.current.overall_rating
         })
       })
     },

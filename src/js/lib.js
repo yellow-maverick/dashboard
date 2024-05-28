@@ -4,16 +4,22 @@ import dayjs from 'dayjs';
 
 window.ym.lib = {
 
-  round (v, f) {
-    if (v == 10 || v == 0) return String(v);
+  globalScale:  5,
+  globalDigits: 1,
+
+  scale(v, scale) {
+    return this.round(parseFloat(v) * (this.globalScale / scale))
+  },
+
+  round (v, digits=this.globalDigits) {
+    if (v == this.globalScale || v == 0) return String(v);
     if (!v && v != 0) return '-';
-    f = f == undefined ? 1 : f
-    return parseFloat(v).toFixed(f)
+    return parseFloat(v).toFixed(digits)
   },
 
   change(current, previous) {
     if (!current || !previous) return;
-    return ym.lib.round((current / previous - 1) * 100);
+    return this.round((current / previous - 1) * 100);
   },
   defaultDateRange () {
     var d = new Date();
@@ -84,7 +90,8 @@ window.ym.lib = {
       },
     ]
   },
-  ratingColor (value) {
+  ratingColor (value, scale=this.globalScale) {
+    value = scale ? value * (100 / scale) : value
     if (!value && value != '0') return 'rating-unknown'
 
     value = parseFloat(value)

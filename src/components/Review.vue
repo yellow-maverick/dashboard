@@ -1,6 +1,7 @@
 <script>
-import dayjs from "dayjs";
+import dayjs from 'dayjs'
 import sources from '../js/sources.js'
+import Lib from '../js/lib.js'
 
 export default{
   async data () {
@@ -23,16 +24,11 @@ export default{
       return dayjs(this.review.review_date).format("MMM DD, YYYY")
     },
     ratingColor () {
-      let value = this.review.ratings.overall
-      if (!value && value != '0') return 'rating-unknown'
-
-      value = parseFloat(value)
-      if (value <= 4)  return 'rating0-4'
-      if (value >= 97) return 'rating97-100'
-
-      let n = Math.floor((value - 1) / 4) * 4
-      return `rating${n + 1}-${n + 4}`
-    }
+      return Lib.ratingColor(this.review.ratings.overall)
+    },
+    scaledRating () {
+      return Lib.scale(this.review.ratings.overall, 100)
+    },
   }
 }
 </script>
@@ -55,7 +51,7 @@ export default{
         </div>
         <div class="col-1">
           <div class='rating float-right' :class="ratingColor">
-            {{ review.ratings.overall }}
+            {{ scaledRating }}
           </div>
         </div>
       </div>

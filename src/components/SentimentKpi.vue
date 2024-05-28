@@ -22,7 +22,7 @@ export default{
       Object.keys(data).forEach(d => {
         this.data.push({
           name:      this.$t(`topics.${d}`),
-          value:     data[d].value,
+          value:     Lib.scale(data[d].value, 10),
           subtitle:  this.$t('sentiment_kpi.based_on', {reviews: data[d].reviews}),
           max_scale: 10,
         })
