@@ -24,8 +24,8 @@ export default{
         params['segment'] = this.segment
         this.columns = [{ value: 'name', text: this.$t(`segments.${this.segment}`) }]
       }
-      let data = (await this.runQuery('base_analytics', params))
-      let dates = [ ... new Set(data.flatMap(s => s.data.current.map(d => d.date))) ].sort()
+      let data     = (await this.runQuery('base_analytics', params))
+      let dates    = [ ... new Set(data.flatMap(s => s.data.current.map(d => d.date))) ].sort()
       this.columns = this.columns.concat(dates.map(d => {
         return { value: d, text: dayjs(d).format('MMM YYYY') }
       }))
@@ -39,7 +39,14 @@ export default{
       this.data = []
       data.forEach(d => {
         let row = { name: d.name }
-        d.data.current.forEach(c => { row[c.date] = [`${Lib.round(c.overall_rating, 2)} (${c.reviews})`, 'yoy'] })
+        d.data.current.forEach((c, i) => {
+          const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
+          let prev    = d.data.yoy.find(y => y.date == pDate)
+          row[c.date] = [
+            `${Lib.round(c.overall_rating, 2)} (${c.reviews})`,
+            Lib.change(c.overall_rating, prev?.overall_rating),
+          ]
+        })
         this.data.push(row)
       })
     },
@@ -47,16 +54,26 @@ export default{
       let rows = {}
       data.forEach(d => {
         d.data.current.forEach(c => {
+          const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
+          let prev    = d.data.yoy.find(y => dayjs(y.date).add(1, 'year').format('YYYY-MM-DD') == c.date)
           Object.keys(c.sentiment_ratings).forEach(key => {
-            rows[key] ??= {name: this.$t(`topics.${key}`) }
+            const stPrev      = prev.sentiment_ratings[key]
+            rows[key]       ??= {name: this.$t(`topics.${key}`) }
             rows[key][c.date] = [
               `${Lib.round(c.sentiment_ratings[key].value, 2)} (${c.sentiment_ratings[key].reviews})`,
-              'yoy'
+              Lib.change(c.sentiment_ratings[key].value, stPrev.value),
               ]
           })
         })
         this.data = Object.keys(rows).sort().map(k => rows[k])
       })
+    },
+    changeColor (value) {
+      if (value == undefined || value[1] == undefined) return 'grey'
+      let v = parseFloat(value[1].split(' ')[0])
+      if (v > 0) return '#00DD00'
+      if (v < 0) return '#DD0000'
+      return '#67748e'
     }
   },
   computed: {
@@ -101,12 +118,12 @@ export default{
           </tr>
         </thead>
         <tbody>
-          <tr v-for='row in data'>
+          <tr v-for='row in data' class='text-center'>
             <template v-for='c in columns' >
               <td v-if='c == columns[0]' >{{ row[c.value] }}</td>
               <template v-else>
-                <td >{{ (row[c.value] || [])[0] }}</td>
-                <td >{{ (row[c.value] || [])[1] }}</td>
+                <td >{{ (row[c.value] || [])[0] || '-' }}</td>
+                <td :style="{ color: changeColor(row[c.value]) }">{{ (row[c.value] || [])[1] || '-' }}%</td>
               </template>
             </template>
           </tr>
