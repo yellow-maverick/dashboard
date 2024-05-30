@@ -2,11 +2,11 @@
   <div class="card">
     <div class="pb-0 card-header mb-0">
       <h6>{{ $t('charts.'+title) }}</h6>
-      <p class="text-sm">
+      <!--<p class="text-sm">
         <i class="fa fa-arrow-up text-success"></i>
         <span class="font-weight-bold">{{detail1}}</span>
         {{detail2}}
-      </p>
+      </p>-->
     </div>
     <div class="p-3 card-body">
       <div class="chart">
