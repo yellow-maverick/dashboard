@@ -46,7 +46,7 @@ export default{
       }
 
       // FIXME: breaking first default
-      //this.loadParamsFromURL()
+      this.loadParamsFromURL()
 
       Object.keys(this.fields).forEach(k => {
         if (this.fields[k].default) this.data[k] = this.options[k].find(o => o.id == this.fields[k].default )
