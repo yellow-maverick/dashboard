@@ -29,7 +29,7 @@ export default{
 </script>
 
 <template>
-  <div class="py-4 container-fluid">
+  <div class="container-fluid">
     <Filter :fields=fields emitUpdate=true @filter:submit='load' @filter:created='load'/>
 
     <div class="row">

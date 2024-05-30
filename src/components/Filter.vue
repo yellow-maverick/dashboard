@@ -120,7 +120,7 @@ export default{
 </script>
 
 <template>
-  <div class="filter my-3">
+  <div class="filter">
     <div class='card'>
       <h5 class="card-title p-3">{{ $t("filter.title") }}</h5>
       <div class="card-body">

@@ -132,7 +132,7 @@ export default{
 </script>
 
 <template>
-  <div class="py-4 container-fluid card">
+  <div class="container-fluid card">
     <div class='row'>
       <div class='col-7'>
         <h4>Queries</h4>

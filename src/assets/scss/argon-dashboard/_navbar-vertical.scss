@@ -63,7 +63,7 @@
         @include media-breakpoint-up(#{$breakpoint}) {
           display: block;
           position: fixed;
-          top: 0;
+          top: 60px;
           bottom: 0;
           width: 100%;
           max-width: $navbar-vertical-open-width !important;
@@ -238,7 +238,20 @@
 }
 
 .sidenav-header {
-  height: $sidenav-header-width;
+  height: auto;
+  display: block;
+  position: fixed;
+  top: 22px;
+  width: 100%;
+  max-width: 15.625rem !important;
+  overflow-y: auto;
+  padding: 0;
+  box-shadow: none;
+  z-index: 9999;
+  left: 20px;
+  img {
+    width: 100%;
+  }
 }
 
 .sidenav-footer {

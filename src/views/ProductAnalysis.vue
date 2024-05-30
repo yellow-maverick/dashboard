@@ -32,10 +32,10 @@ export default{
 </script>
 
 <template>
-  <div class="py-4 container-fluid">
+  <div class="container-fluid">
     <Filter :fields=fields emitUpdate=true @filter:submit='load' @filter:created='load'/>
 
-    <div class="row">
+    <div class="row mt-4">
       <div class="offset-2 col-lg-3 col-md-6 col-12">
         <Kpi :filter="filter" trend="yoy" segment="reviews_count" directionReverse v-if='filter' ></Kpi>
       </div>

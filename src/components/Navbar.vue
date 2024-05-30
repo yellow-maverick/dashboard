@@ -186,7 +186,7 @@
   </nav>
 </template>
 <script>
-import Breadcrumbs from "../Breadcrumbs.vue";
+import Breadcrumbs from "./Breadcrumbs.vue";
 import { mapMutations, mapActions } from "vuex";
 
 export default {
