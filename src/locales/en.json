@@ -13,11 +13,16 @@
   "segments": {
     "reviews_count": "Reviews Count",
     "numerical": "Numerical Rating",
-    "sentiment": "Sentiment Rating"
+    "sentiment": "Sentiment Rating",
+    "source": "Source",
+    "topic": "Topic"
   },
   "periods_labels": {
+    "current": "Current",
     "yoy": "From last year",
-    "pop": "From last period"
+    "yoy_short": "YOY",
+    "pop": "From last period",
+    "pop_short": "POP"
   },
   "filter": {
     "title": "Filter",
@@ -59,6 +64,11 @@
   },
   "source_ratings_kpi": {
     "title": "Source Ratings"
+  },
+  "ratings_table": {
+    "ratings_title": "Ratings Table",
+    "sentiment_title": "Sentiment Table",
+    "title_with_segment": "Ratings Table by {s}"
   },
   "topics": {
     "value": "Value",

@@ -90,3 +90,25 @@ svg.kpi-card-icon path {
     border-bottom: 0;
   }
 }
+.ratings-table {
+  thead.vue3-easy-data-table__header tr {
+    font-size: 15px;
+  }
+}
+
+.table {
+  border-top: 2px solid #grey;
+  tr th {
+    background-color: #ffdc80;
+    vertical-align: middle;
+  }
+  .bordered-side {
+    th {
+      border-right: 1px solid #eadaea;
+      border-bottom: 1px solid #eadaea;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}

@@ -2,6 +2,10 @@ import { alova } from '../js/alova.js'
 
 const db = {
   async runQuery(id, data) {
+    if (!this.$route.query.start_date) {
+      console.warn('Missing required params');
+      return []
+    }
     let params = {
       row: 'property', segment: null,
       subscription_id: this.$route.query.subscription_id,
