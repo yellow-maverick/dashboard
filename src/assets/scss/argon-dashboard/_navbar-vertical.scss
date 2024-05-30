@@ -63,7 +63,7 @@
         @include media-breakpoint-up(#{$breakpoint}) {
           display: block;
           position: fixed;
-          top: 60px;
+          top: 59px;
           bottom: 0;
           width: 100%;
           max-width: $navbar-vertical-open-width !important;
@@ -314,6 +314,8 @@
     .navbar-nav {
       > .nav-item {
         .nav-link {
+          font-weight: bold;
+          font-size: 16px;
           &.active {
             background-color: #f6f9fc;
             box-shadow: none;
