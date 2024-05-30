@@ -3,15 +3,7 @@
     class="collapse navbar-collapse w-auto h-auto h-100"
     id="sidenav-collapse-main"
   >
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <sidenav-item
-          url="/dashboard"
-          :class="getRoute() === 'dashboard' ? 'active' : ''"
-          :navText="this.$store.state.isRTL ? 'لوحة القيادة' : 'Dashboard'"
-        >
-        </sidenav-item>
-      </li>
+    <ul class="navbar-nav mt-5">
       <li class="nav-item">
         <sidenav-item
           url="/brand_analysis"
