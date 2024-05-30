@@ -25,7 +25,7 @@ export default{
         this.columns = [{ value: 'name', text: this.$t(`segments.${this.segment}`) }]
       }
       let data     = (await this.runQuery('base_analytics', params))
-      let dates    = [ ... new Set(data.flatMap(s => s.data.current.map(d => d.date))) ].sort()
+      let dates    = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date))) || [] ].sort()
       this.columns = this.columns.concat(dates.map(d => {
         return { value: d, text: dayjs(d).format('MMM YYYY') }
       }))
@@ -38,10 +38,11 @@ export default{
     organizeRatingsData (data) {
       this.data = []
       data.forEach(d => {
+        if (!d.data.current) return
         let row = { name: d.name }
         d.data.current.forEach((c, i) => {
           const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
-          let prev    = d.data.yoy.find(y => y.date == pDate)
+          let prev    = d.data.yoy?.find(y => y.date == pDate)
           row[c.date] = [
             `${Lib.round(c.overall_rating, 2)} (${c.reviews})`,
             Lib.change(c.overall_rating, prev?.overall_rating),
