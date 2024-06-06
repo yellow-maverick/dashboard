@@ -2,6 +2,7 @@
 import Db    from "../js/db.js"
 import Lib   from "../js/lib.js"
 import dayjs from "dayjs";
+import { alova } from '../js/alova.js'
 
 export default{
   data () {
@@ -15,7 +16,7 @@ export default{
   methods: {
     ...Db,
     async load () {
-      let params = { ...this.filter, period: 'month', periods: { yoy: 1 } }
+      let dates, data, params = { ...this.filter, period: 'month', periods: { yoy: 1 } }
       if (this.type == 'sentiment') {
         params['with_sentiment_ratings'] = true
         this.columns = [{ value: 'name', text: this.$t(`segments.topic`)}]
@@ -24,15 +25,20 @@ export default{
         params['segment'] = this.segment
         this.columns = [{ value: 'name', text: this.$t(`segments.${this.segment}`) }]
       }
-      let data     = (await this.runQuery('base_analytics', params))
-      let dates    = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date))) || [] ].sort()
+      if (this.type == 'sentiment') {
+        data  = await alova.Get(`/v1/sentiment`, { params: { ...this.filter, per: 'month', trend: 'yoy' } })
+        data  = await data.clone().json()
+        dates = [ ... new Set(Object.values(data).flatMap(s => s?.map(d => d?.current?.date))) || [] ].sort()
+        this.organizeSentimentData(data)
+      } else {
+        data  = (await this.runQuery('base_analytics', params))
+        dates = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date))) || [] ].sort()
+        this.organizeRatingsData(data)
+      }
+
       this.columns = this.columns.concat(dates.map(d => {
         return { value: d, text: dayjs(d).format('MMM YYYY') }
       }))
-      if (this.type == 'sentiment') 
-        this.organizeSentimentData(data)
-      else
-        this.organizeRatingsData(data)
 
     },
     organizeRatingsData (data) {
@@ -53,18 +59,14 @@ export default{
     },
     organizeSentimentData (data) {
       let rows = {}
-      data.forEach(d => {
-        d.data.current.forEach(c => {
-          const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
-          let prev    = d.data.yoy.find(y => dayjs(y.date).add(1, 'year').format('YYYY-MM-DD') == c.date)
-          Object.keys(c.sentiment_ratings).forEach(key => {
-            const stPrev      = prev.sentiment_ratings[key]
-            rows[key]       ??= {name: this.$t(`topics.${key}`) }
-            rows[key][c.date] = [
-              `${Lib.round(c.sentiment_ratings[key].value, 2)} (${c.sentiment_ratings[key].reviews})`,
-              Lib.change(c.sentiment_ratings[key].value, stPrev.value),
-              ]
-          })
+      Object.keys(data).forEach(key => {
+        rows[key] ??= {name: this.$t(`topics.${key}`) }
+        let d = data[key]
+        d.forEach(c => {
+          rows[key][c.current.date] = [
+            `${Lib.round(c.current?.value, 2)} (${c.current?.reviews})`,
+            Lib.change(c.current?.value, c.yoy?.value),
+          ]
         })
         this.data = Object.keys(rows).sort().map(k => rows[k])
       })
