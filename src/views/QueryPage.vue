@@ -31,18 +31,22 @@ export default{
         row: 'property', segment: null,
         subscription_ids: [1],
         property_id: [1],
+        // group_id: [1],
         product_id:  null,
+
         start_date: dayjs().add('-1', 'month').format('YYYY-MM-DD'), end_date: dayjs().format('YYYY-MM-DD'),
+        period: 'month',
         periods: {yoy: 1, previous: 1},
+
         for_products: null, for_properties: null,
         origin_sources: null,
-        // group_id: [1],
 
+        with_products: null,
         with_response_rate: null,
+        with_numerical_ratings: null,
+        with_sentiment_ratings: null,
+        min_reviews: null,
         limit: 50, sort: null, order: null,
-        period: 'month',
-
-        release_date: dayjs().format('YYYY-MM-DD'),
       }, null, 2),
       result:   {},
       fields:   [],
@@ -132,7 +136,7 @@ export default{
 </script>
 
 <template>
-  <div class="container-fluid card">
+  <div class="py-4 container-fluid card">
     <div class='row'>
       <div class='col-7'>
         <h4>Queries</h4>
