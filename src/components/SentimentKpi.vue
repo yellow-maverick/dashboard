@@ -17,7 +17,8 @@ export default{
     ...Db,
     async load() {
       let data = (await this.runQuery('kpi', { ...this.filter, with_sentiment_ratings: true, periods: {} }))[0]
-      data     = data.data.current.sentiment_ratings
+      data     = data.data?.current?.sentiment_ratings
+      if (!data) return
       this.data = []
       Object.keys(data).forEach(d => {
         this.data.push({

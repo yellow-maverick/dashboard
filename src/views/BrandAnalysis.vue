@@ -3,6 +3,7 @@ import Filter from "@/components/Filter.vue";
 import SentimentKpi from "@/components/SentimentKpi.vue";
 import SourceRatingsKpi from "@/components/SourceRatingsKpi.vue";
 import GradientLineChart from "@/components/MixedChart.vue";
+import RatingsTable from "@/components/RatingsTable.vue";
 import Reviews from "@/components/Reviews.vue";
 
 export default{
@@ -18,7 +19,7 @@ export default{
     };
   },
   props:      [],
-  components: { Filter, SentimentKpi, SourceRatingsKpi, GradientLineChart, Reviews },
+  components: { Filter, SentimentKpi, SourceRatingsKpi, GradientLineChart, Reviews, RatingsTable },
   methods: {
     load (filter) {
       this.filter = filter
@@ -38,6 +39,18 @@ export default{
         <div class="card z-index-2">
           <gradient-line-chart title='reviews-ratings' :filter='filter' />
         </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <ratings-table :filter='filter' v-if='filter' type='sentiment' />
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <ratings-table :filter='filter' v-if='filter' segment='source' type='ratings' />
       </div>
     </div>
 
