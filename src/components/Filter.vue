@@ -65,7 +65,7 @@ export default{
     loadParamsFromURL() {
       const query = this.$route.query;
       Object.keys(this.fields).forEach(f => {
-        if (f == 'daterange') this.data[f] = [dayjs(query.start_date).toDate(), dayjs(query.end_date).toDate()]
+        if (f == 'daterange' && query.start_date) this.data[f] = [dayjs(query.start_date).toDate(), dayjs(query.end_date).toDate()]
         if (!query[f]) return
         else if (this.fields[f].type == 'select') {
           if (Array.isArray(query[f]))
