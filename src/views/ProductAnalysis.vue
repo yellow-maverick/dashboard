@@ -66,6 +66,12 @@ export default{
     </div>
 
     <div class="row mt-5">
+      <div class="col-lg-12">
+        <ratings-table :filter='filter' v-if='filter' segment='language' type='ratings' />
+      </div>
+    </div>
+
+    <div class="row mt-5" v-if='false'>
       <div class="offset-2 col-lg-3 col-md-4 col-3">
         <SentimentKpi :filter="filter" v-if='filter' ></SentimentKpi>
       </div>
@@ -74,7 +80,7 @@ export default{
       </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-5">
       <div class="col-lg-12 mb-lg">
         <!-- reviews -->
         <div class="mt-2">
