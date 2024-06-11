@@ -4,6 +4,7 @@ import Lib   from "../js/lib.js"
 import dayjs from "dayjs";
 import { alova } from '../js/alova.js'
 import ArgonRadio from "@/components/ArgonRadio.vue";
+import Sources from '../data/sources.js';
 
 export default{
   data () {
@@ -23,7 +24,7 @@ export default{
   methods: {
     ...Db,
     async load () {
-      let dates, data, params = { ...this.filter, period: this.period, periods: { yoy: 1 } }
+      let dates, data, params = { ...this.filter, period: this.period, periods: { yoy: 1 }, origin_sources: true }
       if (this.type == 'sentiment') {
         params['with_sentiment_ratings'] = true
         this.columns = [{ value: 'name', text: this.$t(`segments.topic`)}]
@@ -52,11 +53,15 @@ export default{
       if (this.period == 'quarter') return d
       return dayjs(d).format('MMM YYYY')
     },
+    dataName (name) {
+      if (this.segment == 'source') return Sources[name] || name
+      return name
+    },
     organizeRatingsData (data) {
       this.data = []
       data.forEach(d => {
         if (!d.data.current) return
-        let row = { name: d.name }
+        let row = { name: this.dataName(d.name) }
         d.data.current.forEach((c, i) => {
           const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
           let prev    = d.data.yoy?.find(y => y.date == pDate)
