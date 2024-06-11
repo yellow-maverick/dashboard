@@ -24,7 +24,7 @@
       </div>
       <div class="d-flex justify-content-end flex-direction-row mt--20">
         <span :class="percentageColor">{{ percentage }}%</span> 
-        <span class='text-sm ms-2'>&nbsp;{{detail}}</span>
+        <span class='text-sm ms-2' style='line-height: 1.7'>&nbsp;{{detail}}</span>
       </div>
     </div>
   </div>

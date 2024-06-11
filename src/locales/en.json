@@ -15,7 +15,14 @@
     "numerical": "Numerical Rating",
     "sentiment": "Sentiment Rating",
     "source": "Source",
+    "language": "Language",
+    "composition": "Composition",
+    "country": "Country",
     "topic": "Topic"
+  },
+  "periods": {
+    "month": "Month",
+    "quarter": "Quarter"
   },
   "periods_labels": {
     "current": "Current",
@@ -66,6 +73,8 @@
     "title": "Source Ratings"
   },
   "ratings_table": {
+    "table": "Table",
+    "chart": "Chart",
     "ratings_title": "Ratings Table",
     "sentiment_title": "Sentiment Table",
     "title_with_segment": "Ratings Table by {s}"

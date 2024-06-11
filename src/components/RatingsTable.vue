@@ -3,20 +3,27 @@ import Db    from "../js/db.js"
 import Lib   from "../js/lib.js"
 import dayjs from "dayjs";
 import { alova } from '../js/alova.js'
+import ArgonRadio from "@/components/ArgonRadio.vue";
 
 export default{
   data () {
     return {
       data:    null,
+      period:  'month',
+      datatype: 'table',
+      identifier: '',
       columns: []
     }
   },
   props:      ['filter', 'type', 'segment'],
-  components: {},
+  components: { ArgonRadio },
+  created () {
+    this.identifier = parseInt(Math.random() * 1000)
+  },
   methods: {
     ...Db,
     async load () {
-      let dates, data, params = { ...this.filter, period: 'month', periods: { yoy: 1 } }
+      let dates, data, params = { ...this.filter, period: this.period, periods: { yoy: 1 } }
       if (this.type == 'sentiment') {
         params['with_sentiment_ratings'] = true
         this.columns = [{ value: 'name', text: this.$t(`segments.topic`)}]
@@ -26,20 +33,24 @@ export default{
         this.columns = [{ value: 'name', text: this.$t(`segments.${this.segment}`) }]
       }
       if (this.type == 'sentiment') {
-        data  = await alova.Get(`/v1/sentiment`, { params: { ...this.filter, per: 'month', trend: 'yoy' } })
+        data  = await alova.Get(`/v1/sentiment`, { params: { ...this.filter, per: this.period, trend: 'yoy' } })
         data  = await data.clone().json()
         dates = [ ... new Set(Object.values(data).flatMap(s => s?.map(d => d?.current?.date))) || [] ].sort()
         this.organizeSentimentData(data)
       } else {
         data  = (await this.runQuery('base_analytics', params))
-        dates = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date))) || [] ].sort()
+        dates = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date) || [])) ].sort()
         this.organizeRatingsData(data)
       }
 
       this.columns = this.columns.concat(dates.map(d => {
-        return { value: d, text: dayjs(d).format('MMM YYYY') }
+        return { value: d, text: this.formatDate(d) }
       }))
 
+    },
+    formatDate (d) {
+      if (this.period == 'quarter') return d
+      return dayjs(d).format('MMM YYYY')
     },
     organizeRatingsData (data) {
       this.data = []
@@ -92,6 +103,9 @@ export default{
   watch: {
     filter () {
       this.load()
+    },
+    period () {
+      this.load()
     }
   },
 }
@@ -99,11 +113,23 @@ export default{
 
 <template>
   <div class="card ratings-table">
-    <div class="pb-0 card-header mb-0">
-      <h6>{{ title }}</h6>
+    <div class="d-flex justify-content-between me-4">
+      <div class="pb-0 card-header mb-0">
+        <h6>{{ title }}</h6>
+      </div>
+      <div class="d-flex justify-content-start pt-4">
+        <div class="d-flex justify-content-start">
+          <argon-radio :name="`tc-${identifier}`" :id="`tc-${identifier}-table`" value='table' v-model='datatype' class=''>{{ $t('ratings_table.table') }}</argon-radio>
+          <argon-radio :name="`tc-${identifier}`" :id="`tc-${identifier}-chart`" value='chart' v-model='datatype' class='ms-3'>{{ $t('ratings_table.chart') }}</argon-radio>
+        </div>
+        <div class="ms-6 d-flex justify-content-start">
+          <argon-radio :name="`rt-${identifier}`" :id="`rt-${identifier}-month`" value='month' v-model='period'>{{ $t('periods.month') }}</argon-radio>
+          <argon-radio :name="`rt-${identifier}`" :id="`rt-${identifier}-quarter`" value='quarter' v-model='period' class='ms-3'>{{ $t('periods.quarter') }}</argon-radio>
+        </div>
+      </div>
     </div>
     <div class="p-3 card-body table-responsive">
-      <table class='table' v-if='data' >
+      <table class='table text-center' v-if='data' >
         <thead>
           <tr class='bordered-side'>
             <template v-for='c in columns' >
