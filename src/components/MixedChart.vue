@@ -81,7 +81,6 @@ export default {
               borderWidth: 4,
               fill: true,
               maxBarThickness: 10,
-              pointRadius: 0,
               yAxisID: 'y1'
             },
             {

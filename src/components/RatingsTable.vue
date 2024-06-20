@@ -4,6 +4,7 @@ import Lib   from "../js/lib.js"
 import dayjs from "dayjs";
 import { alova } from '../js/alova.js'
 import ArgonRadio from "@/components/ArgonRadio.vue";
+import LineChart  from "@/components/LineChart.vue";
 import Sources from '../data/sources.js';
 
 export default{
@@ -17,7 +18,7 @@ export default{
     }
   },
   props:      ['filter', 'type', 'segment'],
-  components: { ArgonRadio },
+  components: { ArgonRadio, LineChart },
   created () {
     this.identifier = parseInt(Math.random() * 1000)
   },
@@ -61,7 +62,7 @@ export default{
       this.data = []
       data.forEach(d => {
         if (!d.data.current) return
-        let row = { name: this.dataName(d.name) }
+        let row = { name: d.name) }
         d.data.current.forEach((c, i) => {
           const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
           let prev    = d.data.yoy?.find(y => y.date == pDate)
@@ -134,7 +135,7 @@ export default{
       </div>
     </div>
     <div class="p-3 card-body table-responsive">
-      <table class='table text-center' v-if='data' >
+      <table class='table text-center' v-if='data && datatype == "table"' >
         <thead>
           <tr class='bordered-side'>
             <template v-for='c in columns' >
@@ -163,6 +164,7 @@ export default{
           </tr>
         </tbody>
       </table>
+      <line-chart :series='columns' :data='data' v-if='data && datatype == "chart"' />
     </div>
   </div>
 </template>
