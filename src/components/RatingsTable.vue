@@ -5,7 +5,6 @@ import dayjs from "dayjs";
 import { alova } from '../js/alova.js'
 import ArgonRadio from "@/components/ArgonRadio.vue";
 import LineChart  from "@/components/LineChart.vue";
-import Sources from '../data/sources.js';
 
 export default{
   data () {
@@ -54,15 +53,11 @@ export default{
       if (this.period == 'quarter') return d
       return dayjs(d).format('MMM YYYY')
     },
-    dataName (name) {
-      if (this.segment == 'source') return Sources[name] || name
-      return name
-    },
     organizeRatingsData (data) {
       this.data = []
       data.forEach(d => {
         if (!d.data.current) return
-        let row = { name: d.name) }
+        let row = { name: d.name }
         d.data.current.forEach((c, i) => {
           const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
           let prev    = d.data.yoy?.find(y => y.date == pDate)
