@@ -20,6 +20,21 @@
         >
         </sidenav-item>
       </li>
+
+      <li class="nav-item mt-3">
+        <h6 class='class="ps-4 ms-4 text-uppercase text-xs font-weight-bolder opacity-6"'>
+          Management
+        </h6>
+      </li>
+      <li class="nav-item">
+        <sidenav-item
+          url="/connections"
+          :class="getRoute() === 'connections' ? 'active' : ''"
+          :navText="'Connections'"
+        >
+        </sidenav-item>
+      </li>
+
       <!--
       <li class="nav-item">
         <sidenav-item
