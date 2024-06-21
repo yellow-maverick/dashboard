@@ -2,7 +2,7 @@ import { alova } from '../js/alova.js'
 
 const db = {
   async runQuery(id, data) {
-    if (!this.$route.query.start_date) {
+    if (id == 'base_analytics' && !this.$route.query.start_date) {
       console.warn('Missing required params');
       return []
     }
