@@ -11,7 +11,11 @@ window.ym.lib = {
     return this.round(parseFloat(v) * (this.globalScale / scale))
   },
 
-  round (v, digits=this.globalDigits) {
+  sourceImage(slug) {
+    return new URL(`../assets/img/sources/${slug}.png`, import.meta.url).href
+  },
+
+  round(v, digits=this.globalDigits) {
     if (v == this.globalScale || v == 0) return String(v);
     if (!v && v != 0) return '-';
     return parseFloat(v).toFixed(digits)
@@ -21,11 +25,13 @@ window.ym.lib = {
     if (!current || !previous) return;
     return this.round((current / previous - 1) * 100);
   },
+
   defaultDateRange () {
     var d = new Date();
     d.setMonth(d.getMonth() - 6);
     return [d, new Date()]
   },
+
   dateShortcuts() {
     const today = new Date();
     return [
@@ -90,6 +96,7 @@ window.ym.lib = {
       },
     ]
   },
+
   ratingColor (value, scale=this.globalScale) {
     value = scale ? value * (100 / scale) : value
     if (!value && value != '0') return 'rating-unknown'

@@ -42,6 +42,7 @@ export default{
         origin_sources: null,
 
         with_products: null,
+        with_connections: null,
         with_response_rate: null,
         with_numerical_ratings: null,
         with_sentiment_ratings: null,

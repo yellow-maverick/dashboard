@@ -1,9 +1,10 @@
 <script>
 import _  from 'lodash'
 import Db from '../js/db.js'
+import Lib from '../js/lib.js'
 
 export default {
-  data: () => {
+  data() {
     return {
       properties: [],
     }
@@ -18,9 +19,18 @@ export default {
   methods: {
     ...Db,
     async load() {
-      this.properties = (await this.runQuery('properties', {with_products: true}))
-    }
+      this.properties = (await this.runQuery('properties', {
+        with_products: true, with_connections: true,
+      }))
+    },
+
+    sourceImage(slug) {
+      console.log(slug)
+      return Lib.sourceImage(slug)
+    },
   },
+
+  computed: {},
 }
 </script>
 
@@ -33,13 +43,14 @@ export default {
 
         <div id=accordion >
           <div v-for='(pd,i) in p.products' class=accordion-item >
-            <h2 class="accordion-header" id="heading{i}" >
+            <h2 class=accordion-header >
                <button class='btn btn-link' data-bs-toggle=collapse :data-bs-target='`#collapse${i}`' aria-expanded=true aria-controls=collapseOne >
                  {{pd.name}}
+                 <img v-for='c in pd.connections' width='32px' class='mr-3' :src="sourceImage(c.source.slug)" >
                </button>
              </h2>
               <div :id='`collapse${i}`' class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-               <div class="card-body">
+               <div class=card-body >
                  ...
                </div>
              </div>

@@ -18,7 +18,7 @@ export default{
   },
   computed: {
     sourceImage() {
-      return new URL(`../assets/img/sources/${this.review.source.slug}.png`, import.meta.url).href
+      return Lib.sourceImage(this.review.source.slug)
     },
     reviewDate () {
       return dayjs(this.review.review_date).format("MMM DD, YYYY")
