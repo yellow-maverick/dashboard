@@ -48,7 +48,7 @@ export default{
       <div class="col-lg-12 mb-lg">
         <!-- line chart -->
         <div class="card z-index-2">
-          <mixed-chart title='reviews-ratings' :filter='filter' />
+          <mixed-chart title='reviews-ratings' :filter='filter' v-if='filter' />
         </div>
       </div>
     </div>

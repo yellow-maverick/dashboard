@@ -59,7 +59,7 @@ export default{
 
     selectProduct() {
       this.options.product_id = this.products_per_property[parseInt(this.data.property_id.id)]
-      if (!this.data.product_id) this.data.product_id = this.options.product_id[0]
+      if (!this.data.product_id && this.options.product_id) this.data.product_id = this.options.product_id[0]
     },
 
     loadParamsFromURL() {
