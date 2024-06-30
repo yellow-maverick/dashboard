@@ -2,6 +2,7 @@ import Dashboard from "../views/Dashboard.vue";
 import BrandAnalysis from "../views/BrandAnalysis.vue";
 import ProductAnalysis from "../views/ProductAnalysis.vue";
 import Connections from "../views/Connections.vue";
+import Reviews from "../views/Reviews.vue";
 import Billing from "../views/Billing.vue";
 import VirtualReality from "../views/VirtualReality.vue";
 import QueryPage from "../views/QueryPage.vue";
@@ -31,6 +32,11 @@ const routes = [
     component: ProductAnalysis,
   },
 
+  {
+    path: "/reviews",
+    name: "Reviews",
+    component: Reviews,
+  },
   // Management
   {
     path: "/connections",

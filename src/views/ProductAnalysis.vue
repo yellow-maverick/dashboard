@@ -5,7 +5,6 @@ import RatingsTable from "@/components/RatingsTable.vue";
 import SentimentKpi from "@/components/SentimentKpi.vue";
 import SourceRatingsKpi from "@/components/SourceRatingsKpi.vue";
 import MixedChart from "@/components/MixedChart.vue";
-import Reviews from "@/components/Reviews.vue";
 
 export default{
   data: () => {
@@ -21,7 +20,7 @@ export default{
     };
   },
   props:      [],
-  components: { Filter, Kpi, MixedChart, SentimentKpi, SourceRatingsKpi, Reviews, RatingsTable },
+  components: { Filter, Kpi, MixedChart, SentimentKpi, SourceRatingsKpi, RatingsTable },
   methods: {
     load (filter) {
       this.filter = filter
@@ -77,15 +76,6 @@ export default{
       </div>
       <div class="offset-2 col-lg-3 col-md-4 col-3">
         <SourceRatingsKpi :filter="filter" v-if='filter' ></SourceRatingsKpi>
-      </div>
-    </div>
-
-    <div class="row mt-5">
-      <div class="col-lg-12 mb-lg">
-        <!-- reviews -->
-        <div class="mt-2">
-          <reviews :filter='filter' />
-        </div>
       </div>
     </div>
   </div>

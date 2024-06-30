@@ -12,7 +12,7 @@ export default{
     return {
       dateShortcuts: Lib.dateShortcuts.call(this),
       options: {
-        analytics_type: [{ id: 'brand', name: this.$t('filter.brand') }, { id: 'product', name: this.$t('filter.product')}],
+        context: [{ id: 'brand', name: this.$t('filter.brand') }, { id: 'product', name: this.$t('filter.product')}],
         product_id: [],
       },
       products_per_property: {},
@@ -87,11 +87,16 @@ export default{
             start_date: dayjs(this.data[f][0]).format('YYYY-MM-DD'),
             end_date:   dayjs(this.data[f][1]).format('YYYY-MM-DD'),
           }
-        else if (this.fields[f].type == 'select' && this.data[f])
-          data[f] = this.data[f].id
+        else if (this.fields[f].type == 'select' && this.data[f]) {
+          if ((!this.fields[f].condition || this.fields[f].condition(this.data))) data[f] = this.data[f].id
+        }
         else
           data[f] = this.data[f]
       })
+
+      if (this.data.context?.id == 'brand') data.for_properties = true
+      if (this.data['context'] == 'product') data.for_products = true
+
       Object.assign(data, data.daterange)
       delete data.daterange
       return data
@@ -133,7 +138,7 @@ export default{
             </div>
 
             <!-- select -->
-            <div class='form-group mb-3 col-sm-6 col-md-3 col-lg-2' v-if='v.type == "select" && options[k]'>
+            <div class='form-group mb-3 col-sm-6 col-md-3 col-lg-2' v-if='v.type == "select" && options[k] && (!v.condition || v.condition(data))'>
               <label class="form-label">{{ $t(`filter.${k}`) }}</label>
               <multiselect :options='options[k]' v-model='data[k]' track-by=id label=name @select=changed @remove=changed :showLabels=false :searchable=true />
             </div>

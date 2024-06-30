@@ -12,11 +12,21 @@
         >
         </sidenav-item>
       </li>
+
       <li class="nav-item">
         <sidenav-item
           url="/product_analysis"
           :class="getRoute() === 'product_analysis' ? 'active' : ''"
           :navText="'Product Analysis'"
+        >
+        </sidenav-item>
+      </li>
+
+      <li class="nav-item">
+        <sidenav-item
+          url="/reviews"
+          :class="getRoute() === 'reviews' ? 'active' : ''"
+          :navText="'Reviews'"
         >
         </sidenav-item>
       </li>
