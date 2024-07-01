@@ -10,11 +10,11 @@ export default{
   data: () => {
     return {
       fields: {
-        //'analytics_type': { type: 'select', default: 'brand' },
-        'daterange':   { type: 'daterange' },
-        'property_id': { type: 'select' },
-        'product_id':  { type: 'select' },
-        'group_id':    { type: 'select' },
+        context:     { type: 'select', default: 'brand' },
+        daterange:   { type: 'daterange' },
+        property_id: { type: 'select' },
+        product_id:  { type: 'select', condition: (d) => d.context?.id == 'product' },
+        group_id:    { type: 'select' },
       },
       filter: null,
     };
@@ -24,7 +24,6 @@ export default{
   methods: {
     load (filter) {
       this.filter = filter
-      this.filter.for_products = true
     }
   }
 }

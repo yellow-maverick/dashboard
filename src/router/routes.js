@@ -1,6 +1,5 @@
 import Dashboard from "../views/Dashboard.vue";
-import BrandAnalysis from "../views/BrandAnalysis.vue";
-import ProductAnalysis from "../views/ProductAnalysis.vue";
+import Analytics from "../views/Analytics.vue";
 import Connections from "../views/Connections.vue";
 import Reviews from "../views/Reviews.vue";
 import Billing from "../views/Billing.vue";
@@ -22,14 +21,9 @@ const routes = [
     component: Dashboard,
   },
   {
-    path: "/brand_analysis",
-    name: "Brand Analysis",
-    component: BrandAnalysis,
-  },
-  {
-    path: "/product_analysis",
-    name: "Product Analysis",
-    component: ProductAnalysis,
+    path: "/analytics",
+    name: "Analytics",
+    component: Analytics,
   },
 
   {
