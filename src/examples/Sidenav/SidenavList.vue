@@ -6,6 +6,15 @@
     <ul class="navbar-nav mt-5">
       <li class="nav-item">
         <sidenav-item
+          url="/dashboard"
+          :class="getRoute() === 'dashboard' ? 'active' : ''"
+          :navText="'Dashboard'"
+        >
+        </sidenav-item>
+      </li>
+
+      <li class="nav-item">
+        <sidenav-item
           url="/analytics"
           :class="getRoute() === 'analytics' ? 'active' : ''"
           :navText="'Analytics'"
