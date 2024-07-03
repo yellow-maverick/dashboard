@@ -6,13 +6,14 @@ import _           from 'lodash'
 import Db          from '../js/db.js'
 import { alova }   from '../js/alova.js'
 import Lib from '../js/lib.js';
+import ArgonRadio from "@/components/ArgonRadio.vue";
 
 export default{
   data () {
     return {
       dateShortcuts: Lib.dateShortcuts.call(this),
       options: {
-        context: [{ id: 'brand', name: this.$t('filter.brand') }, { id: 'product', name: this.$t('filter.product')}],
+        context: ['brand', 'product'],
         product_id: [],
       },
       products_per_property: {},
@@ -23,7 +24,7 @@ export default{
   },
 
   props:      ['fields', 'emitUpdate'],
-  components: {DatePicker, Multiselect},
+  components: {DatePicker, Multiselect, ArgonRadio},
 
   async mounted () {
     this.loadData()
@@ -45,11 +46,16 @@ export default{
         if (this.data.property_id) this.selectProduct()
       }
 
-      // FIXME: breaking first default
       this.loadParamsFromURL()
 
       Object.keys(this.fields).forEach(k => {
-        if (this.fields[k].default) this.data[k] = this.options[k].find(o => o.id == this.fields[k].default )
+        if (this.fields[k].default && !this.data[k])
+          if (this.fields[k].type == 'select') {
+            this.data[k] = this.options[k].find(o => o.id == this.fields[k].default )
+          } else {
+            this.data[k] = this.options[k].find(o => o == this.fields[k].default )
+          }
+
         if (this.fields[k].type == 'daterange' && !this.data[k]) {
           this.data[k] = Lib.defaultDateRange()
         }
@@ -155,6 +161,15 @@ export default{
                 </div>
               </div>
             </div>
+
+            <!-- radio -->
+            <div class="form-group col-sm-6 col-md-3 col-lg-2" v-if="v.type == 'radio'">
+              <label class="form-label">{{ $t(`filter.${k}`) }}</label>
+              <div class="mt-2 d-flex justify-content-start">
+                <argon-radio v-for='o in options[k]' name='`filter-${k}`' id='`filter-${k}-${o}`' :value='o' v-model='data[k]' class='me-3' >{{ $t(`filter.${o}`) }}</argon-radio>
+              </div>
+            </div>
+
           </template>
           <div class="form-group col-sm-6 col-md-3 col-lg-3 d-print-none">
             <label class="form-label">&nbsp;</label><br>

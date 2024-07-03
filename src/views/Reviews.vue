@@ -6,10 +6,10 @@ export default{
   data () {
     return {
       fields: {
-        context:     { type: 'select', default: 'brand' },
+        context:     { type: 'radio', default: 'brand' },
         daterange:   { type: 'daterange' },
         property_id: { type: 'select' },
-        product_id:  { type: 'select', condition: (d) => d.context?.id == 'product' },
+        product_id:  { type: 'select', condition: (d) => d.context == 'product' },
         group_id:    { type: 'select' },
       },
       filter: null,
