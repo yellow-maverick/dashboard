@@ -100,8 +100,8 @@ export default{
           data[f] = this.data[f]
       })
 
-      if (this.data.context?.id == 'brand') data.for_properties = true
-      if (this.data['context'] == 'product') data.for_products = true
+      if (this.data.context == 'brand') data.for_properties = true
+      if (this.data.context == 'product') data.for_products = true
 
       Object.assign(data, data.daterange)
       delete data.daterange
