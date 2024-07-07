@@ -1,33 +1,40 @@
 <script>
-import { alova } from '../js/alova.js';
+import Db from "../js/db.js"
 import VueWordCloud from 'vuewordcloud';
 
 export default{
   data () {
     return {
-      data: null
+      data: null,
+      topics: []
     }
   },
+  props: [ 'filter', 'topic' ],
   components: { VueWordCloud },
   mounted() {
-    alova.Get('/v1/queries/1/run').then(r => r.clone().json() ).then(async r => {
-      this.data = r.data?.slice(1)
-    })
+    this.load()
+  },
+  watch: {
+    filter () { this.load() },
+    topic () { this.load() }
   },
   methods: {
+    ...Db,
+    async load() {
+      this.data = await this.runQuery('products_word_cloud', { ...this.filter, topic: this.topic, limit: 200 })
+    },
     formatData(row) {
       if (!row) return
-      return row.map(r => [r.text, r.weight])
+      console.log(row);
+      return row.map(r => [r.word, r.weight * this.multiplier(r.polarity)])
+    },
+    multiplier (p) {
+      return p == 'negative' ? -1 : 1
     }
   },
 }
 </script>
 
 <template>
-  <div v-for="product in data" :key="product" v-if='data' class='mt-4'>
-    <h5>{{ product[1] }} - <span style='color: green'>{{ $t('word_cloud.positive_words') }}</span></h5>
-    <VueWordCloud class='w-100' style="height: 480px" :words="formatData(product[2])"></VueWordCloud>
-    <h5>{{ product[1] }} - <span style='color: red'>{{ $t('word_cloud.negative_words') }}</span></h5>
-    <VueWordCloud class='w-100' style="height: 480px" :words="formatData(product[3])"></VueWordCloud>
-  </div>
+  <VueWordCloud v-if='data' class='w-100' style="height: 480px" :words="formatData(data)" :color="([, weight]) => weight > 0 ? 'darkgreen' : 'orangered'"></VueWordCloud>
 </template>
