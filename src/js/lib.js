@@ -26,9 +26,10 @@ window.ym.lib = {
     return this.round((current / previous - 1) * 100);
   },
 
-  defaultDateRange () {
+  defaultDateRange (months) {
+    months ??= 6
     var d = new Date();
-    d.setMonth(d.getMonth() - 6);
+    d.setMonth(d.getMonth() - months);
     return [d, new Date()]
   },
 

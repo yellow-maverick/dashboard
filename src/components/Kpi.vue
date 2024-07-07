@@ -59,7 +59,7 @@ export default{
 
 <template>
   <div>
-    <Card v-if='data'
+    <Card v-if='data && data.current'
       :title="title"
       :value="data.current[valueField]"
       :percentage="data.change"
