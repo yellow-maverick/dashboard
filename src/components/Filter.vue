@@ -36,10 +36,10 @@ export default{
     async loadData() {
       this.profile = await this.$store.dispatch("profile/fetch");
       if (!this.property_id)
-        this.data.property_id = this.profile.subscriptions[0].property_id
+        this.data.property_id = { id: this.profile.subscriptions[0].property_id }
 
-      let k
-      if ((k = 'property_id') in this.fields) {
+      let k = 'property_id'
+      if (k in this.fields) {
         this.options[k] = (await this.runQuery('properties')).map((p) => {
           return _.mapKeys(p, (v,k) => k == 'property_id' ? 'id' : k)
         })
@@ -90,7 +90,7 @@ export default{
     },
     prepareData () {
       let data = {}
-      let fields = { ... this.fields, property_id: { type: 'text' } }
+      let fields = { ... this.fields, property_id: { type: 'select' } }
       Object.keys(fields).forEach(f => {
         if (!this.data[f]) return
         if (fields[f].type == 'daterange')
@@ -99,10 +99,11 @@ export default{
             end_date:   dayjs(this.data[f][1]).format('YYYY-MM-DD'),
           }
         else if (fields[f].type == 'select' && this.data[f]) {
-          if ((!this.fields[f].condition || this.fields[f].condition(this.data))) data[f] = this.data[f].id
+          if ((!fields[f].condition || fields[f].condition(this.data))) data[f] = this.data[f].id
         }
-        else
-          data[f] = this.data[f]
+        else {
+          if ((!fields[f].condition || fields[f].condition(this.data))) data[f] = this.data[f]
+        }
       })
 
       if (this.data.context == 'brand') data.for_properties = true
