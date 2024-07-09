@@ -4,7 +4,6 @@ import Multiselect from 'vue-multiselect'
 import dayjs       from "dayjs";
 import _           from 'lodash'
 import Db          from '../js/db.js'
-import { alova }   from '../js/alova.js'
 import Lib from '../js/lib.js';
 import ArgonRadio from "@/components/ArgonRadio.vue";
 
@@ -20,6 +19,7 @@ export default{
       data: {
         property_id: null,
       },
+      profile: null
     }
   },
 
@@ -34,6 +34,10 @@ export default{
     ...Db,
 
     async loadData() {
+      this.profile = await this.$store.dispatch("profile/fetch");
+      if (!this.property_id)
+        this.data.property_id = this.profile.subscriptions[0].property_id
+
       let k
       if ((k = 'property_id') in this.fields) {
         this.options[k] = (await this.runQuery('properties')).map((p) => {
@@ -86,14 +90,15 @@ export default{
     },
     prepareData () {
       let data = {}
-      Object.keys(this.fields).forEach(f => {
+      let fields = { ... this.fields, property_id: { type: 'text' } }
+      Object.keys(fields).forEach(f => {
         if (!this.data[f]) return
-        if (this.fields[f].type == 'daterange')
+        if (fields[f].type == 'daterange')
           data[f] = {
             start_date: dayjs(this.data[f][0]).format('YYYY-MM-DD'),
             end_date:   dayjs(this.data[f][1]).format('YYYY-MM-DD'),
           }
-        else if (this.fields[f].type == 'select' && this.data[f]) {
+        else if (fields[f].type == 'select' && this.data[f]) {
           if ((!this.fields[f].condition || this.fields[f].condition(this.data))) data[f] = this.data[f].id
         }
         else

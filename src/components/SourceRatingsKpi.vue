@@ -17,7 +17,7 @@ export default{
     ...Db,
     async load() {
       let params = { ...this.filter, segment: 'source', periods: {} }
-      if (!this.filter.for_properties) params.origin_sources = true
+      //if (!this.filter.for_properties) params.origin_sources = true
       let data  = await this.runQuery('base_analytics', params)
       this.data = []
       data.forEach(d => {
