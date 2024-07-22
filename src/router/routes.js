@@ -1,13 +1,14 @@
-import Dashboard from "../views/Dashboard.vue";
-import Analytics from "../views/Analytics.vue";
-import Connections from "../views/Connections.vue";
-import Reviews from "../views/Reviews.vue";
-import Billing from "../views/Billing.vue";
-import VirtualReality from "../views/VirtualReality.vue";
-import QueryPage from "../views/QueryPage.vue";
-import Profile from "../views/Profile.vue";
-import Signup from "../views/Signup.vue";
-import Signin from "../views/Signin.vue";
+import Dashboard from '../views/Dashboard.vue'
+import Analytics from '../views/Analytics.vue'
+import Connections from '../views/Connections.vue'
+import AddProduct from '../views/AddProduct.vue'
+import Reviews from '../views/Reviews.vue'
+import Billing from '../views/Billing.vue'
+import VirtualReality from '../views/VirtualReality.vue'
+import QueryPage from '../views/QueryPage.vue'
+import Profile from '../views/Profile.vue'
+import Signup from '../views/Signup.vue'
+import Signin from '../views/Signin.vue'
 
 const routes = [
   {
@@ -31,11 +32,17 @@ const routes = [
     name: "Reviews",
     component: Reviews,
   },
+
   // Management
   {
-    path: "/connections",
-    name: "Connections",
+    path: '/connections',
+    name: 'Connections',
     component: Connections,
+  },
+  {
+    path: '/add-product',
+    name: 'AddProduct',
+    component: AddProduct,
   },
 
   // Internal

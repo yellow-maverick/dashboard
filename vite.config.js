@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+import pugPlugin from 'vite-plugin-pug'
 
 // https://vitejs.dev/config/
 
@@ -9,7 +10,8 @@ import path from "path";
 export default defineConfig({
   plugins: [
     vue(),
-    VueI18nPlugin({ include: [path.resolve(__dirname, './src/locales/*.json')] })
+    VueI18nPlugin({ include: [path.resolve(__dirname, './src/locales/*.json')] }),
+    pugPlugin({pretty: true}, {}),
   ],
   resolve: {
     alias: {

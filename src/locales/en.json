@@ -86,5 +86,22 @@
     "delivery": "Delivery",
     "support": "Support",
     "quality": "Quality"
-  }
+  },
+  "connections": {
+  },
+  "products": {
+    "url": "Product URL",
+    "more_details": "More product details",
+    "basic_info": "Basic product information",
+    "additional_info": "Additional product information",
+    "fields": {
+      "sku": "SKU",
+      "internal_id": "Internal ID",
+      "category": "Category",
+      "targeted_price": "Targeted price",
+      "brand": "Brand",
+      "supplier": "Supplier",
+      "cost_price": "Cost price",
+    },
+  },
 }
