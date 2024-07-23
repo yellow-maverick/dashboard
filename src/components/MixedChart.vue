@@ -18,7 +18,7 @@ export default {
   props: {
     filter: {
       type: Object,
-      default: {},
+      default: () => {},
     },
     title: {
       type: String,
@@ -70,7 +70,7 @@ export default {
       const ratings = this.data.map(d => d.overall_rating)
       const colors  = { reviews: "#4B7573", ratings: '#eab' }
 
-      const mixedChart = new Chart(ctx1, {
+      new Chart(ctx1, {
         data: {
           datasets: [
             {

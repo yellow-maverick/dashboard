@@ -136,7 +136,6 @@
 </template>
 <script>
 import SidenavItem from "./SidenavItem.vue";
-import SidenavCard from "./SidenavCard.vue";
 
 export default {
   name: "SidenavList",
@@ -152,7 +151,6 @@ export default {
   },
   components: {
     SidenavItem,
-    SidenavCard
   },
   methods: {
     getRoute() {

@@ -27,7 +27,7 @@ window.ym.lib = {
   },
 
   defaultDateRange (months) {
-    months ??= 6
+    if (!months) months = 6
     var d = new Date();
     d.setMonth(d.getMonth() - months);
     return [d, new Date()]

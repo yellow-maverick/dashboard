@@ -21,7 +21,7 @@ export const mutations  = {
   },
 }
 export const actions    = {
-  async fetch({ state, commit, dispatch }) {
+  async fetch({ state, commit }) {
     if (state.profilePromise) return getJson(state.profilePromise, commit)
 
     let promise = alova.Get('/v1/users/profile')

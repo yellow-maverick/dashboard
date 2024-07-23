@@ -1,4 +1,5 @@
 <script>
+import { alova } from '../js/alova.js';
 export default {
   data() {
     return {

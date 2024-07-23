@@ -58,13 +58,11 @@ export default {
       if (!this.data) return
 
       var ctx      = document.getElementById(this.chartID).getContext("2d");
-      const data   = {}
       const colors = [
         '#ffa056', '#6f4e7c', '#0b84a5', '#4198d7','#ff6384', "#4B7573", '#ffaaff',
          '#d78', '#ffcd56', '#9966ff', '#aa5500', '#550000', '#ff9f40', '#36a2eb' ]
       const series = this.series.slice(1).map(d => d.text)
       const datasets = [] 
-      const scales   = [] 
       let yAxes      = {}
       let yAxe       = {
         display: false,

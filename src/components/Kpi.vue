@@ -17,7 +17,6 @@ export default{
   methods: {
     ...Db,
     async load() {
-      let data    = {};
       let periods = {}
       if (this.trend) periods[this.trend] = 1
 

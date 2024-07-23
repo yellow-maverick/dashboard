@@ -1,6 +1,5 @@
 <script>
 import { alova } from '../js/alova.js';
-import { useRequest } from 'alova';
 import dayjs from 'dayjs'
 import { VAceEditor } from 'vue3-ace-editor'
 import Multiselect from 'vue-multiselect'
@@ -60,7 +59,7 @@ export default{
     // Use Control + s to save the query
     document.addEventListener("keydown", this.controlS);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener("keydown", this.controlS);
   },
 
@@ -181,7 +180,7 @@ export default{
 
     <div class=row v-if=execQuery style='position: relative' >
       <h4>Executed query in {{durationTime}} seconds</h4>
-      <textarea style='height: 500px' readonly ref=execQuery > {{ execQuery }} </textarea>
+      <textarea v-model=execQuery style='height: 500px' readonly ref=execQuery />
       <button @click=copyText class='btn btn-secondary copy-button' >Copy</button>
     </div>
 

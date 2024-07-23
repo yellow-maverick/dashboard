@@ -113,7 +113,7 @@ export default{
       delete data.daterange
       return data
     },
-    changed (v, k) {
+    changed () {
       this.selectProduct()
       if (!this.emitUpdate) return
       let d = this.prepareData()
@@ -172,7 +172,7 @@ export default{
             <div class="form-group col-sm-6 col-md-3 col-lg-2" v-if="v.type == 'radio'">
               <label class="form-label">{{ $t(`filter.${k}`) }}</label>
               <div class="mt-2 d-flex justify-content-start">
-                <argon-radio v-for='o in options[k]' name='`filter-${k}`' id='`filter-${k}-${o}`' :value='o' v-model='data[k]' class='me-3' >{{ $t(`filter.${o}`) }}</argon-radio>
+                <argon-radio v-for='o in options[k]' name='`filter-${k}`' id='`filter-${k}-${o}`' :value='o' v-model='data[k]' class='me-3' :key='o' >{{ $t(`filter.${o}`) }}</argon-radio>
               </div>
             </div>
 

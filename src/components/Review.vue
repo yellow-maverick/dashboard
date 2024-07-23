@@ -1,6 +1,5 @@
 <script>
 import dayjs from 'dayjs'
-import sources from '../js/sources.js'
 import Lib from '../js/lib.js'
 
 export default{

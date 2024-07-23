@@ -1,5 +1,4 @@
 <script>
-import Lib  from '../js/lib.js';
 import Review from './Review.vue';
 import { alova } from '../js/alova.js';
 

@@ -22,7 +22,7 @@ library.add(faStar)
 const appInstance = createApp(App);
 appInstance.component('font-awesome-icon', FontAwesomeIcon)
 appInstance.use(store);
-appInstance.component("datatable", DataTable);
+appInstance.component("data-table", DataTable);
 appInstance.use(i18n);
 appInstance.use(router);
 appInstance.use(ArgonDashboard);

@@ -58,7 +58,7 @@ export default{
       data.forEach(d => {
         if (!d.data.current) return
         let row = { name: d.name }
-        d.data.current.forEach((c, i) => {
+        d.data.current.forEach((c) => {
           const pDate = dayjs(c.date).add(-1, 'year').format('YYYY-MM-DD')
           let prev    = d.data.yoy?.find(y => y.date == pDate)
           row[c.date] = [
@@ -72,7 +72,7 @@ export default{
     organizeSentimentData (data) {
       let rows = {}
       Object.keys(data).forEach(key => {
-        rows[key] ??= {name: this.$t(`topics.${key}`) }
+        if (!rows[key]) rows[key] = {name: this.$t(`topics.${key}`) }
         let d = data[key]
         d.forEach(c => {
           rows[key][c.current.date] = [
@@ -133,13 +133,13 @@ export default{
       <table class='table text-center' v-if='data && datatype == "table"' >
         <thead>
           <tr class='bordered-side'>
-            <template v-for='c in columns' >
+            <template v-for='c in columns' :key='c' >
               <th rowspan="2" v-if='c == columns[0]'>{{ c.text }}</th>
               <th colspan="2" v-else class='text-center'>{{ c.text }}</th>
             </template>
           </tr>
           <tr class='bordered-side'>
-            <template v-for='c in columns'>
+            <template v-for='c in columns' :key='c'>
               <template v-if='c != columns[0]' >
                 <th>{{ $t('periods_labels.current') }}</th>
                 <th>{{ $t('periods_labels.yoy_short') }}</th>
@@ -148,8 +148,8 @@ export default{
           </tr>
         </thead>
         <tbody>
-          <tr v-for='row in data' class='text-center'>
-            <template v-for='c in columns' >
+          <tr v-for='row in data' class='text-center' :key='row'>
+            <template v-for='c in columns' :key='c' >
               <td v-if='c == columns[0]' >{{ row[c.value] }}</td>
               <template v-else>
                 <td >{{ (row[c.value] || [])[0] || '-' }}</td>

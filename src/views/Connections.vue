@@ -1,5 +1,4 @@
 <script>
-import _  from 'lodash'
 import Db from '../js/db.js'
 import Lib from '../js/lib.js'
 
@@ -36,14 +35,14 @@ export default {
 <template>
   <div class='container-fluid'>
     <div class='row'>
-      <div v-for='(p,i) in properties' class=card >
+      <div v-for='(p,i) in properties' class=card :key=i >
         <div id=property-accordion class=accordion >
           <div class=accordion-item >
             <h5 class=accordion-header >
               <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}`' aria-expanded=true :aria-controls='`#collapse-${i}`'  >
                 {{p.name}}
                 <div class='d-flex justify-content-end' style='flex: auto' >
-                  <img class='me-1' v-for='c in p.connections' style='max-height: 20px' :src="sourceImage(c.source.slug)" >
+                  <img class='me-1' v-for='c in p.connections' style='max-height: 20px' :src="sourceImage(c.source.slug)" :key=c >
                 </div>
               </button>
             </h5>
@@ -57,12 +56,12 @@ export default {
               </div>
 
               <div :id='`property-${i}-accordion`' class=accordion >
-                <div v-for='(pd,j) in p.products' class=accordion-item >
+                <div v-for='(pd,j) in p.products' class=accordion-item :key=j >
                   <h6 class=accordion-header >
                     <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=true :aria-controls='`#collapse-${i}-${j}`'  >
                       {{pd.name}}
                       <div class='d-flex justify-content-end' style='flex: auto' >
-                        <img v-for='c in pd.connections' style='max-height: 20px' class='me-1' :src="sourceImage(c.source.slug)" >
+                        <img v-for='c in pd.connections' style='max-height: 20px' class='me-1' :src="sourceImage(c.source.slug)" :key=c >
                       </div>
                     </button>
                   </h6>
