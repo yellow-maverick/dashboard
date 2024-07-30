@@ -36,6 +36,7 @@ export default{
       if (this.type == 'sentiment') {
         data  = await alova.Get(`/v1/sentiment`, { params: { ...this.filter, per: this.period, trend: 'yoy' } })
         data  = await data.clone().json()
+        if (data.status == 500) return
         dates = [ ... new Set(Object.values(data).flatMap(s => s?.map(d => d?.current?.date))) || [] ].sort()
         this.organizeSentimentData(data)
       } else {
