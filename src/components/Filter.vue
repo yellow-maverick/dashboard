@@ -11,6 +11,7 @@ export default{
   data () {
     return {
       dateShortcuts: Lib.dateShortcuts.call(this),
+      loadedURL: false,
       options: {
         context: ['brand', 'product'],
         product_id: [],
@@ -40,13 +41,17 @@ export default{
 
       let k = 'property_id'
       if (k in this.fields) {
-        this.options[k] = (await this.runQuery('properties')).map((p) => {
+        this.options[k] = (await this.runQuery('properties', { with_products: true })).map((p) => {
           return _.mapKeys(p, (v,k) => k == 'property_id' ? 'id' : k)
         })
         if (!this.data[k]) this.data[k] = this.options[k][0] //first property
       }
-      if ((k = 'product_id') in this.fields) {
-        this.products_per_property = _.groupBy(await this.runQuery('products'), 'property_id')
+      if ('product_id' in this.fields) {
+        this.products_per_property = this.options[k].reduce((r,a) => {
+          r[a.id] = r[a.id] || []
+          r[a.id] = r[a.id].concat(a.products)
+          return r
+        }, {})
         if (this.data.property_id) this.selectProduct()
       }
 
@@ -64,12 +69,14 @@ export default{
           this.data[k] = Lib.defaultDateRange()
         }
       })
+      this.loadedURL = true
       this.submit()
     },
 
     selectProduct() {
-      this.options.product_id = this.products_per_property[parseInt(this.data.property_id.id)]
-      if (!this.data.product_id && this.options.product_id) this.data.product_id = this.options.product_id[0]
+      let property_id = this.data.property_id.id || this.$route.query.property_id
+      this.options.product_id = this.products_per_property[parseInt(property_id)]
+      if (this.options.product_id && !this.options.product_id.includes(this.data.product_id)) this.data.product_id = this.options.product_id[0]
     },
 
     loadParamsFromURL() {
@@ -85,7 +92,6 @@ export default{
         }
         else
           this.data[f] = query[f]
-
       })
     },
     prepareData () {
@@ -141,7 +147,7 @@ export default{
     <div class='card'>
       <h5 class="card-title p-3">{{ $t("filter.title") }}</h5>
       <div class="card-body">
-        <div class="row">
+        <div class="row" v-if='loadedURL'>
           <template v-for="(v,k) in fields" :key="k">
             <!-- daterange -->
             <div class="form-group mb-3 col-sm-6 col-md-3 col-lg-2 daterange" v-if="v.type == 'daterange'">
