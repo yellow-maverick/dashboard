@@ -101,7 +101,10 @@
       "targeted_price": "Targeted price",
       "brand": "Brand",
       "supplier": "Supplier",
-      "cost_price": "Cost price",
-    },
+      "cost_price": "Cost price"
+    }
   },
+  "prices_table": {
+    "source": "Source"
+  }
 }

@@ -31,6 +31,15 @@
         </sidenav-item>
       </li>
 
+      <li class="nav-item">
+        <sidenav-item
+          url="/price_info"
+          :class="getRoute() === 'price_info' ? 'active' : ''"
+          :navText="'Price Information'"
+        >
+        </sidenav-item>
+      </li>
+
       <li class="nav-item mt-3">
         <h6 class='class="ps-4 ms-4 text-uppercase text-xs font-weight-bolder opacity-6"'>
           Management

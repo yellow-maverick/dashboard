@@ -5,7 +5,6 @@ const db = {
     if (data) {
       if (!data.start_date)  data.start_date  = this.$route.query.start_date
       if (!data.end_date)    data.end_date    = this.$route.query.end_date
-      if (!data.property_id) data.property_id = this.$route.query.property_id
     }
 
     if (id == 'base_analytics' && !data.start_date) {

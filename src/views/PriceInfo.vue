@@ -30,7 +30,7 @@ export default{
   computed: {
     columns () {
       if (!this.data) return
-      return this.data.map( d => d.grouped_date )
+      return [ ... new Set(Object.values(this.data).flatMap(a => Object.keys(a))) ].sort()
     }
   }
 }
@@ -45,14 +45,15 @@ export default{
         <thead>
           <tr class='bordered-side'>
             <th class='text-center'>{{ $t(`prices_table.source`) }}</th>
-            <template v-for='c in columns' >
+            <template v-for='c in columns' :key='c'>
               <th class='text-center'>{{ c }}</th>
             </template>
           </tr>
         </thead>
         <tbody>
-          <tr v-for='row in data' class='text-center'>
-            <td >{{ row.price }}</td>
+          <tr v-for='dates,source in data' class='text-center' :key='source'>
+            <td>{{ source }}</td>
+            <td v-for='c in columns' :key='c'>{{ dates[c]?.currency }} {{ dates[c]?.price || '-' }}</td>
           </tr>
         </tbody>
       </table>
