@@ -30,7 +30,7 @@ export default{
   computed: {
     columns () {
       if (!this.data) return
-      return [ ... new Set(Object.values(this.data).flatMap(a => Object.keys(a))) ].sort()
+      return [ ... new Set(Object.values(this.data).flatMap(a => Object.keys(a))) ].sort().reverse()
     }
   }
 }
