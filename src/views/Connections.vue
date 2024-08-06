@@ -50,7 +50,7 @@ export default {
 
               <div class='d-flex justify-content-start' >
                 <h6 class='card-subtitle mb-2 text-muted lh-3'>Products</h6>
-                <router-link :to="{name: 'AddProduct', query: {property_id: p.property_id}}" >
+                <router-link :to="{path: 'add-product', query: {...$route.query, property_id: p.property_id}}" >
                   <button class='btn ms-3' >Add new</button>
                 </router-link>
               </div>
@@ -61,7 +61,7 @@ export default {
                     <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=true :aria-controls='`#collapse-${i}-${j}`'  >
                       {{pd.name}}
                       <div class='d-flex justify-content-end' style='flex: auto' >
-                        <img v-for='c in pd.connections' style='max-height: 20px' class='me-1' :src="sourceImage(c.source.slug)" :key=c >
+                        <img v-for='c in pd.connections' onerror="this.style.display='none'" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
                       </div>
                     </button>
                   </h6>
