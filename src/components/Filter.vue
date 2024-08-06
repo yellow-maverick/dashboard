@@ -15,6 +15,7 @@ export default{
       options: {
         context: ['brand', 'product'],
         product_id: [],
+        period: []
       },
       products_per_property: {},
       data: {
@@ -28,6 +29,8 @@ export default{
   components: {DatePicker, Multiselect, ArgonRadio},
 
   async mounted () {
+    if (this.fields['period'])
+      this.options.period = ['day', 'week', 'month', 'quarter', 'year'].map(o => { return { id: o, name: this.$t(`filter.periods.${o}`) } } )
     this.loadData()
   },
 

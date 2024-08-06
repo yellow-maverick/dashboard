@@ -43,6 +43,14 @@
     "product": "Product",
     "context": "Context",
     "topic": "Topic",
+    "period": "Period",
+    "periods": {
+      "day": "Day",
+      "week": "Week",
+      "month": "Month",
+      "quarter": "Quarter",
+      "year": "Year"
+    },
     "date_ranges": {
       "today": "Today",
       "yesterday": "Yesterday",
@@ -105,6 +113,7 @@
     }
   },
   "prices_table": {
-    "source": "Source"
+    "source": "Source",
+    "out_of_stock": "Out of stock"
   }
 }

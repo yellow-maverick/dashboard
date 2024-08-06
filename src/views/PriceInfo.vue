@@ -9,6 +9,7 @@ export default{
         daterange:   { type: 'daterange' },
         property_id: { type: 'select' },
         product_id:  { type: 'select' },
+        period:      { type: 'select', default: 'week' }
       },
       filter: null,
       data: null,
@@ -20,11 +21,10 @@ export default{
   methods: {
     async load (filter) {
       this.filter = filter
-      let resp  = await alova.Get('/v1/prices', { params: { ...filter, per: 'day' } })
+      let resp  = await alova.Get('/v1/prices', { params: { ...filter, per: filter.period } })
       let data  = await resp.clone().json()
       this.data = data.data
       this.meta = data.meta
-      console.log(this.data);
     }
   },
   computed: {
@@ -52,8 +52,17 @@ export default{
         </thead>
         <tbody>
           <tr v-for='dates,source in data' class='text-center' :key='source'>
-            <td>{{ source }}</td>
-            <td v-for='c in columns' :key='c'>{{ dates[c]?.currency }} {{ dates[c]?.price || '-' }}</td>
+            <td>
+              <a :href='meta.connections[source]?.url'>
+                {{ source }} <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
+              </a>
+            </td>
+            <td v-for='c in columns' :key='c'>
+              <template v-if='c.availability == false'>{{ $t('prices_table.out_of_stock') }}</template>
+              <template v-else >
+                {{ dates[c]?.currency }} {{ dates[c]?.price || '-' }}
+              </template>
+            </td>
           </tr>
         </tbody>
       </table>
