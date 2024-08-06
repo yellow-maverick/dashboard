@@ -6,7 +6,6 @@
   "extends": ["plugin:vue/vue3-essential", "eslint:recommended", "@vue/prettier"],
   "rules": {
     "prettier/prettier": "off",
-    "vue/multi-word-component-names": ["error", { "ignores": ["index"] }],
     "vue/multi-word-component-names": 0,
     "vue/require-valid-default-prop": 0
   },
