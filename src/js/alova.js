@@ -11,5 +11,7 @@ export const alova = createAlova({
     // Suppose we need to add token to the request header
     if (['post', 'put'].includes(method.type)) method.config.headers['Content-Type'] = 'application/json';
     if (store.getters['token/token']()) method.config.params['token'] = store.getters['token/token']();
+    let profile = store.getters['profile/profile']()
+    if (profile.subscriptions) method.config.params['subscription_id'] = profile.subscriptions[0]?.id
   },
 });
