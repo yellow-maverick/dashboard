@@ -39,11 +39,11 @@ export default{
 
     async loadData() {
       this.profile = await this.$store.dispatch("profile/fetch");
-      if (!this.property_id)
+      if (!this.data.property_id)
         this.data.property_id = { id: this.profile.subscriptions[0].property_id }
 
       let k = 'property_id'
-      if (k in this.fields) {
+      if ('property_id' in this.fields || 'product_id' in this.fields) {
         this.options[k] = (await this.runQuery('properties', { with_products: true })).map((p) => {
           return _.mapKeys(p, (v,k) => k == 'property_id' ? 'id' : k)
         })
