@@ -1,8 +1,10 @@
 <script>
 import Db from '../js/db.js'
 import Lib from '../js/lib.js'
-import Multiselect from 'vue-multiselect'
 import { alova } from '../js/alova'
+
+import Multiselect from 'vue-multiselect'
+import ProductForm from '@/components/ProductForm.vue'
 
 export default {
   data() {
@@ -12,7 +14,7 @@ export default {
     }
   },
   props:      [],
-  components: {Multiselect},
+  components: {Multiselect, ProductForm},
 
   mounted() {
     this.load()
@@ -45,7 +47,7 @@ export default {
     width: auto;
     cursor: auto;
 
-    .multiselect__select, .multiselect__tag-icon, .multiselect__content {
+    .multiselect__select, .multiselect__tag-icon, .multiselect__content-wrapper, .multiselect__placeholder {
       display: none !important;
     }
     .multiselect__tags {
@@ -95,27 +97,48 @@ export default {
 
                   <div :id='`collapse-${i}-${j}`' class=collapse aria-labelledby=headingOne :data-parent='`#property-${i}-accordion`' >
 
-                    <div class=btn-toolbar role=toolbar >
-                      <div class=btn-group role=group >
-                        <input class=btn-check type=radio :name='`tb${i}${j}`' :id='`conns-${i}-${j}`' checked />
-                        <label class='btn btn-outline-primary' :for='`conns-${i}-${j}`' > Connections </label>
+                    <ul class='nav nav-pills' role=tablist >
+                      <li class=nav-item role=presentation>
+                        <button class=nav-link type=button data-bs-toggle=pill aria-controls='`pdbi-${i}${j}`' :data-bs-target='`#pdbi-${i}${j}`' >
+                          Basic info
+                        </button>
+                      </li>
 
-                        <input class=btn-check type=radio :name='`tb${i}${j}`' :id='`comps-${i}-${j}`' />
-                        <label class='btn btn-outline-primary' :for='`comps-${i}-${j}`' > Competitors </label>
-                      </div>
-                    </div>
+                      <li class=nav-item role=presentation >
+                        <button class=nav-link type=button data-bs-toggle=pill :aria-controls='`conns-${i}${j}`' :data-bs-target='`#conns-${i}${j}`' >
+                          Connections
+                        </button>
+                      </li>
 
-                    <div class=card-body >
-                      <div class=form-group v-for='c in pd.connections' :key=c.source.slug >
-                        <label :for='`source_${c.source.slug}`' >
-                          <a :href='c.url' target=_blank >
-                            <img @error='hide' style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
-                            <span> {{c.source.name}} </span>
-                            <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
-                          </a>
-                        </label>
-                        <input name='`source_${c.source.slug}`' v-model=c.url type=text class=form-control />
+                      <li class=nav-item role=presentation >
+                        <button class=nav-link type=button data-bs-toggle=pill :aria-controls='`comps-${i}${j}`' :data-bs-target='`#comps-${i}${j}`' >
+                          Competitors 
+                        </button>
+                      </li>
+                    </ul>
+
+                    <div class='tab-content card-body' >
+
+                      <div :id='`pdbi-${i}${j}`' role=tabpanel class='tab-pane fade show active' >
+                        <ProductForm :product=pd />
                       </div>
+
+                      <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >
+                        <div class=form-group v-for='c in pd.connections' :key=c.source.slug >
+                          <label :for='`source_${c.source.slug}`' >
+                            <a :href=c.url target=_blank >
+                              <img @error='hide' style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
+                              <span> {{c.source.name}} </span>
+                              <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
+                            </a>
+                          </label>
+                          <input name='`source_${c.source.slug}`' v-model=c.url type=text class=form-control />
+                        </div>
+                      </div>
+
+                      <div :id='`comps-${i}${j}`' role=tabpanel class='tab-pane fade' >
+                      </div>
+
                     </div>
                   </div>
                 </div>
