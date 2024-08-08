@@ -37,7 +37,7 @@ export default {
   methods: {
     async loadTopics () {
       let r = await alova.Get('/v1/sentiment/topics')
-      return this.topics = (await r.clone().json()).map(t => t.topic)
+      this.topics = (await r.clone().json()).map(t => t.topic).filter(n => n != 'overall')
     },
     load(filter) {
       this.filter = {
