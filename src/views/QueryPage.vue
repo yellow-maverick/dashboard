@@ -163,12 +163,12 @@ export default{
         <h4 class="mt-2"> Parameters </h4>
         <VAceEditor v-model:value=params lang=json theme="chrome" style="height: 300px;" class='border' :options=paramsEditor.options ></VAceEditor>
 
-        <datatable class="thead-light" v-if='result.data' :items='result.data' :headers=fields :rows-per-page=result?.data?.length :fixed-header=true :table-height=760>
-        <!-- this is to render big objects properly -->
-        <template v-for="col in fields" #[`item-${col.value}`]="item" :key="col.value">
-          <div class="p-3"> {{ item[col.value] }} </div>
-        </template>
-        </datatable>
+        <data-table class="thead-light" v-if='result.data' :items='result.data' :headers=fields :rows-per-page=result?.data?.length :fixed-header=true :table-height=760>
+          <!-- this is to render big objects properly -->
+          <template v-for="col in fields" #[`item-${col.value}`]="item" :key="col.value">
+            <div class="p-3"> {{ item[col.value] }} </div>
+          </template>
+        </data-table>
 
         <div>
           <h4 class="mt-3"> Message </h4>
