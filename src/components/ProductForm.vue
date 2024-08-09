@@ -1,15 +1,45 @@
 <script>
+import Multiselect from 'vue-multiselect'
+import { alova } from '../js/alova'
+
 export default {
-  props: ['product'],
+  props: ['product', 'categories'],
   data() {
     return {
+      profile: {},
     }
   },
 
+  components: {Multiselect},
+
   mounted() {
+    this.load()
   },
 
   methods: {
+
+    createCategory(name) {
+      let cat = {id: null, name: name,
+        subscription_id: this.profile.subscriptions[0].id, 
+        product_ids:     [this.product.id]
+      }
+      this.categories.push(cat)
+      this.product.categories.push(cat)
+    },
+    addCategory(cat) {
+      cat.product_ids.push(this.product.id)
+      console.log(cat)
+    },
+    removeCategory(cat) {
+      cat.product_ids = cat.product_ids.filter((id) => id != this.product.id)
+      console.log(cat)
+    },
+
+    async load() {
+      this.profile      = await this.$store.dispatch("profile/fetch");
+      this.categories ||= (await (await alova.Get(`/v1/product_categories`)).clone().json()).data
+    },
+
   },
 }
 </script>
@@ -31,8 +61,9 @@ export default {
         <input name=internal_id v-model=product.sku type=text class=form-control />
       </div>
       <div class=form-group >
-        <label for=category >{{ $t('products.fields.category') }}</label>
-        <input name=category v-model=product.category type=text class=form-control />
+        <label for=categories >{{ $t('products.fields.categories') }}</label>
+        <multiselect :options=categories v-model=product.categories track-by=name label=name 
+          :taggable=true :multiple=true @tag=createCategory @select=addCategory @remove=removeCategory />
       </div>
       <div class=form-group >
         <label for=targeted_price >{{ $t('products.fields.targeted_price') }}</label>

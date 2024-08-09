@@ -106,7 +106,7 @@
       "name": "Name",
       "sku": "SKU",
       "internal_id": "Internal ID",
-      "category": "Category",
+      "categories": "Categories",
       "targeted_price": "Targeted price",
       "brand": "Brand",
       "supplier": "Supplier",

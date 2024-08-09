@@ -94,7 +94,7 @@ export default {
                     <h6 class=accordion-header >
                       <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=true :aria-controls='`#collapse-${i}-${j}`'  >
                         {{pd.name}}
-                        <multiselect :options=categories :readonly=true v-model=pd.categories track-by=id label=name :taggable=true :multiple=true :searchable=false />
+                        <multiselect :options=categories :readonly=true v-model=pd.categories label=name :taggable=true :multiple=true :searchable=false />
                         <div class='d-flex justify-content-end' style='flex: auto' >
                           <img v-for='c in pd.connections' @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
                         </div>
@@ -121,7 +121,7 @@ export default {
                         <div class='tab-content card-body' >
 
                           <div :id='`pdbi-${i}${j}`' role=tabpanel class='tab-pane fade show active' >
-                            <ProductForm :product=pd />
+                            <ProductForm :product=pd :categories=categories />
                             <button type=button class='btn btn-primary' @click='productSave(pd)' > Save </button>
                           </div>
 
