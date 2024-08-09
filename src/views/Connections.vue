@@ -22,6 +22,7 @@ export default {
 
   methods: {
     ...Db,
+
     async load() {
       this.profile = await this.$store.dispatch('profile/fetch')
       this.properties = (await this.runQuery('properties', {
@@ -35,6 +36,10 @@ export default {
     },
     sourceImage(slug) {
       return Lib.sourceImage(slug)
+    },
+
+    async productSave(pd) {
+      await alova.Patch(`/v1/products/${pd.id}`, pd)
     },
   },
 
@@ -85,56 +90,60 @@ export default {
 
               <div :id='`property-${i}-accordion`' class=accordion >
                 <div v-for='(pd,j) in p.products' class=accordion-item :key=j >
-                  <h6 class=accordion-header >
-                    <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=true :aria-controls='`#collapse-${i}-${j}`'  >
-                      {{pd.name}}
-                      <multiselect :options=categories :readonly=true v-model=pd.categories track-by=id label=name :taggable=true :multiple=true :searchable=false />
-                      <div class='d-flex justify-content-end' style='flex: auto' >
-                        <img v-for='c in pd.connections' @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
-                      </div>
-                    </button>
-                  </h6>
+                  <div class=card >
+                    <h6 class=accordion-header >
+                      <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=true :aria-controls='`#collapse-${i}-${j}`'  >
+                        {{pd.name}}
+                        <multiselect :options=categories :readonly=true v-model=pd.categories track-by=id label=name :taggable=true :multiple=true :searchable=false />
+                        <div class='d-flex justify-content-end' style='flex: auto' >
+                          <img v-for='c in pd.connections' @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
+                        </div>
+                      </button>
+                    </h6>
 
-                  <div :id='`collapse-${i}-${j}`' class=collapse aria-labelledby=headingOne :data-parent='`#property-${i}-accordion`' >
+                    <div :id='`collapse-${i}-${j}`' class=collapse aria-labelledby=headingOne :data-parent='`#property-${i}-accordion`' >
 
-                    <div class='d-flex align-items-start'>
-                      <div class='nav flex-column nav-pills' role=tablist >
-                        <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pdbi-${i}${j}`' :data-bs-target='`#pdbi-${i}${j}`' >
-                          Basic info
-                        </button>
+                      <div class='d-flex align-items-start'>
+                        <div class='nav flex-column nav-pills' role=tablist >
+                          <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pdbi-${i}${j}`' :data-bs-target='`#pdbi-${i}${j}`' >
+                            Basic info
+                          </button>
 
-                        <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`conns-${i}${j}`' :data-bs-target='`#conns-${i}${j}`' >
-                          Connections
-                        </button>
+                          <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`conns-${i}${j}`' :data-bs-target='`#conns-${i}${j}`' >
+                            Connections
+                          </button>
 
-                        <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`comps-${i}${j}`' :data-bs-target='`#comps-${i}${j}`' >
-                          Competitors 
-                        </button>
-                      </div>
-
-                      <div class='tab-content card-body' >
-
-                        <div :id='`pdbi-${i}${j}`' role=tabpanel class='tab-pane fade show active' >
-                          <ProductForm :product=pd />
+                          <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`comps-${i}${j}`' :data-bs-target='`#comps-${i}${j}`' >
+                            Competitors 
+                          </button>
                         </div>
 
-                        <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >
-                          <div class=form-group v-for='c in pd.connections' :key=c.source.slug >
-                            <label :for='`source_${c.source.slug}`' >
-                              <a :href=c.url target=_blank >
-                                <img @error='hide' style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
-                                <span> {{c.source.name}} </span>
-                                <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
-                              </a>
-                            </label>
-                            <input name='`source_${c.source.slug}`' v-model=c.url type=text class=form-control />
+                        <div class='tab-content card-body' >
+
+                          <div :id='`pdbi-${i}${j}`' role=tabpanel class='tab-pane fade show active' >
+                            <ProductForm :product=pd />
+                            <button type=button class='btn btn-primary' @click='productSave(pd)' > Save </button>
                           </div>
-                        </div>
 
-                        <div :id='`comps-${i}${j}`' role=tabpanel class='tab-pane fade' >
-                        </div>
+                          <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >
+                            <div class=form-group v-for='c in pd.connections' :key=c.source.slug >
+                              <label :for='`source_${c.source.slug}`' >
+                                <a :href=c.url target=_blank >
+                                  <img @error='hide' style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
+                                  <span> {{c.source.name}} </span>
+                                  <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
+                                </a>
+                              </label>
+                              <input name='`source_${c.source.slug}`' v-model=c.url type=text class=form-control />
+                            </div>
+                          </div>
 
+                          <div :id='`comps-${i}${j}`' role=tabpanel class='tab-pane fade' >
+                          </div>
+
+                        </div>
                       </div>
+
                     </div>
 
                   </div>

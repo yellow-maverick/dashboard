@@ -103,6 +103,7 @@
     "basic_info": "Basic product information",
     "additional_info": "Additional product information",
     "fields": {
+      "name": "Name",
       "sku": "SKU",
       "internal_id": "Internal ID",
       "category": "Category",

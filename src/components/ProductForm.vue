@@ -19,6 +19,10 @@ export default {
     <div class=col >
       <h6> {{ $t('products.basic_info') }} </h6>
       <div class=form-group >
+        <label for=name >{{ $t('products.fields.name') }}</label>
+        <input name=name v-model=product.name type=text class=form-control />
+      </div>
+      <div class=form-group >
         <label for=sku >{{ $t('products.fields.sku') }}</label>
         <input name=sku v-model=product.sku type=text class=form-control />
       </div>
@@ -32,20 +36,20 @@ export default {
       </div>
       <div class=form-group >
         <label for=targeted_price >{{ $t('products.fields.targeted_price') }}</label>
-        <input name=targeted_price v-model=product.targeted_price type=text class=form-control />
+        <input name=targeted_price v-model=product.targeted_price type=number class=form-control />
       </div>
-    </div >
+    </div>
 
     <div class=col >
       <h6> {{ $t('products.additional_info') }} </h6>
     
       <div class=form-group >
         <label for=brand >{{ $t('products.fields.brand') }}</label>
-        <input name=brand v-model=product.brand type=number class=form-control />
+        <input name=brand v-model=product.brand type=text class=form-control />
       </div>
       <div class=form-group >
         <label for=supplier >{{ $t('products.fields.supplier') }}</label>
-        <input name=supplier v-model=product.supplier type=number class=form-control />
+        <input name=supplier v-model=product.supplier type=text class=form-control />
       </div>
       <div class=form-group >
         <label for=cost_price >{{ $t('products.fields.cost_price') }}</label>

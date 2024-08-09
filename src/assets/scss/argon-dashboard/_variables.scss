@@ -1241,7 +1241,7 @@ $pagination-transition:              color .15s ease-in-out, background-color .1
 $card-spacer-y:                     $spacer !default;
 $card-spacer-x:                     $spacer !default;
 $card-title-spacer-y:               math.div($spacer, 2) !default;
-$card-border-width:                 0 !default;
+$card-border-width:                 1px !default;
 $card-border-radius:                .5rem !default;
 $card-border-color:                 rgba($black, .125) !default;
 $card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
