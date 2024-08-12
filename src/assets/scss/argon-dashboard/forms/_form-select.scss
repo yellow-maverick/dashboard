@@ -10,3 +10,21 @@
   overflow-y: visible;
 }
 
+.multiselect__option {
+  white-space: break-spaces;
+  text-overflow: ellipsis;
+  white-space: break-spaces !important;
+}
+
+.multiselect__tags {
+  padding-right: 30px;
+}
+.multiselect__tag {
+  white-space: break-spaces !important;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding-right: 20px;
+}
+multiselect__select {
+  width: 32px;
+}

@@ -4,8 +4,8 @@ import Multiselect from 'vue-multiselect'
 import dayjs       from "dayjs";
 import _           from 'lodash'
 import Db          from '../js/db.js'
-import Lib from '../js/lib.js';
-import ArgonRadio from "@/components/ArgonRadio.vue";
+import Lib         from '../js/lib.js';
+import ArgonRadio  from "@/components/ArgonRadio.vue";
 
 export default{
   data () {
@@ -37,7 +37,15 @@ export default{
   methods: {
     ...Db,
 
+    async loadSources () {
+      this.sources = await this.runQuery('sources', { implemented: true })
+      this.options.source_ids = this.sources.map(s => s.id)
+      this.sources = this.sources.reduce((h,s) => { h[s.id] = s; return h }, {})
+    },
+
     async loadData() {
+      if ('source_ids' in this.fields) this.loadSources();
+
       this.profile = await this.$store.dispatch("profile/fetch");
       if (!this.data.property_id)
         this.data.property_id = { id: this.profile.subscriptions[0].property_id }
@@ -77,9 +85,10 @@ export default{
     },
 
     selectProduct() {
-      let property_id = this.data.property_id.id || this.$route.query.property_id
-      this.options.product_id = this.products_per_property[parseInt(property_id)]
-      if (this.options.product_id && !this.options.product_id.includes(this.data.product_id)) this.data.product_id = this.options.product_id[0]
+      let property_id = this.data.property_id?.id || this.$route.query.property_id
+      this.products   = this.products_per_property[parseInt(property_id)].reduce((h,p) => { h[parseInt(p.id)] = p; return h }, {})
+      this.options.product_id = Object.keys(this.products)
+      //if (this.options.product_id && !this.options.product_id.includes(this.data.product_id)) this.data.product_id = this.options.product_id[0]
     },
 
     loadParamsFromURL() {
@@ -87,9 +96,9 @@ export default{
       Object.keys(this.fields).forEach(f => {
         if (f == 'daterange' && query.start_date) this.data[f] = [dayjs(query.start_date).toDate(), dayjs(query.end_date).toDate()]
         if (!query[f]) return
-        else if (this.fields[f].type == 'select') {
+        else if (this.fields[f].type == 'select' && !this.fields[f].customLabel) {
           if (Array.isArray(query[f]))
-            this.data[f] = query[f].map(k => this.options[f]?.find(o => o.id == k))
+            this.data[f] = query[f].map(k => this.options[f]?.find(o => o.id == parseInt(k)))
           else
             this.data[f] = this.options[f]?.find(o => o.id == query[f])
         }
@@ -99,7 +108,7 @@ export default{
     },
     prepareData () {
       let data = {}
-      let fields = { ... this.fields, property_id: { type: 'select' } }
+      let fields = { property_id: { type: 'select' }, ... this.fields }
       Object.keys(fields).forEach(f => {
         if (!this.data[f]) return
         if (fields[f].type == 'daterange')
@@ -107,7 +116,7 @@ export default{
             start_date: dayjs(this.data[f][0]).format('YYYY-MM-DD'),
             end_date:   dayjs(this.data[f][1]).format('YYYY-MM-DD'),
           }
-        else if (fields[f].type == 'select' && this.data[f]) {
+        else if (fields[f].type == 'select' && !fields[f].customLabel && this.data[f]) {
           if ((!fields[f].condition || fields[f].condition(this.data))) data[f] = this.data[f].id
         }
         else {
@@ -120,6 +129,7 @@ export default{
 
       Object.assign(data, data.daterange)
       delete data.daterange
+
       return data
     },
     changed () {
@@ -161,7 +171,7 @@ export default{
             <!-- select -->
             <div class='form-group mb-3 col-sm-6 col-md-3 col-lg-2' v-if='v.type == "select" && options[k] && (!v.condition || v.condition(data))'>
               <label class="form-label">{{ $t(`filter.${k}`) }}</label>
-              <multiselect :options='options[k]' v-model='data[k]' track-by=id label=name @select=changed @remove=changed :showLabels=false :searchable=true />
+              <multiselect :multiple='v.multiple' :options='options[k]' v-model='data[k]' :track-by="v.trackBy" :label="v.label || 'name'" @select=changed @remove=changed :showLabels=false :searchable=true :custom-label='v.customLabel?.bind(this)' />
             </div>
 
             <!-- checkbox -->

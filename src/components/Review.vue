@@ -54,6 +54,9 @@ export default{
           </div>
         </div>
       </div>
+
+      <span class="me-2" v-if='review.origin'>{{ $t('reviews.from') }}</span><span class="text-bold"> {{ review.origin }} </span>
+
       <div v-for='comment in review.comments' :key='comment' class='mt-2'>
         <template v-if=comment.comment >
           <strong> {{ upper(comment.type) }}</strong>
