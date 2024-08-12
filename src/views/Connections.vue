@@ -65,8 +65,8 @@ export default {
 </style>
 
 <template>
-  <div class='container-fluid'>
-    <div class='row'>
+  <div class=container-fluid >
+    <div class=row >
       <div v-for='(p,i) in properties' class=card :key=i >
         <div id=property-accordion class=accordion >
           <div class=accordion-item >
@@ -74,7 +74,7 @@ export default {
               <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}`' aria-expanded=true :aria-controls='`#collapse-${i}`'  >
                 {{p.name}}
                 <div class='d-flex justify-content-end' style='flex: auto' >
-                  <img class='me-1' v-for='c in p.connections' style='max-height: 20px' :src="sourceImage(c.source.slug)" :key=c >
+                  <img class='me-1' v-for='c in p.connections' :title=c.source.name style='max-height: 20px' :src="sourceImage(c.source.slug)" :key=c >
                 </div>
               </button>
             </h5>

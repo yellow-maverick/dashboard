@@ -21,7 +21,7 @@ export default {
     createCategory(name) {
       let cat = {id: null, name: name,
         subscription_id: this.profile.subscriptions[0].id, 
-        product_ids:     [this.product.id]
+        product_ids:     this.product.id ? [this.product.id] : [],
       }
       this.categories.push(cat)
       this.product.categories.push(cat)
