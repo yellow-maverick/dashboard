@@ -6,7 +6,6 @@ import SentimentKpi from "@/components/SentimentKpi.vue";
 import SourceRatingsKpi from "@/components/SourceRatingsKpi.vue";
 import Multiselect from 'vue-multiselect'
 import Lib   from '../js/lib.js';
-import dayjs from "dayjs";
 import { alova } from '../js/alova.js'
 
 export default {
@@ -14,6 +13,7 @@ export default {
   data() {
     return {
       filterCols: {
+        daterange:   { type: 'daterange' },
         context:     { type: 'radio', default: 'brand' },
         product_id:  { type: 'select', condition: (d) => d.context == 'product' },
       },
@@ -40,11 +40,7 @@ export default {
       this.topics = (await r.clone().json()).map(t => t.topic).filter(n => n != 'overall')
     },
     load(filter) {
-      this.filter = {
-        start_date: dayjs(this.past30Days[0]).format('YYYY-MM-DD'),
-        end_date:   dayjs(this.past30Days[1]).format('YYYY-MM-DD'),
-        ...filter
-      }
+      this.filter = filter
     }
   }
 };
