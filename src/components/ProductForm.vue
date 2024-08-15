@@ -18,21 +18,18 @@ export default {
 
   methods: {
 
-    createCategory(name) {
-      let cat = {id: null, name: name,
-        subscription_id: this.profile.subscriptions[0].id, 
-        product_ids:     this.product.id ? [this.product.id] : [],
-      }
+    async createCategory(name) {
+      let cat = {id: null, name: name, subscription_id: this.profile.subscriptions[0].id}
+      cat = (await (await alova.Post(`/v1/product_categories`, cat)).clone().json()).data
       this.categories.push(cat)
       this.product.categories.push(cat)
+      this.product.category_ids = this.product.categories.map(c => c.id)
     },
-    addCategory(cat) {
-      cat.product_ids.push(this.product.id)
-      console.log(cat)
+    addCategory() {
+      this.product.category_ids = this.product.categories.map(c => c.id)
     },
-    removeCategory(cat) {
-      cat.product_ids = cat.product_ids.filter((id) => id != this.product.id)
-      console.log(cat)
+    removeCategory() {
+      this.product.category_ids = this.product.categories.map(c => c.id)
     },
 
     async load() {
