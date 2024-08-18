@@ -86,7 +86,7 @@ export default{
 
     selectProduct() {
       let property_id = this.data.property_id?.id || this.$route.query.property_id
-      this.products   = this.products_per_property[parseInt(property_id)]?.reduce((h,p) => { h[parseInt(p.id)] = p; return h }, {})
+      this.products   = this.products_per_property[parseInt(property_id)]?.reduce((h,p) => { h[parseInt(p.id)] = p; return h }, {}) || {}
       this.options.product_id = Object.keys(this.products)
       //if (this.options.product_id && !this.options.product_id.includes(this.data.product_id)) this.data.product_id = this.options.product_id[0]
     },
