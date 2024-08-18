@@ -8,8 +8,9 @@ export default{
       fields: {
         daterange:   { type: 'daterange' },
         property_id: { type: 'select' },
-        product_id:  { type: 'select' },
-        period:      { type: 'select', default: 'week' }
+        product_id:  { type: 'select', multiple: true, customLabel: function (id) { return this.products[id]?.name } },
+        period:      { type: 'select', default: 'week' },
+        source_ids:  { type: 'select', multiple: true, customLabel: function (id) { return this.sources[id]?.name } },
       },
       filter: null,
       data: null,
@@ -30,7 +31,13 @@ export default{
   computed: {
     columns () {
       if (!this.data) return
-      return [ ... new Set(Object.values(this.data).flatMap(a => Object.keys(a))) ].sort().reverse()
+      return [ ... new Set(Object.values(this.data).flatMap(d => Object.values(d)).flatMap(a => Object.keys(a))) ].sort().reverse()
+    },
+    products() {
+      return this.meta?.products?.reduce((r,e) => {
+        r[e.id] = e
+        return r
+      }, {})
     }
   }
 }
@@ -44,6 +51,7 @@ export default{
       <table class='table text-center' v-if='data' >
         <thead>
           <tr class='bordered-side'>
+            <th class='text-start'>{{ $t(`prices_table.product`) }}</th>
             <th class='text-center'>{{ $t(`prices_table.source`) }}</th>
             <template v-for='c in columns' :key='c'>
               <th class='text-center'>{{ c }}</th>
@@ -51,19 +59,22 @@ export default{
           </tr>
         </thead>
         <tbody>
-          <tr v-for='dates,source in data' class='text-center' :key='source'>
-            <td>
-              <a :href='meta.connections[source]?.url'>
-                {{ source }} <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
-              </a>
-            </td>
-            <td v-for='c in columns' :key='c'>
-              <template v-if='c.availability == false'>{{ $t('prices_table.out_of_stock') }}</template>
-              <template v-else >
-                {{ dates[c]?.currency }} {{ dates[c]?.price || '-' }}
-              </template>
-            </td>
-          </tr>
+          <template v-for='sources,product_id in data' :key='product_id'>
+            <tr v-for='dates,source in sources' class='text-center' :key='source'>
+              <td class='text-start'>{{ products[product_id].name }}</td>
+              <td>
+                <a :href='meta.connections[source]?.url'>
+                  {{ source }} <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
+                </a>
+              </td>
+              <td v-for='c in columns' :key='c'>
+                <template v-if='c.availability == false'>{{ $t('prices_table.out_of_stock') }}</template>
+                <template v-else >
+                  {{ dates[c]?.currency }} {{ dates[c]?.price || '-' }}
+                </template>
+              </td>
+            </tr>
+          </template>
         </tbody>
       </table>
     </div>

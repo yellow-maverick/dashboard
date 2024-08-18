@@ -116,6 +116,7 @@
     }
   },
   "prices_table": {
+    "product": "Product",
     "source": "Source",
     "out_of_stock": "Out of stock"
   }
