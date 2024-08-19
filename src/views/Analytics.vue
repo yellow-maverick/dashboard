@@ -13,7 +13,7 @@ export default{
         context:     { type: 'radio', default: 'brand' },
         daterange:   { type: 'daterange' },
         property_id: { type: 'select' },
-        product_id:  { type: 'select', condition: (d) => d.context == 'product' },
+        product_id:  { type: 'select', multiple: true, customLabel: function (id) { return this.products[id]?.name }, condition: (d) => d.context == 'product' },
         group_id:    { type: 'select' },
       },
       filter: null,
