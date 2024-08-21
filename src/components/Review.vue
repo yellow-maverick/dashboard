@@ -23,7 +23,7 @@ export default{
       return dayjs(this.review.review_date).format("MMM DD, YYYY")
     },
     ratingColor () {
-      return Lib.ratingColor(this.review.ratings.overall)
+      return Lib.ratingColor(this.scaledRating)
     },
     scaledRating () {
       return Lib.scale(this.review.ratings.overall, 100)
