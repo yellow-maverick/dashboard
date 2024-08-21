@@ -15,7 +15,7 @@ export default {
       filterCols: {
         daterange:   { type: 'daterange' },
         context:     { type: 'radio', default: 'brand' },
-        property_id: { type: 'select', customLabel: function (id) { return this.products[id]?.name } },
+        property_id: { type: 'select', customLabel: function (id) { return this.properties[id]?.name } },
         product_id:  { type: 'select', multiple: true, customLabel: function (id) { return this.products[id]?.name }, condition: (d) => d.context == 'product' },
       },
       filter: null,

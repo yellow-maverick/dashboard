@@ -55,6 +55,7 @@ export default{
         this.options[k] = (await this.runQuery('properties', { with_products: true })).map((p) => {
           return _.mapKeys(p, (v,k) => k == 'property_id' ? 'id' : k)
         })
+        this.properties = this.options.property_id.reduce((r,e) => {r[e.id] = e; return r}, {})
         if (!this.data[k]) this.data[k] = this.options[k][0] //first property
       }
       if ('product_id' in this.fields) {
