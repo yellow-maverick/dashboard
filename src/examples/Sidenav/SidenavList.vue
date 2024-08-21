@@ -42,7 +42,7 @@
 
       <li class="nav-item mt-3">
         <h6 class='class="ps-4 ms-4 text-uppercase text-xs font-weight-bolder opacity-6"'>
-          Management
+          Settings
         </h6>
       </li>
       <li class="nav-item">
