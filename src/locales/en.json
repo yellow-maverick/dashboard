@@ -118,6 +118,7 @@
   "prices_table": {
     "product": "Product",
     "source": "Source",
+    "target_price": "Target Price",
     "out_of_stock": "Out of stock"
   }
 }

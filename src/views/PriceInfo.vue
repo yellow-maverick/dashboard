@@ -1,5 +1,6 @@
 <script>
 import Filter from "@/components/Filter.vue";
+import Lib       from '../js/lib.js';
 import { alova } from '../js/alova.js'
 
 export default{
@@ -14,7 +15,8 @@ export default{
       },
       filter: null,
       data: null,
-      meta: null
+      meta: null,
+      Lib: Lib
     }
   },
   props:      [],
@@ -26,6 +28,13 @@ export default{
       let data  = await resp.clone().json()
       this.data = data.data
       this.meta = data.meta
+    },
+    priceTargetColor(price, pId) {
+      let p = this.products[pId]
+      if (!p.target_price) return '';
+
+      if (price >= p.target_price) return '#00BB00'
+      return '#BB0000'
     }
   },
   computed: {
@@ -61,16 +70,21 @@ export default{
         <tbody>
           <template v-for='sources,product_id in data' :key='product_id'>
             <tr v-for='dates,source in sources' class='text-center' :key='source'>
-              <td class='text-start'>{{ products[product_id].name }}</td>
+              <td class='text-start'>{{ products[product_id].name }}
+                <span v-b-tooltip.hover :title="`${$t('prices_table.target_price')}: ${products[product_id].target_price}`">
+                  <font-awesome-icon class="ms-1" icon="fa-solid fa-circle-info" />
+                </span></td>
               <td>
                 <a :href='meta.connections[source]?.url'>
                   {{ source }} <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
                 </a>
               </td>
-              <td v-for='c in columns' :key='c'>
+              <td v-for='(c,i) in columns' :key='c' :style='{ color: priceTargetColor(dates[c]?.price, product_id) }'>
                 <template v-if='c.availability == false'>{{ $t('prices_table.out_of_stock') }}</template>
                 <template v-else >
-                  {{ dates[c]?.currency }} {{ dates[c]?.price || '-' }}
+                  {{ dates[c]?.currency }} {{ Lib.round(dates[c]?.price, 2) || '-' }}
+                  <font-awesome-icon v-if='parseFloat(dates[c]?.price) > dates[columns[i-1]]?.price' style='color: #00BB00' class="ms-1" icon="fa-solid fa-arrow-up" />
+                  <font-awesome-icon v-if='dates[c]?.price < dates[columns[i-1]]?.price' style='color: #BB0000' class="ms-1" icon="fa-solid fa-arrow-down" />
                 </template>
               </td>
             </tr>
