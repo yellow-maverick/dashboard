@@ -83,8 +83,8 @@ export default{
                 <template v-if='c.availability == false'>{{ $t('prices_table.out_of_stock') }}</template>
                 <template v-else >
                   {{ dates[c]?.currency }} {{ Lib.round(dates[c]?.price, 2) || '-' }}
-                  <font-awesome-icon v-if='parseFloat(dates[c]?.price) > dates[columns[i-1]]?.price' style='color: #00BB00' class="ms-1" icon="fa-solid fa-arrow-up" />
-                  <font-awesome-icon v-if='dates[c]?.price < dates[columns[i-1]]?.price' style='color: #BB0000' class="ms-1" icon="fa-solid fa-arrow-down" />
+                  <font-awesome-icon v-if='parseFloat(dates[c]?.price) > dates[columns[i+1]]?.price' style='color: #00BB00' class="ms-1" icon="fa-solid fa-arrow-up" />
+                  <font-awesome-icon v-if='dates[c]?.price < dates[columns[i+1]]?.price' style='color: #BB0000' class="ms-1" icon="fa-solid fa-arrow-down" />
                 </template>
               </td>
             </tr>
