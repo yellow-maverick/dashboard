@@ -37,11 +37,11 @@ export default{
         data  = await alova.Get(`/v1/sentiment`, { params: { ...this.filter, per: this.period, trend: 'yoy' } })
         data  = await data.clone().json()
         if (data.status == 500) return
-        dates = [ ... new Set(Object.values(data).flatMap(s => s?.map(d => d?.current?.date))) || [] ].sort()
+        dates = [ ... new Set(Object.values(data).flatMap(s => s?.map(d => d?.current?.date))) || [] ].sort().reverse()
         this.organizeSentimentData(data)
       } else {
         data  = (await this.runQuery('base_analytics', params))
-        dates = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date) || [])) ].sort()
+        dates = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date) || [])) ].sort().reverse()
         this.organizeRatingsData(data)
       }
 
@@ -87,8 +87,8 @@ export default{
     changeColor (value) {
       if (value == undefined || value[1] == undefined) return 'grey'
       let v = parseFloat(value[1].split(' ')[0])
-      if (v > 0) return '#00DD00'
-      if (v < 0) return '#DD0000'
+      if (v > 0) return '#00BB00'
+      if (v < 0) return '#BB0000'
       return '#67748e'
     }
   },
