@@ -104,6 +104,8 @@
     "more_details": "More product details",
     "basic_info": "Basic product information",
     "additional_info": "Additional product information",
+    "scraping": "Collecting data",
+    "scraping_error": "Error collecting data, please try a different URL",
     "available": {
       "yes": "Yes",
       "no": "No"

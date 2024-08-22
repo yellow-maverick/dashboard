@@ -13,6 +13,7 @@ export default {
         name: null,
       },
       scraped: {
+        error:        null,
         name:         null,
         source:       null,
         currency:     null,
@@ -37,6 +38,7 @@ export default {
       let r = (await (await alova.Get(`/v1/connections/scrape`, {params: {url: this.product.url}})).clone().json())
       this.product.name   = this.scraped.name = r.property_info.name
       this.product.images = r.property_info.images
+      this.scraped.error        = r.status
       this.scraped.currency     = r.property_info.price_info.currency || r.schema_org?.offer?.priceCurrency
       this.scraped.price        = r.property_info.price_info.price    || r.schema_org?.offer?.price
       this.scraped.availability = r.property_info.availability        || r.schema_org?.offer?.availability == 'InStock'
@@ -67,7 +69,10 @@ export default {
 
         <div :class='{"spinner-border": scraping}' >
         </div>
-        <span v-if=scraping > Collecting data </span>
+        <span v-if=scraping > {{$t('products.scraping')}} </span>
+        <div v-if=scraped.error >
+          <span > {{$t('products.scraping_error')}} </span>
+        </div>
 
         <div class='card col-4 mb-3' v-if=scraped.currency >
           <div class=card-body >
@@ -108,7 +113,7 @@ export default {
           <ProductForm :product=product :categories=categories />
         </div>
 
-        <button type=button class='btn btn-primary' @click=save() :disabled='!this.scraping && this.product.name' > Save </button>
+        <button type=button class='btn btn-primary' @click=save() :disabled='!scraping && product.name' > Save </button>
       </form>
     </div>
   </div>
