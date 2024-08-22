@@ -104,6 +104,10 @@
     "more_details": "More product details",
     "basic_info": "Basic product information",
     "additional_info": "Additional product information",
+    "available": {
+      "yes": "Yes",
+      "no": "No"
+    },
     "fields": {
       "name": "Name",
       "sku": "SKU",

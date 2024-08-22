@@ -34,7 +34,7 @@ export default {
 
     async load() {
       this.profile      = await this.$store.dispatch("profile/fetch");
-      this.categories ||= (await (await alova.Get(`/v1/product_categories`)).clone().json()).data
+      this.product.categories ||= [] // new product
     },
 
   },

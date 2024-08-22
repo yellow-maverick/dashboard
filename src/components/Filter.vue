@@ -46,7 +46,7 @@ export default{
     async loadData() {
       if ('source_ids' in this.fields) this.loadSources();
 
-      this.profile = await this.$store.dispatch("profile/fetch");
+      this.profile = await this.$store.dispatch('profile/fetch')
       if (!this.data.property_id)
         this.data.property_id = { id: this.profile.subscriptions[0].property_id }
 
