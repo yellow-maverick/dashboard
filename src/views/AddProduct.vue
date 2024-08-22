@@ -113,7 +113,7 @@ export default {
           <ProductForm :product=product :categories=categories />
         </div>
 
-        <button type=button class='btn btn-primary' @click=save() :disabled='!scraping && product.name' > Save </button>
+        <button type=button class='btn btn-primary' @click=save() :disabled='scraping || !product.name || !product.url' > Save </button>
       </form>
     </div>
   </div>
