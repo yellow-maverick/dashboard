@@ -1,10 +1,19 @@
 {
   "general": {
     "title": "Titel übersetzt",
-    "change_language": "Sprache ändern"
+    "change_language": "Sprache ändern",
+    "pages": "Seiten",
+    "made_with": "gemacht mit {with} mal {by}"
   },
   "routes": {
-    "dashboard": "Armaturenbrett"
+    "dashboard": "Armaturenbrett",
+    "analytics": "Analyse",
+    "reviews": "Bewertungen",
+    "price_info": "Preisinformation",
+    "settings": {
+      "title": "Einstellungen",
+      "connections": "Anschlüsse"
+    }
   },
   "word_cloud": {
     "positive_words": "Positive Worte",
@@ -113,6 +122,12 @@
       "brand": "Marke",
       "supplier": "Anbieter",
       "cost_price": "Selbstkostenpreis"
+    },
+    "scraping": "Daten sammeln",
+    "scraping_error": "Fehler beim Erfassen der Daten. Bitte versuchen Sie es mit einer anderen URL.",
+    "available": {
+      "yes": "Ja",
+      "no": "NEIN"
     }
   },
   "prices_table": {

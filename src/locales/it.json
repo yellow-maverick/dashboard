@@ -1,10 +1,19 @@
 {
   "general": {
     "title": "Titolo tradotto",
-    "change_language": "Cambia lingua"
+    "change_language": "Cambia lingua",
+    "pages": "Pagine",
+    "made_with": "fatto con {with} per {by}"
   },
   "routes": {
-    "dashboard": "Pannello di controllo"
+    "dashboard": "Pannello di controllo",
+    "analytics": "Analisi",
+    "reviews": "Recensioni",
+    "price_info": "Informazioni sui prezzi",
+    "settings": {
+      "title": "Impostazioni",
+      "connections": "Connessioni"
+    }
   },
   "word_cloud": {
     "positive_words": "Parole positive",
@@ -113,6 +122,12 @@
       "brand": "Marca",
       "supplier": "Fornitore",
       "cost_price": "Prezzo di costo"
+    },
+    "scraping": "Raccolta dati",
+    "scraping_error": "Errore durante la raccolta dei dati, prova un URL diverso",
+    "available": {
+      "yes": "SÌ",
+      "no": "NO"
     }
   },
   "prices_table": {

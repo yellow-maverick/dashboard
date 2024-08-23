@@ -1,10 +1,19 @@
 {
   "general": {
     "title": "Otsikko käännetty",
-    "change_language": "Vaihda kieli"
+    "change_language": "Vaihda kieli",
+    "pages": "Sivut",
+    "made_with": "tehty {with} x {by}"
   },
   "routes": {
-    "dashboard": "Kojelauta"
+    "dashboard": "Kojelauta",
+    "analytics": "Analytics",
+    "reviews": "Arvostelut",
+    "price_info": "Hintatiedot",
+    "settings": {
+      "title": "Asetukset",
+      "connections": "Liitännät"
+    }
   },
   "word_cloud": {
     "positive_words": "Positiiviset sanat",
@@ -113,6 +122,12 @@
       "brand": "Merkki",
       "supplier": "Toimittaja",
       "cost_price": "Kustannushinta"
+    },
+    "scraping": "Tietojen kerääminen",
+    "scraping_error": "Virhe tietojen keräämisessä. Kokeile toista URL-osoitetta",
+    "available": {
+      "yes": "Kyllä",
+      "no": "Ei"
     }
   },
   "prices_table": {

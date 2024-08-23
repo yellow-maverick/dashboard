@@ -243,7 +243,7 @@ export default {
   },
   computed: {
     currentRouteName() {
-      return this.$route.name;
+      return this.$t(`routes.${this.$route.name}`);
     }
   }
 };

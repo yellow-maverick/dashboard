@@ -1,10 +1,19 @@
 {
   "general": {
     "title": "Название переведено",
-    "change_language": "Изменить язык"
+    "change_language": "Изменить язык",
+    "pages": "Страницы",
+    "made_with": "сделано с {with} по {by}"
   },
   "routes": {
-    "dashboard": "Панель инструментов"
+    "dashboard": "Панель инструментов",
+    "analytics": "Аналитика",
+    "reviews": "Обзоры",
+    "price_info": "Информация о ценах",
+    "settings": {
+      "title": "Настройки",
+      "connections": "Связи"
+    }
   },
   "word_cloud": {
     "positive_words": "Положительные слова",
@@ -113,6 +122,12 @@
       "brand": "Бренд",
       "supplier": "Поставщик",
       "cost_price": "Себестоимость"
+    },
+    "scraping": "Сбор данных",
+    "scraping_error": "Ошибка сбора данных, попробуйте другой URL",
+    "available": {
+      "yes": "Да",
+      "no": "Нет"
     }
   },
   "prices_table": {

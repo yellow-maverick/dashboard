@@ -96,7 +96,7 @@
 
 <script>
 import Sidenav from "@/examples/Sidenav/index.vue";
-import AppFooter from "@/examples/Footer.vue";
+import AppFooter from "@/components/Footer.vue";
 import Navbar from "@/components/Navbar.vue";
 import CardCalendar from "./components/CardCalendar.vue";
 import CardEmail from "./components/CardEmail.vue";

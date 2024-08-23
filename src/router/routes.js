@@ -17,30 +17,30 @@ const routes = [
   },
   {
     path: "/dashboard",
-    name: "Dashboard",
+    name: "dashboard",
     component: Dashboard,
   },
   {
     path: "/analytics",
-    name: "Analytics",
+    name: "analytics",
     component: Analytics,
   },
 
   {
     path: "/reviews",
-    name: "Reviews",
+    name: "reviews",
     component: Reviews,
   },
 
   {
     path: "/price_info",
-    name: "Price Information",
+    name: "price_info",
     component: PriceInfo,
   },
   // Management
   {
     path: '/connections',
-    name: 'Connections',
+    name: 'settings.connections',
     component: Connections,
   },
   {
@@ -52,24 +52,24 @@ const routes = [
   // Internal
   {
     path: "/queries",
-    name: "Queries",
+    name: "queries",
     component: QueryPage,
   },
 
   // User
   {
     path: "/profile",
-    name: "Profile",
+    name: "profile",
     component: Profile,
   },
   {
     path: "/signin",
-    name: "Signin",
+    name: "signin",
     component: Signin,
   },
   {
     path: "/signup",
-    name: "Signup",
+    name: "signup",
     component: Signup,
   },
   

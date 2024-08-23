@@ -14,7 +14,7 @@
         >
         <a v-else 
         :class="this.$store.state.isNavFixed ? 'text-dark' : 'text-white'"
-         class="opacity-8" href="#">Pages</a>
+           class="opacity-8" href="#">{{ $t('general.pages') }}</a>
       </li>
       <li
         class="text-sm breadcrumb-item active"

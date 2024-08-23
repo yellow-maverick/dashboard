@@ -7,7 +7,7 @@ window.ym.lib = {
 
   globalScale:  5,
   globalDigits: 1,
-  locales: ["en", "nl", "it", "fi", "fr", "de", "no", "pt", "ru", "es", "sv", "tr"],
+  locales: ["en", "nl", "it", "fi", "fr", "de", "pt", "ru", "es", "sv"],
 
   scale(v, scale) {
     return this.round(parseFloat(v) * (this.globalScale / scale))

@@ -1,10 +1,19 @@
 {
   "general": {
     "title": "Název přeložen",
-    "change_language": "Změnit jazyk"
+    "change_language": "Změnit jazyk",
+    "pages": "Stránky",
+    "made_with": "vytvořeno s {with} x {by}"
   },
   "routes": {
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "analytics": "Analytics",
+    "reviews": "Recenze",
+    "price_info": "Informace o ceně",
+    "settings": {
+      "title": "Nastavení",
+      "connections": "Spojení"
+    }
   },
   "word_cloud": {
     "positive_words": "Pozitivní slova",
@@ -113,6 +122,12 @@
       "brand": "Značka",
       "supplier": "Dodavatel",
       "cost_price": "Pořizovací cena"
+    },
+    "scraping": "Sběr dat",
+    "scraping_error": "Chyba při shromažďování dat, zkuste prosím jinou adresu URL",
+    "available": {
+      "yes": "Ano",
+      "no": "Žádný"
     }
   },
   "prices_table": {

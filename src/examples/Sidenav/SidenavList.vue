@@ -8,7 +8,7 @@
         <sidenav-item
           url="/dashboard"
           :class="getRoute() === 'dashboard' ? 'active' : ''"
-          :navText="'Dashboard'"
+          :navText="$t('routes.dashboard')"
         >
         </sidenav-item>
       </li>
@@ -17,7 +17,7 @@
         <sidenav-item
           url="/analytics"
           :class="getRoute() === 'analytics' ? 'active' : ''"
-          :navText="'Analytics'"
+          :navText="$t('routes.analytics')"
         >
         </sidenav-item>
       </li>
@@ -26,7 +26,7 @@
         <sidenav-item
           url="/reviews"
           :class="getRoute() === 'reviews' ? 'active' : ''"
-          :navText="'Reviews'"
+          :navText="$t('routes.reviews')"
         >
         </sidenav-item>
       </li>
@@ -35,21 +35,21 @@
         <sidenav-item
           url="/price_info"
           :class="getRoute() === 'price_info' ? 'active' : ''"
-          :navText="'Price Information'"
+          :navText="$t('routes.price_info')"
         >
         </sidenav-item>
       </li>
 
       <li class="nav-item mt-3">
         <h6 class='class="ps-4 ms-4 text-uppercase text-xs font-weight-bolder opacity-6"'>
-          Settings
+          {{ $t('routes.settings.title') }}
         </h6>
       </li>
       <li class="nav-item">
         <sidenav-item
           url="/connections"
           :class="getRoute() === 'connections' ? 'active' : ''"
-          :navText="'Connections'"
+          :navText="$t('routes.settings.connections')"
         >
         </sidenav-item>
       </li>

@@ -33,7 +33,9 @@ Coded by www.creative-tim.com
       :minNav="navbarMinimize"
       v-if="this.$store.state.showNavbar"
     />
-    <router-view />
+    <div style='min-height: 90vh'>
+      <router-view />
+    </div>
     <app-footer v-show="this.$store.state.showFooter" />
     <configurator
       :toggle="toggleConfigurator"
@@ -48,7 +50,7 @@ Coded by www.creative-tim.com
 import Sidenav from "./examples/Sidenav/index.vue";
 import Configurator from "@/examples/Configurator.vue";
 import Navbar from "@/components/Navbar.vue";
-import AppFooter from "@/examples/Footer.vue";
+import AppFooter from "@/components/Footer.vue";
 import { mapMutations } from "vuex";
 
 export default {

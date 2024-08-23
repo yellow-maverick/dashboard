@@ -1,10 +1,19 @@
 {
   "general": {
     "title": "Titel vertaald",
-    "change_language": "Taal wijzigen"
+    "change_language": "Taal wijzigen",
+    "pages": "Pagina's",
+    "made_with": "gemaakt met {with} bij {by}"
   },
   "routes": {
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "analytics": "Analyse",
+    "reviews": "Beoordelingen",
+    "price_info": "Prijsinformatie",
+    "settings": {
+      "title": "Instellingen",
+      "connections": "Verbindingen"
+    }
   },
   "word_cloud": {
     "positive_words": "Positieve woorden",
@@ -113,6 +122,12 @@
       "brand": "Merk",
       "supplier": "Leverancier",
       "cost_price": "Kostprijs"
+    },
+    "scraping": "Gegevens verzamelen",
+    "scraping_error": "Fout bij het verzamelen van gegevens, probeer een andere URL",
+    "available": {
+      "yes": "Ja",
+      "no": "Nee"
     }
   },
   "prices_table": {

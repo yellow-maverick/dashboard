@@ -1,10 +1,19 @@
 {
   "general": {
     "title": "العنوان مترجم",
-    "change_language": "تغيير اللغة"
+    "change_language": "تغيير اللغة",
+    "pages": "الصفحات",
+    "made_with": "تم صنعه من {with} إلى {by}"
   },
   "routes": {
-    "dashboard": "لوحة القيادة"
+    "dashboard": "لوحة القيادة",
+    "analytics": "التحليلات",
+    "reviews": "المراجعات",
+    "price_info": "معلومات عن الأسعار",
+    "settings": {
+      "title": "إعدادات",
+      "connections": "الاتصالات"
+    }
   },
   "word_cloud": {
     "positive_words": "كلمات إيجابية",
@@ -113,6 +122,12 @@
       "brand": "ماركة",
       "supplier": "مزود",
       "cost_price": "سعر التكلفة"
+    },
+    "scraping": "جمع البيانات",
+    "scraping_error": "حدث خطأ أثناء جمع البيانات، يرجى تجربة عنوان URL مختلف",
+    "available": {
+      "yes": "نعم",
+      "no": "لا"
     }
   },
   "prices_table": {
