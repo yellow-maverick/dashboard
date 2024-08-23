@@ -23,3 +23,5 @@ pnpm-debug.log*
 
 package-lock.json
 yarn.lock
+
+.google-api-translate-key.json

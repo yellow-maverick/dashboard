@@ -1,11 +1,13 @@
 if (!window.ym) window.ym = {};
 
 import dayjs from 'dayjs';
+import languagesCountries from './languages-countries'
 
 window.ym.lib = {
 
   globalScale:  5,
   globalDigits: 1,
+  locales: ["en", "nl", "it", "fi", "fr", "de", "no", "pt", "ru", "es", "sv", "tr"],
 
   scale(v, scale) {
     return this.round(parseFloat(v) * (this.globalScale / scale))
@@ -108,7 +110,31 @@ window.ym.lib = {
 
     let n = Math.floor((value - 1) / 4) * 4
     return `rating${n + 1}-${n + 4}`
-  }
+  },
+  eqLanguages() {
+    return {
+      "sp": "es",
+      "se": "sv"
+    };
+  },
+  getLocale(locale, mode = "language") {
+    let nameCode = locale;
+    let flagCode = locale;
+    let path = mode == "country" ? "countries" : "locales";
+
+    if (mode == "language") {
+      flagCode = nameCode = locale.split("-").flatMap(s => s.split("_"))[0] || locale;
+      if (languagesCountries[flagCode]) flagCode = languagesCountries[flagCode];
+      nameCode = (this.eqLanguages()[nameCode] || nameCode).toLowerCase();
+    } else { // mode country
+      flagCode = nameCode = flagCode.toUpperCase();
+    }
+
+    return {
+      name: `${path}.${nameCode}`, // this.$t()
+      code: flagCode.toLowerCase()
+    };
+  },
 }
 
 export default window.ym.lib;

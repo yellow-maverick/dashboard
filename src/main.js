@@ -1,12 +1,15 @@
 import { createApp } from "vue";
+
+import { Tooltip }       from "bootstrap";
 import App from "./App.vue";
 import store from "./store/index.js";
 import router from "./router/index.js";
 import { i18n } from "./js/locales";
 import DataTable from "vue3-easy-data-table";
 
-import ArgonDashboard from "./argon-dashboard.js";
+import 'vue3-flag-icons/styles'
 
+import ArgonDashboard from "./argon-dashboard.js";
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -30,6 +33,13 @@ appInstance.component("data-table", DataTable);
 appInstance.use(i18n);
 appInstance.use(router);
 appInstance.use(ArgonDashboard);
+
+appInstance.directive("b-tooltip", {
+  mounted(el) {
+    const tooltip = new Tooltip(el, { trigger: "hover", placement: "auto" });
+    el.addEventListener("click", () => tooltip.hide());
+  }
+});
 
 router.isReady().then(() => {
   appInstance.mount("#app");
