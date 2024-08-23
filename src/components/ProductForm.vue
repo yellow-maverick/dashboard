@@ -33,7 +33,8 @@ export default {
     },
 
     async load() {
-      this.profile      = await this.$store.dispatch("profile/fetch");
+      this.profile = await this.$store.dispatch('profile/fetch')
+      this.product.property_id  = this.$route.query.property_id
       this.product.categories ||= [] // new product
     },
 

@@ -101,6 +101,9 @@
   "connections": {
   },
   "products": {
+    "available": "Available",
+    "site": "site",
+    "name": "Name",
     "url": "Product URL",
     "more_details": "More product details",
     "basic_info": "Basic product information",
@@ -111,6 +114,7 @@
       "yes": "Yes",
       "no": "No"
     },
+    "save": "Save",
     "fields": {
       "name": "Name",
       "sku": "SKU",

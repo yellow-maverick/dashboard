@@ -8,8 +8,12 @@ export default {
     return {
       property_id: this.$route.query.property_id,
       scraping: false,
+      selectedImage: null,
       product: {
-        url:  null,
+        connection: {
+          source: null,
+          url:    null,
+        },
         name: null,
       },
       scraped: {
@@ -32,10 +36,14 @@ export default {
 
   methods: {
 
+    openModal(image) {
+      this.selectedImage = image
+    },
+
     async scrape() {
-      if (!this.product.url) return
+      if (!this.product.connection.url) return
       this.scraping = true
-      let r = (await (await alova.Get(`/v1/connections/scrape`, {params: {url: this.product.url}})).clone().json())
+      let r = (await (await alova.Get(`/v1/connections/scrape`, {params: {url: this.product.connection.url}})).clone().json())
       this.product.name   = this.scraped.name = r.property_info.name
       this.product.images = r.property_info.images
       this.scraped.error        = r.status
@@ -47,6 +55,8 @@ export default {
     },
 
     async save() {
+      let r = (await (await alova.Post(`/v1/products`, this.product)).clone().json()).data
+      console.log(r)
     },
 
     async load() {
@@ -64,7 +74,7 @@ export default {
       <form>
         <div class=form-group >
           <label for=url >{{ $t('products.url') }}</label>
-          <input name=url v-model=product.url type=text @input=scrape() class=form-control />
+          <input name=url v-model=product.connection.url type=text @input=scrape() class=form-control />
         </div>
 
         <div :class='{"spinner-border": scraping}' >
@@ -76,13 +86,20 @@ export default {
 
         <div class='card col-4 mb-3' v-if=scraped.currency >
           <div class=card-body >
+
+            <div class='row g-2 h-100' >
+              <div class='col-6 col-md-3' v-for='(image, index) in product.images' :key=index >
+                <img :src=image class=img-thumbnail alt=Thumbnail @click=openModal(image) data-bs-toggle=modal data-bs-target=#imageModal />
+              </div>
+            </div>
+
             <h3 class='text-primary pb-3 border-bottom' >
               <span class=price > {{scraped.price}} </span>
               <span class=currency > &nbsp;{{scraped.currency}} </span>
             </h3 >
 
             <div class='form-group row border-bottom' >
-              <label class='col-4 col-form-label' > Available </label>
+              <label class='col-4 col-form-label' > {{ $t('products.available') }} </label>
               <div class='col-7' >
                 <p class=form-control-plaintext >
                   {{$t(`products.available.${scraped.availability ? 'yes' : 'no'}`)}}
@@ -91,16 +108,16 @@ export default {
             </div>
 
             <div class='form-group row border-bottom' >
-              <label class='col-4 col-form-label' > Site </label>
+              <label class='col-4 col-form-label' > {{ $t('products.site') }} </label>
               <div class='col-7' >
                 <p class=form-control-plaintext > {{scraped.source.name}} </p>
               </div>
             </div>
 
             <div class='form-group row border-bottom' >
-              <label class='col-4 col-form-label' > Name </label>
+              <label class='col-4 col-form-label' > {{ $t('products.name') }} </label>
               <div class='col-7' >
-                <a class=form-control-plaintext :href=product.url > {{scraped.name}} </a>
+                <a class=form-control-plaintext :href=product.connection.url > {{scraped.name}} </a>
               </div>
             </div>
           </div>
@@ -113,9 +130,26 @@ export default {
           <ProductForm :product=product :categories=categories />
         </div>
 
-        <button type=button class='btn btn-primary' @click=save() :disabled='scraping || !product.name || !product.url' > Save </button>
+        <button type=button class='btn btn-primary' @click=save() :disabled='scraping || !product.name || !product.connection.url' >
+          {{ $t('products.save') }}
+        </button>
       </form>
     </div>
+
+    <!-- Modal -->
+    <div class='modal fade' id=imageModal tabindex=-1 aria-labelledby=imageModalLabel aria-hidden=true >
+      <div class='modal-dialog modal-dialog-centered modal-lg'>
+        <div class=modal-content >
+          <div class=modal-header >
+            <button type=button class='btn btn-close' data-bs-dismiss=modal />
+          </div>
+          <div class='modal-body text-center'>
+            <img :src=selectedImage class=img-fluid >
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 
