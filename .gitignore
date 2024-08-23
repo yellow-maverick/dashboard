@@ -25,3 +25,4 @@ package-lock.json
 yarn.lock
 
 .google-api-translate-key.json
+.locales-cache
