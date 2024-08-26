@@ -1,5 +1,5 @@
 <template>
-  <div class='photo-card-container border-bottom row g-2 h-100 pb-3' >
+  <div class='photo-card-container row g-2 h-100 pb-3 border-bottom' >
     <div class=photo-gallery >
       <div class='col-6 col-md-3 photo-card' v-for='(image, index) in images' :key=index >
         <img :src=image class='img-thumbnail card-img' alt=Thumbnail @click=openModal(image) data-bs-toggle=modal data-bs-target=#imageModal />
@@ -47,7 +47,7 @@
 
 /* Scale the hovered image */
 .photo-card:hover {
-  transform: scale(1.2);
+  transform: scale(1.5);
   z-index: 10;
 }
 

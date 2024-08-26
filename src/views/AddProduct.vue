@@ -41,17 +41,20 @@ export default {
       this.scraping = true
       let r = (await (await alova.Get(`/v1/connections/scrape`, {params: {url: this.product.connection.url}})).clone().json())
       this.product.name   = this.scraped.name = r.property_info.name
-      this.product.images = r.property_info.images
+      this.product.connection.source = r.source.slug
+      this.product.connection.images = r.property_info.images
+
       this.scraped.error        = r.status
       this.scraped.currency     = r.property_info.price_info.currency || r.schema_org?.offer?.priceCurrency
       this.scraped.price        = r.property_info.price_info.price    || r.schema_org?.offer?.price
       this.scraped.availability = r.property_info.availability        || r.schema_org?.offer?.availability == 'InStock'
       this.scraped.source       = r.source
+
       this.scraping = false
     },
 
     async save() {
-      let r = (await (await alova.Post(`/v1/products`, this.product)).clone().json()).data
+      let r = (await (await alova.Post(`/v1/products`, {product: this.product})).clone().json()).data
       console.log(r)
     },
 
@@ -83,7 +86,7 @@ export default {
         <div class='card col-6 mb-3' v-if=scraped.source >
           <div class=card-body >
 
-            <PhotoGallery :images=product.images />
+            <PhotoGallery :images=product.connection.images />
 
             <h3 class='text-primary pb-3 border-bottom' v-if=scraped.price >
               <span class=price > {{scraped.price}} </span>
