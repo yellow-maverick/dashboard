@@ -40,15 +40,18 @@ export default {
       if (!this.product.connection.url) return
       this.scraping = true
       let r = (await (await alova.Get(`/v1/connections/scrape`, {params: {url: this.product.connection.url}})).clone().json())
-      this.product.name   = this.scraped.name = r.property_info.name
-      this.product.connection.source = r.source.slug
-      this.product.connection.images = r.property_info.images
-
       this.scraped.error        = r.status
+      this.scraped.name         = r.property_info.name
       this.scraped.currency     = r.property_info.price_info.currency || r.schema_org?.offer?.priceCurrency
       this.scraped.price        = r.property_info.price_info.price    || r.schema_org?.offer?.price
       this.scraped.availability = r.property_info.availability        || r.schema_org?.offer?.availability == 'InStock'
       this.scraped.source       = r.source
+
+      this.product.name = this.scraped.name
+      this.product.connection.price    = this.scraped.price
+      this.product.connection.currency = this.scraped.currency
+      this.product.connection.source   = r.source.slug
+      this.product.connection.images   = r.property_info.images
 
       this.scraping = false
     },
