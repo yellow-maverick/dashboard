@@ -44,8 +44,8 @@ const routes = [
     component: Connections,
   },
   {
-    path: '/add-product',
-    name: 'Add Product',
+    path: '/products/add',
+    name: 'products.add',
     component: AddProduct,
   },
 

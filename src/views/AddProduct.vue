@@ -84,7 +84,7 @@ export default {
           <span > {{$t('products.scraping_error')}} </span>
         </div>
 
-        <div class='card col-4 mb-3' v-if=scraped.currency >
+        <div class='card col-4 mb-3' v-if=scraped.price >
           <div class=card-body >
 
             <div class='row g-2 h-100' >
@@ -99,7 +99,7 @@ export default {
             </h3 >
 
             <div class='form-group row border-bottom' >
-              <label class='col-4 col-form-label' > {{ $t('products.available') }} </label>
+              <label class='col-4 col-form-label' > {{ $t('products.available.title') }} </label>
               <div class='col-7' >
                 <p class=form-control-plaintext >
                   {{$t(`products.available.${scraped.availability ? 'yes' : 'no'}`)}}

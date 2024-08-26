@@ -1,17 +1,14 @@
 { 
   "general": {
     "title": "Title translated",
-    "change_language": "Change language",
-    "pages": "Pages",
-    "made_with": "made with {with} by {by}"
+    "change_language": "Change language"
   },
   "routes": {
     "dashboard": "Dashboard",
-    "analytics": "Analytics",
-    "reviews": "Reviews",
-    "price_info": "Price Information",
+    "products": {
+      "add": "Add Product"
+    },
     "settings": {
-      "title": "Settings",
       "connections": "Connections"
     }
   },
@@ -84,9 +81,7 @@
     "next": "Next",
     "page": "Page {page}",
     "no_reviews": "No reviews to show",
-    "from": "From",
-    "show_original": "Show original",
-    "translate": "Translate"
+    "from": "From"
   },
   "sentiment_kpi": {
     "title": "Sentiment KPI",
@@ -112,7 +107,6 @@
   "connections": {
   },
   "products": {
-    "available": "Available",
     "site": "site",
     "name": "Name",
     "url": "Product URL",
@@ -122,6 +116,7 @@
     "scraping": "Collecting data",
     "scraping_error": "Error collecting data, please try a different URL",
     "available": {
+      "title": "Title",
       "yes": "Yes",
       "no": "No"
     },
