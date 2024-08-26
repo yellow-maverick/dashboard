@@ -84,23 +84,23 @@ export default {
           <span > {{$t('products.scraping_error')}} </span>
         </div>
 
-        <div class='card col-4 mb-3' v-if=scraped.price >
+        <div class='card col-6 mb-3' v-if=scraped.source >
           <div class=card-body >
 
-            <div class='row g-2 h-100' >
+            <div class='row g-2 h-100 pb-3 border-bottom' >
               <div class='col-6 col-md-3' v-for='(image, index) in product.images' :key=index >
                 <img :src=image class=img-thumbnail alt=Thumbnail @click=openModal(image) data-bs-toggle=modal data-bs-target=#imageModal />
               </div>
             </div>
 
-            <h3 class='text-primary pb-3 border-bottom' >
+            <h3 class='text-primary pb-3 border-bottom' v-if=scraped.price >
               <span class=price > {{scraped.price}} </span>
               <span class=currency > &nbsp;{{scraped.currency}} </span>
             </h3 >
 
             <div class='form-group row border-bottom' >
-              <label class='col-4 col-form-label' > {{ $t('products.available.title') }} </label>
-              <div class='col-7' >
+              <label class='col-5 col-form-label' > {{ $t('products.available.title') }} </label>
+              <div class='col-6' >
                 <p class=form-control-plaintext >
                   {{$t(`products.available.${scraped.availability ? 'yes' : 'no'}`)}}
                 </p>
@@ -108,15 +108,15 @@ export default {
             </div>
 
             <div class='form-group row border-bottom' >
-              <label class='col-4 col-form-label' > {{ $t('products.site') }} </label>
-              <div class='col-7' >
+              <label class='col-5 col-form-label' > {{ $t('products.site') }} </label>
+              <div class='col-6' >
                 <p class=form-control-plaintext > {{scraped.source.name}} </p>
               </div>
             </div>
 
             <div class='form-group row border-bottom' >
-              <label class='col-4 col-form-label' > {{ $t('products.name') }} </label>
-              <div class='col-7' >
+              <label class='col-5 col-form-label' > {{ $t('products.name') }} </label>
+              <div class='col-6' >
                 <a class=form-control-plaintext :href=product.connection.url > {{scraped.name}} </a>
               </div>
             </div>

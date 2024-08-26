@@ -107,7 +107,7 @@
   "connections": {
   },
   "products": {
-    "site": "site",
+    "site": "Site",
     "name": "Name",
     "url": "Product URL",
     "more_details": "More product details",
@@ -116,7 +116,7 @@
     "scraping": "Collecting data",
     "scraping_error": "Error collecting data, please try a different URL",
     "available": {
-      "title": "Title",
+      "title": "Available",
       "yes": "Yes",
       "no": "No"
     },
