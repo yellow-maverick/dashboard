@@ -84,7 +84,9 @@
     "next": "Další",
     "page": "Strana {page}",
     "no_reviews": "Žádné recenze k zobrazení",
-    "from": "Z"
+    "from": "Z",
+    "show_original": "Zobrazit originál",
+    "translate": "Přeložit"
   },
   "sentiment_kpi": {
     "title": "KPI sentimentu",
@@ -128,7 +130,10 @@
     "available": {
       "yes": "Ano",
       "no": "Žádný"
-    }
+    },
+    "site": "místo",
+    "name": "Jméno",
+    "save": "Uložit"
   },
   "prices_table": {
     "product": "Produkt",

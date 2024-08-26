@@ -84,7 +84,9 @@
     "next": "Prossimo",
     "page": "Pagina {page}",
     "no_reviews": "Nessuna recensione da mostrare",
-    "from": "Da"
+    "from": "Da",
+    "show_original": "Mostra originale",
+    "translate": "Tradurre"
   },
   "sentiment_kpi": {
     "title": "KPI del sentimento",
@@ -128,7 +130,10 @@
     "available": {
       "yes": "SÌ",
       "no": "NO"
-    }
+    },
+    "site": "sito",
+    "name": "Nome",
+    "save": "Salva"
   },
   "prices_table": {
     "product": "Prodotto",

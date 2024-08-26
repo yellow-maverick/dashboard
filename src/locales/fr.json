@@ -84,7 +84,9 @@
     "next": "Suivant",
     "page": "Page {page}",
     "no_reviews": "Aucun avis à afficher",
-    "from": "Depuis"
+    "from": "Depuis",
+    "show_original": "Afficher l'original",
+    "translate": "Traduire"
   },
   "sentiment_kpi": {
     "title": "Indicateur de performance clé du sentiment",
@@ -128,7 +130,10 @@
     "available": {
       "yes": "Oui",
       "no": "Non"
-    }
+    },
+    "site": "site",
+    "name": "Nom",
+    "save": "Sauvegarder"
   },
   "prices_table": {
     "product": "Produit",

@@ -84,7 +84,9 @@
     "next": "Seuraavaksi",
     "page": "Sivu {page}",
     "no_reviews": "Ei näytettäviä arvosteluja",
-    "from": "From"
+    "from": "From",
+    "show_original": "Näytä alkuperäinen",
+    "translate": "Kääntää"
   },
   "sentiment_kpi": {
     "title": "Sentimentin KPI",
@@ -128,7 +130,10 @@
     "available": {
       "yes": "Kyllä",
       "no": "Ei"
-    }
+    },
+    "site": "sivusto",
+    "name": "Nimi",
+    "save": "Tallentaa"
   },
   "prices_table": {
     "product": "Tuote",

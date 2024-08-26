@@ -84,7 +84,9 @@
     "next": "次",
     "page": "ページ{page}",
     "no_reviews": "表示するレビューはありません",
-    "from": "から"
+    "from": "から",
+    "show_original": "オリジナルを表示",
+    "translate": "翻訳する"
   },
   "sentiment_kpi": {
     "title": "感情KPI",
@@ -128,7 +130,10 @@
       "brand": "ブランド",
       "supplier": "サプライヤー",
       "cost_price": "原価"
-    }
+    },
+    "site": "サイト",
+    "name": "名前",
+    "save": "保存"
   },
   "prices_table": {
     "product": "製品",

@@ -84,7 +84,9 @@
     "next": "Próximo",
     "page": "Página {page}",
     "no_reviews": "Nenhuma avaliação para mostrar",
-    "from": "De"
+    "from": "De",
+    "show_original": "Mostrar original",
+    "translate": "Traduzir"
   },
   "sentiment_kpi": {
     "title": "KPI de sentimento",
@@ -128,7 +130,10 @@
       "brand": "Marca",
       "supplier": "Fornecedor",
       "cost_price": "Preço de custo"
-    }
+    },
+    "site": "site",
+    "name": "Nome",
+    "save": "Salvar"
   },
   "prices_table": {
     "product": "Produto",

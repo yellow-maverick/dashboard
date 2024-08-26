@@ -84,7 +84,9 @@
     "next": "Volgende",
     "page": "Pagina {page}",
     "no_reviews": "Geen beoordelingen om te tonen",
-    "from": "Van"
+    "from": "Van",
+    "show_original": "Origineel weergeven",
+    "translate": "Vertalen"
   },
   "sentiment_kpi": {
     "title": "Sentiment-KPI",
@@ -128,7 +130,10 @@
     "available": {
       "yes": "Ja",
       "no": "Nee"
-    }
+    },
+    "site": "plaats",
+    "name": "Naam",
+    "save": "Redden"
   },
   "prices_table": {
     "product": "Product",

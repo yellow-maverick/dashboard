@@ -84,7 +84,9 @@
     "next": "Следующий",
     "page": "Страница {page}",
     "no_reviews": "Нет отзывов для показа",
-    "from": "От"
+    "from": "От",
+    "show_original": "Показать оригинал",
+    "translate": "Переводить"
   },
   "sentiment_kpi": {
     "title": "KPI настроений",
@@ -128,7 +130,10 @@
     "available": {
       "yes": "Да",
       "no": "Нет"
-    }
+    },
+    "site": "сайт",
+    "name": "Имя",
+    "save": "Сохранять"
   },
   "prices_table": {
     "product": "Продукт",
