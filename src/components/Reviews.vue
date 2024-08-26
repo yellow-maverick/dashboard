@@ -7,9 +7,10 @@ export default{
   components: { Review },
   data() {
     return {
-      perPage: 20,
-      page:    1,
-      reviews: []
+      perPage:      20,
+      page:         1,
+      reviews:      [],
+      translations: {}
     }
   },
   methods: {
@@ -40,7 +41,7 @@ export default{
       <strong class="">{{ $t('reviews.page', { page: page }) }}</strong>
     </div>
     <template v-if='filter' >
-      <review v-for='review in reviews' :key='review.id' :review='review' />
+      <review v-for='review in reviews' :key='review.id' :review='review' :translations='translations' />
       <div class="mb-4 card z-index-2" v-if='reviews.length == 0'>
         <div class="p-3 card-body d-flex justify-content-center"><strong>{{ $t('reviews.no_reviews') }}</strong></div>
       </div>

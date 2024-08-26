@@ -35,6 +35,10 @@ window.ym.lib = {
     return [d, new Date()]
   },
 
+  DOMParser(text) {
+    return new DOMParser().parseFromString(text,'text/html').querySelector('html').textContent;
+  },
+
   dateShortcuts() {
     const today = new Date();
     return [

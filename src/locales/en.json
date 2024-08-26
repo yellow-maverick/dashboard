@@ -84,7 +84,9 @@
     "next": "Next",
     "page": "Page {page}",
     "no_reviews": "No reviews to show",
-    "from": "From"
+    "from": "From",
+    "show_original": "Show original",
+    "translate": "Translate"
   },
   "sentiment_kpi": {
     "title": "Sentiment KPI",

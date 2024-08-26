@@ -1,19 +1,61 @@
 <script>
 import dayjs from 'dayjs'
 import Lib from '../js/lib.js'
+import { alova } from '../js/alova.js'
 
 export default{
   data () {
-    return { }
+    return {
+    }
   },
-  props:      ['review'],
+  props:      ['review', 'translations'],
   components: {},
 
   methods: {
     upper (str) {
       if (!str) return
       return str.charAt(0).toUpperCase() + str.slice(1);
-    }
+    },
+    async translate() {
+      this.translations[this.review.id] ||= {};
+      if (this.translations[this.review.id][this.$i18n.locale]) return;
+
+      this.translations[this.review.id][this.$i18n.locale] = {};
+      this.loading = true;
+      let payload = {
+        data: { ...(this.review.title?.length) && { title: this.review.title } },
+        locale: this.$i18n.locale
+      }
+      this.review.comments?.forEach(comment => {
+        if (comment.type != "manager") payload.data[`comment_${comment.type}`] = comment.comment;
+      });
+
+      let r = await alova.Post(`/v1/translate`, payload)
+      r     = await r.clone().json()
+      if (!this.translations[this.review.id][this.$i18n.locale]) this.translations[this.review.id][this.$i18n.locale] = {}
+      let response = r.data;
+
+      if (this.review.title?.length) this.translations[this.review.id][this.$i18n.locale]['title'] = Lib.DOMParser(response.title?.[0]);
+      this.review.comments?.forEach(comment => {
+        if (comment.type != "manager") {
+          this.translations[this.review.id][this.$i18n.locale][`comment_${comment.type}`] = Lib.DOMParser(response[`comment_${comment.type}`]?.[0]);
+        }
+      });
+
+      this.loading = false;
+      this.$forceUpdate();
+    },
+    async toggleTranslation () {
+      if (this.review.translated)
+        this.review.translated = false
+      else {
+        await this.translate()
+        this.review.translated = true
+      }
+    },
+    showTranslateButton() {
+      return this.$i18n.locale != this.review.sentiment?.language_code && this.review.comments?.length;
+    },
   },
   computed: {
     sourceImage() {
@@ -43,7 +85,7 @@ export default{
 
           <div>
             <div class="title text-bold">
-              {{ review.title }} 
+              {{ (review.translated && translations[review.id][this.$i18n.locale]) ? translations[review.id][this.$i18n.locale].title : review.title }}
             </div>
             <div class="subtitle">{{ $t('reviews.subtitle', { name: review.reviewer.name || $t('reviews.someone'), date: reviewDate }) }}</div>
           </div>
@@ -60,9 +102,13 @@ export default{
       <div v-for='comment in review.comments' :key='comment' class='mt-2'>
         <template v-if=comment.comment >
           <strong> {{ upper(comment.type) }}</strong>
-          <div> {{ comment.comment }}</div>
+          <div> {{ (review.translated && translations[review.id][this.$i18n.locale]) ? translations[review.id][this.$i18n.locale][`comment_${comment.type}`] : comment.comment }}</div>
         </template>
       </div>
+      <button v-if="showTranslateButton()" type="button" class="btn btn-outline-primary me-4 col-12 col-sm-auto mb-2 mb-sm-0 mt-2"
+        @click="toggleTranslation" >
+        {{ review.translated ? $t("reviews.show_original") : $t("reviews.translate") }}
+      </button>
     </div>
   </div>
 </template>
