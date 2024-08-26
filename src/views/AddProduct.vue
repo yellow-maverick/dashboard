@@ -2,13 +2,13 @@
 import { alova } from '../js/alova.js'
 //import _ from 'lodash'
 import ProductForm from '@/components/ProductForm.vue'
+import PhotoGallery from '@/components/PhotoCardGallery.vue'
 
 export default {
   data() {
     return {
       property_id: this.$route.query.property_id,
       scraping: false,
-      selectedImage: null,
       product: {
         connection: {
           source: null,
@@ -28,17 +28,13 @@ export default {
     }
   },
   props: [],
-  components: {ProductForm},
+  components: {ProductForm, PhotoGallery},
 
   created() {
     this.load()
   },
 
   methods: {
-
-    openModal(image) {
-      this.selectedImage = image
-    },
 
     async scrape() {
       if (!this.product.connection.url) return
@@ -87,11 +83,7 @@ export default {
         <div class='card col-6 mb-3' v-if=scraped.source >
           <div class=card-body >
 
-            <div class='row g-2 h-100 pb-3 border-bottom' >
-              <div class='col-6 col-md-3' v-for='(image, index) in product.images' :key=index >
-                <img :src=image class=img-thumbnail alt=Thumbnail @click=openModal(image) data-bs-toggle=modal data-bs-target=#imageModal />
-              </div>
-            </div>
+            <PhotoGallery :images=product.images />
 
             <h3 class='text-primary pb-3 border-bottom' v-if=scraped.price >
               <span class=price > {{scraped.price}} </span>
@@ -134,20 +126,6 @@ export default {
           {{ $t('products.save') }}
         </button>
       </form>
-    </div>
-
-    <!-- Modal -->
-    <div class='modal fade' id=imageModal tabindex=-1 aria-labelledby=imageModalLabel aria-hidden=true >
-      <div class='modal-dialog modal-dialog-centered modal-lg'>
-        <div class=modal-content >
-          <div class=modal-header >
-            <button type=button class='btn btn-close' data-bs-dismiss=modal />
-          </div>
-          <div class='modal-body text-center'>
-            <img :src=selectedImage class=img-fluid >
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
