@@ -159,7 +159,7 @@ export default{
 <template>
   <div class="filter">
     <div class='card'>
-      <h5 class="card-title p-3">{{ $t("filter.title") }}</h5>
+      <h5 class="card-title px-4 py-3">{{ $t("filter.title") }}</h5>
       <div class="card-body">
         <div class="row" v-if='loadedURL'>
           <template v-for="(v,k) in fields" :key="k">
