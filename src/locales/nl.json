@@ -13,6 +13,9 @@
     "settings": {
       "title": "Instellingen",
       "connections": "Verbindingen"
+    },
+    "products": {
+      "add": "Product toevoegen"
     }
   },
   "word_cloud": {
@@ -129,9 +132,10 @@
     "scraping_error": "Fout bij het verzamelen van gegevens, probeer een andere URL",
     "available": {
       "yes": "Ja",
-      "no": "Nee"
+      "no": "Nee",
+      "title": "Beschikbaar"
     },
-    "site": "plaats",
+    "site": "Locatie",
     "name": "Naam",
     "save": "Redden"
   },
@@ -139,7 +143,8 @@
     "product": "Product",
     "source": "Bron",
     "target_price": "Doelprijs",
-    "out_of_stock": "Niet op voorraad"
+    "out_of_stock": "Niet op voorraad",
+    "no_data": "Er zijn geen gegevens om weer te geven met deze filters"
   },
   "locales": {
     "sp": "Spaans",

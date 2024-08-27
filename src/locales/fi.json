@@ -13,6 +13,9 @@
     "settings": {
       "title": "Asetukset",
       "connections": "Liitännät"
+    },
+    "products": {
+      "add": "Lisää tuote"
     }
   },
   "word_cloud": {
@@ -129,9 +132,10 @@
     "scraping_error": "Virhe tietojen keräämisessä. Kokeile toista URL-osoitetta",
     "available": {
       "yes": "Kyllä",
-      "no": "Ei"
+      "no": "Ei",
+      "title": "Saatavilla"
     },
-    "site": "sivusto",
+    "site": "Sivusto",
     "name": "Nimi",
     "save": "Tallentaa"
   },
@@ -139,7 +143,8 @@
     "product": "Tuote",
     "source": "Lähde",
     "target_price": "Tavoitehinta",
-    "out_of_stock": "Loppunut varastosta"
+    "out_of_stock": "Loppunut varastosta",
+    "no_data": "Näillä suodattimilla ei ole näytettäviä tietoja"
   },
   "locales": {
     "sp": "espanja",

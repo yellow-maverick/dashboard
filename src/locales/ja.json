@@ -13,6 +13,9 @@
     "settings": {
       "title": "設定",
       "connections": "接続"
+    },
+    "products": {
+      "add": "製品を追加"
     }
   },
   "word_cloud": {
@@ -119,7 +122,8 @@
     "scraping_error": "データ収集中にエラーが発生しました。別の URL を試してください。",
     "available": {
       "yes": "はい",
-      "no": "いいえ"
+      "no": "いいえ",
+      "title": "利用可能"
     },
     "fields": {
       "name": "名前",
@@ -139,7 +143,8 @@
     "product": "製品",
     "source": "ソース",
     "target_price": "目標価格",
-    "out_of_stock": "在庫切れ"
+    "out_of_stock": "在庫切れ",
+    "no_data": "これらのフィルターでは表示するデータがありません"
   },
   "locales": {
     "sp": "スペイン語",

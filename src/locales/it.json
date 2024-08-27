@@ -13,6 +13,9 @@
     "settings": {
       "title": "Impostazioni",
       "connections": "Connessioni"
+    },
+    "products": {
+      "add": "Aggiungi prodotto"
     }
   },
   "word_cloud": {
@@ -129,9 +132,10 @@
     "scraping_error": "Errore durante la raccolta dei dati, prova un URL diverso",
     "available": {
       "yes": "SÌ",
-      "no": "NO"
+      "no": "NO",
+      "title": "Disponibile"
     },
-    "site": "sito",
+    "site": "Sito web",
     "name": "Nome",
     "save": "Salva"
   },
@@ -139,7 +143,8 @@
     "product": "Prodotto",
     "source": "Fonte",
     "target_price": "Prezzo obiettivo",
-    "out_of_stock": "Esaurito"
+    "out_of_stock": "Esaurito",
+    "no_data": "Non ci sono dati da mostrare con questi filtri"
   },
   "locales": {
     "sp": "spagnolo",
