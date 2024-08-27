@@ -136,7 +136,8 @@
     "product": "Product",
     "source": "Source",
     "target_price": "Target Price",
-    "out_of_stock": "Out of stock"
+    "out_of_stock": "Out of stock",
+    "no_data": "There's no data to show with these filters"
   },
   "locales": {
     "sp": "Spanish",

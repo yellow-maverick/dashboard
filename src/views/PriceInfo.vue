@@ -57,7 +57,7 @@ export default{
     <Filter :fields=fields emitUpdate=true @filter:submit='load' @filter:created='load'/>
 
     <div class="p-3 card-body table-responsive">
-      <table class='table text-center' v-if='data' >
+      <table class='table text-center' v-if='Object.keys(data || {}).length' >
         <thead>
           <tr class='bordered-side'>
             <th class='text-start'>{{ $t(`prices_table.product`) }}</th>
@@ -91,6 +91,7 @@ export default{
           </template>
         </tbody>
       </table>
+      <h4 class='text-center mt-4' v-else>{{ $t('prices_table.no_data') }}</h4>
     </div>
   </div>
 </template>
