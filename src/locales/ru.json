@@ -89,7 +89,8 @@
     "no_reviews": "Нет отзывов для показа",
     "from": "От",
     "show_original": "Показать оригинал",
-    "translate": "Переводить"
+    "translate": "Переводить",
+    "respond": "Отвечать"
   },
   "sentiment_kpi": {
     "title": "KPI настроений",

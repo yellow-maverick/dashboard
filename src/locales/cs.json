@@ -89,7 +89,8 @@
     "no_reviews": "Žádné recenze k zobrazení",
     "from": "Z",
     "show_original": "Zobrazit originál",
-    "translate": "Přeložit"
+    "translate": "Přeložit",
+    "respond": "Reagovat"
   },
   "sentiment_kpi": {
     "title": "KPI sentimentu",

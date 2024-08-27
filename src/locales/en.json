@@ -1,14 +1,20 @@
 { 
   "general": {
     "title": "Title translated",
-    "change_language": "Change language"
+    "change_language": "Change language",
+    "pages": "Pages",
+    "made_with": "made with {with} by {by}"
   },
   "routes": {
     "dashboard": "Dashboard",
+    "analytics": "Analytics",
+    "reviews": "Reviews",
+    "price_info": "Price Information",
     "products": {
       "add": "Add Product"
     },
     "settings": {
+      "title": "Settings",
       "connections": "Connections"
     }
   },
@@ -81,7 +87,10 @@
     "next": "Next",
     "page": "Page {page}",
     "no_reviews": "No reviews to show",
-    "from": "From"
+    "show_original": "Show original",
+    "translate": "Translate",
+    "from": "From",
+    "respond": "Respond"
   },
   "sentiment_kpi": {
     "title": "Sentiment KPI",

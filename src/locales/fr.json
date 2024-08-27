@@ -89,7 +89,8 @@
     "no_reviews": "Aucun avis à afficher",
     "from": "Depuis",
     "show_original": "Afficher l'original",
-    "translate": "Traduire"
+    "translate": "Traduire",
+    "respond": "Répondre"
   },
   "sentiment_kpi": {
     "title": "Indicateur de performance clé du sentiment",

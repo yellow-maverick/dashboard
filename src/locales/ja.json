@@ -3,7 +3,7 @@
     "title": "タイトルを翻訳しました",
     "change_language": "言語を変更",
     "pages": "ページ",
-    "made_with": "{with} × {by}で作られた"
+    "made_with": "{with} × {by}で作った"
   },
   "routes": {
     "dashboard": "ダッシュボード",
@@ -89,7 +89,8 @@
     "no_reviews": "表示するレビューはありません",
     "from": "から",
     "show_original": "オリジナルを表示",
-    "translate": "翻訳する"
+    "translate": "翻訳する",
+    "respond": "応答する"
   },
   "sentiment_kpi": {
     "title": "感情KPI",

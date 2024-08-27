@@ -89,7 +89,8 @@
     "no_reviews": "Keine Bewertungen anzuzeigen",
     "from": "Aus",
     "show_original": "Original anzeigen",
-    "translate": "Übersetzen"
+    "translate": "Übersetzen",
+    "respond": "Antworten"
   },
   "sentiment_kpi": {
     "title": "Stimmungs-KPI",

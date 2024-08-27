@@ -89,7 +89,8 @@
     "no_reviews": "Geen beoordelingen om te tonen",
     "from": "Van",
     "show_original": "Origineel weergeven",
-    "translate": "Vertalen"
+    "translate": "Vertalen",
+    "respond": "Antwoorden"
   },
   "sentiment_kpi": {
     "title": "Sentiment-KPI",

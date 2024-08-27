@@ -89,7 +89,8 @@
     "no_reviews": "Ei näytettäviä arvosteluja",
     "from": "From",
     "show_original": "Näytä alkuperäinen",
-    "translate": "Kääntää"
+    "translate": "Kääntää",
+    "respond": "Vastata"
   },
   "sentiment_kpi": {
     "title": "Sentimentin KPI",

@@ -89,7 +89,8 @@
     "no_reviews": "Nessuna recensione da mostrare",
     "from": "Da",
     "show_original": "Mostra originale",
-    "translate": "Tradurre"
+    "translate": "Tradurre",
+    "respond": "Rispondere"
   },
   "sentiment_kpi": {
     "title": "KPI del sentimento",

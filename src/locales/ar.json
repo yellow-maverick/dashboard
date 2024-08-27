@@ -89,7 +89,8 @@
     "no_reviews": "لا توجد مراجعات لإظهارها",
     "from": "من",
     "show_original": "عرض الأصل",
-    "translate": "يترجم"
+    "translate": "يترجم",
+    "respond": "يرد"
   },
   "sentiment_kpi": {
     "title": "مؤشر الأداء الرئيسي للمشاعر",
