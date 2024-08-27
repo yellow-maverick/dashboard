@@ -57,8 +57,14 @@ export default {
     },
 
     async save() {
-      let r = (await (await alova.Post(`/v1/products`, {product: this.product})).clone().json()).data
-      console.log(r)
+      let r = (await (await alova.Post(`/v1/products`, {product: this.product})).clone().json())
+      if (r.id) {
+        this.$router.push({name: 'settings.connections', query: {
+          ...this.$route.query, property_id: this.property_id, product_id: r.id,
+        }})
+      } else {
+        this.status = this.$t('products.save_error', {error: r.error})
+      }
     },
 
     async load() {
@@ -124,13 +130,16 @@ export default {
         <h5 role=button data-bs-toggle=collapse data-bs-target=#more-details aria-expanded=true aria-controls=more-details >
           {{ $t('products.more_details') }}
         </h5>
-        <div id=more-details >
+        <div id=more-details class=show >
           <ProductForm :product=product :categories=categories />
         </div>
 
-        <button type=button class='btn btn-primary' @click=save() :disabled='scraping || !product.name || !product.connection.url' >
-          {{ $t('products.save') }}
-        </button>
+        <div >
+          <button type=button class='btn btn-primary' @click=save() :disabled='scraping || !product.name || !product.connection.url' >
+            {{ $t('products.save') }}
+          </button>
+          <span v-if=status > {{status}} </span>
+        </div>
       </form>
     </div>
 

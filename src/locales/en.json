@@ -115,6 +115,7 @@
     "additional_info": "Additional product information",
     "scraping": "Collecting data",
     "scraping_error": "Error collecting data, please try a different URL",
+    "save_error": "Error saving the product: %{error}",
     "available": {
       "title": "Available",
       "yes": "Yes",

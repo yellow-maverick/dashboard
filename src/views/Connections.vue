@@ -9,12 +9,19 @@ import ProductForm from '@/components/ProductForm.vue'
 export default {
   data() {
     return {
+      property_id: null, // open on mount
+      product_id:  null, // open on mount
       properties: [],
       categories: [],
     }
   },
   props:      [],
   components: {Multiselect, ProductForm},
+
+  created() {
+    this.product_id  = this.$route.query.product_id // for initial render to scroll expanded
+    this.property_id = this.$route.query.property_id
+  },
 
   mounted() {
     this.load()
@@ -29,6 +36,11 @@ export default {
         with_products: true, with_connections: true,
       }))
       this.categories = (await (await alova.Get(`/v1/product_categories`)).clone().json()).data
+
+      if (this.product_id) {
+        const element = document.getElementById(`product-${this.product_id}`)
+        if (element) element.scrollIntoView({ behavior: 'smooth' })
+      }
     },
 
     hide(event) {
@@ -89,10 +101,10 @@ export default {
               </div>
 
               <div :id='`property-${i}-accordion`' class=accordion >
-                <div v-for='(pd,j) in p.products' class=accordion-item :key=j >
+                <div v-for='(pd,j) in p.products' :id='`product-${pd.id}`' class=accordion-item :key=j >
                   <div class=card >
                     <h6 class=accordion-header >
-                      <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=true :aria-controls='`#collapse-${i}-${j}`'  >
+                      <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=false :aria-controls='`#collapse-${i}-${j}`'  >
                         {{pd.name}}
                         <multiselect :options=categories :readonly=true v-model=pd.categories label=name :taggable=true :multiple=true :searchable=false />
                         <div class='d-flex justify-content-end' style='flex: auto' >
@@ -101,7 +113,7 @@ export default {
                       </button>
                     </h6>
 
-                    <div :id='`collapse-${i}-${j}`' class=collapse aria-labelledby=headingOne :data-parent='`#property-${i}-accordion`' >
+                      <div :id='`collapse-${i}-${j}`' :class='{collapse: product_id != pd.id, show: product_id == pd.id}' aria-labelledby=headingOne :data-parent='`#property-${i}-accordion`' >
 
                       <div class='d-flex align-items-start'>
                         <div class='nav flex-column nav-pills' role=tablist >
