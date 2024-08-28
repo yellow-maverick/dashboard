@@ -16,7 +16,8 @@
     },
     "products": {
       "add": "Adicionar produto"
-    }
+    },
+    "queries": "Consultas"
   },
   "word_cloud": {
     "positive_words": "Palavras Positivas",
@@ -138,7 +139,8 @@
     },
     "site": "Site",
     "name": "Nome",
-    "save": "Salvar"
+    "save": "Salvar",
+    "save_error": "Erro ao salvar o produto: % {error}"
   },
   "prices_table": {
     "product": "Produto",

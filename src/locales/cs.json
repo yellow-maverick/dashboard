@@ -16,7 +16,8 @@
     },
     "products": {
       "add": "Přidat produkt"
-    }
+    },
+    "queries": "Dotazy"
   },
   "word_cloud": {
     "positive_words": "Pozitivní slova",
@@ -138,7 +139,8 @@
     },
     "site": "místo",
     "name": "Jméno",
-    "save": "Uložit"
+    "save": "Uložit",
+    "save_error": "Chyba při ukládání produktu: % {error}"
   },
   "prices_table": {
     "product": "Produkt",

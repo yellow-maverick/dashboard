@@ -6,6 +6,7 @@
     "made_with": "made with {with} by {by}"
   },
   "routes": {
+    "queries": "Queries",
     "dashboard": "Dashboard",
     "analytics": "Analytics",
     "reviews": "Reviews",

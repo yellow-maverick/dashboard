@@ -16,7 +16,8 @@
     },
     "products": {
       "add": "Lisää tuote"
-    }
+    },
+    "queries": "Kyselyt"
   },
   "word_cloud": {
     "positive_words": "Positiiviset sanat",
@@ -138,7 +139,8 @@
     },
     "site": "Sivusto",
     "name": "Nimi",
-    "save": "Tallentaa"
+    "save": "Tallentaa",
+    "save_error": "Virhe tallennettaessa tuotetta: % {error}"
   },
   "prices_table": {
     "product": "Tuote",

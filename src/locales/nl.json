@@ -16,7 +16,8 @@
     },
     "products": {
       "add": "Product toevoegen"
-    }
+    },
+    "queries": "Vragen"
   },
   "word_cloud": {
     "positive_words": "Positieve woorden",
@@ -138,7 +139,8 @@
     },
     "site": "Locatie",
     "name": "Naam",
-    "save": "Redden"
+    "save": "Redden",
+    "save_error": "Fout bij het opslaan van het product: % {error}"
   },
   "prices_table": {
     "product": "Product",

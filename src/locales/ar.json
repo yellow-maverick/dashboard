@@ -16,7 +16,8 @@
     },
     "products": {
       "add": "إضافة المنتج"
-    }
+    },
+    "queries": "الاستعلامات"
   },
   "word_cloud": {
     "positive_words": "كلمات إيجابية",
@@ -138,7 +139,8 @@
     },
     "site": "موقع",
     "name": "اسم",
-    "save": "يحفظ"
+    "save": "يحفظ",
+    "save_error": "خطأ في حفظ المنتج: % {error}"
   },
   "prices_table": {
     "product": "منتج",
