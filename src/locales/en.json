@@ -114,16 +114,17 @@
     "quality": "Quality"
   },
   "connections": {
+    "scraping": "Collecting data",
+    "scraping_error": "Error collecting data, please try a different URL",
+    "site": "Site",
+    "name": "Name"
   },
   "products": {
-    "site": "Site",
     "name": "Name",
     "url": "Product URL",
     "more_details": "More product details",
     "basic_info": "Basic product information",
     "additional_info": "Additional product information",
-    "scraping": "Collecting data",
-    "scraping_error": "Error collecting data, please try a different URL",
     "save_error": "Error saving the product: %{error}",
     "available": {
       "title": "Available",
