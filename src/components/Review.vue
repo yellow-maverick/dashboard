@@ -27,7 +27,7 @@ export default{
         locale: this.$i18n.locale
       }
       this.review.comments?.forEach(comment => {
-        if (comment.type != "manager") payload.data[`comment_${comment.type}`] = comment.comment;
+        payload.data[`comment_${comment.type}`] = comment.comment;
       });
 
       let r = await alova.Post(`/v1/translate`, payload)
@@ -37,9 +37,7 @@ export default{
 
       if (this.review.title?.length) this.translations[this.review.id][this.$i18n.locale]['title'] = Lib.DOMParser(response.title?.[0]);
       this.review.comments?.forEach(comment => {
-        if (comment.type != "manager") {
-          this.translations[this.review.id][this.$i18n.locale][`comment_${comment.type}`] = Lib.DOMParser(response[`comment_${comment.type}`]?.[0]);
-        }
+        this.translations[this.review.id][this.$i18n.locale][`comment_${comment.type}`] = Lib.DOMParser(response[`comment_${comment.type}`]?.[0]);
       });
 
       this.loading = false;
@@ -70,6 +68,12 @@ export default{
     scaledRating () {
       return Lib.scale(this.review.ratings.overall, 100)
     },
+    user_comments () {
+      return this.review.comments?.filter(c => c.type != 'manager' && c.comment)
+    },
+    manager_comment () {
+      return this.review.comments?.find(c => c.type == 'manager')
+    }
   }
 }
 </script>
@@ -99,11 +103,13 @@ export default{
 
       <span class="me-2" v-if='review.origin'>{{ $t('reviews.from') }}</span><span class="text-bold"> {{ review.origin }} </span>
 
-      <div v-for='comment in review.comments' :key='comment' class='mt-2'>
-        <template v-if=comment.comment >
-          <strong> {{ upper(comment.type) }}</strong>
-          <div> {{ (review.translated && translations[review.id][this.$i18n.locale]) ? translations[review.id][this.$i18n.locale][`comment_${comment.type}`] : comment.comment }}</div>
-        </template>
+      <div v-for='comment in user_comments' :key='comment' class='mt-2'>
+        <strong> {{ upper(comment.type) }}</strong>
+        <div> {{ (review.translated && translations[review.id][this.$i18n.locale]) ? translations[review.id][this.$i18n.locale][`comment_${comment.type}`] : comment.comment }}</div>
+      </div>
+      <div v-if='manager_comment' class='mt-2 mb-1' style='background-color: #f0f0fa; padding: 8px; margin: -8px; color: #444'>
+          <strong> {{ upper(manager_comment.type) }}</strong>
+          <div> {{ (review.translated && translations[review.id][this.$i18n.locale]) ? translations[review.id][this.$i18n.locale].comment_manager : manager_comment.comment }}</div>
       </div>
       <div class="row">
         <a :href='review.source.respond_url' target='_blank' v-if="review.source.respond_url" class="btn btn-outline-primary ms-2 me-4 col-12 col-sm-auto mb-2 mb-sm-0 mt-2"
