@@ -5,6 +5,7 @@ import { alova } from '../js/alova'
 
 import Multiselect from 'vue-multiselect'
 import ProductForm from '@/components/ProductForm.vue'
+import ConnectionsEdit from '@/components/ConnectionsEdit.vue'
 
 export default {
   data() {
@@ -16,7 +17,7 @@ export default {
     }
   },
   props:      [],
-  components: {Multiselect, ProductForm},
+  components: {Multiselect, ProductForm, ConnectionsEdit},
 
   created() {
     this.product_id  = this.$route.query.product_id // for initial render to scroll expanded
@@ -138,16 +139,7 @@ export default {
                           </div>
 
                           <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >
-                            <div class=form-group v-for='c in pd.connections' :key=c.source.slug >
-                              <label :for='`source_${c.source.slug}`' >
-                                <a :href=c.url target=_blank >
-                                  <img @error='hide' style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
-                                  <span> {{c.source.name}} </span>
-                                  <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
-                                </a>
-                              </label>
-                              <input name='`source_${c.source.slug}`' v-model=c.url type=text class=form-control />
-                            </div>
+                            <ConnectionsEdit :connections=pd.connections />
                           </div>
 
                           <div :id='`comps-${i}${j}`' role=tabpanel class='tab-pane fade' >
