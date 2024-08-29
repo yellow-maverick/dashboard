@@ -5,12 +5,12 @@ import languagesCountries from './languages-countries'
 
 window.ym.lib = {
 
-  globalScale:  5,
+  globalScale:  10,
   globalDigits: 1,
   locales: ["en", "nl", "it", "fi", "fr", "de", "pt", "ru", "es", "sv"],
 
   scale(v, scale) {
-    return this.round(parseFloat(v) * (this.globalScale / scale))
+    return parseFloat(this.round(parseFloat(v) * (this.globalScale / scale)))
   },
 
   sourceImage(slug) {

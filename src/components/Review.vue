@@ -66,7 +66,7 @@ export default{
       return Lib.ratingColor(this.scaledRating)
     },
     scaledRating () {
-      return Lib.scale(this.review.ratings.overall, 100)
+      return Lib.scale(this.review.ratings.overall, 10)
     },
     user_comments () {
       return this.review.comments?.filter(c => c.type != 'manager' && c.comment)
