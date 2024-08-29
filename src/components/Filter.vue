@@ -15,7 +15,8 @@ export default{
       options: {
         context: ['brand', 'product'],
         product_id: [],
-        period: []
+        period: [],
+        rating: ["", "100", "higher_than_7.5", "higher_than_6", "lower_than_6", "lower_than_3"],
       },
       products_per_property: {},
       data: {

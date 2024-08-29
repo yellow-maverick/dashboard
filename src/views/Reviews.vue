@@ -12,6 +12,7 @@ export default{
         product_id:  { type: 'select', multiple: true, customLabel: function (id) { return this.products[id]?.name }, condition: (d) => d.context == 'product' },
         group_id:    { type: 'select' },
         source_ids:  { type: 'select', multiple: true, customLabel: function (id) { return this.sources[id]?.name } },
+        rating:      { type: 'select', multiple: false, customLabel: function (r) { return this.$t(`rating_ranges.${r}`) } },
       },
       filter: null,
     }
