@@ -128,7 +128,8 @@
     "scraping_error": "Error collecting data, please try a different URL",
     "site": "Site",
     "name": "Name",
-    "url": "URL"
+    "url": "URL",
+    "save": "Save"
   },
   "products": {
     "add_new": "Add new",

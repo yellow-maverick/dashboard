@@ -139,7 +139,7 @@ export default {
                           </div>
 
                           <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >
-                            <ConnectionsEdit :connections=pd.connections />
+                            <ConnectionsEdit :connections=pd.connections :product=pd />
                           </div>
 
                           <div :id='`comps-${i}${j}`' role=tabpanel class='tab-pane fade' >

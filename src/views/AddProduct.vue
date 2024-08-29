@@ -81,7 +81,7 @@ export default {
         </div>
 
         <div >
-          <button type=button class='btn btn-primary' @click=save() :disabled='scraping || !product.name || !product.connection.url' >
+          <button type=button class='btn btn-primary' @click=save() :disabled='!product.name || !product.connection.url' >
             {{ $t('products.save') }}
           </button>
           <span v-if=status > {{status}} </span>

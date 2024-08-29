@@ -1,6 +1,6 @@
 <script>
 import Lib from '../js/lib.js'
-import ScrapedConnection from '@/components/ScrapedConnection.vue'
+import AddConnection from '@/components/AddConnection.vue'
 
 export default {
   data() {
@@ -10,8 +10,8 @@ export default {
       scraped: {},
     }
   },
-  props: ['connections'],
-  components: {ScrapedConnection},
+  props: ['connections', 'product'],
+  components: {AddConnection},
 
   methods: {
 
@@ -29,11 +29,7 @@ export default {
 <template>
   <div>
     <div v-if=adding >
-      <div class=form-group >
-        <label for=url >{{ $t('connections.url') }}</label>
-        <input name=url v-model=addUrl type=text class=form-control />
-      </div>
-      <ScrapedConnection :scraped=scraped :url=addUrl />
+      <AddConnection :product=product :adding=adding />
     </div>
 
     <div v-else >
@@ -44,7 +40,7 @@ export default {
           <a :href=c.url target=_blank >
             <img @error='hide' style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
             <span> {{c.source.name}} </span>
-            <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
+            <small><font-awesome-icon class='ms-1' icon='fa-solid fa-external-link' /></small>
           </a>
         </label>
         <input name='`source_${c.source.slug}`' v-model=c.url type=text class=form-control />
