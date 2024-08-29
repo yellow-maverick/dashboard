@@ -160,8 +160,8 @@ export default{
 <template>
   <div class="filter">
     <div class='card'>
-      <h5 class="card-title px-4 py-3">{{ $t("filter.title") }}</h5>
-      <div class="card-body">
+      <h5 class="card-title px-3 py-3">{{ $t("filter.title") }}</h5>
+      <div class="card-body px-3">
         <div class="row" v-if='loadedURL'>
           <template v-for="(v,k) in fields" :key="k">
             <!-- daterange -->

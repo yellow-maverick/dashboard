@@ -8,7 +8,7 @@
     id="navbarBlur"
     data-scroll="true"
   >
-    <div class="px-0 py-1 container-fluid">
+    <div class="px-3 py-1 container-fluid">
       <breadcrumbs :currentPage="currentRouteName" textWhite="text-white" />
 
       <div

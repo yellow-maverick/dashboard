@@ -111,12 +111,12 @@ export default{
           <strong> {{ upper(manager_comment.type) }}</strong>
           <div> {{ (review.translated && translations[review.id][this.$i18n.locale]) ? translations[review.id][this.$i18n.locale].comment_manager : manager_comment.comment }}</div>
       </div>
-      <div class="row">
-        <a :href='review.source.respond_url' target='_blank' v-if="review.source.respond_url" class="btn btn-outline-primary ms-2 me-4 col-12 col-sm-auto mb-2 mb-sm-0 mt-2"
+      <div class="row mt-3">
+        <a :href='review.source.respond_url' target='_blank' v-if="review.source.respond_url" class="btn btn-outline-primary ms-2 me-4 col-12 col-sm-auto mb-2 mb-sm-0"
           @click="openRespondUrl" >
           {{ $t("reviews.respond") }}
         </a>
-        <button v-if="showTranslateButton()" class="btn btn-outline-primary me-4 col-12 col-sm-auto mb-2 mb-sm-0 mt-2"
+        <button v-if="showTranslateButton()" class="btn btn-outline-primary me-4 col-12 col-sm-auto mb-2 mb-sm-0"
           @click="toggleTranslation" >
           {{ review.translated ? $t("reviews.show_original") : $t("reviews.translate") }}
         </button>

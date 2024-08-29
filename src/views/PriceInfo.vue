@@ -53,10 +53,10 @@ export default{
 </script>
 
 <template>
-  <div>
+  <div class="container-fluid">
     <Filter :fields=fields emitUpdate=true @filter:submit='load' @filter:created='load'/>
 
-    <div class="p-3 card-body table-responsive">
+    <div class="pt-3 table-responsive">
       <table class='table text-center' v-if='Object.keys(data || {}).length' >
         <thead>
           <tr class='bordered-side'>
