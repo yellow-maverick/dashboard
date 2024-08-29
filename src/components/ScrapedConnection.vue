@@ -24,11 +24,11 @@ export default {
       let r = (await (await alova.Get(`/v1/connections/scrape`, {params: {url: this.url}})).clone().json())
       this.scraped.error        = r.status
       this.scraped.source       = r.source
-      this.scraped.name         = r.property_info.name
-      this.scraped.currency     = r.property_info.price_info.currency || r.schema_org?.offer?.priceCurrency
-      this.scraped.price        = r.property_info.price_info.price    || r.schema_org?.offer?.price
-      this.scraped.availability = r.property_info.availability        || r.schema_org?.offer?.availability == 'InStock'
-      this.scraped.images       = r.property_info.images
+      this.scraped.name         = r.property_info.name                  || r.schema_org?.product?.name
+      this.scraped.currency     = r.property_info?.price_info?.currency || r.schema_org?.offer?.priceCurrency
+      this.scraped.price        = r.property_info?.price_info?.price    || r.schema_org?.offer?.price
+      this.scraped.availability = r.property_info?.availability         || r.schema_org?.offer?.availability.includes('InStock')
+      this.scraped.images       = r.property_info?.images               || [r.schema_org?.product?.image]
       this.scraping = false
     }
   },
@@ -63,19 +63,19 @@ export default {
           </div>
         </div>
 
-          <div class='form-group row border-bottom' >
-            <label class='col-5 col-form-label' > {{ $t('connections.site') }} </label>
-            <div class='col-6' >
-              <p class=form-control-plaintext > {{scraped.source.name}} </p>
-            </div>
+        <div v-if='scraped.source.slug != "schema_org"' class='form-group row border-bottom' >
+          <label class='col-5 col-form-label' > {{ $t('connections.site') }} </label>
+          <div class='col-6' >
+            <p class=form-control-plaintext > {{scraped.source.name}} </p>
           </div>
+        </div>
 
-            <div class='form-group row border-bottom' >
-              <label class='col-5 col-form-label' > {{ $t('connections.name') }} </label>
-              <div class='col-6' >
-                <a class=form-control-plaintext :href=url > {{scraped.name}} </a>
-              </div>
-            </div>
+        <div v-if=scraped.name class='form-group row border-bottom' >
+          <label class='col-5 col-form-label' > {{ $t('connections.name') }} </label>
+          <div class='col-6' >
+            <a class=form-control-plaintext :href=url > {{scraped.name}} </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

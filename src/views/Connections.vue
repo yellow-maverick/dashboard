@@ -97,7 +97,7 @@ export default {
               <div class='d-flex justify-content-start' >
                 <h6 class='card-subtitle mb-2 text-muted lh-3'>Products</h6>
                 <router-link :to="{path: '/products/add', query: {...$route.query, property_id: p.property_id}}" >
-                  <button class='btn ms-3' >Add new</button>
+                  <button class='btn ms-3' >{{$t('products.add_new')}}</button>
                 </router-link>
               </div>
 
