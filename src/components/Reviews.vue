@@ -8,9 +8,10 @@ export default{
   data() {
     return {
       perPage:      20,
-      page:         1,
+      page:         this.$route.query.page || 1,
       reviews:      [],
-      translations: {}
+      translations: {},
+      selectedReview: parseInt(this.$route.query.review_id)
     }
   },
   methods: {
@@ -21,7 +22,12 @@ export default{
     },
     paginate (page) {
       this.page = page
+      this.$router.push({ query: { ...this.$route.query, page: page } })
       this.load()
+    },
+    highlight (item) {
+      this.selectedReview = item.id
+      this.$router.push({query: { ...this.$route.query, review_id: item.id }})
     }
   },
   mounted () {
@@ -41,7 +47,7 @@ export default{
       <strong class="">{{ $t('reviews.page', { page: page }) }}</strong>
     </div>
     <template v-if='filter' >
-      <review v-for='review in reviews' :key='review.id' :review='review' :translations='translations' />
+      <review v-for='review in reviews' :key='review.id' :review='review' :translations='translations' :selected='selectedReview == review.id' @click='highlight(review)' />
       <div class="mb-4 card z-index-2" v-if='reviews.length == 0'>
         <div class="p-3 card-body d-flex justify-content-center"><strong>{{ $t('reviews.no_reviews') }}</strong></div>
       </div>

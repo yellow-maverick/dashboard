@@ -16,7 +16,7 @@ export default{
         context: ['brand', 'product'],
         product_id: [],
         period: [],
-        rating: ["", "100", "higher_than_7.5", "higher_than_6", "lower_than_6", "lower_than_3"],
+        rating: ["", "100", "higher_than_7_5", "higher_than_6", "lower_than_6", "lower_than_3"],
       },
       products_per_property: {},
       data: {
@@ -84,7 +84,7 @@ export default{
         }
       })
       this.loadedURL = true
-      this.submit()
+      this.submit(false)
     },
 
     selectProduct() {
@@ -138,11 +138,12 @@ export default{
       this.selectProduct()
       if (!this.emitUpdate) return
       let d = this.prepareData()
+      this.$router.push({ path: this.$route.path, query: { token: this.$route.query.token, ...d } })
       this.$emit('filter:update', d)
     },
-    submit () {
+    submit (push) {
       let d = this.prepareData()
-      this.$router.push({ path: this.$route.path, query: { token: this.$route.query.token, ...d } })
+      if (push) this.$router.push({ path: this.$route.path, query: { token: this.$route.query.token, ...d } })
       this.$emit('filter:submit', d)
     },
     clear () {
@@ -200,7 +201,7 @@ export default{
           </template>
           <div class="form-group col-sm-6 col-md-3 col-lg-3 d-print-none">
             <label class="form-label">&nbsp;</label><br>
-            <button type="submit" class="btn btn-primary me-3 mb-2" @click='submit'>{{ $t("filter.submit") }}</button>
+            <button type="submit" class="btn btn-primary me-3 mb-2" @click='submit(true)'>{{ $t("filter.submit") }}</button>
             <button type="submit" class="btn btn-outline-primary mb-2" @click='clear'>{{ $t("filter.clear") }}</button>
           </div>
         </div>

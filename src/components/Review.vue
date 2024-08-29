@@ -8,7 +8,7 @@ export default{
     return {
     }
   },
-  props:      ['review', 'translations'],
+  props:      ['review', 'translations', 'selected'],
   components: {},
 
   methods: {
@@ -74,12 +74,12 @@ export default{
     manager_comment () {
       return this.review.comments?.find(c => c.type == 'manager')
     }
-  }
+  },
 }
 </script>
 
 <template>
-  <div class="mb-4 card z-index-2 review">
+  <div class="mb-4 card z-index-2 review" :class='{ highlighted: selected }'>
     <div class="p-3 card-body">
       <div class="border-bottom-1 row justify-content-between d-flex mb-4">
         <div class='col-11 d-flex justify-content-start'>

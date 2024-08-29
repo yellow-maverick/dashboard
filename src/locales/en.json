@@ -80,7 +80,7 @@
   },
   "rating_ranges": {
     "100": "Exactly 10",
-    "higher_than_7.5": "Higher than 7.5",
+    "higher_than_7_5": "Higher than 7.5",
     "higher_than_6": "Higher than/equal to 6",
     "lower_than_6": "Lower than 6",
     "lower_than_3": "Lower than 3"
