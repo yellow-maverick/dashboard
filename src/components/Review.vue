@@ -54,6 +54,18 @@ export default{
     showTranslateButton() {
       return this.$i18n.locale != this.review.sentiment?.language_code && this.review.comments?.length;
     },
+
+    forward (review) {
+      let body = `
+Please, open this review: ${location.href}
+
+Title: ${review.title}
+
+Date: ${review.review_date}
+`;
+
+    return `mailto:?subject=${encodeURIComponent(this.$t("reviews.forward_subject"))}&body=${encodeURIComponent(body)}`;
+    }
   },
   computed: {
     sourceImage() {
@@ -111,7 +123,7 @@ export default{
           <strong> {{ upper(manager_comment.type) }}</strong>
           <div> {{ (review.translated && translations[review.id][this.$i18n.locale]) ? translations[review.id][this.$i18n.locale].comment_manager : manager_comment.comment }}</div>
       </div>
-      <div class="row mt-3">
+      <div class="row mt-3" @click.stop >
         <a :href='review.source.respond_url' target='_blank' v-if="review.source.respond_url" class="btn btn-outline-primary ms-2 me-4 col-12 col-sm-auto mb-2 mb-sm-0"
           @click="openRespondUrl" >
           {{ $t("reviews.respond") }}
@@ -120,6 +132,10 @@ export default{
           @click="toggleTranslation" >
           {{ review.translated ? $t("reviews.show_original") : $t("reviews.translate") }}
         </button>
+        <a :href="forward(review)" class="btn btn-outline-primary me-4 col-12 col-sm-auto mb-2 mb-sm-0">
+          {{ $t("reviews.forward") }}
+        </a>
+
       </div>
     </div>
   </div>

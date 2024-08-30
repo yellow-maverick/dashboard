@@ -99,7 +99,9 @@
     "show_original": "Show original",
     "translate": "Translate",
     "from": "From",
-    "respond": "Respond"
+    "respond": "Respond",
+    "forward": "Forward",
+    "forward_subject": "Check out this review"
   },
   "sentiment_kpi": {
     "title": "Sentiment KPI",
