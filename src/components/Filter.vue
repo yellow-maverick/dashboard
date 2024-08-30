@@ -49,7 +49,7 @@ export default{
 
       this.profile = await this.$store.dispatch('profile/fetch')
       if (!this.data.property_id)
-        this.data.property_id = { id: this.profile.subscriptions[0].property_id }
+        this.data.property_id = this.profile.subscriptions[0].property_id
 
       let k = 'property_id'
       if ('property_id' in this.fields || 'product_id' in this.fields) {
@@ -57,12 +57,14 @@ export default{
           return _.mapKeys(p, (v,k) => k == 'property_id' ? 'id' : k)
         })
         this.properties = this.options.property_id.reduce((r,e) => {r[e.id] = e; return r}, {})
+        this.options[k] = Object.keys(this.properties)
         if (!this.data[k]) this.data[k] = this.options[k][0] //first property
       }
       if ('product_id' in this.fields) {
         this.products_per_property = this.options[k].reduce((r,a) => {
-          r[a.id] = r[a.id] || []
-          r[a.id] = r[a.id].concat(a.products)
+          let p = this.properties[a]
+          r[p.id] = r[p.id] || []
+          r[p.id] = r[p.id].concat(p.products)
           return r
         }, {})
         if (this.data.property_id) this.selectProduct()

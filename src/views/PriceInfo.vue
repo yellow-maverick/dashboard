@@ -8,7 +8,7 @@ export default{
     return {
       fields: {
         daterange:   { type: 'daterange' },
-        property_id: { type: 'select' },
+        property_id: { type: 'select', customLabel: function (id) { return this.properties[id]?.name } },
         product_id:  { type: 'select', multiple: true, customLabel: function (id) { return this.products[id]?.name } },
         period:      { type: 'select', default: 'week' },
         source_ids:  { type: 'select', multiple: true, customLabel: function (id) { return this.sources[id]?.name } },
