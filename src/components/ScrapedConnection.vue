@@ -47,33 +47,34 @@ export default {
     <div class='card col-6 mb-3' v-if=scraped.source >
       <div class=card-body >
 
-        <div class='pb-3 border-bottom'>
+        <div class='py-2 border-bottom'>
           <PhotoGallery :images=scraped.images />
         </div>
 
-        <h3 class='text-primary pb-3 border-bottom' v-if=scraped.price >
-          <span class=price > {{scraped.price}} </span>
-          <span class=currency > &nbsp;{{scraped.currency}} </span>
-        </h3 >
+        <div class='row py-2 border-bottom align-items-center'>
+          <label class='col-5 col-form-label' > {{ $t('products.price') }} </label>
+          <h3 class='col-6 text-primary m-0' v-if=scraped.price >
+            <span class=price > {{scraped.price}} </span>
+            <span class=currency > &nbsp;{{scraped.currency}} </span>
+          </h3 >
+        </div>
 
-        <div class='form-group row border-bottom' >
-          <label class='col-5 col-form-label' > {{ $t('products.available.title') }} </label>
+        <div class='py-2 row border-bottom align-items-center' >
+          <label class='col-5 col-form-label py-0' > {{ $t('products.available.title') }} </label>
           <div class='col-6' >
-            <p class=form-control-plaintext >
             {{$t(`products.available.${scraped.availability ? 'yes' : 'no'}`)}}
-            </p>
           </div>
         </div>
 
-        <div v-if='scraped.source.slug != "schema_org"' class='form-group row border-bottom' >
-          <label class='col-5 col-form-label' > {{ $t('connections.site') }} </label>
+        <div v-if='scraped.source.slug != "schema_org"' class='row py-2 border-bottom align-items-center' >
+          <label class='col-5 col-form-label py-0' > {{ $t('connections.site') }} </label>
           <div class='col-6' >
-            <p class=form-control-plaintext > {{scraped.source.name}} </p>
+            {{scraped.source.name}}
           </div>
         </div>
 
-        <div v-if=scraped.name class='form-group row border-bottom' >
-          <label class='col-5 col-form-label' > {{ $t('connections.name') }} </label>
+        <div v-if=scraped.name class='row py-2 border-bottom align-items-center' >
+          <label class='col-5 col-form-label ' > {{ $t('connections.name') }} </label>
           <div class='col-6' >
             <a class=form-control-plaintext :href=url > {{scraped.name}} </a>
           </div>

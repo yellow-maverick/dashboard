@@ -146,6 +146,7 @@
       "connections": "Connections",
       "competitors": "Competitors"
     },
+    "price": "Price",
     "available": {
       "title": "Available",
       "yes": "Yes",

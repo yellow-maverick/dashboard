@@ -20,6 +20,9 @@ export default {
       this.adding = true
     },
 
+    hide(event) {
+      event.target.style.display = 'none'
+    },
     sourceImage(slug) {
       return Lib.sourceImage(slug)
     },
@@ -30,7 +33,7 @@ export default {
 <template>
   <div>
     <div v-if=adding class='mb-5 border-bottom' >
-      <AddConnection :product=product :adding=adding />
+      <AddConnection :product=product />
     </div>
 
     <div>
@@ -40,13 +43,13 @@ export default {
         <div class='d-flex align-items-center' >
           <label :for='`source_${c.source.slug}`' >
             <a :href=c.url target=_blank >
-              <img @error='hide' style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
+              <img @error=hide style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
               <span> {{c.source.name}} </span>
               <small><font-awesome-icon class='ms-1' icon='fa-solid fa-external-link' /></small>
             </a>
           </label>
 
-          <div class='position-relative h-100 ms-3 pb-3 col-2' >
+          <div class='ms-3 pb-3' style='height: 50px' >
             <PhotoGallery :images=c.images />
           </div>
         </div>

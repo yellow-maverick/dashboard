@@ -1,7 +1,7 @@
 <template>
-  <div class='photo-card-container row g-2 h-100 ' >
-    <div class='photo-gallery h-100' >
-      <div class='col-6 col-md-3 photo-card' v-for='(image, index) in images' :key=index >
+  <div class='photo-card-container row h-100' >
+    <div class=photo-gallery >
+      <div class=photo-card v-for='(image, index) in images' :key=index >
         <img :src=image class='img-thumbnail card-img' alt=Thumbnail @click=openModal(image) data-bs-toggle=modal :data-bs-target='`#${id}`' />
       </div>
     </div>
@@ -29,15 +29,18 @@
   align-items: center;
   justify-content: start;
   gap: 0;
-  width: 100%;
+  width: auto;
+  height: 100%;
   overflow: hidden; /* Ensures no overflow of the parent container */
+  padding-right: 30px;
 }
 
 .photo-card {
   flex-grow: 1;
   flex-basis: 0;
-  min-width: 0;
+  min-width: 50px;
   max-width: 100%;
+  height: 100%;
   margin-right: -20px;
   overflow: hidden;
   z-index: 1;
@@ -55,8 +58,8 @@
   filter: brightness(0.5);
 }
 .card-img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);

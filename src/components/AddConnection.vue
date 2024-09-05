@@ -1,5 +1,5 @@
 <script>
-//import { alova } from '../js/alova.js'
+import { alova } from '../js/alova.js'
 import ScrapedConnection from '@/components/ScrapedConnection.vue'
 
 export default {
@@ -14,7 +14,7 @@ export default {
       scraped: {},
     }
   },
-  props: ['property', 'product', 'adding'],
+  props: ['property', 'product'],
   components: {ScrapedConnection},
 
   created() {
@@ -37,13 +37,12 @@ export default {
   methods: {
 
     async save() {
-      this.adding = false
-      //let c = (await (await alova.Post(`/v1/connections`, {product: this.product})).clone().json())
-      //if (c.id) {
-      //  this.adding = false
-      //} else {
-      //  this.status = this.$t('products.save_error', {error: c.error})
-      //}
+      let c = (await (await alova.Post(`/v1/connections`, {product_id: this.product.id, connection: this.connection})).clone().json())
+      if (c.id) {
+        this.$parent.adding = false
+      } else {
+        this.status = this.$t('products.save_error', {error: c.error})
+      }
     },
 
     async load() {
