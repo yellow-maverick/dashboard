@@ -119,23 +119,25 @@ export default {
                       <div class='d-flex align-items-start'>
                         <div class='nav flex-column nav-pills' role=tablist >
                           <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pdbi-${i}${j}`' :data-bs-target='`#pdbi-${i}${j}`' >
-                            Basic info
+                            {{$t('products.tabs.details')}}
                           </button>
 
                           <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`conns-${i}${j}`' :data-bs-target='`#conns-${i}${j}`' >
-                            Connections
+                            {{$t('products.tabs.connections')}}
                           </button>
 
                           <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`comps-${i}${j}`' :data-bs-target='`#comps-${i}${j}`' >
-                            Competitors 
+                            {{$t('products.tabs.competitors')}}
                           </button>
                         </div>
 
-                        <div class='tab-content card-body' >
+                        <div class='tab-content card-body pt-0' >
 
                           <div :id='`pdbi-${i}${j}`' role=tabpanel class='tab-pane fade show active' >
                             <ProductForm :product=pd :categories=categories />
-                            <button type=button class='btn btn-primary' @click='productSave(pd)' > Save </button>
+                            <button type=button class='btn btn-primary' @click='productSave(pd)' >
+                              {{$t('products.save')}}
+                            </button>
                           </div>
 
                           <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >

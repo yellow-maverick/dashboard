@@ -1,13 +1,13 @@
 <template>
-  <div class='photo-card-container row g-2 h-100 pb-3 border-bottom' >
-    <div class=photo-gallery >
+  <div class='photo-card-container row g-2 h-100 ' >
+    <div class='photo-gallery h-100' >
       <div class='col-6 col-md-3 photo-card' v-for='(image, index) in images' :key=index >
-        <img :src=image class='img-thumbnail card-img' alt=Thumbnail @click=openModal(image) data-bs-toggle=modal data-bs-target=#imageModal />
+        <img :src=image class='img-thumbnail card-img' alt=Thumbnail @click=openModal(image) data-bs-toggle=modal :data-bs-target='`#${id}`' />
       </div>
     </div>
 
     <!-- Modal -->
-    <div class='modal fade' id=imageModal tabindex=-1 aria-labelledby=imageModalLabel aria-hidden=true >
+    <div v-if=selectedImage class='modal fade' :id=id tabindex=-1 aria-labelledby=imageModalLabel aria-hidden=true >
       <div class='modal-dialog modal-dialog-centered modal-lg'>
         <div class=modal-content >
           <div class=modal-header >
@@ -30,7 +30,6 @@
   justify-content: start;
   gap: 0;
   width: 100%;
-  padding: 20px;
   overflow: hidden; /* Ensures no overflow of the parent container */
 }
 
@@ -69,6 +68,7 @@
     data() {
       return {
         selectedImage: null,
+        id: `imageModal-${Math.random()}`,
       }
     },
     props: ['images'],

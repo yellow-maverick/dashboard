@@ -141,6 +141,11 @@
     "basic_info": "Basic product information",
     "additional_info": "Additional product information",
     "save_error": "Error saving the product: %{error}",
+    "tabs": {
+      "details": "Details",
+      "connections": "Connections",
+      "competitors": "Competitors"
+    },
     "available": {
       "title": "Available",
       "yes": "Yes",

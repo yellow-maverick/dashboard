@@ -28,7 +28,7 @@ export default {
       this.scraped.currency     = r.property_info?.price_info?.currency || r.schema_org?.offer?.priceCurrency
       this.scraped.price        = r.property_info?.price_info?.price    || r.schema_org?.offer?.price
       this.scraped.availability = r.property_info?.availability         || r.schema_org?.offer?.availability.includes('InStock')
-      this.scraped.images       = r.property_info?.images               || [r.schema_org?.product?.image]
+      this.scraped.images       = r.property_info?.images               || [r.schema_org?.product?.image?.url || r.schema_org?.product?.image]
       this.scraping = false
     }
   },
@@ -47,7 +47,9 @@ export default {
     <div class='card col-6 mb-3' v-if=scraped.source >
       <div class=card-body >
 
-        <PhotoGallery :images=scraped.images />
+        <div class='pb-3 border-bottom'>
+          <PhotoGallery :images=scraped.images />
+        </div>
 
         <h3 class='text-primary pb-3 border-bottom' v-if=scraped.price >
           <span class=price > {{scraped.price}} </span>
