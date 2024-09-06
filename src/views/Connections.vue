@@ -92,7 +92,7 @@ export default {
                   <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-conns-${i}`' :data-bs-target='`#p-conns-${i}`' >
                     {{$t('properties.tabs.connections')}}
                   </button>
-                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-comps-${i}`' :data-bs-target='`#p-conns-${i}`' >
+                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-comps-${i}`' :data-bs-target='`#p-comps-${i}`' >
                     {{$t('properties.tabs.competitors')}}
                   </button>
                 </div>
