@@ -42,6 +42,7 @@ export default{
 
         with_products: null,
         with_connections: null,
+        with_competitors: null,
         with_response_rate: null,
         with_numerical_ratings: null,
         with_sentiment_ratings: null,
@@ -166,7 +167,7 @@ export default{
         <data-table class="thead-light" v-if='result.data' :items='result.data' :headers=fields :rows-per-page=result?.data?.length :fixed-header=true :table-height=760>
           <!-- this is to render big objects properly -->
           <template v-for="col in fields" #[`item-${col.value}`]="item" :key="col.value">
-            <div class="p-3"> {{ item[col.value] }} </div>
+            <div class=p-3 > {{ item[col.value] }} </div>
           </template>
         </data-table>
 
