@@ -20,6 +20,11 @@ export default {
       this.adding = true
     },
 
+    reload() {
+      this.adding = false
+      this.$parent.reload()
+    },
+
     hide(event) {
       event.target.style.display = 'none'
     },

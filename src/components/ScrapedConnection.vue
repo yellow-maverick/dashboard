@@ -28,7 +28,8 @@ export default {
       this.scraped.currency     = r.property_info?.price_info?.currency || r.schema_org?.offer?.priceCurrency
       this.scraped.price        = r.property_info?.price_info?.price    || r.schema_org?.offer?.price
       this.scraped.availability = r.property_info?.availability         || r.schema_org?.offer?.availability.includes('InStock')
-      this.scraped.images       = r.property_info?.images               || [r.schema_org?.product?.image?.url || r.schema_org?.product?.image]
+      let schemaImg = r.schema_org?.product?.image?.url || r.schema_org?.product?.image
+      this.scraped.images       = r.property_info?.images || (schemaImg ? [schemaImg] : [])
       this.scraping = false
     }
   },

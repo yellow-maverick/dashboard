@@ -131,7 +131,9 @@
     "site": "Site",
     "name": "Name",
     "url": "URL",
-    "save": "Save"
+    "save": "Save",
+    "add": "Add",
+    "cancel": "Cancel"
   },
   "products": {
     "add_new": "Add new",
