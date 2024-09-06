@@ -39,7 +39,7 @@ export default {
   methods: {
 
     cancel() {
-      this.parent.adding = false
+      this.$parent.adding = false
     },
 
     async save() {

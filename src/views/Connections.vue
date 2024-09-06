@@ -4,18 +4,19 @@ import Lib from '../js/lib.js'
 import { alova } from '../js/alova'
 
 import ProductsEdit from '@/components/ProductsEdit.vue'
+import ConnectionsEdit from '@/components/ConnectionsEdit.vue'
 
 export default {
   data() {
     return {
       property_id: null, // open on mount
       product_id:  null, // open on mount
-      properties: [],
-      categories: [],
+      properties:  [],
+      categories:  [],
     }
   },
   props:      [],
-  components: {ProductsEdit},
+  components: {ProductsEdit, ConnectionsEdit},
 
   created() {
     this.product_id  = this.$route.query.product_id // for initial render to scroll expanded
@@ -103,6 +104,7 @@ export default {
                   </div>
 
                   <div :id='`p-conns-${i}`' role=tabpanel class='tab-pane fade' >
+                    <ConnectionsEdit :property=p :connections=p.connections />
                   </div>
 
                   <div :id='`p-comps-${i}`' role=tabpanel class='tab-pane fade' >

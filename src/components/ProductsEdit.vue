@@ -8,7 +8,7 @@ import ConnectionsEdit from '@/components/ConnectionsEdit.vue'
 export default {
   data() {
     return {
-      product_id:  null, // preselection
+      product_id: null, // preselection
     }
   },
 
@@ -16,7 +16,7 @@ export default {
   components: {Multiselect, ProductForm, ConnectionsEdit},
 
   created() {
-    this.product_id  = this.$route.query.product_id // for initial render to scroll expanded
+    this.product_id = this.$route.query.product_id // for initial render to scroll expanded
   },
 
   methods: {
