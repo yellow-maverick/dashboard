@@ -124,6 +124,13 @@
     "support": "Support",
     "quality": "Quality"
   },
+  "properties": {
+    "tabs": {
+      "products": "Products",
+      "connections": "Connections",
+      "competitors": "Competitors"
+    }
+  },
   "connections": {
     "add_new": "Add new",
     "scraping": "Collecting data",

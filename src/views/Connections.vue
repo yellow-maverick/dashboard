@@ -102,62 +102,84 @@ export default {
 
             <div :id='`collapse-${i}`' class='collapse show' aria-labelledby=headingOne data-parent=#property-accordion >
 
-              <div class='d-flex justify-content-start' >
-                <h6 class='card-subtitle mb-2 text-muted lh-3'>Products</h6>
-                <router-link :to="{path: '/products/add', query: {...$route.query, property_id: p.property_id}}" >
-                  <button class='btn ms-3' >{{$t('products.add_new')}}</button>
-                </router-link>
-              </div>
+              <div class='d-flex align-items-start'>
+                <div class='nav flex-column nav-pills' role=tablist >
+                  <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`p-prods-${i}`' :data-bs-target='`#p-prods-${i}`' >
+                    {{$t('properties.tabs.products')}}
+                  </button>
+                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-conns-${i}`' :data-bs-target='`#p-conns-${i}`' >
+                    {{$t('properties.tabs.connections')}}
+                  </button>
+                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-comps-${i}`' :data-bs-target='`#p-conns-${i}`' >
+                    {{$t('properties.tabs.competitors')}}
+                  </button>
+                </div>
 
-              <div :id='`property-${i}-accordion`' class=accordion >
-                <div v-for='(pd,j) in p.products' :id='`product-${pd.id}`' class=accordion-item :key=j >
-                  <div class=card >
-                    <h6 class=accordion-header >
-                      <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=false :aria-controls='`#collapse-${i}-${j}`'  >
-                        {{pd.name}}
-                        <multiselect :options=categories :readonly=true v-model=pd.categories label=name :taggable=true :multiple=true :searchable=false />
-                        <div class='d-flex justify-content-end' style='flex: auto' >
-                          <img v-for='c in pd.connections' @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
-                        </div>
-                      </button>
-                    </h6>
+                <div class='tab-content card-body pt-0' >
 
-                      <div :id='`collapse-${i}-${j}`' :class='{collapse: product_id != pd.id, show: product_id == pd.id}' aria-labelledby=headingOne :data-parent='`#property-${i}-accordion`' >
-
-                      <div class='d-flex align-items-start'>
-                        <div class='nav flex-column nav-pills' role=tablist >
-                          <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pdbi-${i}${j}`' :data-bs-target='`#pdbi-${i}${j}`' >
-                            {{$t('products.tabs.details')}}
-                          </button>
-
-                          <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`conns-${i}${j}`' :data-bs-target='`#conns-${i}${j}`' >
-                            {{$t('products.tabs.connections')}}
-                          </button>
-
-                          <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`comps-${i}${j}`' :data-bs-target='`#comps-${i}${j}`' >
-                            {{$t('products.tabs.competitors')}}
-                          </button>
-                        </div>
-
-                        <div class='tab-content card-body pt-0' >
-
-                          <div :id='`pdbi-${i}${j}`' role=tabpanel class='tab-pane fade show active' >
-                            <ProductForm :product=pd :categories=categories />
-                            <button type=button class='btn btn-primary' @click='productSave(pd)' >
-                              {{$t('products.save')}}
+                  <div :id='`p-prods-${i}`' role=tabpanel class='tab-pane fade show active' >
+                    <router-link :to="{path: '/products/add', query: {...$route.query, property_id: p.property_id}}" >
+                      <button class=btn >{{$t('products.add_new')}}</button>
+                    </router-link>
+                    <div :id='`property-${i}-accordion`' class=accordion >
+                      <div v-for='(pd,j) in p.products' :id='`product-${pd.id}`' class=accordion-item :key=j >
+                        <div class=card >
+                          <h6 class=accordion-header >
+                            <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${i}-${j}`' aria-expanded=false :aria-controls='`#collapse-${i}-${j}`'  >
+                              {{pd.name}}
+                              <multiselect :options=categories :readonly=true v-model=pd.categories label=name :taggable=true :multiple=true :searchable=false />
+                              <div class='d-flex justify-content-end' style='flex: auto' >
+                                <img v-for='c in pd.connections' @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
+                              </div>
                             </button>
-                          </div>
+                          </h6>
 
-                          <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >
-                            <ConnectionsEdit :connections=pd.connections :product=pd />
-                          </div>
+                            <div :id='`collapse-${i}-${j}`' :class='{collapse: product_id != pd.id, show: product_id == pd.id}' aria-labelledby=headingOne :data-parent='`#property-${i}-accordion`' >
 
-                          <div :id='`comps-${i}${j}`' role=tabpanel class='tab-pane fade' >
-                          </div>
+                              <div class='d-flex align-items-start'>
+                                <div class='nav flex-column nav-pills' role=tablist >
+                                  <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pd-bi-${i}${j}`' :data-bs-target='`#pd-bi-${i}${j}`' >
+                                    {{$t('products.tabs.details')}}
+                                  </button>
+
+                                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-conns-${i}${j}`' :data-bs-target='`#pd-conns-${i}${j}`' >
+                                    {{$t('products.tabs.connections')}}
+                                  </button>
+
+                                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-comps-${i}${j}`' :data-bs-target='`#pd-comps-${i}${j}`' >
+                                    {{$t('products.tabs.competitors')}}
+                                  </button>
+                                </div>
+
+                                <div class='tab-content card-body pt-0' >
+
+                                  <div :id='`pd-bi-${i}${j}`' role=tabpanel class='tab-pane fade show active' >
+                                    <ProductForm :product=pd :categories=categories />
+                                    <button type=button class='btn btn-primary' @click='productSave(pd)' >
+                                      {{$t('products.save')}}
+                                    </button>
+                                  </div>
+
+                                  <div :id='`conns-${i}${j}`' role=tabpanel class='tab-pane fade' >
+                                    <ConnectionsEdit :connections=pd.connections :product=pd />
+                                  </div>
+
+                                  <div :id='`pd-comps-${i}${j}`' role=tabpanel class='tab-pane fade' >
+                                  </div>
+
+                                </div>
+                              </div>
+
+                            </div>
 
                         </div>
                       </div>
+                    </div>
 
+                    <div :id='`p-conns-${i}`' role=tabpanel class='tab-pane fade' >
+                    </div>
+
+                    <div :id='`p-comps-${i}`' role=tabpanel class='tab-pane fade' >
                     </div>
 
                   </div>
