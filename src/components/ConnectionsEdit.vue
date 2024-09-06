@@ -14,6 +14,9 @@ export default {
   props: ['connections', 'product'],
   components: {AddConnection, PhotoGallery},
 
+  created() {
+  },
+
   methods: {
 
     add() {
