@@ -7,11 +7,11 @@ export default{
     return {
       fields: {
         context:     { type: 'radio', default: 'brand' },
-        daterange:   { type: 'daterange' },
-        property_id: { type: 'select', customLabel: function (id) { return this.properties[id]?.name } },
-        product_id:  { type: 'select', multiple: true, customLabel: function (id) { return this.products[id]?.name }, condition: (d) => d.context == 'product' },
+        daterange:   { type: 'daterange', allowEmpty: false },
+        property_id: { type: 'select', hash: true, label:'name', allowEmpty: false },
+        product_id:  { type: 'select', multiple: true, hash: true, label:'name', condition: (d) => d.context == 'product' },
         group_id:    { type: 'select' },
-        source_ids:  { type: 'select', multiple: true, customLabel: function (id) { return this.sources[id]?.name } },
+        source_ids:  { type: 'select', multiple: true, hash: true, label: 'name' },
         rating:      { type: 'select', multiple: false, customLabel: function (r) { return this.$t(`rating_ranges.${r}`) } },
       },
       filter: null,

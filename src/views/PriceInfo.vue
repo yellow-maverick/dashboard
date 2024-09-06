@@ -7,11 +7,11 @@ export default{
   data () {
     return {
       fields: {
-        daterange:   { type: 'daterange' },
-        property_id: { type: 'select', customLabel: function (id) { return this.properties[id]?.name } },
-        product_id:  { type: 'select', multiple: true, customLabel: function (id) { return this.products[id]?.name } },
+        daterange:   { type: 'daterange', allowEmpty: false },
+        property_id: { type: 'select', hash: true, allowEmpty: false },
+        product_id:  { type: 'select', multiple: true, hash: true },
         period:      { type: 'select', default: 'week' },
-        source_ids:  { type: 'select', multiple: true, customLabel: function (id) { return this.sources[id]?.name } },
+        source_ids:  { type: 'select', multiple: true, hash: true },
       },
       filter: null,
       data: null,
@@ -75,7 +75,7 @@ export default{
                   <font-awesome-icon class="ms-1" icon="fa-solid fa-circle-info" />
                 </span></td>
               <td>
-                <a :href='meta.connections[source]?.url'>
+                <a target=_blank :href='meta.connections[source]?.url'>
                   {{ source }} <small><font-awesome-icon class="ms-1" icon="fa-solid fa-external-link" /></small>
                 </a>
               </td>
