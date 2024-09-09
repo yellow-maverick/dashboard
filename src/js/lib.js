@@ -23,6 +23,16 @@ window.ym.lib = {
     return parseFloat(v).toFixed(digits)
   },
 
+  sortField(array, field) {
+    return array.sort((a,b) => this.sort(a[field], b[field]))
+  },
+
+  uniqSorted(array, field) {
+    array = [...new Set(array)]
+    array = field ? this.sortField(array, field) : array.sort(this.sort)
+    return array
+  },
+
   change(current, previous) {
     if (!current || !previous) return;
     return this.round((current / previous - 1) * 100);

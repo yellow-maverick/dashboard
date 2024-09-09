@@ -1,5 +1,6 @@
 <script>
 import Db   from "../js/db.js"
+import Lib  from "../js/lib.js"
 import Chart from "chart.js/auto";
 import ArgonRadio from "@/components/ArgonRadio.vue";
 
@@ -9,7 +10,25 @@ export default {
   data () {
     return {
       loading: false,
-      period:  'month'
+      period:  'month',
+      defaultDataset: {
+        ratings: {
+          type:  'line',
+          borderWidth: 4,
+          fill: true,
+          maxBarThickness: 10,
+          yAxisID: 'y1'
+        },
+        reviews: {
+          type:  'bar',
+          borderWidth: 0,
+          fill: true,
+          maxBarThickness: 20,
+          yAxisID: 'y'
+        }
+      },
+      colors: { main: { reviews: "#4B7573", ratings: '#eab' }, competitor: { reviews: "#7B4573", ratings: '#aeb' } },
+      data: { }
     }
   },
 
@@ -47,6 +66,10 @@ export default {
     this.load()
   },
 
+  computed: {
+
+  },
+
   methods: {
     ...Db,
 
@@ -59,42 +82,43 @@ export default {
         })
       })
     },
+    datasets (data) {
+      let d = [];
+      [ 'main', 'competitor' ].forEach(b => {
+        if (data[b]) {
+          Object.keys(data[b]).forEach(c => {
+            d.push({
+              label: this.$t(`charts.${c}`, { name: this.filter.property_objs[b].name }),
+              data:  data[b][c],
+              borderColor: this.colors[b][c],
+              backgroundColor: (this.defaultDataset[c].type == 'bar' ? this.colors[b][c] : 'transparent'),
+              ...this.defaultDataset[c]
+            })
+          })
+        }
+      })
+      return d
+    },
 
     async load () {
+      //if (!this.filter) return
       var ctx1  = document.getElementById("chart").getContext("2d");
 
-      this.data     = (await this.runQuery('base_analytics', { ...this.filter, period: this.period, periods: [] }))[0]?.data?.current
+      this.data.main     = (await this.runQuery('base_analytics', { ...this.filter, period: this.period, periods: [] }))[0]?.data?.current
+      if (this.filter.competitors?.property_id)
+        this.data.competitor = (await this.runQuery('base_analytics', { ...this.filter.competitors, period: this.period, periods: [] }))[0]?.data?.current
       if (!this.data) return
-      const series  = this.data.map(d => d.date)
-      const reviews = this.data.map(d => d.reviews)
-      const ratings = this.data.map(d => d.overall_rating)
-      const colors  = { reviews: "#4B7573", ratings: '#eab' }
+      const series  = Lib.uniqSorted(this.data.main.map(d => d.date).concat(this.data.competitor?.map(d => d.date) || []))
+      let data = {}
+      Object.keys(this.data).forEach(d => {
+        data[d] ||= {}
+        data[d].reviews = this.data[d].map(d => d.reviews)
+        data[d].ratings = this.data[d].map(d => d.overall_rating)
+      })
 
       new Chart(ctx1, {
         data: {
-          datasets: [
-            {
-              type:  'line',
-              label: 'Overall Rating',
-              data:  ratings,
-              borderColor: colors.ratings,
-              borderWidth: 4,
-              fill: true,
-              maxBarThickness: 10,
-              yAxisID: 'y1'
-            },
-            {
-              type:  'bar',
-              label: 'Reviews',
-              data:  reviews,
-              borderColor: colors.reviews,
-              backgroundColor: colors.reviews,
-              borderWidth: 0,
-              fill: true,
-              maxBarThickness: 20,
-              yAxisID: 'y'
-            },
-          ],
+          datasets: this.datasets(data),
           labels: series
         },
         options: {
@@ -120,7 +144,7 @@ export default {
               ticks: {
                 display: true,
                 padding: 5,
-                color: colors.reviews,
+                color: this.colors.main.reviews,
                 font: {
                   size: 11,
                   family: "Open Sans",
@@ -138,7 +162,7 @@ export default {
               ticks: {
                 display: true,
                 padding: 5,
-                color: colors.ratings,
+                color: this.colors.main.ratings,
                 font: {
                   size: 11,
                   family: "Open Sans",

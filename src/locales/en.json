@@ -58,6 +58,7 @@
       "context": "Context",
       "topic": "Topic",
       "period": "Period",
+      "enable_comp": "Enable competitor",
       "rating": "Rating"
     },
     "competitors": {
@@ -103,7 +104,9 @@
     "lower_than_3": "Lower than 3"
   },
   "charts": {
-    "reviews-ratings": "Reviews / Ratings"
+    "reviews-ratings": "Reviews / Ratings",
+    "ratings": "Overall Rating - {name}",
+    "reviews": "Reviews - {name}"
   },
   "reviews": {
     "title": "Reviews",

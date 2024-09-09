@@ -132,7 +132,7 @@ export default {
       let fields = { property_id: { type: 'select' }, ... this.fields }
       Object.keys(fields).forEach(f => {
         if (!data[f]) return
-        if (f == 'competitors') {
+        if (f == 'competitors' && this.data.enable_comp) {
           filterData.competitors = this.prepareData(data[f])
         } else if (fields[f].type == 'daterange')
           filterData[f] = {
@@ -147,11 +147,13 @@ export default {
         }
       })
 
-      if (filterData.context == 'brand') filterData.for_properties = true
-      if (filterData.context == 'product') filterData.for_products = true
+      if (this.data.context == 'brand') filterData.for_properties = true
+      if (this.data.context == 'product') filterData.for_products = true
 
       Object.assign(filterData, filterData.daterange)
       delete filterData.daterange
+
+      filterData.property_objs = { main: this.options.property_id[filterData.property_id], competitor: this.options.property_id[filterData.competitors?.property_id] }
 
       return filterData
     },
@@ -172,11 +174,13 @@ export default {
       }
     },
     adaptDataToQuery(data) {
-      if (data.competitors)
-      for (let k in data.competitors) {
-        data[`c.${k}`] = data.competitors[k]
+      if (data.enable_comp) {
+        for (let k in data.competitors) {
+          data[`c.${k}`] = data.competitors[k]
+        }
       }
       delete data.competitors
+      delete data.property_objs
       return data
     },
     clear () {
@@ -215,11 +219,11 @@ export default {
         <div class="row" v-if='loadedURL'>
           <template v-for="(v,k) in fields" :key="k">
             <template v-if="k != 'competitors'" >
-              <OneFilter context=main :field=k :settings=v :option=options[k] :data=data @changed=changed v-if='k == "daterange" || (options[k] && (!v.condition || v.condition(data)))' />
+              <OneFilter context=main :field=k :settings=v :option=options[k] :data=data @changed=changed v-if='k == "daterange" || v.type == "checkbox" || (options[k] && (!v.condition || v.condition(data)))' />
             </template>
           </template>
         </div>
-        <section class='benchmark row' v-if='Object.keys(fields).includes("competitors")' >
+        <section class='benchmark row' v-if='data.enable_comp && Object.keys(fields).includes("competitors")' >
           <template v-for="(v,k) in fields.competitors" :key="k" >
             <OneFilter context=competitors :field=k :settings=v :option=options.competitors[k] :data=data.competitors @changed=changed v-if='options.competitors[k]' />
           </template>

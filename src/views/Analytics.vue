@@ -16,6 +16,7 @@ export default{
         product_id:  { type: 'select', multiple: true, hash: true, label:'name', condition: (d) => d.context == 'product' },
         group_id:    { type: 'select' },
         source_ids:  { type: 'select', multiple: true, hash: true, label: 'name' },
+        enable_comp: { type: 'checkbox', default: false },
         competitors: {
           property_id: { type: 'select', hash: true, label:'name' },
           source_ids:  { type: 'select', multiple: true, hash: true, label: 'name' },
@@ -38,21 +39,26 @@ export default{
   <div class="container-fluid">
     <Filter :fields=fields emitUpdate=true @filter:submit='load' @filter:created='load'/>
 
-    <div class="row mt-4">
-      <label>Mepal</label>
+    <div class="row mt-4" v-if='filter'>
+      <!-- main -->
+      <label>{{ filter.property_objs?.main?.name }}</label>
       <div class="offset-2 col-lg-3 col-md-6 col-12">
         <Kpi :filter="filter" trend="yoy" segment="reviews_count" directionReverse v-if='filter' ></Kpi>
       </div>
       <div class="offset-2 col-lg-3 col-md-6 col-12">
         <Kpi :filter="filter" trend="yoy" segment="numerical" directionReverse v-if='filter' ></Kpi>
       </div>
-      <label>EMSA</label>
-      <div class="offset-2 col-lg-3 col-md-6 col-12">
-        <Kpi :filter="filter.competitors" trend="yoy" segment="reviews_count" directionReverse v-if='filter?.competitors' ></Kpi>
-      </div>
-      <div class="offset-2 col-lg-3 col-md-6 col-12">
-        <Kpi :filter="filter.competitors" trend="yoy" segment="numerical" directionReverse v-if='filter?.competitors' ></Kpi>
-      </div>
+
+      <!-- competitor -->
+      <template v-if='filter.competitors?.property_id'>
+        <label>{{ filter.property_objs?.competitor?.name }}</label>
+        <div class="offset-2 col-lg-3 col-md-6 col-12">
+          <Kpi :filter="filter.competitors" trend="yoy" segment="reviews_count" directionReverse v-if='filter?.competitors' ></Kpi>
+        </div>
+        <div class="offset-2 col-lg-3 col-md-6 col-12">
+          <Kpi :filter="filter.competitors" trend="yoy" segment="numerical" directionReverse v-if='filter?.competitors' ></Kpi>
+        </div>
+      </template>
     </div>
 
     <div class="row">

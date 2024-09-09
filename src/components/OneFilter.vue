@@ -47,14 +47,9 @@ export default{
 
     <!-- checkbox -->
     <div class="" v-if="settings.type == 'checkbox'">
-      <div class="d-flex justify-content-between align-items-center">
-        <label class="form-label">{{ $t(`filter.${context}.${field}`) }}</label>
-        <div class="form-check" v-if="context == 'reputation'">
-          <input class="form-check-input" type="checkbox" v-model="benchmark.source_exclusion" id="benchmark.source_exclusion">
-          <label class="form-label fw-light font-size-12" for="benchmark.source_exclusion">
-            {{ $t("general.exclusion") }}
-          </label>
-        </div>
+      <label class="form-label">{{ $t(`filter.${context}.${field}`) }}</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" v-model="data[field]">
       </div>
     </div>
 
