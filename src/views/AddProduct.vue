@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       property_id: this.$route.query.property_id,
+      status: null,
       product: {
         connection: {
           source: null,
