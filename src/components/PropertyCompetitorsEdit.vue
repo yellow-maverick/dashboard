@@ -16,6 +16,6 @@ export default {
 
 <template>
   <div>
-    <PropertiesEdit :properties=competitors :categories=categories :compsShow=true />
+    <PropertiesEdit :properties=competitors :categories=categories :isComp=true />
   </div>
 </template>

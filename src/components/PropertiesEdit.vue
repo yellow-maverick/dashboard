@@ -10,7 +10,7 @@ export default {
     return {
     }
   },
-  props: ['properties', 'categories', 'compsShow'],
+  props: ['properties', 'categories', 'isComp'],
   components: {ProductsEdit, ConnectionsEdit, PropertyCompetitorsEdit},
 
   methods: {
@@ -32,7 +32,7 @@ export default {
       <div id=property-accordion class=accordion >
         <div class=accordion-item >
           <h5 class=accordion-header >
-            <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${p.id}`' :aria-expanded=!compsShow :aria-controls='`#collapse-${p.id}`'  >
+            <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${p.id}`' :aria-expanded=!isComp :aria-controls='`#collapse-${p.id}`'  >
               {{p.name}}
               <div class='d-flex justify-content-end' style='flex: auto' >
                 <img class='me-1' v-for='c in p.connections' :title=c.source.name style='max-height: 20px' :src="sourceImage(c.source.slug)" :key=c >
@@ -40,32 +40,34 @@ export default {
             </button>
           </h5>
 
-          <div :id='`collapse-${p.id}`' :class='{collapse: true, show: !compsShow}' aria-labelledby=headingOne data-parent=#property-accordion >
+          <div :id='`collapse-${p.id}`' :class='{collapse: true, show: !isComp}' aria-labelledby=headingOne data-parent=#property-accordion >
 
             <div class='d-flex align-items-start'>
-              <div class='nav flex-column nav-pills' role=tablist >
-                <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`p-prods-${p.id}`' :data-bs-target='`#p-prods-${p.id}`' >
-                  {{$t('properties.tabs.products')}}
-                </button>
-                <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-conns-${p.id}`' :data-bs-target='`#p-conns-${p.id}`' >
-                  {{$t('properties.tabs.connections')}}
-                </button>
-                <button v-if=!compsShow class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-comps-${p.id}`' :data-bs-target='`#p-comps-${p.id}`' >
-                  {{$t('properties.tabs.competitors')}}
-                </button>
+              <div class='nav flex-column nav-pills nav-pills-primary' role=tablist >
+                <div class=moving-tab >
+                  <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`p-prods-${p.id}`' :data-bs-target='`#p-prods-${p.id}`' >
+                    {{$t('properties.tabs.products')}}
+                  </button>
+                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-conns-${p.id}`' :data-bs-target='`#p-conns-${p.id}`' >
+                    {{$t('properties.tabs.connections')}}
+                  </button>
+                  <button v-if=!isComp class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-comps-${p.id}`' :data-bs-target='`#p-comps-${p.id}`' >
+                    {{$t('properties.tabs.competitors')}}
+                  </button>
+                </div>
               </div>
 
               <div class='tab-content card-body pt-0' >
 
                 <div :id='`p-prods-${p.id}`' role=tabpanel class='tab-pane fade show active' >
-                  <ProductsEdit :property=p :categories=categories :compsShow=compsShow />
+                  <ProductsEdit :property=p :categories=categories :isComp=isComp />
                 </div>
 
                 <div :id='`p-conns-${p.id}`' role=tabpanel class='tab-pane fade' >
                   <ConnectionsEdit :property=p :connections=p.connections />
                 </div>
 
-                <div v-if=!compsShow :id='`p-comps-${p.id}`' role=tabpanel class='tab-pane fade' >
+                <div v-if=!isComp :id='`p-comps-${p.id}`' role=tabpanel class='tab-pane fade' >
                   <PropertyCompetitorsEdit :competitors=p.competitors :categories=categories />
                 </div>
 

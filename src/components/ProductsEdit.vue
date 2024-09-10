@@ -12,7 +12,7 @@ export default {
     }
   },
 
-  props:      ['property', 'categories', 'compsShow'],
+  props:      ['property', 'categories', 'isComp'],
   components: {Multiselect, ProductForm, ConnectionsEdit},
 
   created() {
@@ -82,7 +82,7 @@ export default {
                   {{$t('products.tabs.connections')}}
                 </button>
 
-                <button v-if=!compsShow class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-comps-${pd.property_id}${j}`' :data-bs-target='`#pd-comps-${pd.property_id}${j}`' >
+                <button v-if=!isComp class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-comps-${pd.property_id}${j}`' :data-bs-target='`#pd-comps-${pd.property_id}${j}`' >
                   {{$t('products.tabs.competitors')}}
                 </button>
               </div>
@@ -100,7 +100,7 @@ export default {
                     <ConnectionsEdit :connections=pd.connections :product=pd />
                   </div>
 
-                  <div v-if=!compsShow :id='`pd-comps-${pd.property_id}${j}`' role=tabpanel class='tab-pane fade' >
+                  <div v-if=!isComp :id='`pd-comps-${pd.property_id}${j}`' role=tabpanel class='tab-pane fade' >
                   </div>
 
                 </div>
