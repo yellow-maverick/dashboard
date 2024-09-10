@@ -42,7 +42,7 @@ export default {
 
           <div :id='`collapse-${p.id}`' :class='{collapse: true, show: !isComp}' aria-labelledby=headingOne data-parent=#property-accordion >
 
-            <div class='d-flex align-items-start'>
+            <div class='d-flex align-items-start mb-4' >
               <div class='nav flex-column nav-pills nav-pills-primary' role=tablist >
                 <div class=moving-tab >
                   <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`p-prods-${p.id}`' :data-bs-target='`#p-prods-${p.id}`' >

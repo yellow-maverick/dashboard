@@ -73,7 +73,7 @@ export default {
 
           <div :id='`collapse-${pd.property_id}-${pd.id}`' :class='{collapse: open_product_id != pd.id, show: open_product_id == pd.id}' aria-labelledby=headingOne :data-parent='`#property-${pd.property_id}-accordion`' >
 
-            <div class='d-flex align-items-start'>
+            <div class='d-flex align-items-start mb-4' >
               <div class='flex-column nav nav-pills nav-pills-primary' role=tablist >
                 <div class=moving-tab >
                   <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pd-bi-${pd.property_id}-${pd.id}`' :data-bs-target='`#pd-bi-${pd.property_id}-${pd.id}`' >
@@ -104,7 +104,7 @@ export default {
                   </div>
 
                   <div v-if=!isComp :id='`pd-comps-${pd.property_id}-${pd.id}`' role=tabpanel class='tab-pane fade' >
-                    <ProductCompetitorsEdit :competitors=pd.competitors :categories=categories />
+                    <ProductCompetitorsEdit :product=pd :competitors=pd.competitors :categories=categories />
                   </div>
 
                 </div>

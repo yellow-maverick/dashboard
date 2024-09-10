@@ -4,7 +4,7 @@ export default {
     return {
     }
   },
-  props:      ['competitors', 'categories'],
+  props:      ['product', 'competitors', 'categories'],
   components: { },
   
 }
@@ -12,5 +12,9 @@ export default {
 
 <template>
   <div>
+    <ul v-for='pdc in competitors' :key=pdc.id >
+      <li> {{pdc.name}} </li>
+    </ul>
   </div>
 </template>
+
