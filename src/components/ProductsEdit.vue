@@ -4,6 +4,7 @@ import Lib from '../js/lib.js'
 import Multiselect from 'vue-multiselect'
 import ProductForm from '@/components/ProductForm.vue'
 import ConnectionsEdit from '@/components/ConnectionsEdit.vue'
+import ProductCompetitorsEdit from '@/components/ProductCompetitorsEdit.vue'
 
 export default {
   data() {
@@ -13,7 +14,7 @@ export default {
   },
 
   props:      ['property', 'categories', 'isComp'],
-  components: {Multiselect, ProductForm, ConnectionsEdit},
+  components: {Multiselect, ProductForm, ConnectionsEdit, ProductCompetitorsEdit},
 
   created() {
     this.open_product_id = this.$route.query.product_id // for initial render to scroll expanded
@@ -73,18 +74,20 @@ export default {
           <div :id='`collapse-${pd.property_id}-${j}`' :class='{collapse: open_product_id != pd.id, show: open_product_id == pd.id}' aria-labelledby=headingOne :data-parent='`#property-${pd.property_id}-accordion`' >
 
             <div class='d-flex align-items-start'>
-              <div class='nav flex-column nav-pills' role=tablist >
-                <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pd-bi-${pd.property_id}${j}`' :data-bs-target='`#pd-bi-${pd.property_id}${j}`' >
-                  {{$t('products.tabs.details')}}
-                </button>
+              <div class='flex-column nav nav-pills nav-pills-primary' role=tablist >
+                <div class=moving-tab >
+                  <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`pd-bi-${pd.property_id}${j}`' :data-bs-target='`#pd-bi-${pd.property_id}${j}`' >
+                    {{$t('products.tabs.details')}}
+                  </button>
 
-                <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-conns-${pd.property_id}${j}`' :data-bs-target='`#pd-conns-${pd.property_id}${j}`' >
-                  {{$t('products.tabs.connections')}}
-                </button>
+                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-conns-${pd.property_id}${j}`' :data-bs-target='`#pd-conns-${pd.property_id}${j}`' >
+                    {{$t('products.tabs.connections')}}
+                  </button>
 
-                <button v-if=!isComp class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-comps-${pd.property_id}${j}`' :data-bs-target='`#pd-comps-${pd.property_id}${j}`' >
-                  {{$t('products.tabs.competitors')}}
-                </button>
+                  <button v-if=!isComp class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`pd-comps-${pd.property_id}${j}`' :data-bs-target='`#pd-comps-${pd.property_id}${j}`' >
+                    {{$t('products.tabs.competitors')}}
+                  </button>
+                </div>
               </div>
 
                 <div class='tab-content card-body pt-0' >
@@ -101,6 +104,7 @@ export default {
                   </div>
 
                   <div v-if=!isComp :id='`pd-comps-${pd.property_id}${j}`' role=tabpanel class='tab-pane fade' >
+                    <ProductCompetitorsEdit :competitors=pd.competitors :categories=categories />
                   </div>
 
                 </div>
