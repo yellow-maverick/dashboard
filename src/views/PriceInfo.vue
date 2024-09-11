@@ -31,7 +31,7 @@ export default{
     },
     priceTargetColor(price, pId) {
       let p = this.products[pId]
-      if (!p.target_price) return '';
+      if (!p?.target_price) return '';
 
       if (price >= p.target_price) return '#00BB00'
       return '#BB0000'
@@ -70,8 +70,8 @@ export default{
         <tbody>
           <template v-for='sources,product_id in data' :key='product_id'>
             <tr v-for='dates,source in sources' class='text-center' :key='source'>
-              <td class='text-start'>{{ products[product_id].name }}
-                <span v-b-tooltip.hover :title="`${$t('prices_table.target_price')}: ${products[product_id].target_price}`">
+              <td class='text-start'>{{ products[product_id]?.name }}
+                <span v-b-tooltip.hover :title="`${$t('prices_table.target_price')}: ${products[product_id]?.target_price}`">
                   <font-awesome-icon class="ms-1" icon="fa-solid fa-circle-info" />
                 </span></td>
               <td>

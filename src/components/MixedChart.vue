@@ -66,10 +66,6 @@ export default {
     this.load()
   },
 
-  computed: {
-
-  },
-
   methods: {
     ...Db,
 
