@@ -49,7 +49,7 @@ export default{
 
         dates = [ ... new Set(mainData.flatMap(s => s.data?.current?.map(d => d.date) || [])) ].sort().reverse()
         this.organizeRatingsData(mainData, 'main')
-        this.organizeRatingsData(compData, 'competitor')
+        if (this.filter.enable_comp) this.organizeRatingsData(compData, 'competitor')
       }
 
       this.columns = this.columns.concat(dates.map(d => {
