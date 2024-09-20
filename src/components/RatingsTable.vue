@@ -9,7 +9,7 @@ import LineChart  from "@/components/LineChart.vue";
 export default{
   data () {
     return {
-      data:    null,
+      data:    {},
       period:  'month',
       datatype: 'table',
       identifier: '',
@@ -24,7 +24,7 @@ export default{
   methods: {
     ...Db,
     async load () {
-      let dates, data, params = { ...this.filter, period: this.period, periods: { yoy: 1 }, origin_sources: true }
+      let dates, mainData, compData, params = { ...this.filter, period: this.period, periods: { yoy: 1 }, origin_sources: true }
       if (this.type == 'sentiment') {
         params['with_sentiment_ratings'] = true
         this.columns = [{ value: 'name', text: this.$t(`segments.topic`)}]
@@ -34,15 +34,21 @@ export default{
         this.columns = [{ value: 'name', text: this.$t(`segments.${this.segment}`) }]
       }
       if (this.type == 'sentiment') {
-        data = await alova.Get(`/v1/sentiment`, { params: { ...this.filter, per: this.period, trend: 'yoy' } })
-        data = await data.clone().json()
-        if (data.status == 500) return
-        dates = [ ... new Set(Object.values(data).flatMap(s => s?.map(d => d?.current?.date))) || [] ].sort().reverse()
-        this.organizeSentimentData(data)
+        let mainData = await this.loadSentimentData(this.filter)
+        if (this.filter.enable_comp) compData = await this.loadSentimentData( { ...this.filter, ...this.filter.competitors, competitors: null })
+
+        dates = [ ...Object.values(mainData), ...Object.values(compData || {})].flatMap(s => s?.map(d => d?.current?.date))
+        dates = [ ... new Set(dates) ].sort().reverse()
+
+        this.organizeSentimentData(mainData, 'main')
+        if (this.filter.enable_comp) this.organizeSentimentData(compData, 'competitor')
       } else {
-        data  = (await this.runQuery('base_analytics', params))
-        dates = [ ... new Set(data.flatMap(s => s.data?.current?.map(d => d.date) || [])) ].sort().reverse()
-        this.organizeRatingsData(data)
+        mainData = (await this.runQuery('base_analytics', params))
+        compData = (await this.runQuery('base_analytics', { ...params, ... this.filter.competitors }))
+
+        dates = [ ... new Set(mainData.flatMap(s => s.data?.current?.map(d => d.date) || [])) ].sort().reverse()
+        this.organizeRatingsData(mainData, 'main')
+        this.organizeRatingsData(compData, 'competitor')
       }
 
       this.columns = this.columns.concat(dates.map(d => {
@@ -50,12 +56,19 @@ export default{
       }))
 
     },
+    async loadSentimentData(filter) {
+      let data = await alova.Get(`/v1/sentiment`, { params: { ...filter, per: this.period, trend: 'yoy' } })
+      data     = await data.clone().json()
+      if (data.status == 500) return
+
+      return data
+    },
     formatDate (d) {
       if (this.period == 'quarter') return d
       return dayjs(d).format('MMM YYYY')
     },
-    organizeRatingsData (data) {
-      this.data = []
+    organizeRatingsData (data, level) {
+      this.data[level] = []
       data.forEach(d => {
         if (!d.data.current) return
         let row = { name: d.name }
@@ -67,10 +80,11 @@ export default{
             Lib.change(c.overall_rating, prev?.overall_rating),
           ]
         })
-        this.data.push(row)
+        this.data[level].push(row)
       })
     },
-    organizeSentimentData (data) {
+    organizeSentimentData (data, level) {
+      this.data[level] = []
       let rows = {}
       Object.keys(data).forEach(key => {
         if (!rows[key]) rows[key] = {name: this.$t(`topics.${key}`) }
@@ -81,7 +95,7 @@ export default{
             Lib.change(c.current?.value, c.yoy?.value),
           ]
         })
-        this.data = Object.keys(rows).sort().map(k => rows[k])
+        this.data[level] = Object.keys(rows).sort().map(k => rows[k])
       })
     },
     changeColor (value) {
@@ -134,6 +148,7 @@ export default{
       <table class='table text-center' v-if='data && datatype == "table"' >
         <thead>
           <tr class='bordered-side'>
+            <th rowspan="2" v-if='filter.enable_comp' class='text-center'>{{ $t('ratings_table.property') }}</th>
             <template v-for='c in columns' :key='c' >
               <th rowspan="2" v-if='c == columns[0]'>{{ c.text }}</th>
               <th colspan="2" v-else class='text-center'>{{ c.text }}</th>
@@ -149,15 +164,18 @@ export default{
           </tr>
         </thead>
         <tbody>
-          <tr v-for='row in data' class='text-center' :key='row'>
-            <template v-for='c in columns' :key='c' >
-              <td v-if='c == columns[0]' >{{ row[c.value] }}</td>
-              <template v-else>
-                <td >{{ (row[c.value] || [])[0] || '-' }}</td>
-                <td :style="{ color: changeColor(row[c.value]) }">{{ (row[c.value] || [])[1] || '-' }}%</td>
+          <template v-for='(datum, level) in data' >
+            <tr v-for='row in datum' class='text-center' :key='row'>
+              <td v-if='filter.enable_comp' >{{ filter.property_objs[level].name }}</td>
+              <template v-for='c in columns' :key='c' >
+                <td v-if='c == columns[0]' >{{ row[c.value] }}</td>
+                <template v-else>
+                  <td >{{ (row[c.value] || [])[0] || '-' }}</td>
+                  <td :style="{ color: changeColor(row[c.value]) }">{{ (row[c.value] || [])[1] || '-' }}%</td>
+                </template>
               </template>
-            </template>
-          </tr>
+            </tr>
+          </template>
         </tbody>
       </table>
       <line-chart :series='columns' :data='data' v-if='data && datatype == "chart"' />

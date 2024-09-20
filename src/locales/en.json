@@ -135,6 +135,7 @@
     "chart": "Chart",
     "ratings_title": "Ratings Table",
     "sentiment_title": "Sentiment Table",
+    "property": "Property",
     "title_with_segment": "Ratings Table by {s}"
   },
   "topics": {
