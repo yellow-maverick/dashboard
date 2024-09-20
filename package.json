@@ -45,7 +45,8 @@
     "vue3-easy-data-table": "^1.5.47",
     "vue3-flag-icons": "^0.0.2",
     "vuewordcloud": "^19.0.0",
-    "vuex": "4.0.2"
+    "vuex": "4.0.2",
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "@alova/vue-options": "^1.1.2",

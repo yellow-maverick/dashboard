@@ -3,7 +3,8 @@
     "title": "Title translated",
     "change_language": "Change language",
     "pages": "Pages",
-    "made_with": "made with {with} by {by}"
+    "made_with": "made with {with} by {by}",
+    "export_excel": "Export excel"
   },
   "routes": {
     "queries": "Queries",

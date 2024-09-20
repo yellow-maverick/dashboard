@@ -1,7 +1,7 @@
 <template>
   <div class="form-check">
     <input class="form-check-input" :value='value' type="radio" :name="name" :id="id" :checked="checked" :model-value='modelValue' @input="$emit('update:modelValue', $event.target.value)" />
-    <label class="form-check-label custom-control-label ms-0" :for="id">
+    <label class="form-check-label custom-control-label ms-0 mb-0" :for="id">
       <slot />
     </label>
   </div>

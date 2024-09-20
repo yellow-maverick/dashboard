@@ -71,7 +71,7 @@ export default{
     </div>
 
     <div class="row mt-5">
-      <div class="col-lg-12">
+      <div class="col-lg-12" id='sentiment-table'>
         <ratings-table :filter='filter' v-if='filter' type='sentiment' />
       </div>
     </div>

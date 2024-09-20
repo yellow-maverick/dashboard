@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import { alova } from '../js/alova.js'
 import ArgonRadio from "@/components/ArgonRadio.vue";
 import LineChart  from "@/components/LineChart.vue";
+import XLSXExport from "@/components/XLSXExport.vue";
 
 export default{
   data () {
@@ -17,7 +18,7 @@ export default{
     }
   },
   props:      ['filter', 'type', 'segment'],
-  components: { ArgonRadio, LineChart },
+  components: { ArgonRadio, LineChart, XLSXExport },
   created () {
     this.identifier = parseInt(Math.random() * 1000)
   },
@@ -111,7 +112,7 @@ export default{
       if (this.segment)
         return this.$t('ratings_table.title_with_segment', { s: this.$t(`segments.${this.segment}`) })
       return this.$t(`ratings_table.${this.type}_title`)
-    }
+    },
   },
   mounted () {
     this.load()
@@ -129,11 +130,9 @@ export default{
 
 <template>
   <div class="card ratings-table">
-    <div class="d-flex justify-content-between me-4">
-      <div class="pb-0 card-header mb-0">
-        <h6>{{ title }}</h6>
-      </div>
-      <div class="d-flex justify-content-start pt-4">
+    <div class="d-flex justify-content-between px-3 card-header align-items-center ">
+      <h6 class=mb-0>{{ title }}</h6>
+      <div class="d-flex justify-content-start align-items-center">
         <div class="d-flex justify-content-start">
           <argon-radio :name="`tc-${identifier}`" :id="`tc-${identifier}-table`" value='table' v-model='datatype' class=''>{{ $t('ratings_table.table') }}</argon-radio>
           <argon-radio :name="`tc-${identifier}`" :id="`tc-${identifier}-chart`" value='chart' v-model='datatype' class='ms-3'>{{ $t('ratings_table.chart') }}</argon-radio>
@@ -142,9 +141,12 @@ export default{
           <argon-radio :name="`rt-${identifier}`" :id="`rt-${identifier}-month`" value='month' v-model='period'>{{ $t('periods.month') }}</argon-radio>
           <argon-radio :name="`rt-${identifier}`" :id="`rt-${identifier}-quarter`" value='quarter' v-model='period' class='ms-3'>{{ $t('periods.quarter') }}</argon-radio>
         </div>
+        <div class="ms-3 d-flex justify-content-start">
+          <XLSXExport v-if="filter" fileName="sentiment-table" :target='`table-${identifier}`' btnClass="btn btn-outline-primary" :hasData="true" />
+        </div>
       </div>
     </div>
-    <div class="p-3 card-body table-responsive">
+    <div class="p-3 card-body table-responsive" :id='`table-${identifier}`'>
       <table class='table text-center' v-if='data && datatype == "table"' >
         <thead>
           <tr class='bordered-side'>
