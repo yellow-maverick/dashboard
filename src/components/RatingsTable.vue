@@ -55,7 +55,6 @@ export default{
       this.columns = this.columns.concat(dates.map(d => {
         return { value: d, text: this.formatDate(d) }
       }))
-
     },
     async loadSentimentData(filter) {
       let data = await alova.Get(`/v1/sentiment`, { params: { ...filter, per: this.period, trend: 'yoy' } })
@@ -113,6 +112,17 @@ export default{
         return this.$t('ratings_table.title_with_segment', { s: this.$t(`segments.${this.segment}`) })
       return this.$t(`ratings_table.${this.type}_title`)
     },
+    chartData () {
+      if (!this.filter.enable_comp) return this.data.main
+
+      let data = [];
+      ['main', 'competitor'].forEach((b) => {
+        this.data[b].forEach(d => {
+          data.push( {...d, name: `${this.filter.property_objs[b].name} - ${d.name}` } )
+        })
+      })
+      return data
+    }
   },
   mounted () {
     this.load()
@@ -180,7 +190,7 @@ export default{
           </template>
         </tbody>
       </table>
-      <line-chart :series='columns' :data='data' v-if='data && datatype == "chart"' />
+      <line-chart :series='columns' :data='chartData' v-if='data && datatype == "chart"' />
     </div>
   </div>
 </template>
