@@ -64,7 +64,7 @@ export default {
                 </div>
 
                 <div :id='`p-conns-${p.id}`' role=tabpanel class='tab-pane fade' >
-                  <ConnectionsEdit :property=p :connections=p.connections />
+                  <ConnectionsEdit :property=p :connections=p.connections :forProperty=true />
                 </div>
 
                 <div v-if=!isComp :id='`p-comps-${p.id}`' role=tabpanel class='tab-pane fade' >

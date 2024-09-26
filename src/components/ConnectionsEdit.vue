@@ -11,8 +11,9 @@ export default {
       scraped: {},
     }
   },
-  props: ['connections', 'product'],
+  props: ['connections', 'product', 'property', 'forProperty'],
   components: {AddConnection, PhotoGallery},
+  inject:     ['reload'],
 
   created() {
   },
@@ -25,7 +26,7 @@ export default {
 
     reload() {
       this.adding = false
-      this.$parent.reload()
+      this.reload()
     },
 
     hide(event) {
@@ -41,7 +42,7 @@ export default {
 <template>
   <div>
     <div v-if=adding class='mb-5 border-bottom' >
-      <AddConnection :product=product />
+      <AddConnection :product=product :property=property :forProperty=forProperty />
     </div>
 
     <div>

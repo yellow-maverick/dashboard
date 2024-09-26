@@ -1,5 +1,6 @@
 <script>
 import { alova } from '../js/alova.js'
+import _ from 'lodash'
 import ScrapedConnection from '@/components/ScrapedConnection.vue'
 
 export default {
@@ -16,8 +17,10 @@ export default {
       scraped: {},
     }
   },
-  props: ['property', 'product'],
+  props: ['property', 'product', 'forProperty'],
   components: {ScrapedConnection},
+
+  inject: ['reload'],
 
   created() {
     this.load()
@@ -44,10 +47,11 @@ export default {
 
     async save() {
       this.saving = true
-      let c = (await (await alova.Post(`/v1/connections`, {product_id: this.product.id, connection: this.connection})).clone().json())
+      let p = this.forProperty ? {property_id: this.property.id} : {product_id: this.product.id}
+      let c = (await (await alova.Post(`/v1/connections`, _.merge(p, {connection: this.connection}))).clone().json())
       if (c.id) {
         this.$parent.adding = false
-        this.$parent.reload()
+        this.reload()
       } else {
         this.status = this.$t('products.save_error', {error: c.error})
       }
@@ -69,10 +73,10 @@ export default {
       <input name=url v-model=connection.url type=text class=form-control />
     </div>
 
-    <ScrapedConnection :scraped=scraped :url=connection.url />
+    <ScrapedConnection v-if=!forProperty :scraped=scraped :url=connection.url />
 
     <div class='d-flex align-items-center mb-3' >
-      <button type=button class='btn btn-primary mb-0' @click=save() :disabled='saving || !connection.source'  >
+      <button type=button class='btn btn-primary mb-0' @click=save() :disabled='saving || (!forProperty && !connection.source)'  >
         {{ $t('connections.add') }}
       </button>
       <a class='ms-3 text-bold' role=button @click=cancel() > {{ $t('connections.cancel') }} </a>

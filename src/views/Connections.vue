@@ -15,6 +15,12 @@ export default {
   props:      [],
   components: {PropertiesEdit},
 
+  provide() {
+    return {
+      reload: this.reload,
+    }
+  },
+
   created() {
     this.open_product_id  = this.$route.query.product_id
   },

@@ -33,9 +33,6 @@ export default {
       await alova.Patch(`/v1/products/${pd.id}`, pd)
     },
 
-    reload() {
-      this.parent.reload()
-    },
   }
 }
 </script>

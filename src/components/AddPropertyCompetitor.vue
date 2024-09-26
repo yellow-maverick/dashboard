@@ -11,6 +11,7 @@ export default {
   },
   props:      ['property'],
   components: { },
+  inject:     ['reload'],
 
   methods: {
 
@@ -23,7 +24,7 @@ export default {
       let c = (await (await alova.Post(`/v1/property_competitors`, {property_id: this.property.id, name: this.name})).clone().json())
       if (c.id) {
         this.$parent.adding = false
-        this.$parent.reload()
+        this.reload()
       } else {
         this.status = this.$t('competitors.save_error', {error: c.error})
       }
