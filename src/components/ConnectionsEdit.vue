@@ -13,7 +13,6 @@ export default {
   },
   props: ['connections', 'product', 'property', 'forProperty'],
   components: {AddConnection, PhotoGallery},
-  inject:     ['reload'],
 
   created() {
   },
@@ -22,11 +21,6 @@ export default {
 
     add() {
       this.adding = true
-    },
-
-    reload() {
-      this.adding = false
-      this.reload()
     },
 
     hide(event) {
