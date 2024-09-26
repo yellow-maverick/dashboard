@@ -68,7 +68,7 @@ export default {
                 </div>
 
                 <div v-if=!isComp :id='`p-comps-${p.id}`' role=tabpanel class='tab-pane fade' >
-                  <PropertyCompetitorsEdit :competitors=p.competitors :categories=categories />
+                  <PropertyCompetitorsEdit :property=p :competitors=p.competitors :categories=categories />
                 </div>
 
               </div>

@@ -3,12 +3,12 @@ import Multiselect from 'vue-multiselect'
 import { alova } from '../js/alova'
 
 export default {
-  props: ['product', 'categories'],
   data() {
     return {
       profile: {},
     }
   },
+  props: ['product', 'categories', 'isComp'],
 
   components: {Multiselect},
 
@@ -34,8 +34,9 @@ export default {
 
     async load() {
       this.profile = await this.$store.dispatch('profile/fetch')
-      this.product.property_id  = this.$route.query.property_id
-      this.product.categories ||= [] // new product
+      // new product fields
+      this.product.property_id ||= this.$route.query.property_id
+      this.product.categories  ||= []
     },
 
   },

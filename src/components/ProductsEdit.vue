@@ -1,4 +1,5 @@
 <script>
+import { alova } from '../js/alova.js'
 import Lib from '../js/lib.js'
 
 import Multiselect from 'vue-multiselect'
@@ -26,6 +27,10 @@ export default {
     },
     sourceImage(slug) {
       return Lib.sourceImage(slug)
+    },
+
+    async save(pd) {
+      await alova.Patch(`/v1/products/${pd.id}`, pd)
     },
 
     reload() {
@@ -65,7 +70,7 @@ export default {
             <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${pd.property_id}-${pd.id}`' aria-expanded=false :aria-controls='`#collapse-${pd.property_id}-${pd.id}`'  >
               {{pd.name}}
               <multiselect :options=categories :readonly=true v-model=pd.categories label=name :taggable=true :multiple=true :searchable=false />
-              <div class='d-flex justify-content-end' style='flex: auto' >
+              <div class='d-flex justify-content-end col-5 flex-wrap' style='flex: auto' >
                 <img v-for='c in pd.connections' @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
               </div>
             </button>
@@ -93,8 +98,8 @@ export default {
                 <div class='tab-content card-body pt-0' >
 
                   <div :id='`pd-bi-${pd.property_id}-${pd.id}`' role=tabpanel class='tab-pane fade show active' >
-                    <ProductForm :product=pd :categories=categories />
-                    <button type=button class='btn btn-primary' @click='productSave(pd)' >
+                    <ProductForm :product=pd :categories=categories :isComp=isComp />
+                    <button type=button class='btn btn-primary' @click='save(pd)' >
                       {{$t('products.save')}}
                     </button>
                   </div>

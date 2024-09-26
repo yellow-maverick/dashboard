@@ -146,7 +146,13 @@
     "support": "Support",
     "quality": "Quality"
   },
+  "competitors": {
+    "add_new": "Add competitor",
+    "name": "Name",
+    "save_error": "Error saving the competitor: %{error}"
+  },
   "properties": {
+    "add_new": "Add property",
     "tabs": {
       "products": "Products",
       "connections": "Connections",
@@ -154,7 +160,7 @@
     }
   },
   "connections": {
-    "add_new": "Add new",
+    "add_new": "Add connection",
     "scraping": "Collecting data",
     "scraping_error": "Error collecting data, please try a different URL",
     "site": "Site",
@@ -165,7 +171,7 @@
     "cancel": "Cancel"
   },
   "products": {
-    "add_new": "Add new",
+    "add_new": "Add product",
     "name": "Name",
     "url": "Product URL",
     "more_details": "More product details",
