@@ -117,7 +117,7 @@ export default {
       })
     },
     loadParam(f, queryValue, fields, options) {
-      if (fields[f].type == 'select' && !fields[f].hash) {
+      if (fields[f].type == 'select' && !fields[f].hash && !Array.isArray(this.options[f])) {
         if (Array.isArray(queryValue))
           return queryValue.map(k => options[f]?.find(o => o.id == parseInt(k)))
         else
@@ -140,7 +140,7 @@ export default {
             end_date:   dayjs(data[f][1]).format('YYYY-MM-DD'),
           }
         else if (fields[f].type == 'select' && !fields[f].hash && data[f]) {
-          if ((!fields[f].condition || fields[f].condition(data))) filterData[f] = data[f].id
+          if ((!fields[f].condition || fields[f].condition(data))) filterData[f] = data[f].id || data[f]
         }
         else {
           if ((!fields[f].condition || fields[f].condition(data))) filterData[f] = data[f]
@@ -229,7 +229,7 @@ export default {
           </template>
         </section>
         <div class="row" v-if='loadedURL'>
-          <div class="form-group col-sm-6 col-md-3 col-lg-3 d-print-none">
+          <div class="form-group col-sm-6 col-md-4 col-lg-3 d-print-none">
             <label class="form-label">&nbsp;</label><br>
             <button type="submit" class="btn btn-primary me-3 mb-2" @click='submit(true)'>{{ $t("filter.submit") }}</button>
             <button type="submit" class="btn btn-outline-primary mb-2" @click='clear'>{{ $t("filter.clear") }}</button>
