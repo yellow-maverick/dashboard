@@ -6,16 +6,8 @@
   />
   <div class="sidenav-header">
     <router-link class="m-0 navbar-brand" to="/">
-      <img
-        :src="
-          this.$store.state.darkMode ||
-          this.$store.state.sidebarType === 'bg-default'
-            ? logoWhite
-            : logo
-        "
-        class="navbar-brand-img h-100"
-        alt="main_logo"
-      />
+      <img :src=" this.$store.state.darkMode || this.$store.state.sidebarType === 'bg-default' ? logoWhite : logo " class="d-none d-xl-block navbar-brand-img h-100 ms-0" alt="main_logo" />
+      <img :src="logoIcon" class="d-xl-none navbar-brand-img ms-0" style='height: 50px; width: auto' alt="main_logo" />
     </router-link>
   </div>
   <aside
@@ -39,6 +31,7 @@
 import SidenavList from "./SidenavList.vue";
 import logo from "@/assets/img/logo-yellow.png";
 import logoWhite from "@/assets/img/logo-yellow.png";
+import logoIcon from "@/assets/img/logo-ct.png";
 
 export default {
   name: "index",
@@ -48,7 +41,8 @@ export default {
   data() {
     return {
       logo,
-      logoWhite
+      logoWhite,
+      logoIcon
     };
   },
   props: ["custom_class", "layout"]

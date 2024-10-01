@@ -12,7 +12,7 @@
           </div>
           <div class="numbers" v-else>
             <p class="mb-0 text-sm text-uppercase font-weight-bold" :class="titleColor">{{ title }}</p>
-            <h2 class="font-weight-bolder mb-0" :class="valueColor">{{ value }}</h2>
+            <h4 class="font-weight-bolder mb-0" :class="valueColor">{{ value }}</h4>
           </div>
         </div>
         <div>
@@ -24,7 +24,7 @@
       </div>
       <div class="d-flex justify-content-end flex-direction-row mt--20">
         <span :class="percentageColor">{{ percentage }}%</span> 
-        <span class='text-sm ms-2' style='line-height: 1.7'>&nbsp;{{detail}}</span>
+        <span class='text-sm ms-0' style='line-height: 1.7'>&nbsp;{{detail}}</span>
       </div>
     </div>
   </div>

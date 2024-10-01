@@ -53,16 +53,14 @@ export default {
     <div class="row">
       <div class="col-lg-12">
         <div class="row mt-4">
-          <div class="col-lg-3 col-md-6 col-12">
+          <div class="col-sm-6 col-lg-4 col-12">
+            <Kpi :filter="filter" trend="yoy" segment="numerical" directionReverse v-if='filter' ></Kpi>
             <Kpi :filter="filter" trend="yoy" segment="reviews_count" directionReverse v-if='filter' ></Kpi>
           </div>
-          <div class="col-lg-3 col-md-6 col-12">
-            <Kpi :filter="filter" trend="yoy" segment="numerical" directionReverse v-if='filter' ></Kpi>
-          </div>
-          <div class="col-lg-3 col-md-4 col-3">
+          <div class="col-sm-6 col-lg-4 col-6">
             <SentimentKpi :filter="filter" v-if='filter' ></SentimentKpi>
           </div>
-          <div class="col-lg-3 col-md-4 col-3">
+          <div class="col-sm-6 col-lg-4 col-6">
             <SourceRatingsKpi :filter="filter" v-if='filter' ></SourceRatingsKpi>
           </div>
         </div>

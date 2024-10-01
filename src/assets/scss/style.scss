@@ -118,3 +118,8 @@ svg.kpi-card-icon path {
     }
   }
 }
+@include media-breakpoint-down(xl) {
+  nav.navbar {
+    margin-left: 80px !important;
+  }
+}

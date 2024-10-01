@@ -32,7 +32,7 @@ export default{
 </script>
 
 <template>
-  <div class='form-group mb-3 col-sm-6 col-md-3 col-lg-2' >
+  <div class='form-group mb-3 col-sm-6 col-md-4 col-lg-3 col-xl-2' >
     <!-- daterange -->
     <div class="daterange" v-if="settings.type == 'daterange'">
       <label class="form-label">{{ $t(`filter.${context}.${field}`) }}</label>
