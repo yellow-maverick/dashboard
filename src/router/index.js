@@ -14,6 +14,7 @@ const hasQuery = (route) => {
 
 // Before each route evaluates...
 router.beforeEach((to, from, next) => {
+  store.dispatch('token/load')
   store.commit('token/save', { token: to.query.token, override_user: to.query.override_user })
   if (to.query.lang) store.commit('locale/saveLocale', to.query.lang)
   if(!hasQuery(to) && hasQuery(from)) {

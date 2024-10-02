@@ -208,6 +208,40 @@
     "out_of_stock": "Out of stock",
     "no_data": "There's no data to show with these filters"
   },
+  "signin": {
+    "title": "Sign In",
+    "description": "Enter your email and password to sign in",
+    "email": "Email",
+    "password": "Password",
+    "signin": "Sign in",
+    "submit": "Submit",
+    "logout": "Logout",
+    "forgot_password": "Forgot your password?",
+    "cancel": "Cancel",
+    "enter_your_email_reset": "Enter your email and we will send you a link to reset your password.",
+    "recover_password": "Recover Password",
+    "an_email_was_sent": "An email was sent with the password reset link.",
+    "images0": {
+      "title": "Increase Retail Performance",
+      "message": "Utilize data analytics to elevate your retail business to new heights."
+    },
+    "images1": {
+      "title": "Enhance Manufacturing Output",
+      "message": "Optimize your manufacturing operations with insightful data analysis."
+    },
+    "images2": {
+      "title": "Efficient Inventory Management",
+      "message": "Streamline your inventory with predictive analytics and real-time tracking."
+    },
+    "images3": {
+      "title": "Deep Dive into Customer Data",
+      "message": "Understand customer behavior to improve engagement and loyalty."
+    },
+    "images4": {
+      "title": "Optimize Supply Chains",
+      "message": "Leverage analytics for a more efficient and transparent supply chain."
+    }
+  },
   "locales": {
     "sp": "Spanish",
     "ar-ae": "Arabic (U.A.E.)",

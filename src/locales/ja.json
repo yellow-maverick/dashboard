@@ -3,7 +3,8 @@
     "title": "タイトルを翻訳しました",
     "change_language": "言語を変更",
     "pages": "ページ",
-    "made_with": "{with} × {by}で作った"
+    "made_with": "{with} × {by}で作った",
+    "export_excel": "Excel をエクスポート"
   },
   "routes": {
     "dashboard": "ダッシュボード",
@@ -75,10 +76,37 @@
       "last_6_months": "過去6か月",
       "ytd": "年初来",
       "last_year": "去年"
+    },
+    "main": {
+      "daterange": "日付範囲",
+      "property_id": "プロパティ",
+      "product_id": "製品",
+      "group_id": "グループ",
+      "source_ids": "出典",
+      "context": "コンテクスト",
+      "topic": "トピック",
+      "period": "期間",
+      "enable_comp": "競合他社を有効にする",
+      "rating": "評価"
+    },
+    "competitors": {
+      "daterange": "日付範囲",
+      "property_id": "競合他社",
+      "product_id": "競合製品",
+      "group_id": "グループ",
+      "source_ids": "出典",
+      "brand": "ブランド",
+      "product": "製品",
+      "context": "コンテクスト",
+      "topic": "トピック",
+      "period": "期間",
+      "rating": "評価"
     }
   },
   "charts": {
-    "reviews-ratings": "レビュー / 評価"
+    "reviews-ratings": "レビュー / 評価",
+    "ratings": "総合評価 - {name}",
+    "reviews": "レビュー - {name}"
   },
   "reviews": {
     "title": "レビュー",
@@ -91,7 +119,9 @@
     "from": "から",
     "show_original": "オリジナルを表示",
     "translate": "翻訳する",
-    "respond": "応答する"
+    "respond": "応答する",
+    "forward": "フォワード",
+    "forward_subject": "このレビューをチェックしてください"
   },
   "sentiment_kpi": {
     "title": "感情KPI",
@@ -105,7 +135,8 @@
     "chart": "チャート",
     "ratings_title": "評価表",
     "sentiment_title": "感情表",
-    "title_with_segment": "評価表{s}"
+    "title_with_segment": "評価表{s}",
+    "property": "財産"
   },
   "topics": {
     "value": "価値",
@@ -114,7 +145,17 @@
     "support": "サポート",
     "quality": "品質"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "新規追加",
+    "scraping": "データの収集",
+    "scraping_error": "データ収集中にエラーが発生しました。別の URL を試してください。",
+    "site": "サイト",
+    "name": "名前",
+    "url": "メールアドレス",
+    "save": "保存",
+    "add": "追加",
+    "cancel": "キャンセル"
+  },
   "products": {
     "url": "製品URL",
     "more_details": "製品の詳細",
@@ -140,7 +181,14 @@
     "site": "サイト",
     "name": "名前",
     "save": "保存",
-    "save_error": "製品の保存中にエラーが発生しました: % {error}"
+    "save_error": "製品の保存中にエラーが発生しました: % {error}",
+    "add_new": "新規追加",
+    "tabs": {
+      "details": "詳細",
+      "connections": "接続",
+      "competitors": "競合他社"
+    },
+    "price": "価格"
   },
   "prices_table": {
     "product": "製品",
@@ -345,5 +393,53 @@
     "zh-cn": "中国語（簡体字）",
     "zh-tw": "中国語 台湾語",
     "others": "その他"
+  },
+  "rating_ranges": {
+    "100": "ちょうど10",
+    "higher_than_7_5": "7.5以上",
+    "higher_than_6": "6以上",
+    "lower_than_6": "6未満",
+    "lower_than_3": "3未満"
+  },
+  "properties": {
+    "tabs": {
+      "products": "製品",
+      "connections": "接続",
+      "competitors": "競合他社"
+    }
+  },
+  "signin": {
+    "title": "サインイン",
+    "description": "サインインするにはメールアドレスとパスワードを入力してください",
+    "email": "メール",
+    "password": "パスワード",
+    "submit": "提出する",
+    "images0": {
+      "title": "小売業のパフォーマンス向上",
+      "message": "データ分析を活用して小売ビジネスを新たな高みに引き上げましょう。"
+    },
+    "images1": {
+      "title": "製造出力の向上",
+      "message": "洞察力に富んだデータ分析により製造業務を最適化します。"
+    },
+    "images2": {
+      "title": "効率的な在庫管理",
+      "message": "予測分析とリアルタイム追跡により在庫を合理化します。"
+    },
+    "images3": {
+      "title": "顧客データの詳細な分析",
+      "message": "顧客の行動を理解して、エンゲージメントとロイヤルティを向上させます。"
+    },
+    "images4": {
+      "title": "サプライチェーンの最適化",
+      "message": "分析を活用して、より効率的で透明性の高いサプライ チェーンを実現します。"
+    },
+    "signin": "サインイン",
+    "logout": "ログアウト",
+    "forgot_password": "パスワードをお忘れですか？",
+    "cancel": "キャンセル",
+    "enter_your_email_reset": "メールアドレスを入力すると、パスワードをリセットするためのリンクが送信されます。",
+    "recover_password": "パスワードを回復する",
+    "an_email_was_sent": "パスワードリセットリンクが記載されたメールが送信されました。"
   }
 }

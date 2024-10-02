@@ -3,7 +3,8 @@
     "title": "Titel übersetzt",
     "change_language": "Sprache ändern",
     "pages": "Seiten",
-    "made_with": "gemacht mit {with} mal {by}"
+    "made_with": "gemacht mit {with} mal {by}",
+    "export_excel": "Excel exportieren"
   },
   "routes": {
     "dashboard": "Armaturenbrett",
@@ -75,10 +76,37 @@
       "last_6_months": "Letzte 6 Monate",
       "ytd": "Der bisherige Jahresverlauf",
       "last_year": "Letztes Jahr"
+    },
+    "main": {
+      "daterange": "Datumsbereich",
+      "property_id": "Eigenschaften",
+      "product_id": "Produkte",
+      "group_id": "Gruppen",
+      "source_ids": "Quellen",
+      "context": "Kontext",
+      "topic": "Thema",
+      "period": "Zeitraum",
+      "enable_comp": "Wettbewerber aktivieren",
+      "rating": "Bewertungen"
+    },
+    "competitors": {
+      "daterange": "Datumsbereich",
+      "property_id": "Wettbewerber",
+      "product_id": "Konkurrenzprodukte",
+      "group_id": "Gruppen",
+      "source_ids": "Quellen",
+      "brand": "Marke",
+      "product": "Produkt",
+      "context": "Kontext",
+      "topic": "Thema",
+      "period": "Zeitraum",
+      "rating": "Bewertungen"
     }
   },
   "charts": {
-    "reviews-ratings": "Rezensionen/Bewertungen"
+    "reviews-ratings": "Rezensionen/Bewertungen",
+    "ratings": "Gesamtbewertung - {name}",
+    "reviews": "Bewertungen - {name}"
   },
   "reviews": {
     "title": "Bewertungen",
@@ -91,7 +119,9 @@
     "from": "Aus",
     "show_original": "Original anzeigen",
     "translate": "Übersetzen",
-    "respond": "Antworten"
+    "respond": "Antworten",
+    "forward": "Nach vorne",
+    "forward_subject": "Schauen Sie sich diese Rezension an"
   },
   "sentiment_kpi": {
     "title": "Stimmungs-KPI",
@@ -105,7 +135,8 @@
     "chart": "Diagramm",
     "ratings_title": "Bewertungstabelle",
     "sentiment_title": "Stimmungstabelle",
-    "title_with_segment": "Bewertungstabelle von {s}"
+    "title_with_segment": "Bewertungstabelle von {s}",
+    "property": "Eigentum"
   },
   "topics": {
     "value": "Wert",
@@ -114,7 +145,17 @@
     "support": "Unterstützung",
     "quality": "Qualität"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "Neu hinzufügen",
+    "scraping": "Daten sammeln",
+    "scraping_error": "Fehler beim Erfassen der Daten. Bitte versuchen Sie es mit einer anderen URL.",
+    "site": "Website",
+    "name": "Name",
+    "url": "URL",
+    "save": "Speichern",
+    "add": "Hinzufügen",
+    "cancel": "Stornieren"
+  },
   "products": {
     "url": "Produkt-URL",
     "more_details": "Weitere Produktdetails",
@@ -140,7 +181,14 @@
     "site": "Website",
     "name": "Name",
     "save": "Speichern",
-    "save_error": "Fehler beim Speichern des Produkts: % {error}"
+    "save_error": "Fehler beim Speichern des Produkts: % {error}",
+    "add_new": "Neu hinzufügen",
+    "tabs": {
+      "details": "Details",
+      "connections": "Anschlüsse",
+      "competitors": "Wettbewerber"
+    },
+    "price": "Preis"
   },
   "prices_table": {
     "product": "Produkt",
@@ -345,5 +393,53 @@
     "zh-cn": "Vereinfachtes Chinesisch",
     "zh-tw": "Chinesisch Taiwanesisch",
     "others": "Sonstiges"
+  },
+  "rating_ranges": {
+    "100": "Genau 10",
+    "higher_than_7_5": "Höher als 7,5",
+    "higher_than_6": "Höher als/gleich 6",
+    "lower_than_6": "Niedriger als 6",
+    "lower_than_3": "Niedriger als 3"
+  },
+  "properties": {
+    "tabs": {
+      "products": "Produkte",
+      "connections": "Anschlüsse",
+      "competitors": "Wettbewerber"
+    }
+  },
+  "signin": {
+    "title": "Anmelden",
+    "description": "Geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein, um sich anzumelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "submit": "Einreichen",
+    "images0": {
+      "title": "Verbessern Sie die Leistung Ihres Einzelhandels",
+      "message": "Nutzen Sie die Datenanalyse, um Ihr Einzelhandelsgeschäft auf ein neues Niveau zu heben."
+    },
+    "images1": {
+      "title": "Steigern Sie die Fertigungsleistung",
+      "message": "Optimieren Sie Ihre Fertigungsabläufe mit aufschlussreichen Datenanalysen."
+    },
+    "images2": {
+      "title": "Effizientes Bestandsmanagement",
+      "message": "Optimieren Sie Ihr Inventar mit prädiktiver Analyse und Echtzeit-Tracking."
+    },
+    "images3": {
+      "title": "Detaillierte Einblicke in Kundendaten",
+      "message": "Verstehen Sie das Kundenverhalten, um Engagement und Loyalität zu verbessern."
+    },
+    "images4": {
+      "title": "Lieferketten optimieren",
+      "message": "Nutzen Sie Analysen für eine effizientere und transparentere Lieferkette."
+    },
+    "signin": "anmelden",
+    "logout": "Ausloggen",
+    "forgot_password": "Passwort vergessen?",
+    "cancel": "Stornieren",
+    "enter_your_email_reset": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
+    "recover_password": "Passwort wiederherstellen",
+    "an_email_was_sent": "Es wurde eine E-Mail mit dem Link zum Zurücksetzen des Passworts gesendet."
   }
 }

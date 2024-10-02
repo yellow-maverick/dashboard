@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 <template>
-  <button class="btn mb-0" :class="getClasses(variant, color, size, fullWidth, active)">
+  <button class="btn mb-0" :class="getClasses(variant, color, size, fullWidth, active)" v-bind="$attrs" >
     <slot />
   </button>
 </template>

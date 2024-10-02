@@ -1,6 +1,6 @@
 <template>
   <div
-    class="alert text-white font-weight-bold"
+    class="alert text-white text-center font-weight-bold"
     role="alert"
     :class="getClasses(color, dismissible)"
   >

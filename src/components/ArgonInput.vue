@@ -4,15 +4,9 @@
       <span v-if="iconDir === 'left'" class="input-group-text">
         <i :class="getIcon(icon)"></i>
       </span>
-      <input
-        :type="type"
-        class="form-control"
-        :class="getClasses(size, valid)"
-        :name="name"
-        :id="id"
-        :value="value"
-        :placeholder="placeholder"
-        :isRequired="isRequired"
+      <input :type="type" class="form-control" :class="getClasses(size, valid)" :name="name"
+        :id="id" :placeholder="placeholder" :isRequired="isRequired"
+        :model-value='modelValue' @input="$emit('update:modelValue', $event.target.value)" 
       />
       <span v-if="iconDir === 'right'" class="input-group-text">
         <i :class="getIcon(icon)"></i>
@@ -23,6 +17,7 @@
 
 <script>
 export default {
+  inheritAttrs: false,
   name: "argon-input",
   props: {
     size: {
@@ -37,10 +32,10 @@ export default {
     iconDir: String,
     name: String,
     id: String,
-    value: String,
     placeholder: String,
     type: String,
     isRequired: Boolean,
+    modelValue: String
   },
   methods: {
     getClasses: (size, valid) => {
@@ -55,5 +50,6 @@ export default {
     getIcon: (icon) => (icon ? icon : null),
     hasIcon: (icon) => (icon ? "input-group" : null),
   },
+  emits: ['update:modelValue']
 };
 </script>

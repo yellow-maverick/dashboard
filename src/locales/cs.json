@@ -3,7 +3,8 @@
     "title": "Název přeložen",
     "change_language": "Změnit jazyk",
     "pages": "Stránky",
-    "made_with": "vytvořeno s {with} x {by}"
+    "made_with": "vytvořeno s {with} x {by}",
+    "export_excel": "Exportovat excel"
   },
   "routes": {
     "dashboard": "Dashboard",
@@ -75,10 +76,37 @@
       "last_6_months": "Posledních 6 měsíců",
       "ytd": "Rok k dnešnímu dni",
       "last_year": "Loni"
+    },
+    "main": {
+      "daterange": "Období",
+      "property_id": "Vlastnosti",
+      "product_id": "Produkty",
+      "group_id": "Skupiny",
+      "source_ids": "Zdroje",
+      "context": "Kontext",
+      "topic": "Téma",
+      "period": "Období",
+      "enable_comp": "Povolit konkurenta",
+      "rating": "Hodnocení"
+    },
+    "competitors": {
+      "daterange": "Období",
+      "property_id": "Soutěžící",
+      "product_id": "Konkurenční produkty",
+      "group_id": "Skupiny",
+      "source_ids": "Zdroje",
+      "brand": "Značka",
+      "product": "Produkt",
+      "context": "Kontext",
+      "topic": "Téma",
+      "period": "Období",
+      "rating": "Hodnocení"
     }
   },
   "charts": {
-    "reviews-ratings": "Recenze / Hodnocení"
+    "reviews-ratings": "Recenze / Hodnocení",
+    "ratings": "Celkové hodnocení - {name}",
+    "reviews": "Recenze - {name}"
   },
   "reviews": {
     "title": "Recenze",
@@ -91,7 +119,9 @@
     "from": "Z",
     "show_original": "Zobrazit originál",
     "translate": "Přeložit",
-    "respond": "Reagovat"
+    "respond": "Reagovat",
+    "forward": "Vpřed",
+    "forward_subject": "Podívejte se na tuto recenzi"
   },
   "sentiment_kpi": {
     "title": "KPI sentimentu",
@@ -105,7 +135,8 @@
     "chart": "Schéma",
     "ratings_title": "Tabulka hodnocení",
     "sentiment_title": "Sentimentová tabulka",
-    "title_with_segment": "Tabulka hodnocení podle {s}"
+    "title_with_segment": "Tabulka hodnocení podle {s}",
+    "property": "Vlastnictví"
   },
   "topics": {
     "value": "Hodnota",
@@ -114,7 +145,17 @@
     "support": "Podpora",
     "quality": "Kvalitní"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "Přidat nové",
+    "scraping": "Sběr dat",
+    "scraping_error": "Chyba při shromažďování dat, zkuste prosím jinou adresu URL",
+    "site": "místo",
+    "name": "Jméno",
+    "url": "URL",
+    "save": "Uložit",
+    "add": "Přidat",
+    "cancel": "Zrušit"
+  },
   "products": {
     "url": "URL produktu",
     "more_details": "Další podrobnosti o produktu",
@@ -140,7 +181,14 @@
     "site": "místo",
     "name": "Jméno",
     "save": "Uložit",
-    "save_error": "Chyba při ukládání produktu: % {error}"
+    "save_error": "Chyba při ukládání produktu: % {error}",
+    "add_new": "Přidat nové",
+    "tabs": {
+      "details": "Podrobnosti",
+      "connections": "Spojení",
+      "competitors": "Soutěžící"
+    },
+    "price": "Cena"
   },
   "prices_table": {
     "product": "Produkt",
@@ -345,5 +393,53 @@
     "zh-cn": "Zjednodušená čínština",
     "zh-tw": "Čínští Tchajwanci",
     "others": "Jiní"
+  },
+  "rating_ranges": {
+    "100": "Přesně 10",
+    "higher_than_7_5": "Vyšší než 7,5",
+    "higher_than_6": "Vyšší nebo rovno 6",
+    "lower_than_6": "Nižší než 6",
+    "lower_than_3": "Nižší než 3"
+  },
+  "properties": {
+    "tabs": {
+      "products": "Produkty",
+      "connections": "Spojení",
+      "competitors": "Soutěžící"
+    }
+  },
+  "signin": {
+    "title": "Přihlaste se",
+    "description": "Pro přihlášení zadejte svůj e-mail a heslo",
+    "email": "E-mail",
+    "password": "Heslo",
+    "submit": "Předložit",
+    "images0": {
+      "title": "Zvyšte výkon maloobchodu",
+      "message": "Využijte analýzu dat k pozvednutí svého maloobchodního podnikání do nových výšin."
+    },
+    "images1": {
+      "title": "Zlepšení výrobního výkonu",
+      "message": "Optimalizujte své výrobní operace pomocí důkladné analýzy dat."
+    },
+    "images2": {
+      "title": "Efektivní správa zásob",
+      "message": "Zefektivněte svůj inventář pomocí prediktivní analýzy a sledování v reálném čase."
+    },
+    "images3": {
+      "title": "Hluboký ponor do zákaznických dat",
+      "message": "Pochopte chování zákazníků, abyste zlepšili zapojení a loajalitu."
+    },
+    "images4": {
+      "title": "Optimalizujte dodavatelské řetězce",
+      "message": "Využijte analýzy pro efektivnější a transparentnější dodavatelský řetězec."
+    },
+    "signin": "Přihlaste se",
+    "logout": "Odhlášení",
+    "forgot_password": "Zapomněli jste heslo?",
+    "cancel": "Zrušit",
+    "enter_your_email_reset": "Zadejte svůj e-mail a my vám zašleme odkaz pro obnovení hesla.",
+    "recover_password": "Obnovit heslo",
+    "an_email_was_sent": "Byl odeslán e-mail s odkazem na obnovení hesla."
   }
 }

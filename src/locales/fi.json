@@ -3,7 +3,8 @@
     "title": "Otsikko käännetty",
     "change_language": "Vaihda kieli",
     "pages": "Sivut",
-    "made_with": "tehty {with} x {by}"
+    "made_with": "tehty {with} x {by}",
+    "export_excel": "Vie excel"
   },
   "routes": {
     "dashboard": "Kojelauta",
@@ -75,10 +76,37 @@
       "last_6_months": "Viimeiset 6 kuukautta",
       "ytd": "Vuodesta tähän päivään asti",
       "last_year": "Viime vuonna"
+    },
+    "main": {
+      "daterange": "Ajanjakso",
+      "property_id": "Ominaisuudet",
+      "product_id": "Tuotteet",
+      "group_id": "ryhmät",
+      "source_ids": "Lähteet",
+      "context": "Konteksti",
+      "topic": "Aihe",
+      "period": "Kausi",
+      "enable_comp": "Ota kilpailija käyttöön",
+      "rating": "Luokitus"
+    },
+    "competitors": {
+      "daterange": "Ajanjakso",
+      "property_id": "Kilpailijat",
+      "product_id": "Kilpailijan tuotteet",
+      "group_id": "ryhmät",
+      "source_ids": "Lähteet",
+      "brand": "Merkki",
+      "product": "Tuote",
+      "context": "Konteksti",
+      "topic": "Aihe",
+      "period": "Kausi",
+      "rating": "Luokitus"
     }
   },
   "charts": {
-    "reviews-ratings": "Arvostelut / Arviot"
+    "reviews-ratings": "Arvostelut / Arviot",
+    "ratings": "Kokonaisarvio - {name}",
+    "reviews": "Arvostelut - {name}"
   },
   "reviews": {
     "title": "Arvostelut",
@@ -91,7 +119,9 @@
     "from": "From",
     "show_original": "Näytä alkuperäinen",
     "translate": "Kääntää",
-    "respond": "Vastata"
+    "respond": "Vastata",
+    "forward": "Eteenpäin",
+    "forward_subject": "Katso tämä arvostelu"
   },
   "sentiment_kpi": {
     "title": "Sentimentin KPI",
@@ -105,7 +135,8 @@
     "chart": "Kartoittaa",
     "ratings_title": "Arviointitaulukko",
     "sentiment_title": "Tunnelmataulukko",
-    "title_with_segment": "Arvosanataulukko {s}"
+    "title_with_segment": "Arvosanataulukko {s}",
+    "property": "Omaisuus"
   },
   "topics": {
     "value": "Arvo",
@@ -114,7 +145,17 @@
     "support": "Tukea",
     "quality": "Laatu"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "Lisää uusi",
+    "scraping": "Tietojen kerääminen",
+    "scraping_error": "Virhe tietojen keräämisessä. Kokeile toista URL-osoitetta",
+    "site": "Sivusto",
+    "name": "Nimi",
+    "url": "URL-osoite",
+    "save": "Tallentaa",
+    "add": "Lisätä",
+    "cancel": "Peruuttaa"
+  },
   "products": {
     "url": "Tuotteen URL-osoite",
     "more_details": "Lisää tuotetietoja",
@@ -140,7 +181,14 @@
     "site": "Sivusto",
     "name": "Nimi",
     "save": "Tallentaa",
-    "save_error": "Virhe tallennettaessa tuotetta: % {error}"
+    "save_error": "Virhe tallennettaessa tuotetta: % {error}",
+    "add_new": "Lisää uusi",
+    "tabs": {
+      "details": "Yksityiskohdat",
+      "connections": "Liitännät",
+      "competitors": "Kilpailijat"
+    },
+    "price": "Hinta"
   },
   "prices_table": {
     "product": "Tuote",
@@ -345,5 +393,53 @@
     "zh-cn": "Yksinkertaistettu kiina",
     "zh-tw": "Kiinalainen taiwanilainen",
     "others": "muut"
+  },
+  "rating_ranges": {
+    "100": "Juuri 10",
+    "higher_than_7_5": "Yli 7,5",
+    "higher_than_6": "Suurempi/yhtä kuin 6",
+    "lower_than_6": "Alle 6",
+    "lower_than_3": "Alle 3"
+  },
+  "properties": {
+    "tabs": {
+      "products": "Tuotteet",
+      "connections": "Liitännät",
+      "competitors": "Kilpailijat"
+    }
+  },
+  "signin": {
+    "title": "Kirjaudu sisään",
+    "description": "Kirjoita sähköpostiosoitteesi ja salasanasi kirjautuaksesi sisään",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "submit": "Lähetä",
+    "images0": {
+      "title": "Kasvata vähittäiskaupan suorituskykyä",
+      "message": "Hyödynnä data-analytiikkaa nostaaksesi vähittäiskauppasi uusiin korkeuksiin."
+    },
+    "images1": {
+      "title": "Paranna tuotantotehoa",
+      "message": "Optimoi tuotantosi oivaltavalla data-analyysillä."
+    },
+    "images2": {
+      "title": "Tehokas varastonhallinta",
+      "message": "Virtaviivaista varastoasi ennakoivan analytiikan ja reaaliaikaisen seurannan avulla."
+    },
+    "images3": {
+      "title": "Sukella syvälle asiakastietoihin",
+      "message": "Ymmärrä asiakkaiden käyttäytyminen parantaaksesi sitoutumista ja uskollisuutta."
+    },
+    "images4": {
+      "title": "Optimoi toimitusketjut",
+      "message": "Hyödynnä analytiikkaa tehokkaamman ja avoimemman toimitusketjun luomiseksi."
+    },
+    "signin": "Kirjaudu sisään",
+    "logout": "Kirjaudu ulos",
+    "forgot_password": "Unohditko salasanasi?",
+    "cancel": "Peruuttaa",
+    "enter_your_email_reset": "Anna sähköpostiosoitteesi, niin lähetämme sinulle linkin salasanan vaihtamiseen.",
+    "recover_password": "Palauta salasana",
+    "an_email_was_sent": "Sähköpostiin lähetettiin salasanan palautuslinkki."
   }
 }

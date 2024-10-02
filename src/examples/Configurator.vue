@@ -1,3 +1,65 @@
+<script>
+import { alova } from '../js/alova.js'
+import { mapMutations } from "vuex";
+import { activateDarkMode, deactivateDarkMode } from "@/assets/js/dark-mode";
+
+export default {
+  name: "configurator",
+  props: ["toggle"],
+  methods: {
+    ...mapMutations(["navbarMinimize", "sidebarType", "navbarFixed"]),
+    sidebarColor(color = "success") {
+      document.querySelector("#sidenav-main").setAttribute("data-color", color);
+      this.$store.state.mcolor = `card-background-mask-${color}`;
+    },
+    sidebarType(type) {
+      this.$store.state.sidebarType = type;
+    },
+    setNavbarFixed() {
+      if (
+        this.$route.name !== "Profile" ||
+        this.$route.name !== "All Projects"
+      ) {
+        this.$store.state.isNavFixed = !this.$store.state.isNavFixed;
+      }
+    },
+    setDarkMode() {
+      if (this.$store.state.darkMode) {
+        this.$store.state.darkMode = false;
+        this.$store.state.sidebarType = "bg-white";
+        deactivateDarkMode();
+        return;
+      } else {
+        this.$store.state.darkMode = true;
+        this.$store.state.sidebarType = "bg-default";
+        activateDarkMode();
+      }
+    },
+    sidenavTypeOnResize() {
+      let white = document.querySelector("#btn-white");
+      if (window.innerWidth < 1200) {
+        white.classList.add("disabled");
+      } else {
+        white.classList.remove("disabled");
+      }
+    },
+    async logout () {
+      await alova.Post('/logout')
+    }
+  },
+  computed: {
+    sidenavResponsive() {
+      return this.sidenavTypeOnResize;
+    }
+  },
+  beforeMount() {
+    this.$store.state.isTransparent = "bg-transparent";
+    window.addEventListener("resize", this.sidenavTypeOnResize);
+    window.addEventListener("load", this.sidenavTypeOnResize);
+  }
+};
+</script>
+
 <template>
   <div class="fixed-plugin">
     <a
@@ -12,7 +74,7 @@
           class=""
           :class="this.$store.state.isRTL ? 'float-end' : 'float-start'"
         >
-          <h5 class="mt-3 mb-0">Argon Configurator</h5>
+          <h5 class="mt-3 mb-0">Settings</h5>
           <p>See our dashboard options.</p>
         </div>
         <div
@@ -135,100 +197,8 @@
             />
           </div>
         </div>
-        <a
-          class="btn bg-gradient-dark w-100"
-          href="https://www.creative-tim.com/product/vue-argon-dashboard"
-          >Free Download</a
-        >
-        <a
-          class="btn btn-outline-dark w-100"
-          href="https://www.creative-tim.com/learning-lab/vue/overview/argon-dashboard/"
-          >View documentation</a
-        >
-        <div class="text-center w-100">
-          <a
-            class="github-button"
-            href="https://github.com/creativetimofficial/vue-argon-dashboard"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star creativetimofficial/vue-argon-dashboard on GitHub"
-            >Star</a
-          >
-          <h6 class="mt-3">Thank you for sharing!</h6>
-          <a
-            href="https://twitter.com/intent/tweet?text=Check%20Vue%20Argon%20Dashboard%202%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%vuejs3&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%vue-argon-dashboard"
-            class="mb-0 btn btn-dark me-2"
-            target="_blank"
-          >
-            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
-          </a>
-          <a
-            href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/vue-argon-dashboard"
-            class="mb-0 btn btn-dark me-2"
-            target="_blank"
-          >
-            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-          </a>
-        </div>
+        <a class="mt-5 btn bg-gradient-dark w-100" @click='logout' >{{ $t('signin.logout') }}</a>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-import { mapMutations } from "vuex";
-import { activateDarkMode, deactivateDarkMode } from "@/assets/js/dark-mode";
-export default {
-  name: "configurator",
-  props: ["toggle"],
-  methods: {
-    ...mapMutations(["navbarMinimize", "sidebarType", "navbarFixed"]),
-    sidebarColor(color = "success") {
-      document.querySelector("#sidenav-main").setAttribute("data-color", color);
-      this.$store.state.mcolor = `card-background-mask-${color}`;
-    },
-    sidebarType(type) {
-      this.$store.state.sidebarType = type;
-    },
-    setNavbarFixed() {
-      if (
-        this.$route.name !== "Profile" ||
-        this.$route.name !== "All Projects"
-      ) {
-        this.$store.state.isNavFixed = !this.$store.state.isNavFixed;
-      }
-    },
-    setDarkMode() {
-      if (this.$store.state.darkMode) {
-        this.$store.state.darkMode = false;
-        this.$store.state.sidebarType = "bg-white";
-        deactivateDarkMode();
-        return;
-      } else {
-        this.$store.state.darkMode = true;
-        this.$store.state.sidebarType = "bg-default";
-        activateDarkMode();
-      }
-    },
-    sidenavTypeOnResize() {
-      let white = document.querySelector("#btn-white");
-      if (window.innerWidth < 1200) {
-        white.classList.add("disabled");
-      } else {
-        white.classList.remove("disabled");
-      }
-    }
-  },
-  computed: {
-    sidenavResponsive() {
-      return this.sidenavTypeOnResize;
-    }
-  },
-  beforeMount() {
-    this.$store.state.isTransparent = "bg-transparent";
-    window.addEventListener("resize", this.sidenavTypeOnResize);
-    window.addEventListener("load", this.sidenavTypeOnResize);
-  }
-};
-</script>

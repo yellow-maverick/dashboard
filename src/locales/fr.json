@@ -3,7 +3,8 @@
     "title": "Titre traduit",
     "change_language": "Changer de langue",
     "pages": "Pages",
-    "made_with": "fait avec {with} par {by}"
+    "made_with": "fait avec {with} par {by}",
+    "export_excel": "Exporter Excel"
   },
   "routes": {
     "dashboard": "Tableau de bord",
@@ -75,10 +76,37 @@
       "last_6_months": "Les 6 derniers mois",
       "ytd": "Année à ce jour",
       "last_year": "L'année dernière"
+    },
+    "main": {
+      "daterange": "Plage de dates",
+      "property_id": "Propriétés",
+      "product_id": "Produits",
+      "group_id": "Groupes",
+      "source_ids": "Sources",
+      "context": "Contexte",
+      "topic": "Sujet",
+      "period": "Période",
+      "enable_comp": "Activer le concurrent",
+      "rating": "Notation"
+    },
+    "competitors": {
+      "daterange": "Plage de dates",
+      "property_id": "Concurrents",
+      "product_id": "Produits concurrents",
+      "group_id": "Groupes",
+      "source_ids": "Sources",
+      "brand": "Marque",
+      "product": "Produit",
+      "context": "Contexte",
+      "topic": "Sujet",
+      "period": "Période",
+      "rating": "Notation"
     }
   },
   "charts": {
-    "reviews-ratings": "Avis / Notes"
+    "reviews-ratings": "Avis / Notes",
+    "ratings": "Note globale - {name}",
+    "reviews": "Avis - {name}"
   },
   "reviews": {
     "title": "Avis",
@@ -91,7 +119,9 @@
     "from": "Depuis",
     "show_original": "Afficher l'original",
     "translate": "Traduire",
-    "respond": "Répondre"
+    "respond": "Répondre",
+    "forward": "Avant",
+    "forward_subject": "Découvrez cette critique"
   },
   "sentiment_kpi": {
     "title": "Indicateur de performance clé du sentiment",
@@ -105,7 +135,8 @@
     "chart": "Graphique",
     "ratings_title": "Tableau des notes",
     "sentiment_title": "Tableau des sentiments",
-    "title_with_segment": "Tableau des notes par {s}"
+    "title_with_segment": "Tableau des notes par {s}",
+    "property": "Propriété"
   },
   "topics": {
     "value": "Valeur",
@@ -114,7 +145,17 @@
     "support": "Soutien",
     "quality": "Qualité"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "Ajouter un nouveau",
+    "scraping": "Collecte de données",
+    "scraping_error": "Erreur lors de la collecte des données, veuillez essayer une autre URL",
+    "site": "Site",
+    "name": "Nom",
+    "url": "URL",
+    "save": "Sauvegarder",
+    "add": "Ajouter",
+    "cancel": "Annuler"
+  },
   "products": {
     "url": "URL du produit",
     "more_details": "Plus de détails sur le produit",
@@ -140,7 +181,14 @@
     "site": "Site",
     "name": "Nom",
     "save": "Sauvegarder",
-    "save_error": "Erreur lors de l&#39;enregistrement du produit : % {error}"
+    "save_error": "Erreur lors de l&#39;enregistrement du produit : % {error}",
+    "add_new": "Ajouter un nouveau",
+    "tabs": {
+      "details": "Détails",
+      "connections": "Relations",
+      "competitors": "Concurrents"
+    },
+    "price": "Prix"
   },
   "prices_table": {
     "product": "Produit",
@@ -348,5 +396,53 @@
   },
   "something": {
     "new": "Nouveau"
+  },
+  "rating_ranges": {
+    "100": "Exactement 10",
+    "higher_than_7_5": "Supérieur à 7,5",
+    "higher_than_6": "Supérieur/égal à 6",
+    "lower_than_6": "Inférieur à 6",
+    "lower_than_3": "Inférieur à 3"
+  },
+  "properties": {
+    "tabs": {
+      "products": "Produits",
+      "connections": "Relations",
+      "competitors": "Concurrents"
+    }
+  },
+  "signin": {
+    "title": "Se connecter",
+    "description": "Entrez votre email et votre mot de passe pour vous connecter",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "submit": "Soumettre",
+    "images0": {
+      "title": "Augmenter les performances de vente au détail",
+      "message": "Utilisez l’analyse des données pour élever votre entreprise de vente au détail vers de nouveaux sommets."
+    },
+    "images1": {
+      "title": "Améliorer la production industrielle",
+      "message": "Optimisez vos opérations de fabrication grâce à une analyse de données approfondie."
+    },
+    "images2": {
+      "title": "Gestion efficace des stocks",
+      "message": "Optimisez votre inventaire grâce à des analyses prédictives et un suivi en temps réel."
+    },
+    "images3": {
+      "title": "Plongée en profondeur dans les données clients",
+      "message": "Comprendre le comportement des clients pour améliorer l'engagement et la fidélité."
+    },
+    "images4": {
+      "title": "Optimiser les chaînes d'approvisionnement",
+      "message": "Exploitez l’analyse pour une chaîne d’approvisionnement plus efficace et plus transparente."
+    },
+    "signin": "Se connecter",
+    "logout": "Déconnexion",
+    "forgot_password": "Mot de passe oublié ?",
+    "cancel": "Annuler",
+    "enter_your_email_reset": "Entrez votre email et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "recover_password": "Récupérer le mot de passe",
+    "an_email_was_sent": "Un e-mail a été envoyé avec le lien de réinitialisation du mot de passe."
   }
 }

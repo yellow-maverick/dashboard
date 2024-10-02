@@ -3,7 +3,8 @@
     "title": "Título traduzido",
     "change_language": "Mudar idioma",
     "pages": "Páginas",
-    "made_with": "feito com {with} por {by}"
+    "made_with": "feito com {with} por {by}",
+    "export_excel": "Exportar Excel"
   },
   "routes": {
     "dashboard": "Painel",
@@ -75,10 +76,37 @@
       "last_6_months": "Últimos 6 meses",
       "ytd": "No acumulado do ano",
       "last_year": "Ano passado"
+    },
+    "main": {
+      "daterange": "Intervalo de datas",
+      "property_id": "Propriedades",
+      "product_id": "Produtos",
+      "group_id": "Grupos",
+      "source_ids": "Fontes",
+      "context": "Contexto",
+      "topic": "Tópico",
+      "period": "Período",
+      "enable_comp": "Habilitar concorrente",
+      "rating": "Avaliação"
+    },
+    "competitors": {
+      "daterange": "Intervalo de datas",
+      "property_id": "Concorrentes",
+      "product_id": "Produtos concorrentes",
+      "group_id": "Grupos",
+      "source_ids": "Fontes",
+      "brand": "Marca",
+      "product": "Produto",
+      "context": "Contexto",
+      "topic": "Tópico",
+      "period": "Período",
+      "rating": "Avaliação"
     }
   },
   "charts": {
-    "reviews-ratings": "Avaliações / Classificações"
+    "reviews-ratings": "Avaliações / Classificações",
+    "ratings": "Classificação geral - {name}",
+    "reviews": "Avaliações - {name}"
   },
   "reviews": {
     "title": "Avaliações",
@@ -91,7 +119,9 @@
     "from": "De",
     "show_original": "Mostrar original",
     "translate": "Traduzir",
-    "respond": "Responder"
+    "respond": "Responder",
+    "forward": "Avançar",
+    "forward_subject": "Confira esta análise"
   },
   "sentiment_kpi": {
     "title": "KPI de sentimento",
@@ -105,7 +135,8 @@
     "chart": "Gráfico",
     "ratings_title": "Tabela de classificações",
     "sentiment_title": "Tabela de sentimentos",
-    "title_with_segment": "Tabela de classificações por {s}"
+    "title_with_segment": "Tabela de classificações por {s}",
+    "property": "Propriedade"
   },
   "topics": {
     "value": "Valor",
@@ -114,7 +145,17 @@
     "support": "Apoiar",
     "quality": "Qualidade"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "Adicionar novo",
+    "scraping": "Coletando dados",
+    "scraping_error": "Erro ao coletar dados, tente um URL diferente",
+    "site": "Site",
+    "name": "Nome",
+    "url": "URL",
+    "save": "Salvar",
+    "add": "Adicionar",
+    "cancel": "Cancelar"
+  },
   "products": {
     "url": "URL do produto",
     "more_details": "Mais detalhes do produto",
@@ -140,7 +181,14 @@
     "site": "Site",
     "name": "Nome",
     "save": "Salvar",
-    "save_error": "Erro ao salvar o produto: % {error}"
+    "save_error": "Erro ao salvar o produto: % {error}",
+    "add_new": "Adicionar novo",
+    "tabs": {
+      "details": "Detalhes",
+      "connections": "Conexões",
+      "competitors": "Concorrentes"
+    },
+    "price": "Preço"
   },
   "prices_table": {
     "product": "Produto",
@@ -345,5 +393,53 @@
     "zh-cn": "Chinês simplificado",
     "zh-tw": "Chinês Taiwanês",
     "others": "Outros"
+  },
+  "rating_ranges": {
+    "100": "Exatamente 10",
+    "higher_than_7_5": "Maior que 7,5",
+    "higher_than_6": "Maior que/igual a 6",
+    "lower_than_6": "Menor que 6",
+    "lower_than_3": "Menor que 3"
+  },
+  "properties": {
+    "tabs": {
+      "products": "Produtos",
+      "connections": "Conexões",
+      "competitors": "Concorrentes"
+    }
+  },
+  "signin": {
+    "title": "Entrar",
+    "description": "Digite seu e-mail e senha para fazer login",
+    "email": "E-mail",
+    "password": "Senha",
+    "submit": "Enviar",
+    "images0": {
+      "title": "Aumente o desempenho do varejo",
+      "message": "Utilize a análise de dados para elevar seu negócio de varejo a novos patamares."
+    },
+    "images1": {
+      "title": "Melhore a produção industrial",
+      "message": "Otimize suas operações de fabricação com análises de dados detalhadas."
+    },
+    "images2": {
+      "title": "Gestão de estoque eficiente",
+      "message": "Otimize seu inventário com análises preditivas e rastreamento em tempo real."
+    },
+    "images3": {
+      "title": "Mergulho profundo nos dados do cliente",
+      "message": "Entenda o comportamento do cliente para melhorar o engajamento e a fidelidade."
+    },
+    "images4": {
+      "title": "Otimizar as cadeias de suprimentos",
+      "message": "Aproveite a análise para uma cadeia de suprimentos mais eficiente e transparente."
+    },
+    "signin": "Entrar",
+    "logout": "Sair",
+    "forgot_password": "Esqueceu sua senha?",
+    "cancel": "Cancelar",
+    "enter_your_email_reset": "Digite seu e-mail e enviaremos um link para redefinir sua senha.",
+    "recover_password": "Recuperar senha",
+    "an_email_was_sent": "Um e-mail foi enviado com o link para redefinição de senha."
   }
 }

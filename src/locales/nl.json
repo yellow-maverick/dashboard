@@ -3,7 +3,8 @@
     "title": "Titel vertaald",
     "change_language": "Taal wijzigen",
     "pages": "Pagina's",
-    "made_with": "gemaakt met {with} bij {by}"
+    "made_with": "gemaakt met {with} bij {by}",
+    "export_excel": "Excel exporteren"
   },
   "routes": {
     "dashboard": "Dashboard",
@@ -75,10 +76,37 @@
       "last_6_months": "Laatste 6 maanden",
       "ytd": "Jaar tot nu toe",
       "last_year": "Vorig jaar"
+    },
+    "main": {
+      "daterange": "Datumbereik",
+      "property_id": "Eigenschappen",
+      "product_id": "Producten",
+      "group_id": "Groepen",
+      "source_ids": "Bronnen",
+      "context": "Context",
+      "topic": "Onderwerp",
+      "period": "Periode",
+      "enable_comp": "Concurrent inschakelen",
+      "rating": "Beoordeling"
+    },
+    "competitors": {
+      "daterange": "Datumbereik",
+      "property_id": "Concurrenten",
+      "product_id": "Producten van concurrenten",
+      "group_id": "Groepen",
+      "source_ids": "Bronnen",
+      "brand": "Merk",
+      "product": "Product",
+      "context": "Context",
+      "topic": "Onderwerp",
+      "period": "Periode",
+      "rating": "Beoordeling"
     }
   },
   "charts": {
-    "reviews-ratings": "Beoordelingen / Waarderingen"
+    "reviews-ratings": "Beoordelingen / Waarderingen",
+    "ratings": "Algemene beoordeling - {name}",
+    "reviews": "Beoordelingen - {name}"
   },
   "reviews": {
     "title": "Beoordelingen",
@@ -91,7 +119,9 @@
     "from": "Van",
     "show_original": "Origineel weergeven",
     "translate": "Vertalen",
-    "respond": "Antwoorden"
+    "respond": "Antwoorden",
+    "forward": "Vooruit",
+    "forward_subject": "Bekijk deze recensie"
   },
   "sentiment_kpi": {
     "title": "Sentiment-KPI",
@@ -105,7 +135,8 @@
     "chart": "Grafiek",
     "ratings_title": "Beoordelingstabel",
     "sentiment_title": "Sentiment tabel",
-    "title_with_segment": "Beoordelingstabel door {s}"
+    "title_with_segment": "Beoordelingstabel door {s}",
+    "property": "Eigendom"
   },
   "topics": {
     "value": "Waarde",
@@ -114,7 +145,17 @@
     "support": "Steun",
     "quality": "Kwaliteit"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "Nieuw toevoegen",
+    "scraping": "Gegevens verzamelen",
+    "scraping_error": "Fout bij het verzamelen van gegevens, probeer een andere URL",
+    "site": "Locatie",
+    "name": "Naam",
+    "url": "URL",
+    "save": "Redden",
+    "add": "Toevoegen",
+    "cancel": "Annuleren"
+  },
   "products": {
     "url": "Product-URL",
     "more_details": "Meer productdetails",
@@ -140,7 +181,14 @@
     "site": "Locatie",
     "name": "Naam",
     "save": "Redden",
-    "save_error": "Fout bij het opslaan van het product: % {error}"
+    "save_error": "Fout bij het opslaan van het product: % {error}",
+    "add_new": "Nieuw toevoegen",
+    "tabs": {
+      "details": "Details",
+      "connections": "Verbindingen",
+      "competitors": "Concurrenten"
+    },
+    "price": "Prijs"
   },
   "prices_table": {
     "product": "Product",
@@ -345,5 +393,53 @@
     "zh-cn": "Vereenvoudigd Chinees",
     "zh-tw": "Chinees Taiwanees",
     "others": "Anderen"
+  },
+  "rating_ranges": {
+    "100": "Precies 10",
+    "higher_than_7_5": "Hoger dan 7,5",
+    "higher_than_6": "Hoger dan/gelijk aan 6",
+    "lower_than_6": "Lager dan 6",
+    "lower_than_3": "Lager dan 3"
+  },
+  "properties": {
+    "tabs": {
+      "products": "Producten",
+      "connections": "Verbindingen",
+      "competitors": "Concurrenten"
+    }
+  },
+  "signin": {
+    "title": "Aanmelden",
+    "description": "Voer uw e-mailadres en wachtwoord in om u aan te melden",
+    "email": "E-mail",
+    "password": "Wachtwoord",
+    "submit": "Indienen",
+    "images0": {
+      "title": "Verbeter de prestaties van uw detailhandel",
+      "message": "Gebruik data-analyse om uw retailbedrijf naar een hoger niveau te tillen."
+    },
+    "images1": {
+      "title": "Verbeter de productie-output",
+      "message": "Optimaliseer uw productieprocessen met inzichtelijke gegevensanalyse."
+    },
+    "images2": {
+      "title": "Efficiënt voorraadbeheer",
+      "message": "Stroomlijn uw inventaris met voorspellende analyses en realtime tracking."
+    },
+    "images3": {
+      "title": "Duik diep in klantgegevens",
+      "message": "Begrijp het gedrag van uw klanten om de betrokkenheid en loyaliteit te verbeteren."
+    },
+    "images4": {
+      "title": "Optimaliseer toeleveringsketens",
+      "message": "Maak gebruik van analyses voor een efficiëntere en transparantere toeleveringsketen."
+    },
+    "signin": "Aanmelden",
+    "logout": "Uitloggen",
+    "forgot_password": "Wachtwoord vergeten?",
+    "cancel": "Annuleren",
+    "enter_your_email_reset": "Voer uw e-mailadres in, dan sturen wij u een link om uw wachtwoord opnieuw in te stellen.",
+    "recover_password": "Wachtwoord herstellen",
+    "an_email_was_sent": "Er is een e-mail verzonden met een link om uw wachtwoord opnieuw in te stellen."
   }
 }

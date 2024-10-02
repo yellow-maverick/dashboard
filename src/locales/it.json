@@ -3,7 +3,8 @@
     "title": "Titolo tradotto",
     "change_language": "Cambia lingua",
     "pages": "Pagine",
-    "made_with": "fatto con {with} per {by}"
+    "made_with": "fatto con {with} per {by}",
+    "export_excel": "Esportazione excel"
   },
   "routes": {
     "dashboard": "Pannello di controllo",
@@ -75,10 +76,37 @@
       "last_6_months": "Ultimi 6 mesi",
       "ytd": "Da inizio anno",
       "last_year": "L'anno scorso"
+    },
+    "main": {
+      "daterange": "Intervallo di date",
+      "property_id": "Proprietà",
+      "product_id": "Prodotti",
+      "group_id": "Gruppi",
+      "source_ids": "Fonti",
+      "context": "Contesto",
+      "topic": "Argomento",
+      "period": "Periodo",
+      "enable_comp": "Abilita il concorrente",
+      "rating": "Valutazione"
+    },
+    "competitors": {
+      "daterange": "Intervallo di date",
+      "property_id": "Concorrenti",
+      "product_id": "Prodotti della concorrenza",
+      "group_id": "Gruppi",
+      "source_ids": "Fonti",
+      "brand": "Marca",
+      "product": "Prodotto",
+      "context": "Contesto",
+      "topic": "Argomento",
+      "period": "Periodo",
+      "rating": "Valutazione"
     }
   },
   "charts": {
-    "reviews-ratings": "Recensioni / Valutazioni"
+    "reviews-ratings": "Recensioni / Valutazioni",
+    "ratings": "Valutazione complessiva - {name}",
+    "reviews": "Recensioni - {name}"
   },
   "reviews": {
     "title": "Recensioni",
@@ -91,7 +119,9 @@
     "from": "Da",
     "show_original": "Mostra originale",
     "translate": "Tradurre",
-    "respond": "Rispondere"
+    "respond": "Rispondere",
+    "forward": "Inoltrare",
+    "forward_subject": "Dai un'occhiata a questa recensione"
   },
   "sentiment_kpi": {
     "title": "KPI del sentimento",
@@ -105,7 +135,8 @@
     "chart": "Grafico",
     "ratings_title": "Tabella delle valutazioni",
     "sentiment_title": "Tabella dei sentimenti",
-    "title_with_segment": "Tabella delle valutazioni per {s}"
+    "title_with_segment": "Tabella delle valutazioni per {s}",
+    "property": "Proprietà"
   },
   "topics": {
     "value": "Valore",
@@ -114,7 +145,17 @@
     "support": "Supporto",
     "quality": "Qualità"
   },
-  "connections": {},
+  "connections": {
+    "add_new": "Aggiungi nuovo",
+    "scraping": "Raccolta dati",
+    "scraping_error": "Errore durante la raccolta dei dati, prova un URL diverso",
+    "site": "Sito web",
+    "name": "Nome",
+    "url": "Indirizzo URL",
+    "save": "Salva",
+    "add": "Aggiungere",
+    "cancel": "Cancellare"
+  },
   "products": {
     "url": "URL del prodotto",
     "more_details": "Maggiori dettagli sul prodotto",
@@ -140,7 +181,14 @@
     "site": "Sito web",
     "name": "Nome",
     "save": "Salva",
-    "save_error": "Errore durante il salvataggio del prodotto: % {error}"
+    "save_error": "Errore durante il salvataggio del prodotto: % {error}",
+    "add_new": "Aggiungi nuovo",
+    "tabs": {
+      "details": "Dettagli",
+      "connections": "Connessioni",
+      "competitors": "Concorrenti"
+    },
+    "price": "Prezzo"
   },
   "prices_table": {
     "product": "Prodotto",
@@ -345,5 +393,53 @@
     "zh-cn": "Cinese semplificato",
     "zh-tw": "Cinese Taiwanese",
     "others": "Altri"
+  },
+  "rating_ranges": {
+    "100": "Esattamente 10",
+    "higher_than_7_5": "Superiore a 7,5",
+    "higher_than_6": "Maggiore/uguale a 6",
+    "lower_than_6": "Inferiore a 6",
+    "lower_than_3": "Inferiore a 3"
+  },
+  "properties": {
+    "tabs": {
+      "products": "Prodotti",
+      "connections": "Connessioni",
+      "competitors": "Concorrenti"
+    }
+  },
+  "signin": {
+    "title": "Registrazione",
+    "description": "Inserisci la tua email e password per accedere",
+    "email": "E-mail",
+    "password": "Password",
+    "submit": "Invia",
+    "images0": {
+      "title": "Aumentare le prestazioni al dettaglio",
+      "message": "Utilizza l'analisi dei dati per portare la tua attività di vendita al dettaglio a nuovi livelli."
+    },
+    "images1": {
+      "title": "Migliorare la produzione manifatturiera",
+      "message": "Ottimizza le tue attività di produzione con un'analisi approfondita dei dati."
+    },
+    "images2": {
+      "title": "Gestione efficiente dell'inventario",
+      "message": "Semplifica il tuo inventario con analisi predittive e monitoraggio in tempo reale."
+    },
+    "images3": {
+      "title": "Approfondimento sui dati dei clienti",
+      "message": "Comprendere il comportamento dei clienti per migliorare il coinvolgimento e la fidelizzazione."
+    },
+    "images4": {
+      "title": "Ottimizzare le catene di fornitura",
+      "message": "Sfrutta l'analisi per una supply chain più efficiente e trasparente."
+    },
+    "signin": "Registrazione",
+    "logout": "Esci",
+    "forgot_password": "Hai dimenticato la password?",
+    "cancel": "Cancellare",
+    "enter_your_email_reset": "Inserisci la tua email e ti invieremo un link per reimpostare la password.",
+    "recover_password": "Recupera password",
+    "an_email_was_sent": "È stata inviata un'e-mail con il link per reimpostare la password."
   }
 }
