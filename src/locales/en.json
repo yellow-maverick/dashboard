@@ -193,6 +193,7 @@
     "fields": {
       "name": "Name",
       "sku": "SKU",
+      "ean": "EAN",
       "internal_id": "Internal ID",
       "categories": "Categories",
       "targeted_price": "Targeted price",

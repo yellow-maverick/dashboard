@@ -30,7 +30,7 @@ export default {
     },
 
     async save(pd) {
-      await alova.Patch(`/v1/products/${pd.id}`, pd)
+      await alova.Patch(`/v1/products/${pd.id}`, {product: pd})
     },
 
   }

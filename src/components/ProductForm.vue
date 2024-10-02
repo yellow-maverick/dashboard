@@ -52,21 +52,21 @@ export default {
         <input name=name v-model=product.name type=text class=form-control />
       </div>
       <div class=form-group >
-        <label for=sku >{{ $t('products.fields.sku') }}</label>
-        <input name=sku v-model=product.sku type=text class=form-control />
-      </div>
-      <div class=form-group >
-        <label for=internal_id >{{ $t('products.fields.internal_id') }}</label>
-        <input name=internal_id v-model=product.sku type=text class=form-control />
-      </div>
-      <div class=form-group >
         <label for=categories >{{ $t('products.fields.categories') }}</label>
         <multiselect :options=categories v-model=product.categories track-by=name label=name 
           :taggable=true :multiple=true @tag=createCategory @select=addCategory @remove=removeCategory />
       </div>
       <div class=form-group >
-        <label for=targeted_price >{{ $t('products.fields.targeted_price') }}</label>
-        <input name=targeted_price v-model=product.targeted_price type=number class=form-control />
+        <label for=sku >{{ $t('products.fields.sku') }}</label>
+        <input name=sku v-model=product.sku type=text class=form-control />
+      </div>
+      <div class=form-group >
+        <label for=ean >{{ $t('products.fields.ean') }}</label>
+        <input name=ean v-model=product.ean type=text class=form-control />
+      </div>
+      <div class=form-group >
+        <label for=internal_id >{{ $t('products.fields.internal_id') }}</label>
+        <input name=internal_id v-model=product.sku type=text class=form-control />
       </div>
     </div>
 
@@ -83,7 +83,11 @@ export default {
       </div>
       <div class=form-group >
         <label for=cost_price >{{ $t('products.fields.cost_price') }}</label>
-        <input name=cost_price v-model=product.cost_price type=number class=form-control />
+        <input name=cost_price v-model=product.cost_price type=number step=0.01 class=form-control />
+      </div>
+      <div class=form-group >
+        <label for=targeted_price >{{ $t('products.fields.targeted_price') }}</label>
+        <input name=targeted_price v-model=product.targeted_price type=number step=0.01 class=form-control />
       </div>
     </div>
   </div>
