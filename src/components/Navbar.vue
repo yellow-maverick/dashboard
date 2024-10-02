@@ -37,8 +37,8 @@
             </a>
           </li>
           <li class="px-3 nav-item d-flex align-items-center">
-            <a class="p-0 nav-link text-white" @click="toggleConfigurator">
-              <i class="cursor-pointer fa fa-cog fixed-plugin-button-nav"></i>
+            <a class="p-0 nav-link" @click="toggleConfigurator">
+              <i class="h4 mb-0 text-white cursor-pointer fa fa-cog fixed-plugin-button-nav"></i>
             </a>
           </li>
           <li
