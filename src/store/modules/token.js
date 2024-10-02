@@ -23,9 +23,9 @@ export const mutations  = {
   }
 }
 export const actions    = {
-  load({ state }) {
+  load({ state }, apiToken) {
     const token = localStorage.getItem(tokenPath)
-    if (token) {
+    if (apiToken || token) {
       state.loggedIn = true
       state.jwtToken = token
     }
