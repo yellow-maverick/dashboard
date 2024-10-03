@@ -71,8 +71,13 @@ export default {
             <!-- form -->
             <div class="mx-auto col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0" >
               <div class="card card-plain">
-                <SigninForm v-if='!enableForgotPassword' @enableForgotPassword='() => enableForgotPassword = true' />
-                <ForgotPassForm v-if='enableForgotPassword' @sendForgot='forgotPassword' @cancel='disableForgotPasswordBlock' />
+                <template v-if='$route.name == "reset-password"'>
+                  <router-view />
+                </template>
+                <template v-else>
+                  <SigninForm v-if='!enableForgotPassword' @enableForgotPassword='() => enableForgotPassword = true' />
+                  <ForgotPassForm v-if='enableForgotPassword' @submit='forgotPassword' @cancel='disableForgotPasswordBlock' />
+                </template>
               </div>
             </div>
 

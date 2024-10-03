@@ -146,7 +146,7 @@
     "quality": "Kwaliteit"
   },
   "connections": {
-    "add_new": "Nieuw toevoegen",
+    "add_new": "Verbinding toevoegen",
     "scraping": "Gegevens verzamelen",
     "scraping_error": "Fout bij het verzamelen van gegevens, probeer een andere URL",
     "site": "Locatie",
@@ -169,7 +169,8 @@
       "targeted_price": "Gerichte prijs",
       "brand": "Merk",
       "supplier": "Leverancier",
-      "cost_price": "Kostprijs"
+      "cost_price": "Kostprijs",
+      "ean": "EAN"
     },
     "scraping": "Gegevens verzamelen",
     "scraping_error": "Fout bij het verzamelen van gegevens, probeer een andere URL",
@@ -182,7 +183,7 @@
     "name": "Naam",
     "save": "Redden",
     "save_error": "Fout bij het opslaan van het product: % {error}",
-    "add_new": "Nieuw toevoegen",
+    "add_new": "Product toevoegen",
     "tabs": {
       "details": "Details",
       "connections": "Verbindingen",
@@ -406,7 +407,8 @@
       "products": "Producten",
       "connections": "Verbindingen",
       "competitors": "Concurrenten"
-    }
+    },
+    "add_new": "Eigenschap toevoegen"
   },
   "signin": {
     "title": "Aanmelden",
@@ -423,8 +425,8 @@
       "message": "Optimaliseer uw productieprocessen met inzichtelijke gegevensanalyse."
     },
     "images2": {
-      "title": "Efficiënt voorraadbeheer",
-      "message": "Stroomlijn uw inventaris met voorspellende analyses en realtime tracking."
+      "title": "Beoordeling Sentimentanalyse",
+      "message": "Inzichten ontsluiten: beoordelingssentimenten analyseren voor een dieper inzicht in de klant"
     },
     "images3": {
       "title": "Duik diep in klantgegevens",
@@ -440,6 +442,15 @@
     "cancel": "Annuleren",
     "enter_your_email_reset": "Voer uw e-mailadres in, dan sturen wij u een link om uw wachtwoord opnieuw in te stellen.",
     "recover_password": "Wachtwoord herstellen",
-    "an_email_was_sent": "Er is een e-mail verzonden met een link om uw wachtwoord opnieuw in te stellen."
+    "an_email_was_sent": "Er is een e-mail verzonden met een link om uw wachtwoord opnieuw in te stellen.",
+    "password_confirmation": "Wachtwoordbevestiging",
+    "enter_a_new_password": "Voer een nieuw wachtwoord in en typ het hieronder nogmaals.",
+    "please_fill_the_pass": "Vul het wachtwoord in.",
+    "please_fill_the_same_pass": "De wachtwoordbevestiging moet hetzelfde zijn als het wachtwoord."
+  },
+  "competitors": {
+    "add_new": "Voeg concurrent toe",
+    "name": "Naam",
+    "save_error": "Fout bij het opslaan van de concurrent: % {error}"
   }
 }

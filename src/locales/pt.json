@@ -146,7 +146,7 @@
     "quality": "Qualidade"
   },
   "connections": {
-    "add_new": "Adicionar novo",
+    "add_new": "Adicionar conexão",
     "scraping": "Coletando dados",
     "scraping_error": "Erro ao coletar dados, tente um URL diferente",
     "site": "Site",
@@ -176,13 +176,14 @@
       "targeted_price": "Preço alvo",
       "brand": "Marca",
       "supplier": "Fornecedor",
-      "cost_price": "Preço de custo"
+      "cost_price": "Preço de custo",
+      "ean": "EAN"
     },
     "site": "Site",
     "name": "Nome",
     "save": "Salvar",
     "save_error": "Erro ao salvar o produto: % {error}",
-    "add_new": "Adicionar novo",
+    "add_new": "Adicionar produto",
     "tabs": {
       "details": "Detalhes",
       "connections": "Conexões",
@@ -406,7 +407,8 @@
       "products": "Produtos",
       "connections": "Conexões",
       "competitors": "Concorrentes"
-    }
+    },
+    "add_new": "Adicionar propriedade"
   },
   "signin": {
     "title": "Entrar",
@@ -423,8 +425,8 @@
       "message": "Otimize suas operações de fabricação com análises de dados detalhadas."
     },
     "images2": {
-      "title": "Gestão de estoque eficiente",
-      "message": "Otimize seu inventário com análises preditivas e rastreamento em tempo real."
+      "title": "Análise de sentimento de revisão",
+      "message": "Desbloqueando Insights: Analisando Sentimentos de Avaliação para uma Compreensão Mais Profunda do Cliente"
     },
     "images3": {
       "title": "Mergulho profundo nos dados do cliente",
@@ -440,6 +442,15 @@
     "cancel": "Cancelar",
     "enter_your_email_reset": "Digite seu e-mail e enviaremos um link para redefinir sua senha.",
     "recover_password": "Recuperar senha",
-    "an_email_was_sent": "Um e-mail foi enviado com o link para redefinição de senha."
+    "an_email_was_sent": "Um e-mail foi enviado com o link para redefinição de senha.",
+    "password_confirmation": "Confirmação de senha",
+    "enter_a_new_password": "Digite uma nova senha e digite-a novamente abaixo.",
+    "please_fill_the_pass": "Por favor, preencha a senha.",
+    "please_fill_the_same_pass": "A confirmação da senha deve ser a mesma que a senha."
+  },
+  "competitors": {
+    "add_new": "Adicionar concorrente",
+    "name": "Nome",
+    "save_error": "Erro ao salvar o concorrente: % {error}"
   }
 }

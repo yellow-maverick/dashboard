@@ -8,12 +8,10 @@ export default{
       email: null,
     }
   },
-  props:      [],
   components: {
     ArgonInput,
     ArgonButton,
   },
-  methods: {}
 }
 </script>
 
@@ -30,7 +28,7 @@ export default{
         </div>
 
         <div class="text-center">
-          <argon-button @click.prevent='() => { $emit("sendForgot", this.email) }' class="mt-4 me-1" variant="gradient" color="success" size="lg" >{{ $t('signin.submit') }}</argon-button>
+          <argon-button @click.prevent='() => { $emit("submit", this.email) }' class="mt-4 me-1" variant="gradient" color="success" size="lg" >{{ $t('signin.submit') }}</argon-button>
           <argon-button @click.prevent='() => { $emit("cancel") }' class="mt-4 ms-1" variant="gradient" color="light" size="lg" >{{ $t('signin.cancel') }}</argon-button>
         </div>
       </form>

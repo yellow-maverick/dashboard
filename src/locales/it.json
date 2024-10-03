@@ -146,7 +146,7 @@
     "quality": "Qualità"
   },
   "connections": {
-    "add_new": "Aggiungi nuovo",
+    "add_new": "Aggiungi connessione",
     "scraping": "Raccolta dati",
     "scraping_error": "Errore durante la raccolta dei dati, prova un URL diverso",
     "site": "Sito web",
@@ -169,7 +169,8 @@
       "targeted_price": "Prezzo mirato",
       "brand": "Marca",
       "supplier": "Fornitore",
-      "cost_price": "Prezzo di costo"
+      "cost_price": "Prezzo di costo",
+      "ean": "Codice EAN"
     },
     "scraping": "Raccolta dati",
     "scraping_error": "Errore durante la raccolta dei dati, prova un URL diverso",
@@ -182,7 +183,7 @@
     "name": "Nome",
     "save": "Salva",
     "save_error": "Errore durante il salvataggio del prodotto: % {error}",
-    "add_new": "Aggiungi nuovo",
+    "add_new": "Aggiungi prodotto",
     "tabs": {
       "details": "Dettagli",
       "connections": "Connessioni",
@@ -406,7 +407,8 @@
       "products": "Prodotti",
       "connections": "Connessioni",
       "competitors": "Concorrenti"
-    }
+    },
+    "add_new": "Aggiungi proprietà"
   },
   "signin": {
     "title": "Registrazione",
@@ -423,8 +425,8 @@
       "message": "Ottimizza le tue attività di produzione con un'analisi approfondita dei dati."
     },
     "images2": {
-      "title": "Gestione efficiente dell'inventario",
-      "message": "Semplifica il tuo inventario con analisi predittive e monitoraggio in tempo reale."
+      "title": "Rivedi l'analisi del sentiment",
+      "message": "Sbloccare le informazioni: analizzare i sentimenti delle recensioni per una comprensione più approfondita del cliente"
     },
     "images3": {
       "title": "Approfondimento sui dati dei clienti",
@@ -440,6 +442,15 @@
     "cancel": "Cancellare",
     "enter_your_email_reset": "Inserisci la tua email e ti invieremo un link per reimpostare la password.",
     "recover_password": "Recupera password",
-    "an_email_was_sent": "È stata inviata un'e-mail con il link per reimpostare la password."
+    "an_email_was_sent": "È stata inviata un'e-mail con il link per reimpostare la password.",
+    "password_confirmation": "Conferma password",
+    "enter_a_new_password": "Inserisci una nuova password e digitala nuovamente qui sotto.",
+    "please_fill_the_pass": "Per favore, inserisci la password.",
+    "please_fill_the_same_pass": "La conferma della password deve essere uguale alla password."
+  },
+  "competitors": {
+    "add_new": "Aggiungi concorrente",
+    "name": "Nome",
+    "save_error": "Errore durante il salvataggio del concorrente: % {error}"
   }
 }

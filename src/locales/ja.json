@@ -146,7 +146,7 @@
     "quality": "品質"
   },
   "connections": {
-    "add_new": "新規追加",
+    "add_new": "接続を追加",
     "scraping": "データの収集",
     "scraping_error": "データ収集中にエラーが発生しました。別の URL を試してください。",
     "site": "サイト",
@@ -176,13 +176,14 @@
       "targeted_price": "目標価格",
       "brand": "ブランド",
       "supplier": "サプライヤー",
-      "cost_price": "原価"
+      "cost_price": "原価",
+      "ean": "電子商取引"
     },
     "site": "サイト",
     "name": "名前",
     "save": "保存",
     "save_error": "製品の保存中にエラーが発生しました: % {error}",
-    "add_new": "新規追加",
+    "add_new": "商品を追加",
     "tabs": {
       "details": "詳細",
       "connections": "接続",
@@ -406,7 +407,8 @@
       "products": "製品",
       "connections": "接続",
       "competitors": "競合他社"
-    }
+    },
+    "add_new": "プロパティを追加"
   },
   "signin": {
     "title": "サインイン",
@@ -423,8 +425,8 @@
       "message": "洞察力に富んだデータ分析により製造業務を最適化します。"
     },
     "images2": {
-      "title": "効率的な在庫管理",
-      "message": "予測分析とリアルタイム追跡により在庫を合理化します。"
+      "title": "レビュー感情分析",
+      "message": "洞察を解き放つ: レビュー感情を分析して顧客をより深く理解する"
     },
     "images3": {
       "title": "顧客データの詳細な分析",
@@ -440,6 +442,15 @@
     "cancel": "キャンセル",
     "enter_your_email_reset": "メールアドレスを入力すると、パスワードをリセットするためのリンクが送信されます。",
     "recover_password": "パスワードを回復する",
-    "an_email_was_sent": "パスワードリセットリンクが記載されたメールが送信されました。"
+    "an_email_was_sent": "パスワードリセットリンクが記載されたメールが送信されました。",
+    "password_confirmation": "パスワードの確認",
+    "enter_a_new_password": "新しいパスワードを入力し、下に再入力してください。",
+    "please_fill_the_pass": "パスワードを入力してください。",
+    "please_fill_the_same_pass": "パスワードの確認はパスワードと同じである必要があります。"
+  },
+  "competitors": {
+    "add_new": "競合他社を追加",
+    "name": "名前",
+    "save_error": "競合他社の保存中にエラーが発生しました: % {error}"
   }
 }

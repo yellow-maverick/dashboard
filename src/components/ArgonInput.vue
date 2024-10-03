@@ -5,7 +5,7 @@
         <i :class="getIcon(icon)"></i>
       </span>
       <input :type="type" class="form-control" :class="getClasses(size, valid)" :name="name"
-        :id="id" :placeholder="placeholder" :isRequired="isRequired"
+        :id="id" :placeholder="placeholder" :required="isRequired"
         :model-value='modelValue' @input="$emit('update:modelValue', $event.target.value)" 
       />
       <span v-if="iconDir === 'right'" class="input-group-text">

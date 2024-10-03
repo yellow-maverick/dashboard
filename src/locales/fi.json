@@ -146,7 +146,7 @@
     "quality": "Laatu"
   },
   "connections": {
-    "add_new": "Lisää uusi",
+    "add_new": "Lisää yhteys",
     "scraping": "Tietojen kerääminen",
     "scraping_error": "Virhe tietojen keräämisessä. Kokeile toista URL-osoitetta",
     "site": "Sivusto",
@@ -169,7 +169,8 @@
       "targeted_price": "Tavoitehinta",
       "brand": "Merkki",
       "supplier": "Toimittaja",
-      "cost_price": "Kustannushinta"
+      "cost_price": "Kustannushinta",
+      "ean": "EAN"
     },
     "scraping": "Tietojen kerääminen",
     "scraping_error": "Virhe tietojen keräämisessä. Kokeile toista URL-osoitetta",
@@ -182,7 +183,7 @@
     "name": "Nimi",
     "save": "Tallentaa",
     "save_error": "Virhe tallennettaessa tuotetta: % {error}",
-    "add_new": "Lisää uusi",
+    "add_new": "Lisää tuote",
     "tabs": {
       "details": "Yksityiskohdat",
       "connections": "Liitännät",
@@ -406,7 +407,8 @@
       "products": "Tuotteet",
       "connections": "Liitännät",
       "competitors": "Kilpailijat"
-    }
+    },
+    "add_new": "Lisää omaisuutta"
   },
   "signin": {
     "title": "Kirjaudu sisään",
@@ -423,8 +425,8 @@
       "message": "Optimoi tuotantosi oivaltavalla data-analyysillä."
     },
     "images2": {
-      "title": "Tehokas varastonhallinta",
-      "message": "Virtaviivaista varastoasi ennakoivan analytiikan ja reaaliaikaisen seurannan avulla."
+      "title": "Tarkista sentimenttianalyysi",
+      "message": "Havainnot: Analysoi arvostelujen mielipiteitä asiakkaiden syvempää ymmärtämistä varten"
     },
     "images3": {
       "title": "Sukella syvälle asiakastietoihin",
@@ -440,6 +442,15 @@
     "cancel": "Peruuttaa",
     "enter_your_email_reset": "Anna sähköpostiosoitteesi, niin lähetämme sinulle linkin salasanan vaihtamiseen.",
     "recover_password": "Palauta salasana",
-    "an_email_was_sent": "Sähköpostiin lähetettiin salasanan palautuslinkki."
+    "an_email_was_sent": "Sähköpostiin lähetettiin salasanan palautuslinkki.",
+    "password_confirmation": "Salasanan vahvistus",
+    "enter_a_new_password": "Kirjoita uusi salasana ja kirjoita se uudelleen alle.",
+    "please_fill_the_pass": "Ole hyvä ja täytä salasana.",
+    "please_fill_the_same_pass": "Salasanan vahvistuksen tulee olla sama kuin salasanan."
+  },
+  "competitors": {
+    "add_new": "Lisää kilpailija",
+    "name": "Nimi",
+    "save_error": "Virhe tallennettaessa kilpailijaa: % {error}"
   }
 }

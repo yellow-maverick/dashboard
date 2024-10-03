@@ -146,7 +146,7 @@
     "quality": "Kvalitní"
   },
   "connections": {
-    "add_new": "Přidat nové",
+    "add_new": "Přidat připojení",
     "scraping": "Sběr dat",
     "scraping_error": "Chyba při shromažďování dat, zkuste prosím jinou adresu URL",
     "site": "místo",
@@ -169,7 +169,8 @@
       "targeted_price": "Cílená cena",
       "brand": "Značka",
       "supplier": "Dodavatel",
-      "cost_price": "Pořizovací cena"
+      "cost_price": "Pořizovací cena",
+      "ean": "EAN"
     },
     "scraping": "Sběr dat",
     "scraping_error": "Chyba při shromažďování dat, zkuste prosím jinou adresu URL",
@@ -182,7 +183,7 @@
     "name": "Jméno",
     "save": "Uložit",
     "save_error": "Chyba při ukládání produktu: % {error}",
-    "add_new": "Přidat nové",
+    "add_new": "Přidat produkt",
     "tabs": {
       "details": "Podrobnosti",
       "connections": "Spojení",
@@ -406,7 +407,8 @@
       "products": "Produkty",
       "connections": "Spojení",
       "competitors": "Soutěžící"
-    }
+    },
+    "add_new": "Přidat vlastnost"
   },
   "signin": {
     "title": "Přihlaste se",
@@ -423,8 +425,8 @@
       "message": "Optimalizujte své výrobní operace pomocí důkladné analýzy dat."
     },
     "images2": {
-      "title": "Efektivní správa zásob",
-      "message": "Zefektivněte svůj inventář pomocí prediktivní analýzy a sledování v reálném čase."
+      "title": "Zkontrolujte analýzu sentimentu",
+      "message": "Odemykání statistik: Analýza pocitů z recenzí pro hlubší porozumění zákazníkům"
     },
     "images3": {
       "title": "Hluboký ponor do zákaznických dat",
@@ -440,6 +442,15 @@
     "cancel": "Zrušit",
     "enter_your_email_reset": "Zadejte svůj e-mail a my vám zašleme odkaz pro obnovení hesla.",
     "recover_password": "Obnovit heslo",
-    "an_email_was_sent": "Byl odeslán e-mail s odkazem na obnovení hesla."
+    "an_email_was_sent": "Byl odeslán e-mail s odkazem na obnovení hesla.",
+    "password_confirmation": "Potvrzení hesla",
+    "enter_a_new_password": "Zadejte nové heslo a zadejte jej znovu níže.",
+    "please_fill_the_pass": "Vyplňte prosím heslo.",
+    "please_fill_the_same_pass": "Potvrzení hesla by mělo být stejné jako heslo."
+  },
+  "competitors": {
+    "add_new": "Přidat konkurenta",
+    "name": "Jméno",
+    "save_error": "Chyba při ukládání konkurenta: % {error}"
   }
 }

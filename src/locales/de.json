@@ -146,7 +146,7 @@
     "quality": "Qualität"
   },
   "connections": {
-    "add_new": "Neu hinzufügen",
+    "add_new": "Verbindung hinzufügen",
     "scraping": "Daten sammeln",
     "scraping_error": "Fehler beim Erfassen der Daten. Bitte versuchen Sie es mit einer anderen URL.",
     "site": "Website",
@@ -169,7 +169,8 @@
       "targeted_price": "Zielpreis",
       "brand": "Marke",
       "supplier": "Anbieter",
-      "cost_price": "Selbstkostenpreis"
+      "cost_price": "Selbstkostenpreis",
+      "ean": "EAN"
     },
     "scraping": "Daten sammeln",
     "scraping_error": "Fehler beim Erfassen der Daten. Bitte versuchen Sie es mit einer anderen URL.",
@@ -182,7 +183,7 @@
     "name": "Name",
     "save": "Speichern",
     "save_error": "Fehler beim Speichern des Produkts: % {error}",
-    "add_new": "Neu hinzufügen",
+    "add_new": "Produkt hinzufügen",
     "tabs": {
       "details": "Details",
       "connections": "Anschlüsse",
@@ -406,7 +407,8 @@
       "products": "Produkte",
       "connections": "Anschlüsse",
       "competitors": "Wettbewerber"
-    }
+    },
+    "add_new": "Eigenschaft hinzufügen"
   },
   "signin": {
     "title": "Anmelden",
@@ -423,8 +425,8 @@
       "message": "Optimieren Sie Ihre Fertigungsabläufe mit aufschlussreichen Datenanalysen."
     },
     "images2": {
-      "title": "Effizientes Bestandsmanagement",
-      "message": "Optimieren Sie Ihr Inventar mit prädiktiver Analyse und Echtzeit-Tracking."
+      "title": "Stimmungsanalyse überprüfen",
+      "message": "Erkenntnisse gewinnen: Bewertungsstimmungen analysieren, um Kunden besser zu verstehen"
     },
     "images3": {
       "title": "Detaillierte Einblicke in Kundendaten",
@@ -440,6 +442,15 @@
     "cancel": "Stornieren",
     "enter_your_email_reset": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
     "recover_password": "Passwort wiederherstellen",
-    "an_email_was_sent": "Es wurde eine E-Mail mit dem Link zum Zurücksetzen des Passworts gesendet."
+    "an_email_was_sent": "Es wurde eine E-Mail mit dem Link zum Zurücksetzen des Passworts gesendet.",
+    "password_confirmation": "Passwort bestätigen",
+    "enter_a_new_password": "Geben Sie ein neues Passwort ein und wiederholen Sie es unten.",
+    "please_fill_the_pass": "Bitte geben Sie das Passwort ein.",
+    "please_fill_the_same_pass": "Die Passwortbestätigung sollte mit dem Passwort übereinstimmen."
+  },
+  "competitors": {
+    "add_new": "Wettbewerber hinzufügen",
+    "name": "Name",
+    "save_error": "Fehler beim Speichern des Teilnehmers: % {error}"
   }
 }

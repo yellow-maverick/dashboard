@@ -146,7 +146,7 @@
     "quality": "Qualité"
   },
   "connections": {
-    "add_new": "Ajouter un nouveau",
+    "add_new": "Ajouter une connexion",
     "scraping": "Collecte de données",
     "scraping_error": "Erreur lors de la collecte des données, veuillez essayer une autre URL",
     "site": "Site",
@@ -169,7 +169,8 @@
       "targeted_price": "Prix ciblé",
       "brand": "Marque",
       "supplier": "Fournisseur",
-      "cost_price": "Prix de revient"
+      "cost_price": "Prix de revient",
+      "ean": "EAN"
     },
     "scraping": "Collecte de données",
     "scraping_error": "Erreur lors de la collecte des données, veuillez essayer une autre URL",
@@ -182,7 +183,7 @@
     "name": "Nom",
     "save": "Sauvegarder",
     "save_error": "Erreur lors de l&#39;enregistrement du produit : % {error}",
-    "add_new": "Ajouter un nouveau",
+    "add_new": "Ajouter un produit",
     "tabs": {
       "details": "Détails",
       "connections": "Relations",
@@ -409,7 +410,8 @@
       "products": "Produits",
       "connections": "Relations",
       "competitors": "Concurrents"
-    }
+    },
+    "add_new": "Ajouter une propriété"
   },
   "signin": {
     "title": "Se connecter",
@@ -426,8 +428,8 @@
       "message": "Optimisez vos opérations de fabrication grâce à une analyse de données approfondie."
     },
     "images2": {
-      "title": "Gestion efficace des stocks",
-      "message": "Optimisez votre inventaire grâce à des analyses prédictives et un suivi en temps réel."
+      "title": "Analyse des sentiments des critiques",
+      "message": "Débloquer des informations : analyser les avis clients pour une meilleure compréhension"
     },
     "images3": {
       "title": "Plongée en profondeur dans les données clients",
@@ -443,6 +445,15 @@
     "cancel": "Annuler",
     "enter_your_email_reset": "Entrez votre email et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
     "recover_password": "Récupérer le mot de passe",
-    "an_email_was_sent": "Un e-mail a été envoyé avec le lien de réinitialisation du mot de passe."
+    "an_email_was_sent": "Un e-mail a été envoyé avec le lien de réinitialisation du mot de passe.",
+    "password_confirmation": "Confirmation du mot de passe",
+    "enter_a_new_password": "Entrez un nouveau mot de passe et retapez-le ci-dessous.",
+    "please_fill_the_pass": "S'il vous plaît, remplissez le mot de passe.",
+    "please_fill_the_same_pass": "La confirmation du mot de passe doit être la même que le mot de passe."
+  },
+  "competitors": {
+    "add_new": "Ajouter un concurrent",
+    "name": "Nom",
+    "save_error": "Erreur lors de la sauvegarde du concurrent : % {error}"
   }
 }

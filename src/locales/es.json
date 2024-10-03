@@ -146,7 +146,7 @@
     "quality": "Calidad"
   },
   "connections": {
-    "add_new": "Añadir nuevo",
+    "add_new": "Agregar conexión",
     "scraping": "Recopilación de datos",
     "scraping_error": "Error al recopilar datos, intente con una URL diferente",
     "site": "Sitio",
@@ -176,13 +176,14 @@
       "targeted_price": "Precio objetivo",
       "brand": "Marca",
       "supplier": "Proveedor",
-      "cost_price": "Precio de costo"
+      "cost_price": "Precio de costo",
+      "ean": "EAN"
     },
     "site": "Sitio",
     "name": "Nombre",
     "save": "Ahorrar",
     "save_error": "Error al guardar el producto: % {error}",
-    "add_new": "Añadir nuevo",
+    "add_new": "Añadir producto",
     "tabs": {
       "details": "Detalles",
       "connections": "Conexiones",
@@ -406,7 +407,8 @@
       "products": "Productos",
       "connections": "Conexiones",
       "competitors": "Competidores"
-    }
+    },
+    "add_new": "Agregar propiedad"
   },
   "signin": {
     "title": "Iniciar sesión",
@@ -423,8 +425,8 @@
       "message": "Optimice sus operaciones de fabricación con análisis de datos detallados."
     },
     "images2": {
-      "title": "Gestión eficiente de inventario",
-      "message": "Optimice su inventario con análisis predictivos y seguimiento en tiempo real."
+      "title": "Análisis de opiniones sobre la revisión",
+      "message": "Desbloqueo de información: análisis de las opiniones para comprender mejor a los clientes"
     },
     "images3": {
       "title": "Análisis profundo de los datos de los clientes",
@@ -440,6 +442,15 @@
     "cancel": "Cancelar",
     "enter_your_email_reset": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
     "recover_password": "Recuperar contraseña",
-    "an_email_was_sent": "Se envió un correo electrónico con el enlace para restablecer la contraseña."
+    "an_email_was_sent": "Se envió un correo electrónico con el enlace para restablecer la contraseña.",
+    "password_confirmation": "Confirmación de contraseña",
+    "enter_a_new_password": "Ingrese una nueva contraseña y vuelva a escribirla a continuación.",
+    "please_fill_the_pass": "Por favor, rellene la contraseña.",
+    "please_fill_the_same_pass": "La confirmación de la contraseña debe ser la misma que la contraseña."
+  },
+  "competitors": {
+    "add_new": "Agregar competidor",
+    "name": "Nombre",
+    "save_error": "Error al guardar al competidor: % {error}"
   }
 }
