@@ -68,7 +68,9 @@ export default {
               {{pd.name}}
               <multiselect :options=categories :readonly=true v-model=pd.categories label=name :taggable=true :multiple=true :searchable=false />
               <div class='d-flex justify-content-end col-5 flex-wrap' style='flex: auto' >
-                <img v-for='c in pd.connections' @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" :key=c >
+                <a v-for='c in pd.connections' :key=c :href=c.url target=_blank >
+                  <img @error="hide" style='max-height: 20px' class='me-1' :title=c.source.name :src="sourceImage(c.source.slug)" >
+                </a>
               </div>
             </button>
           </h6>

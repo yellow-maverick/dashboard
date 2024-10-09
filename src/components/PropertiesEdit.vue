@@ -35,7 +35,9 @@ export default {
             <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${p.id}`' :aria-expanded=!isComp :aria-controls='`#collapse-${p.id}`'  >
               {{p.name}}
               <div class='d-flex justify-content-end' style='flex: auto' >
-                <img class='me-1' v-for='c in p.connections' :title=c.source.name style='max-height: 20px' :src="sourceImage(c.source.slug)" :key=c >
+                <a v-for='c in p.connections' :key=c :href=c.url target=_blank >
+                  <img class='me-1' :title=c.source.name style='max-height: 20px' :src="sourceImage(c.source.slug)" >
+                </a>
               </div>
             </button>
           </h5>
