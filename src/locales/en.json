@@ -17,7 +17,8 @@
     },
     "settings": {
       "title": "Settings",
-      "connections": "Connections"
+      "brands": "Brands",
+      "products": "Products"
     }
   },
   "word_cloud": {

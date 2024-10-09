@@ -1,6 +1,7 @@
 import Dashboard     from '../views/Dashboard.vue'
 import Analytics     from '../views/Analytics.vue'
-import Connections   from '../views/Connections.vue'
+import Brands        from '../views/Brands.vue'
+import Products      from '../views/Products.vue'
 import AddProduct    from '../views/AddProduct.vue'
 import Reviews       from '../views/Reviews.vue'
 import QueryPage     from '../views/QueryPage.vue'
@@ -38,9 +39,14 @@ const routes = [
   },
   // Management
   {
-    path: '/connections',
-    name: 'settings.connections',
-    component: Connections,
+    path: '/brands',
+    name: 'settings.brands',
+    component: Brands,
+  },
+  {
+    path: '/products',
+    name: 'settings.products',
+    component: Products,
   },
   {
     path: '/products/add',

@@ -47,9 +47,18 @@
       </li>
       <li class="nav-item">
         <sidenav-item
-          url="/connections"
-          :class="getRoute() === 'connections' ? 'active' : ''"
-          :navText="$t('routes.settings.connections')"
+          url="/brands"
+          :class="getRoute() === 'brands' ? 'active' : ''"
+          :navText="$t('routes.settings.brands')"
+        >
+        </sidenav-item>
+      </li>
+
+      <li class="nav-item">
+        <sidenav-item
+          url="/products"
+          :class="getRoute() === 'products' ? 'active' : ''"
+          :navText="$t('routes.settings.products')"
         >
         </sidenav-item>
       </li>
