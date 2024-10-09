@@ -10,7 +10,7 @@ export default {
     return {
     }
   },
-  props: ['properties', 'categories', 'isComp'],
+  props: ['properties', 'categories', 'isComp', 'forProducts'],
   components: {ProductsEdit, ConnectionsEdit, PropertyCompetitorsEdit},
 
   methods: {
@@ -44,13 +44,10 @@ export default {
 
           <div :id='`collapse-${p.id}`' :class='{collapse: true, show: !isComp}' aria-labelledby=headingOne data-parent=#property-accordion >
 
-            <div class='d-flex align-items-start mb-4' >
+            <div v-if=!forProducts class='d-flex align-items-start mb-4' >
               <div class='nav flex-column nav-pills nav-pills-primary' role=tablist >
                 <div class=moving-tab >
-                  <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`p-prods-${p.id}`' :data-bs-target='`#p-prods-${p.id}`' >
-                    {{$t('properties.tabs.products')}}
-                  </button>
-                  <button class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-conns-${p.id}`' :data-bs-target='`#p-conns-${p.id}`' >
+                  <button class='nav-link active' type=button role=tab data-bs-toggle=pill :aria-controls='`p-conns-${p.id}`' :data-bs-target='`#p-conns-${p.id}`' >
                     {{$t('properties.tabs.connections')}}
                   </button>
                   <button v-if=!isComp class=nav-link type=button role=tab data-bs-toggle=pill :aria-controls='`p-comps-${p.id}`' :data-bs-target='`#p-comps-${p.id}`' >
@@ -61,11 +58,7 @@ export default {
 
               <div class='tab-content card-body pt-0' >
 
-                <div :id='`p-prods-${p.id}`' role=tabpanel class='tab-pane fade show active' >
-                  <ProductsEdit :property=p :categories=categories :isComp=isComp />
-                </div>
-
-                <div :id='`p-conns-${p.id}`' role=tabpanel class='tab-pane fade' >
+                <div :id='`p-conns-${p.id}`' role=tabpanel class='tab-pane fade active show' >
                   <ConnectionsEdit :property=p :connections=p.connections :forProperty=true />
                 </div>
 
@@ -74,6 +67,9 @@ export default {
                 </div>
 
               </div>
+            </div>
+            <div v-else >
+              <ProductsEdit :property=p :categories=categories :isComp=isComp />
             </div>
 
           </div>

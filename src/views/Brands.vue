@@ -62,7 +62,7 @@ export default {
 <template>
   <div class=container-fluid >
     <div class=row >
-      <PropertiesEdit :properties=properties :categories=categories />
+      <PropertiesEdit :properties=properties :categories=categories :forProducts=false />
     </div>
   </div>
 </template>
