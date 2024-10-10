@@ -14,7 +14,7 @@ export default {
     }
   },
 
-  props:      ['property', 'categories', 'isComp'],
+  props:      ['property', 'products', 'categories', 'isComp', 'inline'],
   components: {Multiselect, ProductForm, ConnectionsEdit, ProductCompetitorsEdit},
 
   created() {
@@ -56,12 +56,12 @@ export default {
 
 <template>
   <div>
-    <router-link :to="{path: '/products/add', query: {...$route.query, property_id: property.id}}" >
+    <router-link v-if=!inline :to="{path: '/products/add', query: {...$route.query, property_id: property.id}}" >
       <button class=btn >{{$t('products.add_new')}}</button>
     </router-link>
 
     <div :id='`property-${property.id}-accordion`' class=accordion >
-      <div v-for='pd in property.products' :id='`product-${pd.id}`' class=accordion-item :key='`${pd.property_id}-${pd.id}`' >
+      <div v-for='pd in products' :id='`product-${pd.id}`' class=accordion-item :key='`${pd.property_id}-${pd.id}`' >
         <div class=card >
           <h6 class=accordion-header >
             <button class=accordion-button data-bs-toggle=collapse :data-bs-target='`#collapse-${pd.property_id}-${pd.id}`' aria-expanded=false :aria-controls='`#collapse-${pd.property_id}-${pd.id}`'  >
@@ -108,7 +108,7 @@ export default {
                   </div>
 
                   <div v-if=!isComp :id='`pd-comps-${pd.property_id}-${pd.id}`' role=tabpanel class='tab-pane fade' >
-                    <ProductCompetitorsEdit :product=pd :competitors=pd.competitors :categories=categories />
+                    <ProductCompetitorsEdit :property=property :product=pd :categories=categories />
                   </div>
 
                 </div>

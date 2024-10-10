@@ -18,9 +18,7 @@ export default {
     add() {
       this.adding = true
     },
-
-  }
-  
+  },
 }
 </script>
 

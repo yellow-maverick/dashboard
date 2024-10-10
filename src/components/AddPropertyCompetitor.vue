@@ -9,7 +9,7 @@ export default {
       status:  null,
     }
   },
-  props:      ['property'],
+  props:      ['property', 'inline'],
   components: { },
   inject:     ['reload'],
 
@@ -42,7 +42,7 @@ export default {
       <input name=url v-model=name type=text class=form-control />
     </div>
 
-    <div class='d-flex align-items-center mb-3' >
+    <div v-if=!inline class='d-flex align-items-center mb-3' >
       <button type=button class='btn btn-primary mb-0' @click=save() :disabled=saving >
         {{ $t('connections.add') }}
       </button>

@@ -69,7 +69,7 @@ export default {
               </div>
             </div>
             <div v-else >
-              <ProductsEdit :property=p :categories=categories :isComp=isComp />
+              <ProductsEdit :property=p :products=p.products :categories=categories :isComp=isComp />
             </div>
 
           </div>
