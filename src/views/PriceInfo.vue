@@ -57,11 +57,11 @@ export default{
   <div class="container-fluid">
     <Filter :fields=fields emitUpdate=true @filter:submit='load' @filter:created='load'/>
 
-    <div class="pt-3 table-responsive" id='price-info'>
-      <div class=" d-flex justify-content-end">
-        <XLSXExport v-if="filter" fileName="price-info" target='price-info' btnClass="btn btn-secondary text-nowrap mb-2" :hasData="true" />
-      </div>
-      <table class='table text-center' v-if='Object.keys(data || {}).length' >
+    <div class=" d-flex justify-content-end mt-2">
+      <XLSXExport v-if="filter" fileName="price-info" target='price-info' btnClass="btn btn-secondary text-nowrap mb-2" :hasData="true" />
+    </div>
+    <div class="table-responsive card" id='price-info'>
+      <table class='mt-2 table text-center' v-if='Object.keys(data || {}).length' >
         <thead>
           <tr class='bordered-side'>
             <th class='text-start'>{{ $t(`prices_table.product`) }}</th>
@@ -74,7 +74,7 @@ export default{
         <tbody>
           <template v-for='sources,product_id in data' :key='product_id'>
             <tr v-for='dates,source in sources' class='text-center' :key='source'>
-              <td class='text-start'>{{ products[product_id]?.name }}
+              <td class='text-start' :rowspan='Object.keys(sources).length' v-if='source == Object.keys(sources)[0]' >{{ products[product_id]?.name }}
                 <span v-b-tooltip.hover :title="`${$t('prices_table.target_price')}: ${products[product_id]?.target_price}`">
                   <font-awesome-icon class="ms-1" icon="fa-solid fa-circle-info" />
                 </span></td>

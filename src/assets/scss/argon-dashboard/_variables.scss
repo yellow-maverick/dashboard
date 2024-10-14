@@ -611,7 +611,7 @@ $a-letter-spacing:            -0.025rem !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 $table-head-spacer-y:         .75rem !default;
-$table-head-spacer-x:         1.5rem !default;
+$table-head-spacer-x:         0.5rem !default;
 $table-head-font-size:        .65rem !default;
 $table-head-font-weight:      $font-weight-bold !default;
 $table-head-text-transform:   capitalize !default;

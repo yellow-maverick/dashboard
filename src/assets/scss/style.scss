@@ -104,6 +104,7 @@ svg.kpi-card-icon path {
 
 .table {
   border-top: 2px solid #grey;
+  tr td { vertical-align: middle; }
   tr th {
     background-color: #ffdc80;
     vertical-align: middle;

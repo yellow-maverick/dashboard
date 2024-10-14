@@ -24,7 +24,7 @@
     } ${this.$store.state.sidebarType}`"
     id="sidenav-main"
   >
-    <sidenav-list :cardBg="custom_class" />
+    <sidenav-list :cardBg="custom_class" :user=user />
   </aside>
 </template>
 <script>
@@ -45,6 +45,6 @@ export default {
       logoIcon
     };
   },
-  props: ["custom_class", "layout"]
+  props: ["custom_class", "layout", 'user']
 };
 </script>

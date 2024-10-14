@@ -16,7 +16,8 @@ export default {
         period: [],
         rating: ["", "100", "higher_than_7_5", "higher_than_6", "lower_than_6", "lower_than_3"],
         competitors: {
-        }
+        },
+        role: ['', 'admin', 'user', 'manager'],
       },
       products_per_property: {},
       competitors: null,
@@ -153,7 +154,8 @@ export default {
       Object.assign(filterData, filterData.daterange)
       delete filterData.daterange
 
-      filterData.property_objs = { main: this.options.property_id[filterData.property_id], competitor: this.options.property_id[filterData.competitors?.property_id] }
+      if (this.options.property_id)
+        filterData.property_objs = { main: this.options.property_id[filterData.property_id], competitor: this.options.property_id[filterData.competitors?.property_id] }
 
       return filterData
     },

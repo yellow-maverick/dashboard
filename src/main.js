@@ -17,7 +17,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faStar, faExternalLink, faCircleInfo, faArrowUp, faArrowDown, faDownload  } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faExternalLink, faCircleInfo, faArrowUp, faArrowDown, faDownload, faTrash, faPen  } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faStar)
@@ -26,6 +26,8 @@ library.add(faCircleInfo)
 library.add(faArrowUp)
 library.add(faArrowDown)
 library.add(faDownload)
+library.add(faTrash)
+library.add(faPen)
 
 const appInstance = createApp(App);
 appInstance.component('font-awesome-icon', FontAwesomeIcon)

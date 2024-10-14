@@ -49,6 +49,11 @@ window.ym.lib = {
     return new DOMParser().parseFromString(text,'text/html').querySelector('html').textContent;
   },
 
+  isManager(user) {
+    if (!user) return false
+    return user.role == 'admin' || user.subscriptions[0]?.permissions?.includes('manager');
+  },
+
   dateShortcuts() {
     const today = new Date();
     return [

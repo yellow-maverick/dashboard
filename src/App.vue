@@ -15,6 +15,11 @@ export default {
     AppFooter,
     Signin
   },
+  data() {
+    return {
+      user: null
+    };
+  },
   methods: {
     ...mapMutations(["toggleConfigurator", "navbarMinimize"])
   },
@@ -31,6 +36,9 @@ export default {
       };
     }
   },
+  async mounted() {
+    this.user = await this.$store.dispatch('profile/fetch')
+  },
   beforeMount() {
     this.$store.state.isTransparent = "bg-transparent";
   }
@@ -38,13 +46,14 @@ export default {
 </script>
 
 <template>
-  <div v-if="this.$store.state.token.loggedIn === true" >
+  <div v-if="this.$store.state.token.loggedIn === true && this.$route.meta.layout != 'signin'" >
     <div
       v-show="this.$store.state.layout === 'landing'"
       class="landing-bg h-100 bg-gradient-primary position-fixed w-100"
       ></div>
     <sidenav
       :custom_class="this.$store.state.mcolor"
+      :user=user
       v-if="this.$store.state.showSidenav"
       />
     <main

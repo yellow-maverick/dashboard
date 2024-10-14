@@ -1,13 +1,14 @@
-import Dashboard     from '../views/Dashboard.vue'
-import Analytics     from '../views/Analytics.vue'
-import Brands        from '../views/Brands.vue'
-import Products      from '../views/Products.vue'
-import AddProduct    from '../views/AddProduct.vue'
-import Reviews       from '../views/Reviews.vue'
-import QueryPage     from '../views/QueryPage.vue'
-import Profile       from '../views/Profile.vue'
-import ResetPassword from '../views/ResetPassword.vue'
-import PriceInfo     from "../views/PriceInfo.vue"
+import Dashboard      from '../views/Dashboard.vue'
+import Analytics      from '../views/Analytics.vue'
+import Brands         from '../views/Brands.vue'
+import Products       from '../views/Products.vue'
+import AddProduct     from '../views/AddProduct.vue'
+import Reviews        from '../views/Reviews.vue'
+import QueryPage      from '../views/QueryPage.vue'
+import Profile        from '../views/Profile.vue'
+import ResetPassword  from '../views/ResetPassword.vue'
+import PriceInfo      from "../views/PriceInfo.vue"
+import UserManagement from "../views/UserManagement.vue"
 
 const routes = [
   {
@@ -53,6 +54,11 @@ const routes = [
     name: 'products.add',
     component: AddProduct,
   },
+  {
+    path: '/users',
+    name: 'settings.users',
+    component: UserManagement,
+  },
 
   // Internal
   {
@@ -71,6 +77,9 @@ const routes = [
     path: "/reset-password",
     name: "reset-password",
     component: ResetPassword,
+    meta: {
+      layout: 'signin'
+    }
   },
   
 ];
