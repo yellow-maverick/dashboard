@@ -25,9 +25,7 @@ export default {
 <template>
   <div>
     <AddPropertyCompetitor :property=property v-if=adding />
-    <div v-else >
-      <button class=btn @click=add >{{$t('competitors.add_new')}}</button>
-    </div>
+    <button v-else class=btn @click=add >{{$t('competitors.add_new')}}</button>
 
     <PropertiesEdit :properties=competitors :categories=categories :isComp=true />
   </div>

@@ -182,7 +182,7 @@
   },
   "competitors": {
     "add_new": "Add competitor",
-    "name": "Name",
+    "name": "Competitor Brand Name",
     "save_error": "Error saving the competitor: %{error}"
   },
   "properties": {

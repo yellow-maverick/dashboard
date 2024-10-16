@@ -9,6 +9,7 @@ export default {
       saving:  false,
       status:  null,
       to_product: {},
+      competitor: {},
     }
   },
   props:      ['property', 'product'],
@@ -23,7 +24,7 @@ export default {
 
     async save() {
       this.saving = true
-      let p = {from_product_id: this.product.id, to_product: this.product}
+      let p = {from_product_id: this.product.id, to_product: this.product, to_property: this.competitor}
       let c = (await (await alova.Post(`/v1/product_competitors`, p)).clone().json())
       if (c.id) {
         this.$parent.adding = false
@@ -40,7 +41,7 @@ export default {
 
 <template>
   <div>
-    <AddPropertyCompetitor :property=property :pick=true :inline=true />
+    <AddPropertyCompetitor :property=property :inline=true :competitor=competitor />
 
     <AddProduct :product=to_product :inline=true />
   </div>
