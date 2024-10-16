@@ -10,13 +10,14 @@ import Db           from '../js/db.js'
 export default{
   data () {
     return {
-      modal: false,
-      modalEl: false,
-      user:  null,
+      modal:        false,
+      modalEl:      false,
+      user:         null,
       edittedUser:  null,
-      users: [],
-      properties: null,
-      columns: ['id', 'first_name', 'last_name', 'email', 'created_at', 'properties' ],
+      users:        [],
+      properties:   null,
+      filter:       null,
+      columns:      ['id', 'first_name', 'last_name', 'email', 'created_at', 'properties' ],
       filterFields: {
         role: { type: 'select', customLabel: function (r) { return this.$t(`roles.${r}`) } },
         search: { type: 'input' }
@@ -25,16 +26,16 @@ export default{
   },
   props:      [],
   components: { Filter, ArgonButton, UserAddModal },
-  mounted() {
-    this.load()
+  async mounted() {
+    this.user       = await this.$store.dispatch('profile/fetch')
+    this.properties = await this.runQuery('properties', { with_products: false })
   },
   methods: {
     ...Db,
-    async load() {
-      this.user  = await this.$store.dispatch('profile/fetch')
-      this.users = await alova.Get('/v1/users', { params: { subscription_id: this.user.subscriptions[0].id } })
-      this.users = await this.users.clone().json()
-      this.properties = await this.runQuery('properties', { with_products: false })
+    async load(filter) {
+      this.filter = filter
+      let req = await alova.Get('/v1/users', { params: { subscription_id: this.user.subscriptions[0].id } })
+      this.users = await req.clone().json()
     },
     userAdded(user) {
       this.users.push(user)
@@ -80,36 +81,46 @@ export default{
     isManager() {
       return Lib.isManager(this.user)
     },
+    filteredUsers () {
+      if (!this.filter || !this.filter.role) return this.users
+
+      return this.users.filter(u => u.role == this.filter.role )
+    }
   },
+  watch: {
+    filter () {
+      this.filteredUsers
+    }
+  }
 }
 </script>
 
 <template>
   <div class="container-fluid" v-if='isManager'>
-    <Filter :fields=filterFields emitUpdate=true @filter:submit='load' @filter:created='load'/>
+    <Filter :fields=filterFields emitUpdate=true @filter:submit='load' @filter:created='load' @filter:update='load'/>
 
     <div class="d-flex justify-content-end">
       <argon-button class="mt-1 mb-1" variant="gradient" color="primary" size="md" type="button" @click='add' >{{ $t('users.add') }}</argon-button>
     </div>
 
     <div class="table-responsive card">
-      <table class='table text-center mt-2' v-if='users.length' >
+      <table class='table text-center mt-2' v-if='filteredUsers.length' >
         <thead>
           <tr class='bordered-side'>
             <template v-for='c in columns' :key='c' >
               <th class='text-center'>{{ $t(`users.${c}`) }}</th>
             </template>
-            <th>{{ $t(`users.permissions`) }}</th>
+            <th>{{ $t(`users.role`) }}</th>
             <th>{{ $t(`users.actions`) }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for='user in users' :key='user'>
+          <tr v-for='user in filteredUsers' :key='user'>
             <td v-for='c in columns' :key='c' >
               <template v-if='c == "properties"'>{{ user.properties.map(p => p.name).join(', ') }}</template>
               <template v-else>{{ user[c] }}</template>
             </td>
-            <td>{{ user.permissions.map(p => $t(`users.permission_names.${p.name}`)).join(",") || $t('users.permission_names.user') }}</td>
+            <td>{{ $t(`users.permission_names.${user.role}`) }}</td>
             <td>
               <a @click.prevent='edit(user)' href='' > <font-awesome-icon class='ms-0' icon='fa-solid fa-pen' :title='$t("users.edit")' /></a>
               <a @click.prevent='remove(user)' href='' > <font-awesome-icon class='ms-3' icon='fa-solid fa-trash' :title='$t("users.delete")' /></a>

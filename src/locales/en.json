@@ -124,7 +124,7 @@
     "last_name": "Last Name",
     "email": "Email",
     "created_at": "Created at",
-    "permissions": "Permissions",
+    "role": "Role",
     "cancel": "Cancel",
     "invite": "Invite",
     "edit_user_modal": "Edit User",
