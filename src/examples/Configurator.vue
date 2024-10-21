@@ -5,6 +5,11 @@ import { activateDarkMode, deactivateDarkMode } from "@/assets/js/dark-mode";
 
 export default {
   name: "configurator",
+  data () {
+    return {
+      user: null
+    }
+  },
   props: ["toggle"],
   methods: {
     ...mapMutations(["navbarMinimize", "sidebarType", "navbarFixed"]),
@@ -44,7 +49,7 @@ export default {
       }
     },
     async logout () {
-      await alova.Post('/logout')
+      await alova.Delete('/logout')
     }
   },
   computed: {
@@ -56,7 +61,10 @@ export default {
     this.$store.state.isTransparent = "bg-transparent";
     window.addEventListener("resize", this.sidenavTypeOnResize);
     window.addEventListener("load", this.sidenavTypeOnResize);
-  }
+  },
+  async mounted() {
+    this.user = await this.$store.dispatch('profile/fetch')
+  },
 };
 </script>
 
@@ -70,12 +78,10 @@ export default {
     </a>
     <div class="shadow-lg card">
       <div class="pt-3 pb-0 bg-transparent card-header">
-        <div
-          class=""
-          :class="this.$store.state.isRTL ? 'float-end' : 'float-start'"
-        >
-          <h5 class="mt-3 mb-0">Settings</h5>
-          <p>See our dashboard options.</p>
+        <div class="mb-4 float-start" v-if='user'>
+          <h5> {{ $t('configurations.profile') }} </h5>
+          <strong> {{ user.first_name + " " + user.last_name }} </strong>
+          <div> {{ user.email }} </div>
         </div>
         <div
           class="mt-4"
@@ -86,9 +92,17 @@ export default {
             <i class="fa fa-close"></i>
           </button>
         </div>
+      </div>
+      <div class="pt-2 pb-0 bg-transparent card-header">
+        <div
+          class=""
+          :class="this.$store.state.isRTL ? 'float-end' : 'float-start'"
+        >
+          <h5 class="mt-3 mb-0">Settings</h5>
+          <p>See our dashboard options.</p>
+        </div>
         <!-- End Toggle Button -->
       </div>
-      <hr class="my-1 horizontal dark" />
       <div class="pt-0 card-body pt-sm-3">
         <!-- Sidebar Backgrounds -->
         <div>

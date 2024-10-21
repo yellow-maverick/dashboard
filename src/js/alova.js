@@ -25,9 +25,10 @@ export const alova = createAlova({
       if (method.url.endsWith('/login')) {
         const token = response.headers.get('Authorization');
         // Save the token in Vuex store
-        console.log(token);
-        store.dispatch('token/login', token);
-        location.reload()
+        if (token) {
+          store.dispatch('token/login', token);
+          location.reload()
+        }
       }
 
       // Intercept /logout requests

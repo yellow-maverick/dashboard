@@ -51,7 +51,7 @@ window.ym.lib = {
 
   isManager(user) {
     if (!user) return false
-    return user.role == 'admin' || user.subscriptions[0]?.permissions?.includes('manager');
+    return ['admin', 'manager'].includes(user.role)
   },
 
   dateShortcuts() {

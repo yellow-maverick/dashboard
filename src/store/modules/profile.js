@@ -1,7 +1,9 @@
 import { alova }   from '../../js/alova.js'
 
 const getJson = async (promise, commit) => {
-  let profile = await (await promise).clone().json()
+  let req = await promise
+  if (req.status == 401) return null
+  let profile = await (req).clone().json()
   commit('saveProfile', profile)
 
   return profile

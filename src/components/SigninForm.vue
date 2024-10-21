@@ -1,23 +1,30 @@
 <script>
 import ArgonInput  from "@/components/ArgonInput.vue";
 import ArgonButton from "@/components/ArgonButton.vue";
+import ArgonAlert     from "@/components/ArgonAlert.vue";
 import { alova }   from '../js/alova.js'
 
 export default{
   data () {
     return {
       user: {},
+      alert: null,
     }
   },
   props:      [],
   components: {
     ArgonInput,
     ArgonButton,
+    ArgonAlert
   },
   methods: {
     async login() {
-      await alova.Post('/login', { user: this.user })
-      //let data = await resp.clone().json()
+      let req = await alova.Post('/login', { user: this.user })
+      if (req.status == 200) this.$router.go(0)
+      else {
+        let json = await req.clone().json()
+        this.alert = json.error
+      }
     },
   }
 }
@@ -25,6 +32,7 @@ export default{
 
 <template>
   <div>
+    <ArgonAlert v-if='alert' color='danger' :dismissible='true' >{{  alert }}</ArgonAlert>
     <div class="pb-0 card-header text-start">
       <h4 class="font-weight-bolder">{{ $t('signin.title') }}</h4>
       <p class="mb-0">{{ $t('signin.description') }}</p>

@@ -48,6 +48,9 @@
     "pop": "From last period",
     "pop_short": "POP"
   },
+  "configurations": {
+    "profile": "Profile"
+  },
   "filter": {
     "title": "Filter",
     "submit": "Submit",

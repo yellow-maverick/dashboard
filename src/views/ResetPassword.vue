@@ -26,8 +26,12 @@ export default{
 
       if (this.user.password != this.user.password_confirmation)
         return alert(this.$t('signin.please_fill_the_same_pass'))
-      await alova.Post('/passwords/reset', { reset_token: this.token, user: this.user })
-      this.$router.push({ name: '/' })
+      let req = await alova.Post('/passwords/reset', { reset_token: this.token, user: this.user })
+      if (req.status == 200) this.$router.push({ name: '/', query: {}, param: {} })
+      else {
+        let json = await req.close().json()
+        this.alert = json.error
+      }
     }
   }
 }
